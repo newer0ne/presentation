@@ -36,12 +36,22 @@ def to_excel(df):
 link_Dynam_video_toclic = '[Тестовое задание](https://xoservices.notion.site/1872d331265946a0ae2c5c9069189fd7)'
 st.markdown(link_Dynam_video_toclic, unsafe_allow_html=True)
 
-st.markdown("""<h5 style='text-align: center;'>Первый датасет ADS:</h5>""", unsafe_allow_html=True)
+st.markdown("""<h5 style='text-align: center;'>Первый датасет ADS:</h5>""", unsafe_allow_html=False)
 
-url=st.secrets["ads"]
-file_id = url.split('/')[-2]
-dwn_url='https://drive.google.com/uc?export=download&id=' + file_id
-url2 = requests.get(dwn_url).text
-csv_raw = StringIO(url2)
-df = pd.read_csv(csv_raw)
-st.dataframe(df)
+url_ads = st.secrets["ads"]
+file_id_ads = url.split('/')[-2]
+dwn_url_ads = 'https://drive.google.com/uc?export=download&id=' + file_id
+url2_ads = requests.get(dwn_url_ads).text
+csv_raw_ads = StringIO(url2_ads)
+df_ads = pd.read_csv(csv_raw_ads)
+st.dataframe(df_ads)
+
+st.markdown("""<h5 style='text-align: center;'>Второй датасет LEADS:</h5>""", unsafe_allow_html=True)
+
+url_leads = st.secrets["leads"]
+file_id_leads = url.split('/')[-2]
+dwn_url_leads = 'https://drive.google.com/uc?export=download&id=' + file_id
+url2_leads = requests.get(dwn_url_leads).text
+csv_raw_leads = StringIO(url2_leads)
+df_leads = pd.read_csv(csv_raw_leads)
+st.dataframe(df_leads)
