@@ -7,6 +7,6 @@ def run_query(query):
     rows = conn.execute(query, headers=1)
     return rows
 
-rows_ads = run_query(f'SELECT * FROM "{https://drive.google.com/file/d/1U7DQGPOEhGWW3aWQHZayF_9ScqBYnaE1/}"')
+rows_ads = run_query(f'SELECT * FROM "{link_ads}"')
 ads = pd.DataFrame(rows_ads, dtype=str)
 st.dataframe(data = ads)
