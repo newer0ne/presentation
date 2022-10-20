@@ -33,7 +33,7 @@ def to_excel(df):
     return processed_data
 
 
-link_Dynam_video_toclic = '[Тестовое задание](https://xoservices.notion.site/1872d331265946a0ae2c5c9069189fd7)'
+link_Dynam_video_toclic = '[<h5 style='text-align: center;'>Тестовое задание:</h5>"""](https://xoservices.notion.site/1872d331265946a0ae2c5c9069189fd7)'
 st.markdown(link_Dynam_video_toclic, unsafe_allow_html=True)
 
 st.markdown("""<h5 style='text-align: center;'>Первый датасет ADS:</h5>""", unsafe_allow_html = True)
@@ -59,6 +59,7 @@ st.dataframe(df_leads)
 st.markdown("""<h5 style='text-align: center;'>Третий датасет PURCHASES:</h5>""", unsafe_allow_html = True)
 
 url_purchases = st.secrets["purchases"]
+url_purchases
 file_id_purchases = url_purchases.split('/')[-2]
 dwn_url_purchases = 'https://drive.google.com/uc?export=download&id=' + file_id_purchases
 url2_purchases = requests.get(dwn_url_purchases).text
