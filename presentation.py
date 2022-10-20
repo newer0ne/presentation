@@ -16,17 +16,15 @@ link_test_task = '[Тестовое задание](https://xoservices.notion.si
 st.markdown(link_test_task, unsafe_allow_html=True)
 
 conn = connect()
-
-@ st.cache(ttl=600)
-
-link_ads = st.secrets["ads"]
-
-link_ads
-
+@st.cache(ttl=600)
 def run_query(query):
     rows = conn.execute(query, headers=1)
     return rows
 
+
+link_ads = st.secrets["ads"]
+link_ads
+
 rows_ads = run_query(f'SELECT * FROM "{link_ads}"')
 ads = pd.DataFrame(rows_ads, dtype=str)
-st.dataframe(data = ads)
+st.dataframe(data=ads)
