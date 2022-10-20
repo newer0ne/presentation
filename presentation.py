@@ -49,4 +49,4 @@ dwn_url='https://drive.google.com/uc?export=download&id=' + file_id
 url2 = requests.get(dwn_url).text
 csv_raw = StringIO(url2)
 df = pd.read_csv(csv_raw)
-print(df.head())
+st.dataframe(df)
