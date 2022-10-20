@@ -39,7 +39,7 @@ st.markdown(link_Dynam_video_toclic, unsafe_allow_html=True)
 st.markdown("""<h5 style='text-align: center;'>Первый датасет ADS:</h5>""", unsafe_allow_html=False)
 
 url_ads = st.secrets["ads"]
-file_id_ads = url.split('/')[-2]
+file_id_ads = url_ads.split('/')[-2]
 dwn_url_ads = 'https://drive.google.com/uc?export=download&id=' + file_id
 url2_ads = requests.get(dwn_url_ads).text
 csv_raw_ads = StringIO(url2_ads)
@@ -49,7 +49,7 @@ st.dataframe(df_ads)
 st.markdown("""<h5 style='text-align: center;'>Второй датасет LEADS:</h5>""", unsafe_allow_html=True)
 
 url_leads = st.secrets["leads"]
-file_id_leads = url.split('/')[-2]
+file_id_leads = url_leads.split('/')[-2]
 dwn_url_leads = 'https://drive.google.com/uc?export=download&id=' + file_id
 url2_leads = requests.get(dwn_url_leads).text
 csv_raw_leads = StringIO(url2_leads)
