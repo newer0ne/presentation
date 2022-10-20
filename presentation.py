@@ -69,6 +69,4 @@ st.dataframe(df_purchases)
 
 st.markdown("<h5 style='text-align: center;'>Попробуем левтджоин для сведения всех продаж:</h5>", unsafe_allow_html = True)
 df_leads_purchases = pd.merge(df_leads, df_purchases, how = 'right', on = ['client_id'])
-st.dataframe(df_purchases)
-
-frame = dataframe.reindex(columns=['a', 'c', 'b'])
+st.dataframe(df_leads_purchases)
