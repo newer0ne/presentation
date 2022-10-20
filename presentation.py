@@ -9,8 +9,9 @@ from io import BytesIO
 import os
 import csv
 from pyxlsb import open_workbook as open_xlsb
-import webbrowser
 from PIL import Image
+import requests
+from io import StringIO
 
 conn = connect()
 @st.cache(ttl=600)
@@ -32,17 +33,10 @@ def to_excel(df):
     return processed_data
 
 
-#rows_ads = run_query(f'SELECT * FROM "{link_ads}"')
-#ads = pd.DataFrame(rows_ads, dtype=str)
-#st.dataframe(data=ads)
-
-import pandas as pd
-import requests
-from io import StringIO
+link_Dynam_video_toclic = '[Тестовое задание](https://xoservices.notion.site/1872d331265946a0ae2c5c9069189fd7)'
+st.markdown(link_Dynam_video_toclic, unsafe_allow_html=True)
 
 url=st.secrets["ads"]
-
-url
 
 file_id = url.split('/')[-2]
 dwn_url='https://drive.google.com/uc?export=download&id=' + file_id
