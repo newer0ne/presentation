@@ -36,8 +36,17 @@ def to_excel(df):
 #ads = pd.DataFrame(rows_ads, dtype=str)
 #st.dataframe(data=ads)
 
+import pandas as pd
+import requests
+from io import StringIO
+
 url=st.secrets["ads"]
-file_id=url.split('/')[-2]
-dwn_url='https://drive.google.com/uc?id=' + file_id
-df = pd.read_csv(dwn_url)
+
+url
+
+file_id = url.split('/')[-2]
+dwn_url='https://drive.google.com/uc?export=download&id=' + file_id
+url2 = requests.get(dwn_url).text
+csv_raw = StringIO(url2)
+df = pd.read_csv(csv_raw)
 print(df.head())
