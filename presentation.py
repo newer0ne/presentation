@@ -4,6 +4,8 @@ import pandas
 link_test_task = '[Тестовое задание](https://xoservices.notion.site/1872d331265946a0ae2c5c9069189fd7)'
 st.markdown(link_test_task, unsafe_allow_html=True)
 
+link_ads = st.secrets["link_ads"]
+
 def run_query(query):
     rows = conn.execute(query, headers=1)
     return rows
