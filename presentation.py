@@ -66,7 +66,6 @@ csv_raw_purchases = StringIO(url2_purchases)
 df_purchases = pd.read_csv(csv_raw_purchases)
 st.dataframe(df_purchases)
 
-st.markdown("<h5 style='text-align: center;'>Попробуем левтджоин для сведения всех продаж:</h5>")
-st.text("Попробуем левтджоин для сведения всех продаж")
+st.markdown("<h5 style='text-align: center;'>Попробуем левтджоин для сведения всех продаж:</h5>", unsafe_allow_html = True)
 df_leads_purchases = pd.merge(df_leads, df_purchases, how = 'left', on = ['client_id'])
 st.dataframe(df_purchases)
