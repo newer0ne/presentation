@@ -11,7 +11,7 @@ conn = connect()
 
 
 #link_ads = st.secrets["ads"]
-link_ads = "https://drive.google.com/file/d/1U7DQGPOEhGWW3aWQHZayF_9ScqBYnaE1/view?usp=sharing"
+link_ads = "(https://drive.google.com/file/d/1U7DQGPOEhGWW3aWQHZayF_9ScqBYnaE1/view?usp=sharing)"
 link_ads
 
 def run_query(query):
