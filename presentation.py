@@ -59,10 +59,14 @@ st.dataframe(df_leads)
 st.markdown("""<h5 style='text-align: center;'>Третий датасет PURCHASES:</h5>""", unsafe_allow_html = True)
 
 url_purchases = st.secrets["purchases"]
-url_purchases
 file_id_purchases = url_purchases.split('/')[-2]
 dwn_url_purchases = 'https://drive.google.com/uc?export=download&id=' + file_id_purchases
 url2_purchases = requests.get(dwn_url_purchases).text
 csv_raw_purchases = StringIO(url2_purchases)
 df_purchases = pd.read_csv(csv_raw_purchases)
+st.dataframe(df_purchases)
+
+st.markdown("<h5 style='text-align: center;'>Попробуем левтджоин для сведения всех продаж:</h5>")
+st.text("Попробуем левтджоин для сведения всех продаж")
+df_leads_purchases = pd.merge(df_leads, df_purchases, how = 'left', on = ['client_id'])
 st.dataframe(df_purchases)
