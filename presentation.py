@@ -55,3 +55,13 @@ url2_leads = requests.get(dwn_url_leads).text
 csv_raw_leads = StringIO(url2_leads)
 df_leads = pd.read_csv(csv_raw_leads)
 st.dataframe(df_leads)
+
+st.markdown("""<h5 style='text-align: center;'>Третий датасет PURCHASES:</h5>""", unsafe_allow_html = True)
+
+url_purchases = st.secrets["purchases"]
+file_id_purchases = url_purchases.split('/')[-2]
+dwn_url_purchases = 'https://drive.google.com/uc?export=download&id=' + file_id_purchases
+url2_purchases = requests.get(dwn_url_purchases).text
+csv_raw_purchases = StringIO(url2_purchases)
+df_purchases = pd.read_csv(csv_raw_purchases)
+st.dataframe(df_purchases)
