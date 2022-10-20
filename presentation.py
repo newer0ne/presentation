@@ -44,7 +44,7 @@ def save_response_content(response, destination):
                 f.write(chunk)
 
 def download_file_from_google_drive(id, destination):
-    URL = "https://docs.google.com/uc?export=download"
+    URL = link_ads
 
     session = requests.Session()
 
