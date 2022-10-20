@@ -32,9 +32,12 @@ def to_excel(df):
     return processed_data
 
 
-
-link_ads = st.secrets["ads"]
-
-rows_ads = run_query(f'SELECT * FROM "{link_ads}"')
+#rows_ads = run_query(f'SELECT * FROM "{link_ads}"')
 #ads = pd.DataFrame(rows_ads, dtype=str)
 #st.dataframe(data=ads)
+
+url=st.secrets["ads"]
+file_id=url.split('/')[-2]
+dwn_url='https://drive.google.com/uc?id=' + file_id
+df = pd.read_csv(dwn_url)
+print(df.head())
