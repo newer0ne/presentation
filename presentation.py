@@ -40,7 +40,7 @@ st.markdown("""<h5 style='text-align: center;'>Первый датасет ADS:<
 
 url_ads = st.secrets["ads"]
 file_id_ads = url_ads.split('/')[-2]
-dwn_url_ads = 'https://drive.google.com/uc?export=download&id=' + file_id
+dwn_url_ads = 'https://drive.google.com/uc?export=download&id=' + file_id_ads
 url2_ads = requests.get(dwn_url_ads).text
 csv_raw_ads = StringIO(url2_ads)
 df_ads = pd.read_csv(csv_raw_ads)
@@ -50,7 +50,7 @@ st.markdown("""<h5 style='text-align: center;'>Второй датасет LEADS
 
 url_leads = st.secrets["leads"]
 file_id_leads = url_leads.split('/')[-2]
-dwn_url_leads = 'https://drive.google.com/uc?export=download&id=' + file_id
+dwn_url_leads = 'https://drive.google.com/uc?export=download&id=' + file_id_leads
 url2_leads = requests.get(dwn_url_leads).text
 csv_raw_leads = StringIO(url2_leads)
 df_leads = pd.read_csv(csv_raw_leads)
