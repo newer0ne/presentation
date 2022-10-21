@@ -65,9 +65,10 @@ elif load_option == "upload":
         st.dataframe(df_ads)
 
 
-cols_ads = df_ads.columns
-list_ads = []
-if cols_ads is not None:
+
+if df_ads is not None:
+    cols_ads = df_ads.columns
+    list_ads = []
     for i in range(len(cols_ads)):
 	    list_ads.append(cols_ads[i])
 
