@@ -57,9 +57,9 @@ elif load_option == "link":
 
 elif load_option == "dowload":
     uploaded_file = st.file_uploader("Область загрузки CSV")
-        if uploaded_file is not None:
-            st.write("Filename: ", uploaded_file.name)
-            df_ads = pd.read_csv(uploaded_file, sheet_name = "Sheet1", dtype = {'Note': str})
+    if uploaded_file is not None:
+        st.write("Filename: ", uploaded_file.name)
+        df_ads = pd.read_csv(uploaded_file, sheet_name = "Sheet1", dtype = {'Note': str})
 
 st.dataframe(df_ads)
 
