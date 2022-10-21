@@ -48,8 +48,8 @@ st.dataframe(df_ads)
 
 cols_ads = df_ads.columns
 list_ads = []
-for i in range(len(cols)):
-	list_ads.append(cols[i])
+for i in range(len(cols_ads)):
+	list_ads.append(cols_ads[i])
 list_ads
 
 
