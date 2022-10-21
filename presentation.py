@@ -45,7 +45,7 @@ load_option = st.selectbox(
 st.markdown("""<h5 style='text-align: center;'>Первый датасет ADS:</h5>""", unsafe_allow_html = True)
 
 if load_option == "open":
-    df_ads = pd.read_csv(ads.csv)
+    df_ads = pd.read_csv(main/ads.csv)
 
 elif load_option == "link":
     url_ads = st.secrets["ads"]
