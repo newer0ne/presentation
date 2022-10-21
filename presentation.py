@@ -91,8 +91,12 @@ with col1:
         options = [list_ads, list_leads, list_purchases])
 
 with col2:
-    st.selectbox(
+    X_colunm = st.selectbox(
         "Выбор столбца по оси X",
+        (selected_df))
+
+    Y_colunm = st.selectbox(
+        "Выбор столбца по оси Y",
         (selected_df))
 
 
