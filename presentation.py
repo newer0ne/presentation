@@ -63,10 +63,13 @@ elif load_option == "upload":
         st.write("Filename: ", uploaded_file.name)
         df_ads = pd.read_csv(uploaded_file, sheet_name = "Sheet1", dtype = {'Note': str})
         st.dataframe(df_ads)
+        cols_ads = df_ads.columns
+        list_ads = []
+        for i in range(len(cols_ads)):
+            list_ads.append(cols_ads[i])
 
 
-
-if df_ads is not None:
+if load_option == "open" or "link":
     cols_ads = df_ads.columns
     list_ads = []
     for i in range(len(cols_ads)):
