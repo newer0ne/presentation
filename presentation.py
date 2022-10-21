@@ -46,6 +46,13 @@ csv_raw_ads = StringIO(url2_ads)
 df_ads = pd.read_csv(csv_raw_ads)
 st.dataframe(df_ads)
 
+cols_ads = df_ads.columns
+list_ads = []
+for i in range(len(cols)):
+	list_ads.append(cols[i])
+list_ads
+
+
 st.markdown("""<h5 style='text-align: center;'>Второй датасет LEADS:</h5>""", unsafe_allow_html = True)
 
 url_leads = st.secrets["leads"]
@@ -66,6 +73,33 @@ csv_raw_purchases = StringIO(url2_purchases)
 df_purchases = pd.read_csv(csv_raw_purchases)
 #df_purchases = df_purchases.reindex(columns=['client_id', 'purchase_id', 'purchase_created_at', 'm_purchase_amount'])
 st.dataframe(df_purchases)
+
+
+
+
+#Store the initial value of widgets in session state
+if "visibility" not in st.session_state:
+    st.session_state.visibility = "visible"
+    st.session_state.disabled = False
+
+col1, col2 = st.columns(2)
+
+with col1:
+    st.checkbox("Disable selectbox widget", key="disabled")
+    st.radio(
+        "Выбор датасета 👉",
+        key="visibility",
+        options=["ADS", "LEADS", "PURCHASES"],
+    )
+
+with col2:
+    option = st.selectbox(
+        "Выбор столбца по оси X",
+        ("Email", "Home phone", "Mobile phone"),
+        label_visibility=st.session_state.visibility,
+        disabled=st.session_state.disabled,
+    )
+
 
 st.markdown("<h5 style='text-align: center;'>Попробуем левтджоин для сведения всех продаж:</h5>", unsafe_allow_html = True)
 df_leads_purchases = pd.merge(df_leads, df_purchases, how = 'left', on = ['client_id'])
