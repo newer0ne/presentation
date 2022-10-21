@@ -83,28 +83,18 @@ for i in range(len(cols_purchases)):
 	list_purchases.append(cols_purchases[i])
 
 
-#Store the initial value of widgets in session state
-if "visibility" not in st.session_state:
-    st.session_state.visibility = "visible"
-    st.session_state.disabled = False
-
 col1, col2 = st.columns(2)
 
 with col1:
-    st.checkbox("Disable selectbox widget", key="disabled")
     st.radio(
         "Выбор датасета 👉",
-        key="visibility",
-        options=[list_ads, list_leads, list_purchases],
-    )
+        key = "visibility",
+        options = [list_ads, list_leads, list_purchases])
 
 with col2:
     option = st.selectbox(
         "Выбор столбца по оси X",
-        ("Email", "Home phone", "Mobile phone"),
-        label_visibility=st.session_state.visibility,
-        disabled=st.session_state.disabled,
-    )
+        (list_ads, list_leads, list_purchases))
 
 
 st.markdown("<h5 style='text-align: center;'>Попробуем левтджоин для сведения всех продаж:</h5>", unsafe_allow_html = True)
