@@ -38,7 +38,7 @@ link_Dynam_video_toclic = """[<h2 style='text-align: center;'>Тестовове
 st.markdown(link_Dynam_video_toclic, unsafe_allow_html=True)
 
 load_option = "open"
-load_option = st.selectbox(
+load_option = st.ratio(
         "Выбор способа загрузки датасета",
         ("open", "link", "upload"))
 
