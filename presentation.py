@@ -38,9 +38,9 @@ link_Dynam_video_toclic = """[<h2 style='text-align: center;'>Тестовове
 st.markdown(link_Dynam_video_toclic, unsafe_allow_html=True)
 
 load_option = "open"
-load_option = st.ratio(
+ = st.ratio(
         "Выбор способа загрузки датасета",
-        ("open", "link", "upload"))
+        load_option = ["open", "link", "upload"])
 
 st.markdown("""<h5 style='text-align: center;'>Первый датасет ADS:</h5>""", unsafe_allow_html = True)
 
