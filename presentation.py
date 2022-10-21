@@ -1,4 +1,5 @@
 
+from pickle import APPEND
 import streamlit as st
 from gsheetsdb import connect
 import pandas as pd
@@ -99,8 +100,8 @@ with col2:
         "Выбор столбца по оси Y",
         (selected_df))
 
-X_colunm
-Y_colunm
+filtred_cols = [X_colunm, Y_colunm]
+filtred_cols
 
 st.markdown("<h5 style='text-align: center;'>Попробуем левтджоин для сведения всех продаж:</h5>", unsafe_allow_html = True)
 df_leads_purchases = pd.merge(df_leads, df_purchases, how = 'left', on = ['client_id'])
