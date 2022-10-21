@@ -47,6 +47,10 @@ st.markdown("""<h5 style='text-align: center;'>Первый датасет ADS:<
 if load_option == "open":
     df_ads = pd.read_csv("ads.csv")
     st.dataframe(df_ads)
+    cols_ads = df_ads.columns
+    list_ads = []
+    for i in range(len(cols_ads)):
+        list_ads.append(cols_ads[i])
 
 elif load_option == "link":
     url_ads = st.secrets["ads"]
@@ -56,6 +60,10 @@ elif load_option == "link":
     csv_raw_ads = StringIO(url2_ads)
     df_ads = pd.read_csv(csv_raw_ads)
     st.dataframe(df_ads)
+    cols_ads = df_ads.columns
+    list_ads = []
+    for i in range(len(cols_ads)):
+        list_ads.append(cols_ads[i])
 
 elif load_option == "upload":
     uploaded_file = st.file_uploader("Область загрузки CSV")
@@ -68,12 +76,6 @@ elif load_option == "upload":
         for i in range(len(cols_ads)):
             list_ads.append(cols_ads[i])
 
-
-if load_option == "open" or "link":
-    cols_ads = df_ads.columns
-    list_ads = []
-    for i in range(len(cols_ads)):
-	    list_ads.append(cols_ads[i])
 
 st.markdown("""<h5 style='text-align: center;'>Второй датасет LEADS:</h5>""", unsafe_allow_html = True)
 
