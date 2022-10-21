@@ -67,8 +67,9 @@ elif load_option == "upload":
 
 cols_ads = df_ads.columns
 list_ads = []
-for i in range(len(cols_ads)):
-	list_ads.append(cols_ads[i])
+if cols_ads is not None
+    for i in range(len(cols_ads)):
+	    list_ads.append(cols_ads[i])
 
 st.markdown("""<h5 style='text-align: center;'>Второй датасет LEADS:</h5>""", unsafe_allow_html = True)
 
