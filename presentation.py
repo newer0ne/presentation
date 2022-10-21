@@ -47,6 +47,7 @@ df_ads = pd.read_csv(csv_raw_ads)
 st.dataframe(df_ads)
 
 cols_ads = df_ads.columns
+cols_ads
 list_ads = []
 for i in range(len(cols_ads)):
 	list_ads.append(cols_ads[i])
