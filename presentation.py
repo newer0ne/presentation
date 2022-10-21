@@ -47,12 +47,9 @@ df_ads = pd.read_csv(csv_raw_ads)
 st.dataframe(df_ads)
 
 cols_ads = df_ads.columns
-cols_ads
 list_ads = []
 for i in range(len(cols_ads)):
 	list_ads.append(cols_ads[i])
-list_ads
-
 
 st.markdown("""<h5 style='text-align: center;'>Второй датасет LEADS:</h5>""", unsafe_allow_html = True)
 
@@ -63,6 +60,11 @@ url2_leads = requests.get(dwn_url_leads).text
 csv_raw_leads = StringIO(url2_leads)
 df_leads = pd.read_csv(csv_raw_leads)
 st.dataframe(df_leads)
+
+cols_leads = df_leads.columns
+list_leads = []
+for i in range(len(cols_leads)):
+	list_leads.append(cols_leads[i])
 
 st.markdown("""<h5 style='text-align: center;'>Третий датасет PURCHASES:</h5>""", unsafe_allow_html = True)
 
@@ -75,7 +77,10 @@ df_purchases = pd.read_csv(csv_raw_purchases)
 #df_purchases = df_purchases.reindex(columns=['client_id', 'purchase_id', 'purchase_created_at', 'm_purchase_amount'])
 st.dataframe(df_purchases)
 
-
+cols_purchases = df_purchases.columns
+list_purchases = []
+for i in range(len(cols_purchases)):
+	list_purchases.append(cols_purchases[i])
 
 
 #Store the initial value of widgets in session state
@@ -90,7 +95,7 @@ with col1:
     st.radio(
         "Выбор датасета 👉",
         key="visibility",
-        options=["ADS", "LEADS", "PURCHASES"],
+        options=[list_ads, list_leads, list_purchases],
     )
 
 with col2:
