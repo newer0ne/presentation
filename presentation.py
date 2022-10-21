@@ -37,14 +37,16 @@ def to_excel(df):
 link_Dynam_video_toclic = """[<h2 style='text-align: center;'>Тестовове задание:</h2>](https://xoservices.notion.site/1872d331265946a0ae2c5c9069189fd7)"""
 st.markdown(link_Dynam_video_toclic, unsafe_allow_html=True)
 
+load_option = "open"
 load_option = st.selectbox(
         "Выбор способа загрузки датасета",
         ("open", "link", "upload"))
 
 st.markdown("""<h5 style='text-align: center;'>Первый датасет ADS:</h5>""", unsafe_allow_html = True)
 
-if load_option = "open"
+if load_option == "open"
     df_ads = pd.read_csv(ads.csv)
+
 elif load_option == "link"
     url_ads = st.secrets["ads"]
     file_id_ads = url_ads.split('/')[-2]
@@ -52,6 +54,7 @@ elif load_option == "link"
     url2_ads = requests.get(dwn_url_ads).text
     csv_raw_ads = StringIO(url2_ads)
     df_ads = pd.read_csv(csv_raw_ads)
+
 elif load_option == "dowload"
     uploaded_file = st.file_uploader("Область загрузки CSV")
         if uploaded_file is not None:
