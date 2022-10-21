@@ -86,15 +86,14 @@ for i in range(len(cols_purchases)):
 col1, col2 = st.columns(2)
 
 with col1:
-    st.radio(
+    selected_df = st.radio(
         "Выбор датасета 👉",
-        key = "visibility",
         options = [list_ads, list_leads, list_purchases])
 
 with col2:
-    option = st.selectbox(
+    st.selectbox(
         "Выбор столбца по оси X",
-        (list_ads, list_leads, list_purchases))
+        (selected_df))
 
 
 st.markdown("<h5 style='text-align: center;'>Попробуем левтджоин для сведения всех продаж:</h5>", unsafe_allow_html = True)
