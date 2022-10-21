@@ -44,10 +44,10 @@ load_option = st.selectbox(
 
 st.markdown("""<h5 style='text-align: center;'>Первый датасет ADS:</h5>""", unsafe_allow_html = True)
 
-if load_option == "open"
+if load_option == "open":
     df_ads = pd.read_csv(ads.csv)
 
-elif load_option == "link"
+elif load_option == "link":
     url_ads = st.secrets["ads"]
     file_id_ads = url_ads.split('/')[-2]
     dwn_url_ads = 'https://drive.google.com/uc?export=download&id=' + file_id_ads
@@ -55,7 +55,7 @@ elif load_option == "link"
     csv_raw_ads = StringIO(url2_ads)
     df_ads = pd.read_csv(csv_raw_ads)
 
-elif load_option == "dowload"
+elif load_option == "dowload":
     uploaded_file = st.file_uploader("Область загрузки CSV")
         if uploaded_file is not None:
         st.write("Filename: ", uploaded_file.name)
