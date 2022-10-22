@@ -146,19 +146,35 @@ col1, col2 = st.columns(2)
 with col1:
     selected_df = st.radio(
         "Выбор датасета 👉",
-        options = [list_ads, list_leads, list_purchases])
+        ("ads", "leads", "purchases"))
+
+if selected_df == "ads":
+    selected_cols = list_ads
+elif selected_df == "leads":
+    selected_cols = list_leads
+elif selected_df == "purchases":
+    selected_cols = list_purchases
+
+
 
 with col2:
     X_colunm = st.selectbox(
         "Выбор столбца по оси X",
-        (selected_df))
+        (selected_cols))
 
     Y_colunm = st.selectbox(
         "Выбор столбца по оси Y",
-        (selected_df))
+        (selected_cols))
 
-filtred_cols = [X_colunm, Y_colunm]
-filtred_cols
+filtred_df = df_ads.loc[X_colunm, Y_colunm]
+filtred_df
+
+
+chart_data = pd.DataFrame(
+    np.random.randn(20, 3),
+    columns=['a', 'b', 'c'])
+
+st.line_chart(chart_data)
 
 st.markdown("<h5 style='text-align: center;'>Попробуем левтджоин для сведения всех продаж:</h5>", unsafe_allow_html = True)
 df_leads_purchases = pd.merge(df_leads, df_purchases, how = 'left', on = ['client_id'])
