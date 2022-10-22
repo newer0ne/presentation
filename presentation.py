@@ -166,7 +166,7 @@ with col2:
         "Выбор столбца по оси Y",
         (selected_cols))
 
-filtred_df = df_ads.loc[X_colunm, Y_colunm]
+filtred_df = df_ads.loc[[X_colunm, Y_colunm]]
 filtred_df
 
 
