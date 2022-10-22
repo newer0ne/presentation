@@ -186,6 +186,24 @@ with st.expander("dataset analyzer"):
         with col5:
             st.dataframe(chart_df)
 
+col4, col5, col6 = st.columns(3)
+list_df = [df_ads, df_leads, df_purchases]
+with col4:
+    join_df_1 = st.radio(
+        "Выбор датафрейма для Join 👉",
+        (list_df))
+    join_df_2 = st.radio(
+        "Выбор датафрейма для Join 👉",
+        (list_df))
+with col5:
+    join_type = st.radio(
+        "Выбор типа Join 👉",
+        ("left", "right", "inner","outer"))
+with col6:
+    join_col = st.radio(
+        "Выбор столбца для Join 👉",
+        ("left", "right", "inner","outer"))
+
 st.markdown("<h5 style='text-align: center;'>Попробуем левтджоин для сведения всех продаж:</h5>", unsafe_allow_html = True)
-df_leads_purchases = pd.merge(df_leads, df_purchases, how = 'left', on = ['client_id'])
+df_leads_purchases = pd.merge(join_df_1, join_df_2, how = join_type, on = join_col)
 st.dataframe(df_leads_purchases)
