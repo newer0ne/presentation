@@ -198,6 +198,7 @@ with col4:
         join_df_1_ = df_leads
     if join_df_1 == "df_purchases":
         join_df_1_ = list_purchases
+
     join_df_2 = st.radio(
         "Выбор второго датафрейма для Join 👉",
         ("df_ads", "df_leads", "df_purchases"))
@@ -225,7 +226,7 @@ with col6:
         (join_col_list))
 
 join_df_1_
-join_df_2
+join_df_2_
 join_type
 join_col
 
