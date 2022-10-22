@@ -165,9 +165,10 @@ with col2:
     Y_colunm = st.selectbox(
         "Выбор столбца по оси Y",
         (selected_cols))
-
-filtred_df = df_ads.loc[[X_colunm, Y_colunm]]
-filtred_df
+X_colunm
+Y_colunm
+#filtred_df = df_ads.loc[[X_colunm, Y_colunm]]
+#filtred_df
 
 
 chart_data = pd.DataFrame(
