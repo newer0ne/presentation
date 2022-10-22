@@ -44,27 +44,30 @@ load_option = st.radio(
 
 if load_option == "open":
     df_ads = pd.read_csv("ads.csv")
-    st.markdown("""<h5 style='text-align: center;'>Первый датасет ADS:</h5>""", unsafe_allow_html = True)
-    st.dataframe(df_ads)
-    cols_ads = df_ads.columns
-    list_ads = []
-    for i in range(len(cols_ads)):
-        list_ads.append(cols_ads[i])
+    with st.expander("ads.csv"):
+        st.markdown("""<h5 style='text-align: center;'>Первый датасет ADS:</h5>""", unsafe_allow_html = True)
+        st.dataframe(df_ads)
+        cols_ads = df_ads.columns
+        list_ads = []
+        for i in range(len(cols_ads)):
+            list_ads.append(cols_ads[i])
     
     df_leads = pd.read_csv("leads.csv")
-    st.markdown("""<h5 style='text-align: center;'>Второй датасет LEADS:</h5>""", unsafe_allow_html = True)
-    st.dataframe(df_leads)
-    cols_leads = df_leads.columns
-    list_leads = []
-    for i in range(len(cols_leads)):
-        list_leads.append(cols_leads[i])
+    with st.expander("leads.csv"):
+        st.markdown("""<h5 style='text-align: center;'>Второй датасет LEADS:</h5>""", unsafe_allow_html = True)
+        st.dataframe(df_leads)
+        cols_leads = df_leads.columns
+        list_leads = []
+        for i in range(len(cols_leads)):
+            list_leads.append(cols_leads[i])
     
     df_purchases = pd.read_csv("purchases.csv")
-    st.dataframe(df_purchases)
-    cols_purchases = df_purchases.columns
-    list_purchases = []
-    for i in range(len(cols_purchases)):
-        list_purchases.append(cols_purchases[i])
+    with st.expander("leads.csv"):
+        st.dataframe(df_purchases)
+        cols_purchases = df_purchases.columns
+        list_purchases = []
+        for i in range(len(cols_purchases)):
+            list_purchases.append(cols_purchases[i])
 
 elif load_option == "link":
     url_ads = st.secrets["ads"]
@@ -91,8 +94,8 @@ elif load_option == "link":
     cols_leads = df_leads.columns
     list_leads = []
     for i in range(len(cols_leads)):
-	    list_leads.append(cols_leads[i])
-    
+        list_leads.append(cols_leads[i])
+        
     url_purchases = st.secrets["purchases"]
     file_id_purchases = url_purchases.split('/')[-2]
     dwn_url_purchases = 'https://drive.google.com/uc?export=download&id=' + file_id_purchases
@@ -177,11 +180,9 @@ if X_colunm == Y_colunm:
 
 if X_colunm != Y_colunm:
     col4, col5 = st.columns(2)
-
     with col4:
         chart_df = filtred_df.loc[:, [X_colunm, Y_colunm]]
         st.line_chart(chart_df)
-    
     with col5:
         st.dataframe(chart_df)
 
