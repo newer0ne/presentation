@@ -195,7 +195,8 @@ with col4:
 
     join_df_2 = st.radio(
         "Выбор датафрейма для Join 👉",
-        (list_df))
+        ("df_ads", "df_leads", "df_purchases"))
+        
 with col5:
     join_type = st.radio(
         "Выбор типа Join 👉",
