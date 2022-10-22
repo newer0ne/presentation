@@ -212,6 +212,11 @@ with col6:
         "Выбор столбца для Join 👉",
         (join_col_list))
 
+join_df_1
+join_df_2
+join_type
+join_col
+
 st.markdown("<h5 style='text-align: center;'>Попробуем левтджоин для сведения всех продаж:</h5>", unsafe_allow_html = True)
-df_leads_purchases = pd.merge([join_df_1], [join_df_2], how = [join_type], on = [join_col])
+df_leads_purchases = pd.merge([join_df_1], [join_df_2], how = [join_type], on = [join_col_list])
 st.dataframe(df_leads_purchases)
