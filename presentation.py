@@ -163,9 +163,12 @@ with col2:
     X_colunm = st.selectbox(
         "Выбор столбца по оси X",
         (selected_cols))
+    
+    selected_cols
     X_colunm
-    selected_cols_Y = []
-    selected_cols_Y = selected_cols.remove(X_colunm)
+
+    selected_cols_Y = selected_cols
+    selected_cols_Y.remove(X_colunm)
     selected_cols_Y
     Y_colunm = st.selectbox("Выбор столбца по оси Y", (selected_cols_Y))
 
