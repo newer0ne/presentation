@@ -163,22 +163,13 @@ with col2:
     X_colunm = st.selectbox(
         "Выбор столбца по оси X",
         (selected_cols))
-
+    selected_cols_Y = selected_cols.remove(X_colunm)
+    
     Y_colunm = st.selectbox(
         "Выбор столбца по оси Y",
-        (selected_cols))
-
-X_colunm, Y_colunm
-
-#filtred_cols = []
-#filtred_cols.append(X_colunm, Y_colunm)
-#filtred_cols
+        (selected_cols_Y))
 
 st.dataframe(filtred_df.loc[:, [X_colunm, Y_colunm]])
-
-#filtred_df = df_ads.loc(X_colunm)
-#filtred_df
-
 
 chart_data = pd.DataFrame(
     np.random.randn(20, 3),
