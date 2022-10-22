@@ -113,79 +113,78 @@ elif load_option == "link":
 
 elif load_option == "upload":
     uploaded_ads = st.file_uploader("Область загрузки для ADS.CSV")
-    if uploaded_ads is not None:
-        st.write("Filename: ", uploaded_ads.name)
-        df_ads = pd.read_csv(uploaded_ads, sheet_name = "Sheet1", dtype = {'Note': str})
-        st.markdown("""<h5 style='text-align: center;'>Первый датасет ADS:</h5>""", unsafe_allow_html = True)
-        st.dataframe(df_ads)
-        cols_ads = df_ads.columns
-        list_ads = []
-        for i in range(len(cols_ads)):
-            list_ads.append(cols_ads[i])
+    with st.expander("upload ads.csv"):
+        if uploaded_ads is not None:
+            st.write("Filename: ", uploaded_ads.name)
+            df_ads = pd.read_csv(uploaded_ads, sheet_name = "Sheet1", dtype = {'Note': str})
+            st.markdown("""<h5 style='text-align: center;'>Первый датасет ADS:</h5>""", unsafe_allow_html = True)
+            st.dataframe(df_ads)
+            cols_ads = df_ads.columns
+            list_ads = []
+            for i in range(len(cols_ads)):
+                list_ads.append(cols_ads[i])
 
     uploaded_leads = st.file_uploader("Область загрузки для LEADS.CSV")
-    if uploaded_leads is not None:
-        st.write("Filename: ", uploaded_leads.name)
-        df_leads = pd.read_csv(uploaded_leads, sheet_name = "Sheet1", dtype = {'Note': str})
-        st.markdown("""<h5 style='text-align: center;'>Второй датасет LEADS:</h5>""", unsafe_allow_html = True)
-        st.dataframe(df_leads)
-        cols_leads = df_leads.columns
-        list_leads = []
-        for i in range(len(cols_leads)):
-            list_leads.append(cols_leads[i])
+    with st.expander("upload leads.csv"):
+        if uploaded_leads is not None:
+            st.write("Filename: ", uploaded_leads.name)
+            df_leads = pd.read_csv(uploaded_leads, sheet_name = "Sheet1", dtype = {'Note': str})
+            st.markdown("""<h5 style='text-align: center;'>Второй датасет LEADS:</h5>""", unsafe_allow_html = True)
+            st.dataframe(df_leads)
+            cols_leads = df_leads.columns
+            list_leads = []
+            for i in range(len(cols_leads)):
+                list_leads.append(cols_leads[i])
 
     uploaded_purchases = st.file_uploader("Область загрузки для PURCHASES.CSV")
-    if uploaded_purchases is not None:
-        st.write("Filename: ", uploaded_purchases.name)
-        df_purchases = pd.read_csv(uploaded_purchases, sheet_name = "Sheet1", dtype = {'Note': str})
-        st.markdown("""<h5 style='text-align: center;'>Второй датасет LEADS:</h5>""", unsafe_allow_html = True)
-        st.dataframe(df_purchases)
-        cols_purchases = df_purchases.columns
-        list_purchases = []
-        for i in range(len(cols_purchases)):
-            list_purchases.append(cols_purchases[i])
+    with st.expander("upload leads.csv"):
+        if uploaded_purchases is not None:
+            st.write("Filename: ", uploaded_purchases.name)
+            df_purchases = pd.read_csv(uploaded_purchases, sheet_name = "Sheet1", dtype = {'Note': str})
+            st.markdown("""<h5 style='text-align: center;'>Второй датасет LEADS:</h5>""", unsafe_allow_html = True)
+            st.dataframe(df_purchases)
+            cols_purchases = df_purchases.columns
+            list_purchases = []
+            for i in range(len(cols_purchases)):
+                list_purchases.append(cols_purchases[i])
 
-col1, col2, col3 = st.columns(3)
+with st.expander("dataset analyzer"):
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        selected_df = st.radio(
+            "Выбор датасета 👉",
+            ("ads", "leads", "purchases"))
+    if selected_df == "ads":
+        filtred_df = df_ads
+        selected_cols = list_ads
+    elif selected_df == "leads":
+        filtred_df = df_leads
+        selected_cols = list_leads
+    elif selected_df == "purchases":
+        filtred_df = df_purchases
+        selected_cols = list_purchases
 
-with col1:
-    selected_df = st.radio(
-        "Выбор датасета 👉",
-        ("ads", "leads", "purchases"))
 
-if selected_df == "ads":
-    filtred_df = df_ads
-    selected_cols = list_ads
-elif selected_df == "leads":
-    filtred_df = df_leads
-    selected_cols = list_leads
-elif selected_df == "purchases":
-    filtred_df = df_purchases
-    selected_cols = list_purchases
+    with col2:
+        X_colunm = st.radio(
+            "Выбор столбца по оси X",
+            (selected_cols))
 
+    with col3:
+        Y_colunm = st.radio(
+            "Выбор столбца по оси Y",
+            (selected_cols))
 
-with col2:
-    X_colunm = st.radio(
-        "Выбор столбца по оси X",
-        (selected_cols))
+    if X_colunm == Y_colunm:
+        st.error('Выбраны одинаковые столбцы, выберите другие значения', icon="🚨")
 
-    #selected_cols_Y = selected_cols
-    #selected_cols_Y.remove(X_colunm)
-
-with col3:
-    Y_colunm = st.radio(
-        "Выбор столбца по оси Y",
-        (selected_cols))
-
-if X_colunm == Y_colunm:
-    st.error('Выбраны одинаковые столбцы, выберите другие значения', icon="🚨")
-
-if X_colunm != Y_colunm:
-    col4, col5 = st.columns(2)
-    with col4:
-        chart_df = filtred_df.loc[:, [X_colunm, Y_colunm]]
-        st.line_chart(chart_df)
-    with col5:
-        st.dataframe(chart_df)
+    if X_colunm != Y_colunm:
+        col4, col5 = st.columns(2)
+        with col4:
+            chart_df = filtred_df.loc[:, [X_colunm, Y_colunm]]
+            st.line_chart(chart_df)
+        with col5:
+            st.dataframe(chart_df)
 
 st.markdown("<h5 style='text-align: center;'>Попробуем левтджоин для сведения всех продаж:</h5>", unsafe_allow_html = True)
 df_leads_purchases = pd.merge(df_leads, df_purchases, how = 'left', on = ['client_id'])
