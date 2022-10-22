@@ -187,11 +187,11 @@ with st.expander("dataset analyzer"):
             st.dataframe(chart_df)
 
 col4, col5, col6 = st.columns(3)
-list_df = [df_ads, df_leads, df_purchases]
+#list_df = [df_ads, df_leads, df_purchases]
 with col4:
     join_df_1 = st.radio(
         "Выбор датафрейма для Join 👉",
-        (list_df))
+        ([df_ads, df_leads, df_purchases]))
     join_df_2 = st.radio(
         "Выбор датафрейма для Join 👉",
         (list_df))
