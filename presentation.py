@@ -141,7 +141,7 @@ elif load_option == "upload":
         for i in range(len(cols_purchases)):
             list_purchases.append(cols_purchases[i])
 
-col1, col2 = st.columns(2)
+col1, col2, col3 = st.columns(3)
 
 with col1:
     selected_df = st.radio(
@@ -160,16 +160,19 @@ elif selected_df == "purchases":
 
 
 with col2:
-    X_colunm = st.selectbox(
+    X_colunm = st.radio(
         "Выбор столбца по оси X",
         (selected_cols))
 
     selected_cols_Y = selected_cols
     selected_cols_Y.remove(X_colunm)
-    
-    Y_colunm = st.selectbox("Выбор столбца по оси Y", (selected_cols_Y))
 
-st.dataframe(filtred_df.loc[:, [X_colunm, Y_colunm]])
+with col3:
+    Y_colunm = st.radio(
+        "Выбор столбца по оси Y",
+        (selected_cols_Y))
+
+#st.dataframe(filtred_df.loc[:, [X_colunm, Y_colunm]])
 
 chart_data = pd.DataFrame(
     np.random.randn(20, 3),
