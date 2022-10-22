@@ -44,7 +44,7 @@ load_option = st.radio(
 
 if load_option == "open":
     df_ads = pd.read_csv("ads.csv")
-    with st.expander("""<h5 style='text-align: center;'>Первый датасет ADS:</h5>"""):
+    with st.expander("Первый датасет ADS"):
         st.dataframe(df_ads)
         cols_ads = df_ads.columns
         list_ads = []
@@ -52,8 +52,7 @@ if load_option == "open":
             list_ads.append(cols_ads[i])
     
     df_leads = pd.read_csv("leads.csv")
-    with st.expander("leads.csv"):
-        st.markdown("""<h5 style='text-align: center;'>Второй датасет LEADS:</h5>""", unsafe_allow_html = True)
+    with st.expander("Второй датасет LEADS"):
         st.dataframe(df_leads)
         cols_leads = df_leads.columns
         list_leads = []
@@ -61,7 +60,7 @@ if load_option == "open":
             list_leads.append(cols_leads[i])
     
     df_purchases = pd.read_csv("purchases.csv")
-    with st.expander("leads.csv"):
+    with st.expander("Второй датасет PURCHASES"):
         st.dataframe(df_purchases)
         cols_purchases = df_purchases.columns
         list_purchases = []
