@@ -149,12 +149,14 @@ with col1:
         ("ads", "leads", "purchases"))
 
 if selected_df == "ads":
+    filtred_df = df_ads
     selected_cols = list_ads
 elif selected_df == "leads":
+    filtred_df = df_leads
     selected_cols = list_leads
 elif selected_df == "purchases":
+    filtred_df = df_purchases
     selected_cols = list_purchases
-
 
 
 with col2:
@@ -166,10 +168,15 @@ with col2:
         "Выбор столбца по оси Y",
         (selected_cols))
 
-filtred_cols = []
-filtred_cols.append[{X_colunm, Y_colunm}]
-filtred_cols
-#filtred_df = df_ads.loc[[X_colunm, Y_colunm]]
+X_colunm, Y_colunm
+
+#filtred_cols = []
+#filtred_cols.append(X_colunm, Y_colunm)
+#filtred_cols
+
+st.dataframe(filtred_df.loc[filtred_df[X_colunm, Y_colunm]])
+
+#filtred_df = df_ads.loc(X_colunm)
 #filtred_df
 
 
