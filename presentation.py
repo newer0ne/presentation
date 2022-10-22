@@ -192,9 +192,21 @@ with col4:
     join_df_1 = st.radio(
         "Выбор первого датафрейма для Join 👉",
         ("df_ads", "df_leads", "df_purchases"))
+    if join_df_1 == "df_ads":
+        join_df_1_ = df_ads
+    if join_df_1 == "df_leads":
+        join_df_1_ = df_leads
+    if join_df_1 == "df_purchases":
+        join_df_1_ = list_purchases
     join_df_2 = st.radio(
         "Выбор второго датафрейма для Join 👉",
         ("df_ads", "df_leads", "df_purchases"))
+    if join_df_2 == "df_ads":
+        join_df_2_ = df_ads
+    if join_df_2 == "df_leads":
+        join_df_2_ = df_leads
+    if join_df_2 == "df_purchases":
+        join_df_2_ = list_purchases
 
 with col5:
     join_type = st.radio(
@@ -212,11 +224,11 @@ with col6:
         "Выбор столбца для Join 👉",
         (join_col_list))
 
-join_df_1
-join_df_2
+join_df_1_
+join_df_2_
 join_type
 join_col
 
 st.markdown("<h5 style='text-align: center;'>Попробуем левтджоин для сведения всех продаж:</h5>", unsafe_allow_html = True)
-df_leads_purchases = pd.merge(join_df_1, join_df_2, how = join_type, on = join_col_list)
+df_leads_purchases = pd.merge(join_df_1_, join_df_2_, how = join_type, on = join_col_list)
 st.dataframe(df_leads_purchases)
