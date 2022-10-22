@@ -173,7 +173,7 @@ with col3:
         (selected_cols))
 
 if X_colunm == Y_colunm:
-st.error('Одинаковые выбраны одинаковые столбцы', icon="🚨")
+    st.error('Одинаковые выбраны одинаковые столбцы', icon="🚨")
 
 st.dataframe(filtred_df.loc[:, [X_colunm, Y_colunm]])
 
