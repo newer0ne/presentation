@@ -43,9 +43,8 @@ load_option = st.radio(
     ("open", "link", "upload"))
 
 if load_option == "open":
-    df_ads = pd.read_csv("leads.csv")
-    with st.expander("Первый датасет ", df_ads.Name):
-        st.markdown("""<h5 style='text-align: center;'>Первый датасет ADS:</h5>""", unsafe_allow_html = True)
+    df_ads = pd.read_csv("ads.csv")
+    with st.expander("<h5 style='text-align: center;'>Первый датасет ADS:</h5>"):
         st.dataframe(df_ads)
         cols_ads = df_ads.columns
         list_ads = []
