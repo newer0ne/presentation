@@ -174,7 +174,7 @@ X_colunm, Y_colunm
 #filtred_cols.append(X_colunm, Y_colunm)
 #filtred_cols
 
-st.dataframe(filtred_df.loc[:, X_colunm])
+st.dataframe(filtred_df.loc[:, X_colunm, Y_colunm])
 
 #filtred_df = df_ads.loc(X_colunm)
 #filtred_df
