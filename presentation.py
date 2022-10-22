@@ -206,7 +206,7 @@ with col4:
     if join_df_2 == "df_leads":
         join_df_2_ = df_leads
     if join_df_2 == "df_purchases":
-        join_df_2_ = list_purchases
+        join_df_2_ = df_purchases
 
 with col5:
     join_type = st.radio(
@@ -225,7 +225,7 @@ with col6:
         (join_col_list))
 
 join_df_1_
-join_df_2_
+join_df_2
 join_type
 join_col
 
