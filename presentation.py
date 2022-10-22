@@ -186,7 +186,7 @@ with st.expander("dataset analyzer"):
         with col5:
             st.dataframe(chart_df)
 
-col4, col5, col6 = st.columns(3)
+col4, col5, col6, col7 = st.columns(4)
 #list_df = [df_ads, df_leads, df_purchases]
 with col4:
     join_df_1 = st.radio(
@@ -199,6 +199,7 @@ with col4:
     if join_df_1 == "df_purchases":
         join_df_1_ = list_purchases
 
+with col5:
     join_df_2 = st.radio(
         "Выбор второго датафрейма для Join 👉",
         ("df_ads", "df_leads", "df_purchases"))
@@ -209,11 +210,12 @@ with col4:
     if join_df_2 == "df_purchases":
         join_df_2_ = df_purchases
 
-with col5:
+with col6:
     join_type = st.radio(
         "Выбор типа Join 👉",
         ("left", "right", "inner","outer"))
-with col6:
+
+with col7:
     if join_df_2 == "df_ads":
         join_col_list = list_ads
     if join_df_2 == "df_leads":
