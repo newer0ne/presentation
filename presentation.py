@@ -165,8 +165,10 @@ with col2:
     Y_colunm = st.selectbox(
         "Выбор столбца по оси Y",
         (selected_cols))
-X_colunm
-Y_colunm
+
+filtred_cols = []
+filtred_cols.append(X_colunm, Y_colunm)
+filtred_cols
 #filtred_df = df_ads.loc[[X_colunm, Y_colunm]]
 #filtred_df
 
