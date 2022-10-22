@@ -164,8 +164,8 @@ with col2:
         "Выбор столбца по оси X",
         (selected_cols))
 
-    selected_cols_Y = selected_cols
-    selected_cols_Y.remove(X_colunm)
+    #selected_cols_Y = selected_cols
+    #selected_cols_Y.remove(X_colunm)
 
 with col3:
     Y_colunm = st.radio(
