@@ -170,15 +170,15 @@ with col2:
 with col3:
     Y_colunm = st.radio(
         "Выбор столбца по оси Y",
-        (selected_cols_Y))
+        (selected_cols))
 
 #st.dataframe(filtred_df.loc[:, [X_colunm, Y_colunm]])
 
-chart_data = pd.DataFrame(
-    np.random.randn(20, 3),
-    columns=['a', 'b', 'c'])
+#chart_data = pd.DataFrame(
+#    np.random.randn(20, 3),
+#    columns=['a', 'b', 'c'])
 
-st.line_chart(chart_data)
+#st.line_chart(chart_data)
 
 st.markdown("<h5 style='text-align: center;'>Попробуем левтджоин для сведения всех продаж:</h5>", unsafe_allow_html = True)
 df_leads_purchases = pd.merge(df_leads, df_purchases, how = 'left', on = ['client_id'])
