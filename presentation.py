@@ -201,11 +201,11 @@ with col5:
         "Выбор типа Join 👉",
         ("left", "right", "inner","outer"))
 with col6:
-    if join_df_1 = "df_ads":
+    if join_df_1 == "df_ads":
         join_col_list = list_ads
-    if join_df_1 = "df_leads":
+    if join_df_1 == "df_leads":
         join_col_list = list_leads
-    if join_df_1 = "df_purchases":
+    if join_df_1 == "df_purchases":
         join_col_list = list_purchases
 
     join_col = st.radio(
