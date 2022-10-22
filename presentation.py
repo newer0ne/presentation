@@ -201,9 +201,16 @@ with col5:
         "Выбор типа Join 👉",
         ("left", "right", "inner","outer"))
 with col6:
+    if join_df_1 = "df_ads":
+        join_col_list = list_ads
+    if join_df_1 = "df_leads":
+        join_col_list = list_leads
+    if join_df_1 = "df_purchases":
+        join_col_list = list_purchases
+
     join_col = st.radio(
         "Выбор столбца для Join 👉",
-        ("left", "right", "inner","outer"))
+        (join_col_list))
 
 st.markdown("<h5 style='text-align: center;'>Попробуем левтджоин для сведения всех продаж:</h5>", unsafe_allow_html = True)
 df_leads_purchases = pd.merge(join_df_1, join_df_2, how = join_type, on = join_col)
