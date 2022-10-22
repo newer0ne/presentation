@@ -213,5 +213,5 @@ with col6:
         (join_col_list))
 
 st.markdown("<h5 style='text-align: center;'>Попробуем левтджоин для сведения всех продаж:</h5>", unsafe_allow_html = True)
-df_leads_purchases = pd.merge(join_df_1, join_df_2, how = join_type, on = join_col)
+df_leads_purchases = pd.merge([join_df_1], [join_df_2], how = [join_type], on = [join_col])
 st.dataframe(df_leads_purchases)
