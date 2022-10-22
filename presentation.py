@@ -173,9 +173,9 @@ with col3:
         (selected_cols))
 
 if X_colunm == Y_colunm:
-    st.error('Одинаковые выбраны одинаковые столбцы', icon="🚨")
-
-st.dataframe(filtred_df.loc[:, [X_colunm, Y_colunm]])
+    st.error('Выбраны одинаковые столбцы, выберите другие значения', icon="🚨")
+if X_colunm != Y_colunm:
+    st.dataframe(filtred_df.loc[:, [X_colunm, Y_colunm]])
 
 #chart_data = pd.DataFrame(
 #    np.random.randn(20, 3),
