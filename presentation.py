@@ -172,7 +172,10 @@ with col3:
         "Выбор столбца по оси Y",
         (selected_cols))
 
-#st.dataframe(filtred_df.loc[:, [X_colunm, Y_colunm]])
+if X_colunm == Y_colunm:
+st.error('Одинаковые выбраны одинаковые столбцы', icon="🚨")
+
+st.dataframe(filtred_df.loc[:, [X_colunm, Y_colunm]])
 
 #chart_data = pd.DataFrame(
 #    np.random.randn(20, 3),
