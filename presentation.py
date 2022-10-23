@@ -233,6 +233,14 @@ with st.expander("Dataset Joiner"):
         st.markdown(join_mark, unsafe_allow_html = True)
         joined_df = pd.merge(join_df_1_, join_df_2_, how = join_type, on = join_col)
         st.dataframe(joined_df)
-        joined_df.info()
+        
+        buffer = io.StringIO()
+        joined_df.info(buf = buffer)
+        joined_df_info = buffer.getvalue()
+        st.text(joined_df_info)
+
+        st.download_button(label='📥 Скачать обработанную ведомость', data = joined_df, file_name = "Joined dataframe")
 
 with st.expander("Dataset Filter"):
+    col8, col9, col10, col11 = st.columns(4)
+
