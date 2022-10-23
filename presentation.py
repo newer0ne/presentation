@@ -242,16 +242,15 @@ with st.expander("Dataset Filter"):
 
         st.markdown("""<h5 style='text-align: center;'>Фильтр под задание:</h5>""", unsafe_allow_html = True)
         #df_filter[(df_filter.m_purchase_amount > 0) & (df_filter.hp > 80)]
-        df_filter[(df_filter.m_purchase_amount > 0)]
-        #pd.to_datetime(df_filter['purchase_created_at'])
+        df_filter2 = df_filter[(df_filter.m_purchase_amount > 0)]
         
         buffer2 = io.StringIO()
-        df_filter.info(buf = buffer2)
-        df_filter_info = buffer2.getvalue()
-        st.text(df_filter_info)
+        df_filter2.info(buf = buffer2)
+        df_filter2_info = buffer2.getvalue()
+        st.text(df_filter2_info)
 
-        df_filter['datelag'] = 0
+        df_filter2['datelag'] = 0
         st.text("added datelag")
-        df_filter
-        df_filter['datelag'] = (df_filter['purchase_created_at'] - df_filter['lead_created_at'])
+        df_filter2
+        #df_filter2['datelag'] = (df_filter2['purchase_created_at'] - df_filter2['lead_created_at'])
         #df_filter.sort_values(by = ['datelag'])
