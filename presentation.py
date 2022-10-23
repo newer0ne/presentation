@@ -231,7 +231,7 @@ with st.expander("Dataset Filter"):
     uploaded_filter = st.file_uploader("Area to filter df")
     if uploaded_filter is not None:
         st.write("Filename: ", uploaded_filter.name)
-        df_filter = pd.read_csv(uploaded_filter, sheet_name = "Sheet1", dtype = {'Note': str})
+        df_filter = pd.read_csv(uploaded_filter)
         st.markdown("""<h5 style='text-align: center;'>Датасет для фильтрации:</h5>""", unsafe_allow_html = True)
         st.dataframe(df_filter)
 
