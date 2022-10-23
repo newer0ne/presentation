@@ -224,5 +224,19 @@ with st.expander("Dataset Joiner"):
         st.download_button(label='📥 Скачать обработанную ведомость в формате .CSV', data = df_to_download, file_name = "Joined dataframe" + ".csv")
 
 with st.expander("Dataset Filter"):
-    col8, col9, col10, col11 = st.columns(4)
+    if st.button('if Joined_df sucsessful'):
+        filter = joined_df
+
+
+    uploaded_filter = st.file_uploader("Area to filter df")
+    if uploaded_filter is not None:
+        st.write("Filename: ", uploaded_filter.name)
+        df_filter = pd.read_csv(uploaded_filter, sheet_name = "Sheet1", dtype = {'Note': str})
+        st.markdown("""<h5 style='text-align: center;'>Датасет для фильтрации:</h5>""", unsafe_allow_html = True)
+        st.dataframe(df_filter)
+
+        cols_filter = df_filter.columns
+        list_filter = []
+        for i in range(len(cols_filter)):
+            list_filter.append(cols_filter[i])
 
