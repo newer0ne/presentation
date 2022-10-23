@@ -243,7 +243,7 @@ with st.expander("Dataset Filter"):
         st.markdown("""<h5 style='text-align: center;'>Фильтр под задание:</h5>""", unsafe_allow_html = True)
         #df_filter[(df_filter.m_purchase_amount > 0) & (df_filter.hp > 80)]
         df_filter[(df_filter.m_purchase_amount > 0)]
-        pd.to_datetime(df_filter['purchase_created_at'])
+        #pd.to_datetime(df_filter['purchase_created_at'])
         
         buffer2 = io.StringIO()
         df_filter.info(buf = buffer2)
