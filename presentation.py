@@ -234,7 +234,7 @@ with st.expander("Dataset Joiner"):
         joined_df = pd.merge(join_df_1_, join_df_2_, how = join_type, on = join_col)
         st.dataframe(joined_df)
         df_to_download = joined_df.to_csv()
-        st.download_button(label='📥 Скачать обработанную ведомость', data = df_to_download, file_name = "Joined dataframe")
+        st.download_button(label='📥 Скачать обработанную ведомость в формате .CSV', data = df_to_download, file_name = "Joined dataframe" + ".csv")
         
         if st.button('Определим инфу!'):
             buffer = io.StringIO()
