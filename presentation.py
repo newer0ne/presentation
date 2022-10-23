@@ -240,3 +240,7 @@ with st.expander("Dataset Filter"):
         for i in range(len(cols_filter)):
             list_filter.append(cols_filter[i])
 
+        st.markdown("""<h5 style='text-align: center;'>Фильтр под задание:</h5>""", unsafe_allow_html = True)
+        #df_filter[(df_filter.m_purchase_amount > 0) & (df_filter.hp > 80)]
+        df_filter[(df_filter.m_purchase_amount > 0) & (df_filter.hp > 80)]
+        st.dataframe(df_filter)
