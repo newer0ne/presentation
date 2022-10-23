@@ -243,4 +243,3 @@ with st.expander("Dataset Filter"):
         st.markdown("""<h5 style='text-align: center;'>Фильтр под задание:</h5>""", unsafe_allow_html = True)
         #df_filter[(df_filter.m_purchase_amount > 0) & (df_filter.hp > 80)]
         df_filter[(df_filter.m_purchase_amount > 0)]
-        st.dataframe(df_filter)
