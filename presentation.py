@@ -250,6 +250,6 @@ with st.expander("Dataset Filter"):
         df_filter_info = buffer2.getvalue()
         st.text(df_filter_info)
 
-
-        #df_filter['datelag'] = (df_filter['purchase_created_at'] - df_filter['lead_created_at'])
+        df_filter['datelag'] = 0
+        df_filter['datelag'] = (df_filter['purchase_created_at'] - df_filter['lead_created_at'])
         #df_filter.sort_values(by = ['datelag'])
