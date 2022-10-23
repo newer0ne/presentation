@@ -222,10 +222,13 @@ with col7:
         join_col_list = list_leads
     if join_df_2 == "df_purchases":
         join_col_list = list_purchases
-
+    
+    join_col_list
     join_col = st.radio(
         "Выбор столбца для Join 👉",
         (join_col_list))
+    join_col
+
 
 col8, col9, col10 = st.columns(3)
 with col9:
