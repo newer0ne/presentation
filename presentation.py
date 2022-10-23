@@ -148,7 +148,7 @@ elif load_option == "upload":
             for i in range(len(cols_purchases)):
                 list_purchases.append(cols_purchases[i])
 
-with st.expander("dataset analyzer"):
+with st.expander("Dataset Analyzer"):
     col1, col2, col3 = st.columns(3)
     with col1:
         selected_df = st.radio(
@@ -186,53 +186,49 @@ with st.expander("dataset analyzer"):
         with col5:
             st.dataframe(chart_df)
 
-col4, col5, col6, col7 = st.columns(4)
-#list_df = [df_ads, df_leads, df_purchases]
-with col4:
-    join_df_1 = st.radio(
-        "Выбор первого датафрейма для Join 👉",
-        ("df_ads", "df_leads", "df_purchases"))
-    if join_df_1 == "df_ads":
-        join_df_1_ = df_ads
-    if join_df_1 == "df_leads":
-        join_df_1_ = df_leads
-    if join_df_1 == "df_purchases":
-        join_df_1_ = list_purchases
+with st.expander("Dataset Joiner"):
+    col4, col5, col6, col7 = st.columns(4)
+    with col4:
+        join_df_1 = st.radio(
+            "Выбор первого датафрейма для Join 👉",
+            ("df_ads", "df_leads", "df_purchases"))
+        if join_df_1 == "df_ads":
+            join_df_1_ = df_ads
+        if join_df_1 == "df_leads":
+            join_df_1_ = df_leads
+        if join_df_1 == "df_purchases":
+            join_df_1_ = list_purchases
 
-with col5:
-    join_df_2 = st.radio(
-        "Выбор второго датафрейма для Join 👉",
-        ("df_ads", "df_leads", "df_purchases"))
-    if join_df_2 == "df_ads":
-        join_df_2_ = df_ads
-    if join_df_2 == "df_leads":
-        join_df_2_ = df_leads
-    if join_df_2 == "df_purchases":
-        join_df_2_ = df_purchases
+    with col5:
+        join_df_2 = st.radio(
+            "Выбор второго датафрейма для Join 👉",
+            ("df_ads", "df_leads", "df_purchases"))
+        if join_df_2 == "df_ads":
+            join_df_2_ = df_ads
+        if join_df_2 == "df_leads":
+            join_df_2_ = df_leads
+        if join_df_2 == "df_purchases":
+            join_df_2_ = df_purchases
 
-with col6:
-    join_type = st.radio(
-        "Выбор типа Join 👉",
-        ("left", "right", "inner","outer"))
+    with col6:
+        join_type = st.radio(
+            "Выбор типа Join 👉",
+            ("left", "right", "inner","outer"))
 
-with col7:
-    if join_df_2 == "df_ads":
-        join_col_list = list_ads
-    if join_df_2 == "df_leads":
-        join_col_list = list_leads
-    if join_df_2 == "df_purchases":
-        join_col_list = list_purchases
+    with col7:
+        if join_df_2 == "df_ads":
+            join_col_list = list_ads
+        if join_df_2 == "df_leads":
+            join_col_list = list_leads
+        if join_df_2 == "df_purchases":
+            join_col_list = list_purchases
     
-    join_col = st.radio(
-        "Выбор столбца для Join 👉",
-        (join_col_list))
+        join_col = st.radio(
+            "Выбор столбца для Join 👉",
+            (join_col_list))
 
-
-
-#col8, col9, col10 = st.columns(3)
-#with col9:
-st.text("Join columns must have the same name")
-if st.button('Lets JOIN that!'):
-    st.markdown("<h5 style='text-align: center;'>Попробуем левтджоин для сведения всех продаж:</h5>", unsafe_allow_html = True)
-    df_leads_purchases = pd.merge(join_df_1_, join_df_2_, how = join_type, on = join_col)
-    st.dataframe(df_leads_purchases)
+    st.text("Join columns must have the same name")
+    if st.button('Lets JOIN that!'):
+        st.markdown("<h5 style='text-align: center;'>Попробуем левтджоин для сведения всех продаж:</h5>", unsafe_allow_html = True)
+        df_leads_purchases = pd.merge(join_df_1_, join_df_2_, how = join_type, on = join_col)
+        st.dataframe(df_leads_purchases)
