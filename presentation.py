@@ -228,9 +228,11 @@ with st.expander("Dataset Joiner"):
             "Выбор столбца для Join 👉",
             (join_col_list))
 
-
     st.text("Join columns must have the same name")
     if st.button('Lets JOIN that!'):
         st.markdown(join_mark, unsafe_allow_html = True)
-        df_leads_purchases = pd.merge(join_df_1_, join_df_2_, how = join_type, on = join_col)
-        st.dataframe(df_leads_purchases)
+        joined_df = pd.merge(join_df_1_, join_df_2_, how = join_type, on = join_col)
+        st.dataframe(joined_df)
+        joined_df.info()
+
+with st.expander("Dataset Filter"):
