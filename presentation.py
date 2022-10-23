@@ -236,11 +236,11 @@ with st.expander("Dataset Joiner"):
         df_to_download = joined_df.to_csv()
         st.download_button(label='📥 Скачать обработанную ведомость', data = df_to_download, file_name = "Joined dataframe")
         
-        st.button('Определим инфу!'):
-        buffer = io.StringIO()
-        joined_df.info(buf = buffer)
-        joined_df_info = buffer.getvalue()
-        st.text(joined_df_info)
+        if st.button('Определим инфу!'):
+            buffer = io.StringIO()
+            joined_df.info(buf = buffer)
+            joined_df_info = buffer.getvalue()
+            st.text(joined_df_info)
 
 with st.expander("Dataset Filter"):
     col8, col9, col10, col11 = st.columns(4)
