@@ -223,16 +223,16 @@ with col7:
     if join_df_2 == "df_purchases":
         join_col_list = list_purchases
     
-    join_col_list
     join_col = st.radio(
         "Выбор столбца для Join 👉",
         (join_col_list))
-    join_col
 
 
-col8, col9, col10 = st.columns(3)
-with col9:
-    if st.button('Lets JOIN that!'):
-        st.markdown("<h5 style='text-align: center;'>Попробуем левтджоин для сведения всех продаж:</h5>", unsafe_allow_html = True)
-        df_leads_purchases = pd.merge(join_df_1_, join_df_2_, how = join_type, on = join_col)
-        st.dataframe(df_leads_purchases)
+
+#col8, col9, col10 = st.columns(3)
+#with col9:
+
+if st.button('Lets JOIN that!'):
+    st.markdown("<h5 style='text-align: center;'>Попробуем левтджоин для сведения всех продаж:</h5>", unsafe_allow_html = True)
+    df_leads_purchases = pd.merge(join_df_1_, join_df_2_, how = join_type, on = join_col)
+    st.dataframe(df_leads_purchases)
