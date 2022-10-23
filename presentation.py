@@ -234,12 +234,13 @@ with st.expander("Dataset Joiner"):
         joined_df = pd.merge(join_df_1_, join_df_2_, how = join_type, on = join_col)
         st.dataframe(joined_df)
         
+        if st.button('Определим инфу!'):
         buffer = io.StringIO()
         joined_df.info(buf = buffer)
         joined_df_info = buffer.getvalue()
         st.text(joined_df_info)
 
-        df_to_download = joined_df.to_csv
+        df_to_download = joined_df.to_csv()
         st.download_button(label='📥 Скачать обработанную ведомость', data = df_to_download, file_name = "Joined dataframe")
 
 with st.expander("Dataset Filter"):
