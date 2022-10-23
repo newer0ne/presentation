@@ -252,6 +252,7 @@ with st.expander("Dataset Filter"):
         df_filter2['datelag'] = 0
         st.text("added datelag")
         df_filter2["purchase_created_at"] = pd.to_datetime(df_filter2["purchase_created_at"])
+        df_filter2["lead_created_at"] = pd.to_datetime(df_filter2["lead_created_at"])
         
         buffer3 = io.StringIO()
         df_filter2.info(buf = buffer3)
