@@ -233,14 +233,14 @@ with st.expander("Dataset Joiner"):
         st.markdown(join_mark, unsafe_allow_html = True)
         joined_df = pd.merge(join_df_1_, join_df_2_, how = join_type, on = join_col)
         st.dataframe(joined_df)
+
+        buffer = io.StringIO()
+        joined_df.info(buf = buffer)
+        joined_df_info = buffer.getvalue()
+        st.text(joined_df_info)
+
         df_to_download = joined_df.to_csv()
         st.download_button(label='📥 Скачать обработанную ведомость в формате .CSV', data = df_to_download, file_name = "Joined dataframe" + ".csv")
-        
-        if st.button('Определим инфу!'):
-            buffer = io.StringIO()
-            joined_df.info(buf = buffer)
-            joined_df_info = buffer.getvalue()
-            st.text(joined_df_info)
 
 with st.expander("Dataset Filter"):
     col8, col9, col10, col11 = st.columns(4)
