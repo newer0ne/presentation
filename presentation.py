@@ -214,8 +214,7 @@ with st.expander("Dataset Joiner"):
         join_type = st.radio(
             "Выбор типа Join 👉",
             ("left", "right", "inner","outer"))
-        join_mark = ("Попробуем " + join_type + "join для сведения всех продаж")
-        join_mark
+        join_mark = ("Попробуем " + join_type + "join:")
 
     with col7:
         if join_df_2 == "df_ads":
