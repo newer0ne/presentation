@@ -251,5 +251,7 @@ with st.expander("Dataset Filter"):
         st.text(df_filter_info)
 
         df_filter['datelag'] = 0
+        st.text("added datelag")
+        df_filter
         df_filter['datelag'] = (df_filter['purchase_created_at'] - df_filter['lead_created_at'])
         #df_filter.sort_values(by = ['datelag'])
