@@ -214,6 +214,8 @@ with st.expander("Dataset Joiner"):
         join_type = st.radio(
             "Выбор типа Join 👉",
             ("left", "right", "inner","outer"))
+        join_mark = ("Попробуем " + join_type + "join для сведения всех продаж")
+        join_mark
 
     with col7:
         if join_df_2 == "df_ads":
@@ -227,8 +229,9 @@ with st.expander("Dataset Joiner"):
             "Выбор столбца для Join 👉",
             (join_col_list))
 
+
     st.text("Join columns must have the same name")
     if st.button('Lets JOIN that!'):
-        st.markdown("Попробуем ", {join_type}, "join для сведения всех продаж", unsafe_allow_html = True)
+        st.markdown(join_mark, unsafe_allow_html = True)
         df_leads_purchases = pd.merge(join_df_1_, join_df_2_, how = join_type, on = join_col)
         st.dataframe(df_leads_purchases)
