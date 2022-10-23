@@ -239,7 +239,8 @@ with st.expander("Dataset Joiner"):
         joined_df_info = buffer.getvalue()
         st.text(joined_df_info)
 
-        st.download_button(label='📥 Скачать обработанную ведомость', data = joined_df, file_name = "Joined dataframe")
+        df_to_download = joined_df.to_csv
+        st.download_button(label='📥 Скачать обработанную ведомость', data = df_to_download, file_name = "Joined dataframe")
 
 with st.expander("Dataset Filter"):
     col8, col9, col10, col11 = st.columns(4)
