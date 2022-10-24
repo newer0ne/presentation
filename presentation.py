@@ -15,8 +15,8 @@ def run_query(query):
     rows = conn.execute(query, headers=1)
     return rows
 
-link_Dynam_video_toclic = """[<h2 style='text-align: center;'>Тестовове задание:</h2>](https://xoservices.notion.site/1872d331265946a0ae2c5c9069189fd7)"""
-st.markdown(link_Dynam_video_toclic, unsafe_allow_html=True)
+#link_Dynam_video_toclic = """[<h2 style='text-align: center;'>Тестовове задание:</h2>](https://xoservices.notion.site/1872d331265946a0ae2c5c9069189fd7)"""
+#st.markdown(link_Dynam_video_toclic, unsafe_allow_html=True)
 
 load_option = "open"
 load_option = st.radio(
@@ -249,4 +249,5 @@ with st.expander("Dataset Filter"):
         df_filter2["purchase_created_at"] = pd.to_datetime(df_filter2["purchase_created_at"])
         df_filter2["lead_created_at"] = pd.to_datetime(df_filter2["lead_created_at"])
         df_filter2['datelag'] = (df_filter2['purchase_created_at'] - df_filter2['lead_created_at'])
+        df_filter2["datelag"] = df_filter2["datelag"].dt.days
         st.dataframe(df_filter2)
