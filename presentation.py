@@ -30,6 +30,7 @@ class Dataset:
     def listing(self):
         for i in range(len(self.df.columns)):
             self.listcols.append(self.df.columns[i])
+        #self.name = data1.df.name
 
     def present(self):
         print(self.name)
@@ -51,7 +52,7 @@ if load_option == "Open fixed data from test task":
         data1.df = pd.read_csv("ads.csv")
         st.dataframe(data1.df)
         data1.listing()
-        data1.name
+        data1.df.name
 
     with tab_open2:
         df_leads = pd.read_csv("leads.csv")
