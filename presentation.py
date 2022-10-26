@@ -20,12 +20,22 @@ st.markdown("<h2 style='text-align: center;'>Datalyzer</h2>", unsafe_allow_html=
 header_tasklink = """[<h5 style='text-align: center;'>Test task:</h5>](https://xoservices.notion.site/1872d331265946a0ae2c5c9069189fd7)"""
 st.markdown(header_tasklink, unsafe_allow_html=True)
 
-class Dataset:
-    name = []  
-    df = []
-    listcols = []
 
-data1 = Dataset()
+class Dataset:
+    def __init__(self) -> None:
+        self.name = []  
+        self.df = []
+        self.listcols = []
+    
+    def listing(self):
+        for i in range(len(self.df.columns)):
+            self.listcols.append(self.df.columns[i])
+
+    def present(self):
+        print(self.name)
+
+
+data1 = Dataset.present()
 
 load_option = "Open fixed data from test task"
 load_option = st.radio(
