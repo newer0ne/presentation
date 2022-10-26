@@ -16,7 +16,7 @@ def run_query(query):
     return rows
 
 
-main_header = """[<h1 style='text-align: center;'>Datalyzer:</h1>]"""
+main_header = ("""[<h1 style='text-align: center;'>Datalyzer:</h1>]""")
 st.markdown(main_header, unsafe_allow_html=True)
 
 link_Dynam_video_toclic = """[<h5 style='text-align: center;'>Тестовове задание:</h5>](https://xoservices.notion.site/1872d331265946a0ae2c5c9069189fd7)"""
