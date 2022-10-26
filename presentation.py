@@ -16,13 +16,13 @@ def run_query(query):
     return rows
 
 
-main_header = """[<h1 style='text-align: center;'>Datalyzer:</h1>](https://xoservices.notion.site/1872d331265946a0ae2c5c9069189fd7)"""
+main_header = """[<h1 style='text-align: center;'>Datalyzer:</h1>]"""
 st.markdown(main_header, unsafe_allow_html=True)
 
-link_Dynam_video_toclic = """[<h3 style='text-align: center;'>Тестовове задание:</h3>](https://xoservices.notion.site/1872d331265946a0ae2c5c9069189fd7)"""
+link_Dynam_video_toclic = """[<h5 style='text-align: center;'>Тестовове задание:</h5>](https://xoservices.notion.site/1872d331265946a0ae2c5c9069189fd7)"""
 st.markdown(link_Dynam_video_toclic, unsafe_allow_html=True)
 
-load_option = "open"
+load_option = "Open fixed data from test task"
 load_option = st.radio(
     "Выбор способа загрузки датасета",
     ("Open fixed data from test task", "Link on data from test task", "Upload data whatewer you whant"))
