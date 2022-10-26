@@ -37,6 +37,7 @@ class Dataset:
         self.df = pd.read_csv(index)
         st.dataframe(self.df)
         self.name = index
+        self.listing
 
     def linkup(self, index):
         #link_url = st.secrets[self.link]
@@ -47,6 +48,7 @@ class Dataset:
         self.df = pd.read_csv(csv_raw)
         self.name = index
         st.dataframe(self.df)
+        self.listing
 
     def upload(self):
         file = st.file_uploader("Область загрузки")
@@ -54,6 +56,7 @@ class Dataset:
             st.write("File name: ", file.name)
             self.df = pd.read_csv(file)
             st.dataframe(self.df)
+            self.listing
 
 opt_desc = ["Open fixed data from test task", "Link on data from test task", "Upload data whatewer you want"]
 load_option = st.radio(
@@ -77,15 +80,15 @@ if load_option == opt_desc[0]:
     
     with tab_open1:
         data1.open(name_list[0])
-        data1.listing()
+        data1.listcols
 
     with tab_open2:
         data2.open(name_list[1])
-        data2.listing()
+        data2.listcols
     
     with tab_open3:
         data3.open(name_list[2])
-        data3.listing()
+        data3.listcols
 
 elif load_option == opt_desc[1]:
 
@@ -111,30 +114,11 @@ elif load_option == opt_desc[2]:
 
         data1.upload()
 
-    uploaded_leads = st.file_uploader("Область загрузки для LEADS.CSV")
-    with st.expander("upload leads.csv"):
-        if uploaded_leads is not None:
-            st.write("Filename: ", uploaded_leads.name)
-            df_leads = pd.read_csv(uploaded_leads, sheet_name = "Sheet1", dtype = {'Note': str})
-            st.dataframe(df_leads)
+    with tab_up2:
+        data2.upload()
 
-            cols_leads = df_leads.columns
-            list_leads = []
-            for i in range(len(cols_leads)):
-                list_leads.append(cols_leads[i])
-
-    uploaded_purchases = st.file_uploader("Область загрузки для PURCHASES.CSV")
-    with st.expander("upload leads.csv"):
-        if uploaded_purchases is not None:
-            st.write("Filename: ", uploaded_purchases.name)
-            df_purchases = pd.read_csv(uploaded_purchases, sheet_name = "Sheet1", dtype = {'Note': str})
-            st.markdown("""<h5 style='text-align: center;'>Второй датасет LEADS:</h5>""", unsafe_allow_html = True)
-            st.dataframe(df_purchases)
-
-            cols_purchases = df_purchases.columns
-            list_purchases = []
-            for i in range(len(cols_purchases)):
-                list_purchases.append(cols_purchases[i])
+    with tab_up3:
+        data2.upload()
 
 with st.expander("Dataset Renamer"):
     ren1, ren2, ren3 = st.columns(3)
