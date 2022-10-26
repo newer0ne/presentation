@@ -25,9 +25,9 @@ st.markdown(link_Dynam_video_toclic, unsafe_allow_html=True)
 load_option = "open"
 load_option = st.radio(
     "Выбор способа загрузки датасета",
-    ("Open fixed data from test task", "Link on data from test task", "Upload data "))
+    ("Open fixed data from test task", "Link on data from test task", "Upload data whatewer you whant"))
 
-if load_option == "open":
+if load_option == "Open fixed data from test task":
     df_ads = pd.read_csv("ads.csv")
     with st.expander("Первый датасет ADS"):
         st.dataframe(df_ads)
@@ -52,7 +52,7 @@ if load_option == "open":
         for i in range(len(cols_purchases)):
             list_purchases.append(cols_purchases[i])
 
-elif load_option == "link":
+elif load_option == "Link on data from test task":
     with st.expander("ads.csv"):
         url_ads = st.secrets["ads"]
         file_id_ads = url_ads.split('/')[-2]
@@ -96,7 +96,7 @@ elif load_option == "link":
         for i in range(len(cols_purchases)):
             list_purchases.append(cols_purchases[i])
 
-elif load_option == "upload":
+elif load_option == "Upload data whatewer you whant":
     uploaded_ads = st.file_uploader("Область загрузки для ADS.CSV")
     with st.expander("upload ads.csv"):
         if uploaded_ads is not None:
