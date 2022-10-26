@@ -35,17 +35,17 @@ class Dataset:
     def present(self):
         print(self.name)
 
-load_options = ["Open fixed data from test task", "Link on data from test task" ]
-#load_option = "Open fixed data from test task"
 load_option = st.radio(
     "Choosing a dataset loading method",
     ("Open fixed data from test task", "Link on data from test task", "Upload data whatewer you want"))
 
 data1 = Dataset()
+data2 = Dataset()
+data3 = Dataset()
+name_list = ["ads.csv", "leads.csv", "purchases.csv"]
 
 if load_option == "Open fixed data from test task":
     
-    name_list = ["ads.csv", "leads.csv", "purchases.csv"]
     tab_open1, tab_open2, tab_open3 = st.tabs(name_list)
     
     with tab_open1:
@@ -54,37 +54,30 @@ if load_option == "Open fixed data from test task":
         st.dataframe(data1.df)
         data1.listing()
         data1.name = name_list[0]
-        data1.name
 
     with tab_open2:
-        df_leads = pd.read_csv("leads.csv")
-        st.dataframe(df_leads)
-
-        cols_leads = df_leads.columns
-        list_leads = []
-        for i in range(len(cols_leads)):
-            list_leads.append(cols_leads[i])
+        data2.df = pd.read_csv(name_list[1])
+        st.dataframe(data2.df)
+        data2.listing()
+        data2.name = name_list[1]
     
     with tab_open3:
-        df_purchases = pd.read_csv("purchases.csv")
-        st.dataframe(df_purchases)
-
-        cols_purchases = df_purchases.columns
-        list_purchases = []
-        for i in range(len(cols_purchases)):
-            list_purchases.append(cols_purchases[i])
+        data3.df = pd.read_csv(name_list[2])
+        st.dataframe(data3.df)
+        data3.listing()
+        data3.name = name_list[2]
 
 elif load_option == "Link on data from test task":
 
-
     with st.expander("ads.csv"):
+
         url_ads = st.secrets["ads"]
         file_id_ads = url_ads.split('/')[-2]
         dwn_url_ads = 'https://drive.google.com/uc?export=download&id=' + file_id_ads
         url2_ads = requests.get(dwn_url_ads).text
         csv_raw_ads = StringIO(url2_ads)
         df_ads = pd.read_csv(csv_raw_ads)
-        st.markdown("""<h5 style='text-align: center;'>Первый датасет ADS:</h5>""", unsafe_allow_html = True)
+
         st.dataframe(df_ads)
 
         cols_ads = df_ads.columns
