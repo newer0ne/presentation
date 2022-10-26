@@ -48,7 +48,6 @@ class Dataset:
         self.df = pd.read_csv(csv_raw)
         self.name = index
         st.dataframe(self.df)
-        self.listing
 
     def upload(self):
         file = st.file_uploader("Область загрузки")
@@ -56,7 +55,6 @@ class Dataset:
             st.write("File name: ", file.name)
             self.df = pd.read_csv(file)
             st.dataframe(self.df)
-            self.listing
 
 opt_desc = ["Open fixed data from test task", "Link on data from test task", "Upload data whatewer you want"]
 load_option = st.radio(
