@@ -35,9 +35,10 @@ class Dataset:
     def present(self):
         print(self.name)
 
+opt_desc = ["Open fixed data from test task", "Link on data from test task", "Upload data whatewer you want"]
 load_option = st.radio(
     "Choosing a dataset loading method",
-    ("Open fixed data from test task", "Link on data from test task", "Upload data whatewer you want"))
+    (opt_desc))
 
 data1 = Dataset()
 data2 = Dataset()
