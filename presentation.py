@@ -53,6 +53,7 @@ class Dataset:
         if file is not None:
             st.write("File name: ", file.name)
             self.df = pd.read_csv(file)
+            st.dataframe(self.df)
 
 opt_desc = ["Open fixed data from test task", "Link on data from test task", "Upload data whatewer you want"]
 load_option = st.radio(
@@ -109,11 +110,6 @@ elif load_option == opt_desc[2]:
     with tab_up1:
 
         data1.upload()
-        data1.df
-
-        if data1.df is not None:
-            st.dataframe(data1.df)
-            data1.listing()
 
     uploaded_leads = st.file_uploader("Область загрузки для LEADS.CSV")
     with st.expander("upload leads.csv"):
