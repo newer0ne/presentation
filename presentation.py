@@ -80,7 +80,7 @@ if load_option == opt_desc[0]:
     
     with tab_open1:
         data1.open(name_list[0])
-        data1.listing
+        data1.df.columns
         data1.listcols
 
     with tab_open2:
