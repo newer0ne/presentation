@@ -95,15 +95,12 @@ elif load_option == opt_desc[1]:
     
     with tab_load1:
         data1.linkup(name_list[0])
-        data1.listing()
     
     with tab_load2:
         data2.linkup(name_list[1])
-        data2.listing()
         
     with tab_load3:
         data3.linkup(name_list[2])
-        data3.listing()
 
 elif load_option == opt_desc[2]:
 
