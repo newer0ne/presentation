@@ -51,8 +51,9 @@ class Dataset:
             self.listcols.append(self.df.columns[i])
         st.text(self.listcols)
 
-    def upload(self):
-
+    def upload(self, index):
+        self.up = st.file_uploader("Область загрузки 1 - " + "{index}")
+        if self.up is not None:
             st.write("File name: ", self.up.name)
             self.df = pd.read_csv(self.up)
             st.dataframe(self.df)
@@ -95,17 +96,11 @@ elif load_option == opt_desc[1]:
 elif load_option == opt_desc[2]:
     tab_up1, tab_up2, tab_up3 = st.tabs(name_list)
     with tab_up1:
-        upload1 = st.file_uploader("Область загрузки 1")
-        if upload1 is not None:
-            data1.upload()
+            data1.upload(name_list[0])
     with tab_up2:
-        upload2 = st.file_uploader("Область загрузки 2")
-        if upload2 is not None:
-            data2.upload()
+            data2.upload(name_list[1])
     with tab_up3:
-        upload3 = st.file_uploader("Область загрузки 3")
-        if upload3 is not None:
-            data3.upload()
+            data3.upload(name_list[2])
 
 with st.expander("Dataset Renamer"):
     ren1, ren2, ren3 = st.columns(3)
