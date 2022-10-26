@@ -82,7 +82,8 @@ elif load_option == opt_desc[1]:
     tab_load1, tab_load2, tab_load3 = st.tabs(name_list)
     
     with tab_load1:
-
+        
+        name_list[0]
         data1.link = st.secrets[name_list[0]]
         data1.linkup()
         st.dataframe(data1.df)
