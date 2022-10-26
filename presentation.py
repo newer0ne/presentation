@@ -35,24 +35,26 @@ class Dataset:
     def present(self):
         print(self.name)
 
-
-load_option = "Open fixed data from test task"
+load_options = ["Open fixed data from test task", "Link on data from test task" ]
+#load_option = "Open fixed data from test task"
 load_option = st.radio(
     "Choosing a dataset loading method",
-    ("Open fixed data from test task", "Link on data from test task", "Upload data whatewer you want"""))
+    ("Open fixed data from test task", "Link on data from test task", "Upload data whatewer you want"))
 
 data1 = Dataset()
 
 if load_option == "Open fixed data from test task":
-
-    tab_open1, tab_open2, tab_open3 = st.tabs(["ads.csv", "leads.csv", "purchases.csv"])
+    
+    name_list = ["ads.csv", "leads.csv", "purchases.csv"]
+    tab_open1, tab_open2, tab_open3 = st.tabs(name_list)
     
     with tab_open1:
 
-        data1.df = pd.read_csv("ads.csv")
+        data1.df = pd.read_csv(name_list(0))
         st.dataframe(data1.df)
         data1.listing()
-        data1.df.name
+        data1.name = name_list(0)
+        data1.name
 
     with tab_open2:
         df_leads = pd.read_csv("leads.csv")
