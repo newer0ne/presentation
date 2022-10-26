@@ -35,7 +35,7 @@ class Dataset:
         print(self.name)
 
 
-data1 = Dataset.present()
+#data1 = Dataset.present()
 
 load_option = "Open fixed data from test task"
 load_option = st.radio(
