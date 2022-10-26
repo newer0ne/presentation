@@ -57,6 +57,7 @@ class Dataset:
             st.write("File name: ", self.up.name)
             self.df = pd.read_csv(self.up)
             st.dataframe(self.df)
+            self.name = self.up.name
             for i in range(len(self.df.columns)):
                 self.listcols.append(self.df.columns[i])
             st.text(self.listcols)
