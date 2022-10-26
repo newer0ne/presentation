@@ -88,7 +88,7 @@ elif load_option == opt_desc[1]:
     with tab_load1:
 
         data1.link = secret1
-        data1.linkup()
+        data1.linkup(name_list[0])
         st.dataframe(data1.df)
         data1.listing()
     
