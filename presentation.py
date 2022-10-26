@@ -48,7 +48,7 @@ class Dataset:
     def upload(self):
         file = st.file_uploader("Область загрузки")
         if file is not None:
-            st.write("Filename: ", file.name)
+            st.write("File name: ", file.name)
             self.df = pd.read_csv(file)
 
 opt_desc = ["Open fixed data from test task", "Link on data from test task", "Upload data whatewer you want"]
