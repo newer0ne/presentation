@@ -53,7 +53,7 @@ class Dataset:
 
     def listing(self):
         col = self.df
-        cols = col.columns
+        cols = st.dataframe(col.columns)
         for i in range(len(cols)):
             self.listcols.append(cols[i])
 
