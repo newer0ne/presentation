@@ -50,11 +50,11 @@ class Dataset:
             self.listcols.append(self.df.columns[i])
         st.text(self.listcols)
 
-    def upload(self):
-        file = st.file_uploader("Область загрузки")
-        if file is not None:
-            st.write("File name: ", file.name)
-            self.df = pd.read_csv(file)
+    def upload(self, index):
+        index = st.file_uploader("Область загрузки")
+        if index is not None:
+            st.write("File name: ", index.name)
+            self.df = pd.read_csv(index)
             st.dataframe(self.df)
             for i in range(len(self.df.columns)):
                 self.listcols.append(self.df.columns[i])
@@ -108,13 +108,13 @@ elif load_option == opt_desc[2]:
 
     with tab_up1:
 
-        data1.upload()
+        data1.upload(name_list[0])
 
     with tab_up2:
-        data2.upload()
+        data2.upload(name_list[1])
 
     with tab_up3:
-        data2.upload()
+        data2.upload(name_list[2])
 
 with st.expander("Dataset Renamer"):
     ren1, ren2, ren3 = st.columns(3)
