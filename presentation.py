@@ -113,10 +113,10 @@ with st.expander("Dataframe Renamer"):
     
     with ren2:
         if ren_df == data1.name:
-        ren_col = st.radio(
-            "Dataframe selection 👉",
-            (data1.listcols))
-        st.write("Choosed dataframe: " + ren_col)
+            ren_col = st.radio(
+                "Dataframe selection 👉",
+                (data1.listcols))
+            st.write("Choosed dataframe: " + ren_col)
 
 with st.expander("Dataset Analyzer"):
     col1, col2, col3 = st.columns(3)
