@@ -26,12 +26,11 @@ class ads:
     cols = []
     listcols = []
 
+
 load_option = "Open fixed data from test task"
 load_option = st.radio(
     "Choosing a dataset loading method",
-    ("""Open fixed data from test task",
-    "Link on data from test task",
-    "Upload data whatewer you want"""))
+    ("Open fixed data from test task", "Link on data from test task", "Upload data whatewer you want"""))
 
 if load_option == "Open fixed data from test task":
 
