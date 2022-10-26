@@ -52,8 +52,8 @@ class Dataset:
             st.dataframe(self.df)
 
     def listing(self):
-        cols = self.df.columns
-        cols
+        col = self.df
+        cols = col.columns
         for i in range(len(cols)):
             self.listcols.append(cols[i])
 
