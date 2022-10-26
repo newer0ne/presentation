@@ -31,6 +31,7 @@ class Dataset:
     
     def listing(self):
         cols = self.df.columns
+        cols
         for i in range(len(cols)):
             self.listcols.append(cols[i])
 
