@@ -35,7 +35,7 @@ class Dataset:
     def present(self):
         print(self.name)
 
-    def linkup(self):
+    def linkup(self, index):
         #link_url = st.secrets[self.link]
         file_id = self.link.split('/')[-2]
         dwn_url = 'https://drive.google.com/uc?export=download&id=' + file_id
@@ -50,7 +50,9 @@ load_option = st.radio(
     (opt_desc))
 
 data1 = Dataset()
+data1.link = st.secrets["ads"]
 data2 = Dataset()
+
 data3 = Dataset()
 name_list = ["ads.csv", "leads.csv", "purchases.csv"]
 secret1 = st.secrets["ads"]
