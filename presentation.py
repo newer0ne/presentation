@@ -75,38 +75,30 @@ if load_option == opt_desc[0]:
     tab_open1, tab_open2, tab_open3 = st.tabs(name_list)
     
     with tab_open1:
-
         data1.open(name_list[0])
         data1.listing()
 
     with tab_open2:
-        data2.df = pd.read_csv(name_list[1])
-        st.dataframe(data2.df)
+        data2.open(name_list[1])
         data2.listing()
-        data2.name = name_list[1]
     
     with tab_open3:
-        data3.df = pd.read_csv(name_list[2])
-        st.dataframe(data3.df)
+        data3.open(name_list[2])
         data3.listing()
-        data3.name = name_list[2]
 
 elif load_option == opt_desc[1]:
 
     tab_load1, tab_load2, tab_load3 = st.tabs(name_list)
     
     with tab_load1:
-
         data1.linkup(name_list[0])
         data1.listing()
     
     with tab_load2:
-
         data2.linkup(name_list[1])
         data2.listing()
         
     with tab_load3:
-
         data3.linkup(name_list[2])
         data3.listing()
 
