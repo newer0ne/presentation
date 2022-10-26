@@ -21,7 +21,7 @@ header_tasklink = """[<h5 style='text-align: center;'>Test task:</h5>](https://x
 st.markdown(header_tasklink, unsafe_allow_html=True)
 
 class ads:
-    name = ["ads.csv"]
+    name = []
     df = []
     cols = []
     listcols = []
@@ -39,13 +39,17 @@ if load_option == "Open fixed data from test task":
     with tab_open1:
 
         ads.df = pd.read_csv("ads.csv")
+        ads.name = ads.df.Name
         st.dataframe(ads.df)
 
         ads.cols = ads.df.columns
         for i in range(len(ads.cols)):
             ads.listcols.append(ads.cols[i])
     
-    ads.__dir__
+    ads.name
+    ads.df
+    ads.cols
+    ads.listcols
 
     with tab_open2:
         df_leads = pd.read_csv("leads.csv")
