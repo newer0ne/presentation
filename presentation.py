@@ -20,20 +20,6 @@ st.markdown("<h2 style='text-align: center;'>Datalyzer</h2>", unsafe_allow_html=
 header_tasklink = """[<h5 style='text-align: center;'>Test task:</h5>](https://xoservices.notion.site/1872d331265946a0ae2c5c9069189fd7)"""
 st.markdown(header_tasklink, unsafe_allow_html=True)
 
-st.markdown("""<h5 style='text-align: justify;'>В данной 
-задаче в рамках тестового задания необходимо
-построить сквозную аналитику для салона красоты.
-У салона есть реклама в онлайне и сайт,
-через который можно оставить заявку на услугу.
-При помощи сквозной аналитики нужно проследить путь
-от клика по рекламному объявлению до покупки и,
-таким образом, оценить эффективность маркетинга.
-Клик по рекламе трансформируется в лид (заявку),
-а лид превращается в клиента, который уже может 
-совершить некоторое количество покупок.
-Необходимо подготовить данные для отчета 
-по сквозной аналитике.</h5>""", unsafe_allow_html=True)
-
 load_option = "Open fixed data from test task"
 load_option = st.radio(
     "Choosing a dataset loading method",
