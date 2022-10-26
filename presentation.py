@@ -52,8 +52,8 @@ load_option = st.radio(
 data1 = Dataset()
 data2 = Dataset()
 data3 = Dataset()
-name_list = ['ads.csv', 'leads.csv', 'purchases.csv']
-secret1 = st.secrets[name_list[0]]
+name_list = ["ads.csv", "leads.csv", "purchases.csv"]
+secret1 = st.secrets[(map(str,name_list[0]))]
 
 
 if load_option == opt_desc[0]:
@@ -84,7 +84,7 @@ elif load_option == opt_desc[1]:
     tab_load1, tab_load2, tab_load3 = st.tabs(name_list)
     
     with tab_load1:
-        
+
         data1.link = secret1
         data1.linkup()
         st.dataframe(data1.df)
