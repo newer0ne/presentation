@@ -51,6 +51,7 @@ if load_option == "Open fixed data from test task":
         data1.df = pd.read_csv("ads.csv")
         st.dataframe(data1.df)
         data1.listcols = data1.listing()
+        data1.listcols
 
 
     with tab_open2:
