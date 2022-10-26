@@ -20,10 +20,12 @@ st.markdown("<h2 style='text-align: center;'>Datalyzer</h2>", unsafe_allow_html=
 header_tasklink = """[<h5 style='text-align: center;'>Test task:</h5>](https://xoservices.notion.site/1872d331265946a0ae2c5c9069189fd7)"""
 st.markdown(header_tasklink, unsafe_allow_html=True)
 
-class ads:
+class Dataset:
+    name = []  
     df = []
     listcols = []
 
+data1 = Dataset()
 
 load_option = "Open fixed data from test task"
 load_option = st.radio(
@@ -36,14 +38,14 @@ if load_option == "Open fixed data from test task":
     
     with tab_open1:
 
-        ads.df = pd.read_csv("ads.csv")
-        st.dataframe(ads.df)
+        data1.df = pd.read_csv("ads.csv")
+        st.dataframe(data1.df)
 
-        for i in range(len(ads.df.columns)):
-            ads.listcols.append(ads.df.columns[i])
+        for i in range(len(data1.df.columns)):
+            data1.listcols.append(data1.df.columns[i])
     
-    ads.df
-    ads.listcols
+    data1.df
+    data1.listcols
 
     with tab_open2:
         df_leads = pd.read_csv("leads.csv")
