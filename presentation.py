@@ -33,8 +33,10 @@ class Dataset:
         for i in range(len(self.df.columns)):
             self.listcols.append(self.df.columns[i])
 
-    def present(self):
-        print(self.name)
+    def open(self, index):
+        self.df = pd.read_csv(index)
+        st.dataframe(self.df)
+        self.name = index
 
     def linkup(self, index):
         #link_url = st.secrets[self.link]
@@ -74,10 +76,8 @@ if load_option == opt_desc[0]:
     
     with tab_open1:
 
-        data1.df = pd.read_csv(name_list[0])
-        st.dataframe(data1.df)
+        data1.open(name_list[0])
         data1.listing()
-        data1.name = name_list[0]
 
     with tab_open2:
         data2.df = pd.read_csv(name_list[1])
@@ -98,19 +98,16 @@ elif load_option == opt_desc[1]:
     with tab_load1:
 
         data1.linkup(name_list[0])
-        st.dataframe(data1.df)
         data1.listing()
     
     with tab_load2:
 
         data2.linkup(name_list[1])
-        st.dataframe(data2.df)
         data2.listing()
         
     with tab_load3:
 
         data3.linkup(name_list[2])
-        st.dataframe(data3.df)
         data3.listing()
 
 elif load_option == opt_desc[2]:
