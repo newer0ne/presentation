@@ -37,7 +37,6 @@ class Dataset:
         self.df = pd.read_csv(index)
         st.dataframe(self.df)
         self.name = index
-        self.listing
 
     def linkup(self, index):
         #link_url = st.secrets[self.link]
@@ -80,14 +79,17 @@ if load_option == opt_desc[0]:
     
     with tab_open1:
         data1.open(name_list[0])
+        data1.listing
         data1.listcols
 
     with tab_open2:
         data2.open(name_list[1])
+        data2.listing
         data2.listcols
     
     with tab_open3:
         data3.open(name_list[2])
+        data3.listing
         data3.listcols
 
 elif load_option == opt_desc[1]:
