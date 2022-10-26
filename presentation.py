@@ -51,7 +51,7 @@ if load_option == "Open fixed data from test task":
     with tab_open3:
         df_purchases = pd.read_csv("purchases.csv")
         st.dataframe(df_purchases)
-        
+
         cols_purchases = df_purchases.columns
         list_purchases = []
         for i in range(len(cols_purchases)):
@@ -101,7 +101,7 @@ elif load_option == "Link on data from test task":
         for i in range(len(cols_purchases)):
             list_purchases.append(cols_purchases[i])
 
-elif load_option == "Upload data whatewer you whant":
+elif load_option == "Upload data whatewer you want":
     uploaded_ads = st.file_uploader("Область загрузки для ADS.CSV")
     with st.expander("upload ads.csv"):
         if uploaded_ads is not None:
