@@ -26,6 +26,7 @@ class Dataset:
         self.name = []  
         self.df = []
         self.listcols = []
+        self.link = []
     
     def listing(self):
         for i in range(len(self.df.columns)):
@@ -34,9 +35,9 @@ class Dataset:
     def present(self):
         print(self.name)
 
-    def linkup(self,index):
-        link_url = st.secrets[index]
-        file_id = link_url.split('/')[-2]
+    def linkup(self):
+        #link_url = st.secrets[self.link]
+        file_id = self.link.split('/')[-2]
         dwn_url = 'https://drive.google.com/uc?export=download&id=' + file_id
         url2 = requests.get(dwn_url).text
         csv_raw = StringIO(url2)
@@ -82,7 +83,8 @@ elif load_option == opt_desc[1]:
     
     with tab_load1:
 
-        data1.linkup(name_list[0])
+        data1.link = st.secrets[name_list[0]]
+        data1.linkup()
         st.dataframe(data1.df)
         data1.listing()
     
