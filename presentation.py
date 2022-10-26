@@ -30,8 +30,9 @@ class Dataset:
         self.link = []
     
     def listing(self):
-        for i in range(len(self.df.columns)):
-            self.listcols.append(self.df.columns[i])
+        cols = self.df.columns
+        for i in range(len(cols)):
+            self.listcols.append(cols[i])
 
     def open(self, index):
         self.df = pd.read_csv(index)
