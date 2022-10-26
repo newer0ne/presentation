@@ -102,13 +102,14 @@ elif load_option == opt_desc[2]:
     with tab_up3:
             data3.upload(name_list[2])
 
-with st.expander("Dataset Renamer"):
+with st.expander("Dataframe Renamer"):
     ren1, ren2, ren3 = st.columns(3)
 
     with ren1:
         selected_df = st.radio(
-            "Выбор датасета 👉",
+            "Dataframe selection 👉",
             (data1.name, data2.name, data3.name))
+        st.write("Choosed dataframe: " + selected_df)
 
 with st.expander("Dataset Analyzer"):
     col1, col2, col3 = st.columns(3)
