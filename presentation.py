@@ -113,9 +113,12 @@ elif load_option == opt_desc[1]:
 
 elif load_option == opt_desc[2]:
 
-            data1.upload()
-            st.dataframe(data1.df)
-            data1.listing()
+    tab_up1, tab_up2, tab_up3 = st.tabs(name_list)
+
+    with tab_up1:
+        data1.upload()
+        st.dataframe(data1.df)
+        data1.listing()
 
     uploaded_leads = st.file_uploader("Область загрузки для LEADS.CSV")
     with st.expander("upload leads.csv"):
