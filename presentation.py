@@ -53,7 +53,8 @@ data1 = Dataset()
 data2 = Dataset()
 data3 = Dataset()
 name_list = ["ads.csv", "leads.csv", "purchases.csv"]
-secret1 = st.secrets[''.join(map(str,name_list[0]))]
+mystring = ''.join(map(str,name_list[0]))
+secret1 = st.secrets[]
 
 
 if load_option == opt_desc[0]:
