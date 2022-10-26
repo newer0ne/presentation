@@ -28,6 +28,7 @@ class Dataset:
         self.df = []
         self.listcols = []
         self.link = []
+        self.up = None
     
     def open(self, index):
         self.df = pd.read_csv(index)
@@ -50,11 +51,11 @@ class Dataset:
             self.listcols.append(self.df.columns[i])
         st.text(self.listcols)
 
-    def upload(self, index):
-        index = st.file_uploader("Область загрузки")
-        if index is not None:
-            st.write("File name: ", index.name)
-            self.df = pd.read_csv(index)
+    def upload(self):
+        self.up = st.file_uploader("Область загрузки")
+        if self.up is not None:
+            st.write("File name: ", self.up.name)
+            self.df = pd.read_csv(self.up)
             st.dataframe(self.df)
             for i in range(len(self.df.columns)):
                 self.listcols.append(self.df.columns[i])
@@ -66,53 +67,37 @@ load_option = st.radio(
     (opt_desc))
 
 name_list = ["ads.csv", "leads.csv", "purchases.csv"]
-
 data1 = Dataset()
 data1.link = st.secrets["ads"]
-
 data2 = Dataset()
 data2.link = st.secrets["leads"]
-
 data3 = Dataset()
 data3.link = st.secrets["purchases"]
 
-if load_option == opt_desc[0]:
-    
-    tab_open1, tab_open2, tab_open3 = st.tabs(name_list)
-    
+if load_option == opt_desc[0]:    
+    tab_open1, tab_open2, tab_open3 = st.tabs(name_list)    
     with tab_open1:
         data1.open(name_list[0])
-
     with tab_open2:
-        data2.open(name_list[1])
-    
+        data2.open(name_list[1])    
     with tab_open3:
         data3.open(name_list[2])
 
 elif load_option == opt_desc[1]:
-
-    tab_load1, tab_load2, tab_load3 = st.tabs(name_list)
-    
+    tab_load1, tab_load2, tab_load3 = st.tabs(name_list)    
     with tab_load1:
-        data1.linkup(name_list[0])
-    
+        data1.linkup(name_list[0])    
     with tab_load2:
-        data2.linkup(name_list[1])
-        
+        data2.linkup(name_list[1])        
     with tab_load3:
         data3.linkup(name_list[2])
 
 elif load_option == opt_desc[2]:
-
     tab_up1, tab_up2, tab_up3 = st.tabs(name_list)
-
     with tab_up1:
-
         data1.upload(name_list[0])
-
     with tab_up2:
         data2.upload(name_list[1])
-
     with tab_up3:
         data2.upload(name_list[2])
 
@@ -123,9 +108,6 @@ with st.expander("Dataset Renamer"):
         selected_df = st.radio(
             "Выбор датасета 👉",
             ("ads", "leads", "purchases"))
-
-
-
 
 with st.expander("Dataset Analyzer"):
     col1, col2, col3 = st.columns(3)
