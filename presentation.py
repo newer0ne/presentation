@@ -23,7 +23,7 @@ st.markdown(link_Dynam_video_toclic, unsafe_allow_html=True)
 load_option = "Open fixed data from test task"
 load_option = st.radio(
     "Выбор способа загрузки датасета",
-    ("Open fixed data from test task", "Link on data from test task", "Upload data whatewer you whant"))
+    ("Open fixed data from test task", "Link on data from test task", "Upload data whatewer you want"))
 
 if load_option == "Open fixed data from test task":
     df_ads = pd.read_csv("ads.csv")
