@@ -35,7 +35,7 @@ class Dataset:
         self.name = index
         st.dataframe(self.df.columns)
         for i in range(len(self.df.columns)):
-            self.listcols.append(cols[i])
+            self.listcols.append(self.df.columns[i])
 
     def linkup(self, index):
         #link_url = st.secrets[self.link]
