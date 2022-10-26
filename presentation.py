@@ -52,7 +52,7 @@ class Dataset:
         st.text(self.listcols)
 
     def upload(self, index):
-        self.up = st.file_uploader("Область загрузки 1 - " + index)
+        self.up = st.file_uploader("Область загрузки файлов csv, например " + index)
         if self.up is not None:
             st.write("File name: ", self.up.name)
             self.df = pd.read_csv(self.up)
