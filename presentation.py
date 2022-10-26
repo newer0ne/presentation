@@ -95,15 +95,15 @@ elif load_option == opt_desc[1]:
 elif load_option == opt_desc[2]:
     tab_up1, tab_up2, tab_up3 = st.tabs(name_list)
     with tab_up1:
-        upload1 = st.file_uploader("Область загрузки")
+        upload1 = st.file_uploader("Область загрузки 1")
         if upload1 is not None:
             data1.upload()
     with tab_up2:
-        upload2 = st.file_uploader("Область загрузки")
+        upload2 = st.file_uploader("Область загрузки 2")
         if upload2 is not None:
             data2.upload()
     with tab_up3:
-        upload3 = st.file_uploader("Область загрузки")
+        upload3 = st.file_uploader("Область загрузки 3")
         if upload3 is not None:
             data3.upload()
 
