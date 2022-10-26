@@ -51,11 +51,17 @@ load_option = st.radio(
 
 data1 = Dataset()
 data1.link = st.secrets["ads"]
+data1.link
+
 data2 = Dataset()
+data2.link = st.secrets["leads"]
+data2.link
 
 data3 = Dataset()
+data3.link = st.secrets["purchases"]
+data3.link
+
 name_list = ["ads.csv", "leads.csv", "purchases.csv"]
-secret1 = st.secrets["ads"]
 
 
 if load_option == opt_desc[0]:
