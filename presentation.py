@@ -39,7 +39,7 @@ if load_option == "Open fixed data from test task":
     with tab_open1:
 
         ads.df = pd.read_csv("ads.csv")
-        ads.name = ads.df.Name
+        #ads.name = ads.df.Name
         st.dataframe(ads.df)
 
         ads.cols = ads.df.columns
