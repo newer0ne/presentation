@@ -15,13 +15,17 @@ def run_query(query):
     rows = conn.execute(query, headers=1)
     return rows
 
-link_Dynam_video_toclic = """[<h2 style='text-align: center;'>Тестовове задание:</h2>](https://xoservices.notion.site/1872d331265946a0ae2c5c9069189fd7)"""
+
+main_header = """[<h1 style='text-align: center;'>Datalyzer:</h1>](https://xoservices.notion.site/1872d331265946a0ae2c5c9069189fd7)"""
+st.markdown(main_header, unsafe_allow_html=True)
+
+link_Dynam_video_toclic = """[<h3 style='text-align: center;'>Тестовове задание:</h3>](https://xoservices.notion.site/1872d331265946a0ae2c5c9069189fd7)"""
 st.markdown(link_Dynam_video_toclic, unsafe_allow_html=True)
 
 load_option = "open"
 load_option = st.radio(
     "Выбор способа загрузки датасета",
-    ("open", "link", "upload"))
+    ("Open fixed data from test task", "Link on data from test task", "Upload data "))
 
 if load_option == "open":
     df_ads = pd.read_csv("ads.csv")
