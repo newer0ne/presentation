@@ -29,12 +29,6 @@ class Dataset:
         self.listcols = []
         self.link = []
     
-    def listing(self):
-        cols = self.df.columns
-        cols
-        for i in range(len(cols)):
-            self.listcols.append(cols[i])
-
     def open(self, index):
         self.df = pd.read_csv(index)
         st.dataframe(self.df)
@@ -56,6 +50,13 @@ class Dataset:
             st.write("File name: ", file.name)
             self.df = pd.read_csv(file)
             st.dataframe(self.df)
+
+    def listing(self):
+        cols = self.df.columns
+        cols
+        for i in range(len(cols)):
+            self.listcols.append(cols[i])
+
 
 opt_desc = ["Open fixed data from test task", "Link on data from test task", "Upload data whatewer you want"]
 load_option = st.radio(
