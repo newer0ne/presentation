@@ -54,7 +54,7 @@ data2 = Dataset()
 data3 = Dataset()
 name_list = ["ads.csv", "leads.csv", "purchases.csv"]
 mystring = ''.join(map(str,name_list[0]))
-secret1 = st.secrets[]
+secret1 = st.secrets[mystring]
 
 
 if load_option == opt_desc[0]:
