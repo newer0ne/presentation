@@ -108,7 +108,7 @@ with st.expander("Dataset Renamer"):
     with ren1:
         selected_df = st.radio(
             "Выбор датасета 👉",
-            (data1.df, data2.df, data3.df))
+            (data1.name, data2.name, data3.name))
 
 with st.expander("Dataset Analyzer"):
     col1, col2, col3 = st.columns(3)
