@@ -44,6 +44,12 @@ class Dataset:
         self.df = pd.read_csv(csv_raw)
         self.name = index
 
+    def upload(self):
+        file = st.file_uploader("Область загрузки")
+        if file is not None:
+            st.write("Filename: ", file.name)
+            self.df = pd.read_csv(file)
+
 opt_desc = ["Open fixed data from test task", "Link on data from test task", "Upload data whatewer you want"]
 load_option = st.radio(
     "Choosing a dataset loading method",
@@ -107,18 +113,9 @@ elif load_option == opt_desc[1]:
 
 elif load_option == opt_desc[2]:
 
-    uploaded_ads = st.file_uploader("Область загрузки для ADS.CSV")
-    with st.expander("upload ads.csv"):
-        if uploaded_ads is not None:
-            st.write("Filename: ", uploaded_ads.name)
-            df_ads = pd.read_csv(uploaded_ads, sheet_name = "Sheet1", dtype = {'Note': str})
-            st.markdown("""<h5 style='text-align: center;'>Первый датасет ADS:</h5>""", unsafe_allow_html = True)
-            st.dataframe(df_ads)
-
-            cols_ads = df_ads.columns
-            list_ads = []
-            for i in range(len(cols_ads)):
-                list_ads.append(cols_ads[i])
+            data1.upload()
+            st.dataframe(data1.df)
+            data1.listing()
 
     uploaded_leads = st.file_uploader("Область загрузки для LEADS.CSV")
     with st.expander("upload leads.csv"):
