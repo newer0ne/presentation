@@ -53,7 +53,7 @@ data1 = Dataset()
 data2 = Dataset()
 data3 = Dataset()
 name_list = ["ads.csv", "leads.csv", "purchases.csv"]
-secret1 = st.secrets["ads_csv"]
+secret1 = st.secrets["ads"]
 
 
 if load_option == opt_desc[0]:
