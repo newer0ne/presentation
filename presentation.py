@@ -1,5 +1,6 @@
 
 from pickle import APPEND
+from queue import Empty
 import streamlit as st
 from gsheetsdb import connect
 import pandas as pd
@@ -116,7 +117,9 @@ elif load_option == opt_desc[2]:
     tab_up1, tab_up2, tab_up3 = st.tabs(name_list)
 
     with tab_up1:
+        
         data1.upload()
+        if data1.df == is not None:
         st.dataframe(data1.df)
         data1.listing()
 
@@ -125,7 +128,6 @@ elif load_option == opt_desc[2]:
         if uploaded_leads is not None:
             st.write("Filename: ", uploaded_leads.name)
             df_leads = pd.read_csv(uploaded_leads, sheet_name = "Sheet1", dtype = {'Note': str})
-            st.markdown("""<h5 style='text-align: center;'>Второй датасет LEADS:</h5>""", unsafe_allow_html = True)
             st.dataframe(df_leads)
 
             cols_leads = df_leads.columns
