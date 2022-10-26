@@ -22,7 +22,6 @@ st.markdown(header_tasklink, unsafe_allow_html=True)
 
 class ads:
     df = []
-    cols = []
     listcols = []
 
 
@@ -40,12 +39,10 @@ if load_option == "Open fixed data from test task":
         ads.df = pd.read_csv("ads.csv")
         st.dataframe(ads.df)
 
-        #ads.cols = ads.df.columns
         for i in range(len(ads.df.columns)):
             ads.listcols.append(ads.df.columns[i])
     
     ads.df
-    ads.cols
     ads.listcols
 
     with tab_open2:
