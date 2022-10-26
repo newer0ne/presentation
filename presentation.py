@@ -119,7 +119,7 @@ elif load_option == opt_desc[2]:
     with tab_up1:
 
         data1.upload()
-        if data1.df is not None:
+        if data1.df is not Empty:
             st.dataframe(data1.df)
             data1.listing()
 
