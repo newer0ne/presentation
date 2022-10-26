@@ -49,19 +49,19 @@ load_option = st.radio(
     "Choosing a dataset loading method",
     (opt_desc))
 
+names = ["ads", "leads", "purchases"]
+name_list = ["ads.csv", "leads.csv", "purchases.csv"]
+
 data1 = Dataset()
-data1.link = st.secrets["ads"]
-data1.link
+data1.link = st.secrets[names[0]]
 
 data2 = Dataset()
 data2.link = st.secrets["leads"]
-data2.link
 
 data3 = Dataset()
 data3.link = st.secrets["purchases"]
-data3.link
 
-name_list = ["ads.csv", "leads.csv", "purchases.csv"]
+
 
 
 if load_option == opt_desc[0]:
