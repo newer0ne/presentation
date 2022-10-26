@@ -15,13 +15,13 @@ def run_query(query):
     rows = conn.execute(query, headers=1)
     return rows
 
-header = "<h2 style='text-align: center;'>Datalyzer:</h2>"
+header = "<h2 style='text-align: center;'>Datalyzer</h2>"
 st.markdown(header, unsafe_allow_html=True)
 
 header_tasklink = """[<h5 style='text-align: center;'>Test task:</h5>](https://xoservices.notion.site/1872d331265946a0ae2c5c9069189fd7)"""
 st.markdown(header_tasklink, unsafe_allow_html=True)
 
-header_task = """[<h5 style='text-align: justify;'>В данной 
+header_task = """<h5 style='text-align: justify;'>В данной 
 задаче в рамках тестового задания необходимо
 построить сквозную аналитику для салона красоты.
 У салона есть реклама в онлайне и сайт,
@@ -32,7 +32,7 @@ header_task = """[<h5 style='text-align: justify;'>В данной
 Клик по рекламе трансформируется в лид (заявку),
 а лид превращается в клиента, который уже может 
 совершить некоторое количество покупок.
-Необходимо подготовить данные для отчета по сквозной аналитике.</h5>]"""
+Необходимо подготовить данные для отчета по сквозной аналитике.</h5>"""
 st.markdown(header_task, unsafe_allow_html=True)
 
 load_option = "Open fixed data from test task"
