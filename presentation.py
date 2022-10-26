@@ -46,6 +46,8 @@ class Dataset:
         self.df = pd.read_csv(csv_raw)
         self.name = index
         st.dataframe(self.df)
+        for i in range(len(self.df.columns)):
+            self.listcols.append(self.df.columns[i])
 
     def upload(self):
         file = st.file_uploader("Область загрузки")
@@ -53,10 +55,12 @@ class Dataset:
             st.write("File name: ", file.name)
             self.df = pd.read_csv(file)
             st.dataframe(self.df)
+            for i in range(len(self.df.columns)):
+                self.listcols.append(self.df.columns[i])
 
-    def listing(self):
-        for i in range(len(self.df.columns)):
-            self.listcols.append(cols[i])
+    #def listing(self):
+    #    for i in range(len(self.df.columns)):
+     #       self.listcols.append(cols[i])
 
 
 opt_desc = ["Open fixed data from test task", "Link on data from test task", "Upload data whatewer you want"]
@@ -81,18 +85,12 @@ if load_option == opt_desc[0]:
     
     with tab_open1:
         data1.open(name_list[0])
-        data1.df.columns
-        data1.listcols
 
     with tab_open2:
         data2.open(name_list[1])
-        data2.listing
-        data2.listcols
     
     with tab_open3:
         data3.open(name_list[2])
-        data3.listing
-        data3.listcols
 
 elif load_option == opt_desc[1]:
 
