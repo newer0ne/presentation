@@ -106,10 +106,17 @@ with st.expander("Dataframe Renamer"):
     ren1, ren2, ren3 = st.columns(3)
 
     with ren1:
-        selected_df = st.radio(
+        ren_df = st.radio(
             "Dataframe selection 👉",
             (data1.name, data2.name, data3.name))
-        st.write("Choosed dataframe: " + selected_df)
+        st.write("Choosed dataframe: " + ren_df)
+    
+    with ren2:
+        if ren_df == data1.name
+        ren_col = st.radio(
+            "Dataframe selection 👉",
+            (data1.listcols))
+        st.write("Choosed dataframe: " + ren_col)
 
 with st.expander("Dataset Analyzer"):
     col1, col2, col3 = st.columns(3)
