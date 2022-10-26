@@ -15,10 +15,25 @@ def run_query(query):
     rows = conn.execute(query, headers=1)
     return rows
 
+header = """[<h2 style='text-align: center;'>Datalyzer:</h2>]"""
+st.markdown(header, unsafe_allow_html=True)
 
+header_tasklink = """[<h5 style='text-align: center;'>Test task:</h5>](https://xoservices.notion.site/1872d331265946a0ae2c5c9069189fd7)"""
+st.markdown(header_tasklink, unsafe_allow_html=True)
 
-link_Dynam_video_toclic = """[<h5 style='text-align: center;'>Тестовове задание:</h5>](https://xoservices.notion.site/1872d331265946a0ae2c5c9069189fd7)"""
-st.markdown(link_Dynam_video_toclic, unsafe_allow_html=True)
+header_task = """[<h5 style='text-align: justify;'>В данной 
+задаче в рамках тестового задания необходимо
+построить сквозную аналитику для салона красоты.
+У салона есть реклама в онлайне и сайт,
+через который можно оставить заявку на услугу.
+При помощи сквозной аналитики нужно проследить путь
+от клика по рекламному объявлению до покупки и,
+таким образом, оценить эффективность маркетинга.
+Клик по рекламе трансформируется в лид (заявку),
+а лид превращается в клиента, который уже может 
+совершить некоторое количество покупок.
+Необходимо подготовить данные для отчета по сквозной аналитике.</h5>]"""
+st.markdown(header_task, unsafe_allow_html=True)
 
 load_option = "Open fixed data from test task"
 load_option = st.radio(
