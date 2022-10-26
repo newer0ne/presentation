@@ -26,25 +26,32 @@ load_option = st.radio(
     ("Open fixed data from test task", "Link on data from test task", "Upload data whatewer you want"))
 
 if load_option == "Open fixed data from test task":
-    df_ads = pd.read_csv("ads.csv")
-    with st.expander("1st dataframe ADS"):
+
+    tab_open1, tab_open2, tab_open3 = st.tabs(["ads.csv", "leads.csv", "purchases.csv"])
+    
+    with tab_open1:
+
+        df_ads = pd.read_csv("ads.csv")
         st.dataframe(df_ads)
+
         cols_ads = df_ads.columns
         list_ads = []
         for i in range(len(cols_ads)):
             list_ads.append(cols_ads[i])
     
-    df_leads = pd.read_csv("leads.csv")
-    with st.expander("2nd dataframe LEADS"):
+    with tab_open2:
+        df_leads = pd.read_csv("leads.csv")
         st.dataframe(df_leads)
+
         cols_leads = df_leads.columns
         list_leads = []
         for i in range(len(cols_leads)):
             list_leads.append(cols_leads[i])
     
-    df_purchases = pd.read_csv("purchases.csv")
-    with st.expander("3rd dataframe PURCHASES"):
+    with tab_open3:
+        df_purchases = pd.read_csv("purchases.csv")
         st.dataframe(df_purchases)
+        
         cols_purchases = df_purchases.columns
         list_purchases = []
         for i in range(len(cols_purchases)):
