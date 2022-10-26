@@ -95,11 +95,11 @@ elif load_option == opt_desc[1]:
 elif load_option == opt_desc[2]:
     tab_up1, tab_up2, tab_up3 = st.tabs(name_list)
     with tab_up1:
-        data1.upload(name_list[0])
+        data1.upload()
     with tab_up2:
-        data2.upload(name_list[1])
+        data2.upload()
     with tab_up3:
-        data2.upload(name_list[2])
+        data2.upload()
 
 with st.expander("Dataset Renamer"):
     ren1, ren2, ren3 = st.columns(3)
