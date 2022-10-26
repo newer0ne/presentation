@@ -95,16 +95,16 @@ elif load_option == opt_desc[1]:
 elif load_option == opt_desc[2]:
     tab_up1, tab_up2, tab_up3 = st.tabs(name_list)
     with tab_up1:
-        data1.up = st.file_uploader("Область загрузки")
-        if data1.up is not None:
+        upload1 = st.file_uploader("Область загрузки")
+        if upload1 is not None:
             data1.upload()
     with tab_up2:
-        data2.up = st.file_uploader("Область загрузки")
-        if data2.up is not None:
+        upload2 = st.file_uploader("Область загрузки")
+        if upload2 is not None:
             data2.upload()
     with tab_up3:
-        data3.up = st.file_uploader("Область загрузки")
-        if data3.up is not None:
+        upload3 = st.file_uploader("Область загрузки")
+        if upload3 is not None:
             data3.upload()
 
 with st.expander("Dataset Renamer"):
