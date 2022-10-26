@@ -50,7 +50,8 @@ if load_option == "Open fixed data from test task":
     
     with tab_open1:
 
-        data1.df = pd.read_csv(name_list(0))
+        name_list[0]
+        data1.df = pd.read_csv(name_list[0])
         st.dataframe(data1.df)
         data1.listing()
         data1.name = name_list(0)
