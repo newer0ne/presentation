@@ -33,6 +33,9 @@ class Dataset:
         self.df = pd.read_csv(index)
         st.dataframe(self.df)
         self.name = index
+        st.dataframe(self.df.columns)
+        for i in range(len(self.df.columns)):
+            self.listcols.append(cols[i])
 
     def linkup(self, index):
         #link_url = st.secrets[self.link]
@@ -52,9 +55,7 @@ class Dataset:
             st.dataframe(self.df)
 
     def listing(self):
-        col = self.df
-        cols = st.dataframe(col.columns)
-        for i in range(len(cols)):
+        for i in range(len(self.df.columns)):
             self.listcols.append(cols[i])
 
 
