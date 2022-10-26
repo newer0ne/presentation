@@ -112,7 +112,7 @@ with st.expander("Dataframe Renamer"):
         st.write("Choosed dataframe: " + ren_df)
     
     with ren2:
-        if ren_df = data1.name
+        if ren_df == data1.name:
         ren_col = st.radio(
             "Dataframe selection 👉",
             (data1.listcols))
