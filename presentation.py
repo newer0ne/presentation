@@ -30,10 +30,18 @@ class Dataset:
     def listing(self):
         for i in range(len(self.df.columns)):
             self.listcols.append(self.df.columns[i])
-        #self.name = data1.df.name
 
     def present(self):
         print(self.name)
+
+    def linkup(self, index):
+        link_url = st.secrets[index]
+        file_id = link_url.split('/')[-2]
+        dwn_url = 'https://drive.google.com/uc?export=download&id=' + file_id
+        url2 = requests.get(dwn_url).text
+        csv_raw = StringIO(url2)
+        self.df = pd.read_csv(csv_raw)
+        self.name = index
 
 opt_desc = ["Open fixed data from test task", "Link on data from test task", "Upload data whatewer you want"]
 load_option = st.radio(
@@ -45,7 +53,7 @@ data2 = Dataset()
 data3 = Dataset()
 name_list = ["ads.csv", "leads.csv", "purchases.csv"]
 
-if load_option == "Open fixed data from test task":
+if load_option == opt_desc[0]:
     
     tab_open1, tab_open2, tab_open3 = st.tabs(name_list)
     
@@ -65,58 +73,33 @@ if load_option == "Open fixed data from test task":
     with tab_open3:
         data3.df = pd.read_csv(name_list[2])
         st.dataframe(data3.df)
-        data3.listing()
+        data3.listing(name_list[2])
         data3.name = name_list[2]
 
-elif load_option == "Link on data from test task":
+elif load_option == opt_desc[1]:
 
-    with st.expander("ads.csv"):
-
-        url_ads = st.secrets["ads"]
-        file_id_ads = url_ads.split('/')[-2]
-        dwn_url_ads = 'https://drive.google.com/uc?export=download&id=' + file_id_ads
-        url2_ads = requests.get(dwn_url_ads).text
-        csv_raw_ads = StringIO(url2_ads)
-        df_ads = pd.read_csv(csv_raw_ads)
-
-        st.dataframe(df_ads)
-
-        cols_ads = df_ads.columns
-        list_ads = []
-        for i in range(len(cols_ads)):
-            list_ads.append(cols_ads[i])
+    tab_load1, tab_load2, tab_load3 = st.tabs(name_list)
     
-    with st.expander("leads.csv"):
-        url_leads = st.secrets["leads"]
-        file_id_leads = url_leads.split('/')[-2]
-        dwn_url_leads = 'https://drive.google.com/uc?export=download&id=' + file_id_leads
-        url2_leads = requests.get(dwn_url_leads).text
-        csv_raw_leads = StringIO(url2_leads)
-        df_leads = pd.read_csv(csv_raw_leads)
-        st.markdown("""<h5 style='text-align: center;'>Второй датасет LEADS:</h5>""", unsafe_allow_html = True)
-        st.dataframe(df_leads)
+    with tab_load1:
 
-        cols_leads = df_leads.columns
-        list_leads = []
-        for i in range(len(cols_leads)):
-            list_leads.append(cols_leads[i])
+        data1.linkup(name_list[0])
+        st.dataframe(data1.df)
+        data1.listing()
+    
+    with tab_load2:
+
+        data2.linkup(name_list[1])
+        st.dataframe(data2.df)
+        data2.listing()
         
-    with st.expander("purchases.csv"):
-        url_purchases = st.secrets["purchases"]
-        file_id_purchases = url_purchases.split('/')[-2]
-        dwn_url_purchases = 'https://drive.google.com/uc?export=download&id=' + file_id_purchases
-        url2_purchases = requests.get(dwn_url_purchases).text
-        csv_raw_purchases = StringIO(url2_purchases)
-        df_purchases = pd.read_csv(csv_raw_purchases)
-        st.markdown("""<h5 style='text-align: center;'>Третий датасет PURCHASES:</h5>""", unsafe_allow_html = True)
-        st.dataframe(df_purchases)
+    with tab_load3:
 
-        cols_purchases = df_purchases.columns
-        list_purchases = []
-        for i in range(len(cols_purchases)):
-            list_purchases.append(cols_purchases[i])
+        data3.linkup(name_list[2])
+        st.dataframe(data3.df)
+        data3.listing()
 
-elif load_option == "Upload data whatewer you want":
+elif load_option == opt_desc[2]:
+    
     uploaded_ads = st.file_uploader("Область загрузки для ADS.CSV")
     with st.expander("upload ads.csv"):
         if uploaded_ads is not None:
