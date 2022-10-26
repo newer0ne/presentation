@@ -20,10 +20,18 @@ st.markdown("<h2 style='text-align: center;'>Datalyzer</h2>", unsafe_allow_html=
 header_tasklink = """[<h5 style='text-align: center;'>Test task:</h5>](https://xoservices.notion.site/1872d331265946a0ae2c5c9069189fd7)"""
 st.markdown(header_tasklink, unsafe_allow_html=True)
 
+class ads:
+    name = ["ads.csv"]
+    df = []
+    cols = []
+    listcols = []
+
 load_option = "Open fixed data from test task"
 load_option = st.radio(
     "Choosing a dataset loading method",
-    ("Open fixed data from test task", "Link on data from test task", "Upload data whatewer you want"))
+    ("""Open fixed data from test task",
+    "Link on data from test task",
+    "Upload data whatewer you want"""))
 
 if load_option == "Open fixed data from test task":
 
@@ -31,14 +39,15 @@ if load_option == "Open fixed data from test task":
     
     with tab_open1:
 
-        df_ads = pd.read_csv("ads.csv")
-        st.dataframe(df_ads)
+        ads.df = pd.read_csv("ads.csv")
+        st.dataframe(ads.df)
 
-        cols_ads = df_ads.columns
-        list_ads = []
-        for i in range(len(cols_ads)):
-            list_ads.append(cols_ads[i])
+        ads.cols = ads.df.columns
+        for i in range(len(ads.cols)):
+            ads.listcols.append(ads.cols[i])
     
+    ads.__dir__
+
     with tab_open2:
         df_leads = pd.read_csv("leads.csv")
         st.dataframe(df_leads)
@@ -58,6 +67,8 @@ if load_option == "Open fixed data from test task":
             list_purchases.append(cols_purchases[i])
 
 elif load_option == "Link on data from test task":
+
+
     with st.expander("ads.csv"):
         url_ads = st.secrets["ads"]
         file_id_ads = url_ads.split('/')[-2]
@@ -67,6 +78,7 @@ elif load_option == "Link on data from test task":
         df_ads = pd.read_csv(csv_raw_ads)
         st.markdown("""<h5 style='text-align: center;'>Первый датасет ADS:</h5>""", unsafe_allow_html = True)
         st.dataframe(df_ads)
+
         cols_ads = df_ads.columns
         list_ads = []
         for i in range(len(cols_ads)):
@@ -81,6 +93,7 @@ elif load_option == "Link on data from test task":
         df_leads = pd.read_csv(csv_raw_leads)
         st.markdown("""<h5 style='text-align: center;'>Второй датасет LEADS:</h5>""", unsafe_allow_html = True)
         st.dataframe(df_leads)
+
         cols_leads = df_leads.columns
         list_leads = []
         for i in range(len(cols_leads)):
@@ -93,9 +106,9 @@ elif load_option == "Link on data from test task":
         url2_purchases = requests.get(dwn_url_purchases).text
         csv_raw_purchases = StringIO(url2_purchases)
         df_purchases = pd.read_csv(csv_raw_purchases)
-        #df_purchases = df_purchases.reindex(columns=['client_id', 'purchase_id', 'purchase_created_at', 'm_purchase_amount'])
         st.markdown("""<h5 style='text-align: center;'>Третий датасет PURCHASES:</h5>""", unsafe_allow_html = True)
         st.dataframe(df_purchases)
+
         cols_purchases = df_purchases.columns
         list_purchases = []
         for i in range(len(cols_purchases)):
@@ -109,6 +122,7 @@ elif load_option == "Upload data whatewer you want":
             df_ads = pd.read_csv(uploaded_ads, sheet_name = "Sheet1", dtype = {'Note': str})
             st.markdown("""<h5 style='text-align: center;'>Первый датасет ADS:</h5>""", unsafe_allow_html = True)
             st.dataframe(df_ads)
+
             cols_ads = df_ads.columns
             list_ads = []
             for i in range(len(cols_ads)):
@@ -121,6 +135,7 @@ elif load_option == "Upload data whatewer you want":
             df_leads = pd.read_csv(uploaded_leads, sheet_name = "Sheet1", dtype = {'Note': str})
             st.markdown("""<h5 style='text-align: center;'>Второй датасет LEADS:</h5>""", unsafe_allow_html = True)
             st.dataframe(df_leads)
+
             cols_leads = df_leads.columns
             list_leads = []
             for i in range(len(cols_leads)):
@@ -133,13 +148,26 @@ elif load_option == "Upload data whatewer you want":
             df_purchases = pd.read_csv(uploaded_purchases, sheet_name = "Sheet1", dtype = {'Note': str})
             st.markdown("""<h5 style='text-align: center;'>Второй датасет LEADS:</h5>""", unsafe_allow_html = True)
             st.dataframe(df_purchases)
+
             cols_purchases = df_purchases.columns
             list_purchases = []
             for i in range(len(cols_purchases)):
                 list_purchases.append(cols_purchases[i])
 
+with st.expander("Dataset Renamer"):
+    ren1, ren2, ren3 = st.columns(3)
+
+    with ren1:
+        selected_df = st.radio(
+            "Выбор датасета 👉",
+            ("ads", "leads", "purchases"))
+
+
+
+
 with st.expander("Dataset Analyzer"):
     col1, col2, col3 = st.columns(3)
+
     with col1:
         selected_df = st.radio(
             "Выбор датасета 👉",
