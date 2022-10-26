@@ -48,6 +48,7 @@ class Dataset:
         st.dataframe(self.df)
         for i in range(len(self.df.columns)):
             self.listcols.append(self.df.columns[i])
+        st.text(self.listcols)
 
     def upload(self):
         file = st.file_uploader("Область загрузки")
@@ -57,11 +58,7 @@ class Dataset:
             st.dataframe(self.df)
             for i in range(len(self.df.columns)):
                 self.listcols.append(self.df.columns[i])
-
-    #def listing(self):
-    #    for i in range(len(self.df.columns)):
-     #       self.listcols.append(cols[i])
-
+            st.text(self.listcols)
 
 opt_desc = ["Open fixed data from test task", "Link on data from test task", "Upload data whatewer you want"]
 load_option = st.radio(
