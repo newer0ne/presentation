@@ -22,12 +22,12 @@ st.markdown(link_Dynam_video_toclic, unsafe_allow_html=True)
 
 load_option = "Open fixed data from test task"
 load_option = st.radio(
-    "Выбор способа загрузки датасета",
+    "Choosing a dataset loading method",
     ("Open fixed data from test task", "Link on data from test task", "Upload data whatewer you want"))
 
 if load_option == "Open fixed data from test task":
     df_ads = pd.read_csv("ads.csv")
-    with st.expander("Первый датасет ADS"):
+    with st.expander("1st dataframe ADS"):
         st.dataframe(df_ads)
         cols_ads = df_ads.columns
         list_ads = []
@@ -35,7 +35,7 @@ if load_option == "Open fixed data from test task":
             list_ads.append(cols_ads[i])
     
     df_leads = pd.read_csv("leads.csv")
-    with st.expander("Второй датасет LEADS"):
+    with st.expander("2nd dataframe LEADS"):
         st.dataframe(df_leads)
         cols_leads = df_leads.columns
         list_leads = []
@@ -43,7 +43,7 @@ if load_option == "Open fixed data from test task":
             list_leads.append(cols_leads[i])
     
     df_purchases = pd.read_csv("purchases.csv")
-    with st.expander("Второй датасет PURCHASES"):
+    with st.expander("3rd dataframe PURCHASES"):
         st.dataframe(df_purchases)
         cols_purchases = df_purchases.columns
         list_purchases = []
