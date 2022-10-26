@@ -46,7 +46,7 @@ data1 = Dataset()
 if load_option == "Open fixed data from test task":
     
     name_list = ["ads.csv", "leads.csv", "purchases.csv"]
-    tab_open1, tab_open2, tab_open3 = st.tabs({name_list})
+    tab_open1, tab_open2, tab_open3 = st.tabs(name_list)
     
     with tab_open1:
 
