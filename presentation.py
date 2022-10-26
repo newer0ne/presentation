@@ -73,7 +73,7 @@ if load_option == opt_desc[0]:
     with tab_open3:
         data3.df = pd.read_csv(name_list[2])
         st.dataframe(data3.df)
-        data3.listing(name_list[2])
+        data3.listing()
         data3.name = name_list[2]
 
 elif load_option == opt_desc[1]:
@@ -99,7 +99,7 @@ elif load_option == opt_desc[1]:
         data3.listing()
 
 elif load_option == opt_desc[2]:
-    
+
     uploaded_ads = st.file_uploader("Область загрузки для ADS.CSV")
     with st.expander("upload ads.csv"):
         if uploaded_ads is not None:
