@@ -34,7 +34,7 @@ class Dataset:
     def present(self):
         print(self.name)
 
-    def linkup(self, index):
+    def linkup(self,index):
         link_url = st.secrets[index]
         file_id = link_url.split('/')[-2]
         dwn_url = 'https://drive.google.com/uc?export=download&id=' + file_id
