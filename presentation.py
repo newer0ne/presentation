@@ -44,6 +44,7 @@ class Dataset:
         csv_raw = StringIO(url2)
         self.df = pd.read_csv(csv_raw)
         self.name = index
+        st.dataframe(self.df)
 
     def upload(self):
         file = st.file_uploader("Область загрузки")
@@ -119,7 +120,9 @@ elif load_option == opt_desc[2]:
     with tab_up1:
 
         data1.upload()
-        if data1.df is not Empty:
+        data1.df
+
+        if data1.df is not None:
             st.dataframe(data1.df)
             data1.listing()
 
