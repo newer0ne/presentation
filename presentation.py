@@ -217,11 +217,11 @@ with st.expander("Dataset Analyzer"):
             
             with anal4:
                 if anal_df2 == name_list[0]:
-                    y_col = data1.df[anal_col1]
+                    y_col = data1.df[anal_col2]
                 elif anal_df2 == name_list[1]:
-                    y_col = data2.df[anal_col1]
+                    y_col = data2.df[anal_col2]
                 elif anal_df2 == name_list[2]:
-                    y_col = data3.df[anal_col1]
+                    y_col = data3.df[anal_col2]
                 st.dataframe(y_col)
                 st.line_chart(y_col)
 
