@@ -112,7 +112,7 @@ with st.expander("Dataframe Renamer"):
 
     with ren1:
         ren_df = st.radio(
-            "Dataframe selection 👉",
+            "Dataframe selection to rename 👉",
             (data1.name, data2.name, data3.name))
         st.write("Choosed dataframe: " + ren_df)
     
@@ -150,7 +150,7 @@ with st.expander("Dataset Analyzer"):
 
     with anal1:
         anal_df = st.radio(
-            "Dataframe selection 👉",
+            "Dataframe selection to analyzation 👉",
             (data1.name, data2.name, data3.name))
         st.write("Choosed dataframe: " + anal_df)
 
