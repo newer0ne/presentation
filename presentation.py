@@ -113,7 +113,7 @@ elif load_option == opt_desc[2]:
             data3.upload(name_list[2])
 
 
-    st.write("Dataframe Renamer"):
+    st.write("Dataframe Renamer")
     ren1, ren2, ren3 = st.columns(3)
 
 
