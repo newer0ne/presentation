@@ -157,7 +157,7 @@ with st.expander("Dataset Analyzer"):
         if anal_df1 == data1.name:
             anal_col1 = st.radio(
                 "Columns x selection 👉",
-                (data1.listcols), key = "anal11")
+                (data1.listcols), key = "anal12")
             st.write("Choosed x column: " + anal_col1)
         elif anal_df1 == data2.name:
             anal_col1 = st.radio(
