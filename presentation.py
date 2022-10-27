@@ -134,14 +134,18 @@ with st.expander("Dataframe Renamer"):
         st.text(type(newcolname))
         if st.button('Lets change it'):
             if ren_df == name_list[0]:
+                data1.listcols
                 data1.df[ren_col] = data1.df[newcolname]
                 data1.df[newcolname]
                 data1.df
             if ren_df == name_list[1]:
+                data2.listcols
+                #data2.df.rename(columns = [])
                 data2.df[ren_col] = data2.df[newcolname]
                 data2.df[newcolname]
                 data2.df
             if ren_df == name_list[2]:
+                data3.listcols
                 data3.df[ren_col] = data3.df[newcolname]
                 data3.df[newcolname]
                 data3.df
