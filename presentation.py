@@ -90,11 +90,6 @@ if load_option == opt_desc[0]:
     tab_open1, tab_open2, tab_open3 = st.tabs(name_list)    
     with tab_open1:
         data1.open(name_list[0])
-        data1.df.rename(columns = {"d_ad_account_id": "account_id", "d_utm_source": "source", "d_utm_medium":"medium",
-            "d_utm_campaign":"campaign", "d_utm_content": "content",
-            'd_utm_term': 'term', 'm_clicks':'clicks', 'm_cost':'cost'})
-        st.dataframe(data1.df)
-
     with tab_open2:
         data2.open(name_list[1])    
     with tab_open3:
