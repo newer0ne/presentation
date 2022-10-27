@@ -135,22 +135,21 @@ with st.expander("Dataframe Renamer"):
         st.write("New name for the selected column: " + newcolname)
         st.text(type(newcolname))
 
-        if st.button('Lets change it'):
-            if ren_df == name_list[0]:
-                data1.listcols
-                data1.df.rename(columns = {ren_col: newcolname})
-                data1.df
-            elif ren_df == name_list[1]:
-                data2.df.rename(columns = {ren_col: newcolname})
-                data2.df
-            elif ren_df == name_list[2]:
-                data3.listcols
-                data3.df[ren_col] = data3.df[newcolname]
-                data3.df[newcolname]
-                data3.df
-                
-            else:
-                st.write('Whatewewr')
+    if st.button('Lets change it'):
+        if ren_df == name_list[0]:
+            data1.listcols
+            data1.df.rename(columns = {ren_col: newcolname})
+            data1.df
+        elif ren_df == name_list[1]:
+            data2.df.rename(columns = {ren_col: newcolname})
+            data2.df
+        elif ren_df == name_list[2]:
+            data3.listcols
+            data3.df[ren_col] = data3.df[newcolname]
+            data3.df[newcolname]
+            data3.df                
+        else:
+            st.write('Whatewewr')
 
 
 with st.expander("Dataset Analyzer"):
