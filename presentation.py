@@ -164,7 +164,7 @@ with anal1:
         "Columns x selection 👉",
         (data1.listcols), key = "anal1")
     st.write("Choosed x column: " + anal_col1)
-    st.line_chart(data1.df.loc[anal_col1])
+    st.line_chart(data1.df.loc[:, anal_col1])
 
 with anal2:
     st.write("Choosed dataframe: " + data2.name)
