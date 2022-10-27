@@ -64,6 +64,9 @@ class Dataset:
     def renamecol(self, oldname, newname):
         self.df[newname] = self.df[oldname]
         del self.df[oldname]
+        for i in range(len(self.df.columns)):
+            self.listcols.append(self.df.columns[i])
+        st.text(self.listcols)
         st.dataframe(self.df)
 
 
