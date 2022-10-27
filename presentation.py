@@ -151,7 +151,7 @@ with st.expander("Dataset Analyzer"):
     with anal1:
         anal_df = st.radio(
             "Dataframe selection to analyzation 👉",
-            (data1.name, data2.name, data3.name))
+            (data1.name, data2.name, data3.name), key="anal")
         st.write("Choosed dataframe: " + anal_df)
 
         if anal_df == data1.name:
