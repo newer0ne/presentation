@@ -153,7 +153,7 @@ with st.expander("Dataframe Renamer"):
             data3.renamecol(ren_col, newcolname)
 
             
-with st.expander("Dataset Analyzer"):
+    st.write("Dataset Analyzer")
     anal1, anal2 = st.columns(2)
 
     with anal1:
