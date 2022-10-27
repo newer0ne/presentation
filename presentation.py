@@ -61,16 +61,14 @@ class Dataset:
                 self.listcols.append(self.df.columns[i])
             st.text(self.listcols)
 
-    def renamecol(self, oldname, newname, data_df, datalist):
+    def renamecol(self, oldname, newname):
         self.df[newname] = self.df[oldname]
         del self.df[oldname]
-        data_df = self.df
         self.listcols.remove(oldname)
         for i in range(len(self.df.columns)):
             self.listcols.append(self.df.columns[i])
-        datalist = self.listcols
-        st.text(datalist)
-        st.dataframe(data_df)
+        st.text(self.listcols)
+        st.dataframe(self.df)
 
 
 opt_desc = ["Open fixed data from test task", "Link on data from test task", "Upload data whatewer you want"]
@@ -148,13 +146,12 @@ with ren3:
 
 if st.button('Lets change it'):
     if data4.name == name_list[0]:
-        data1.renamecol(ren_col, newcolname, data4.df, data4.listcols)
+        data1.renamecol(ren_col, newcolname)
     elif data4.name == name_list[1]:
-        data2.renamecol(ren_col, newcolname, data4.df, data4.listcols)
+        data2.renamecol(ren_col, newcolname)
     elif data4.name == name_list[2]:
-        data3.renamecol(ren_col, newcolname, data4.df, data4.listcols)
+        data3.renamecol(ren_col, newcolname)
 
-    st.dataframe(data4.df)
     anal_col4 = st.radio(
         "Columns x selection 👉",
         (data4.listcols), key = "anal4")
