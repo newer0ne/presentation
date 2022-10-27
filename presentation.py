@@ -121,17 +121,17 @@ with st.expander("Dataframe Renamer"):
             ren_col = st.radio(
                 "Columns selection 👉",
                 (data1.listcols))
-            st.write("Choosed dataframe: " + ren_col)
+            st.write("Choosed column: " + ren_col)
         if ren_df == data2.name:
             ren_col = st.radio(
                 "Columns selection 👉",
                 (data2.listcols))
-            st.write("Choosed dataframe: " + ren_col)
+            st.write("Choosed column: " + ren_col)
         if ren_df == data3.name:
             ren_col = st.radio(
                 "Columns selection 👉",
                 (data3.listcols))
-            st.write("Choosed dataframe: " + ren_col)
+            st.write("Choosed column: " + ren_col)
 
     with ren3:
         newcolname = st.text_input('New column name', ren_col)
