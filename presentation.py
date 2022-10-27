@@ -80,6 +80,7 @@ data2.link = st.secrets["leads"]
 data3 = Dataset()
 data3.link = st.secrets["purchases"]
 
+
 if load_option == opt_desc[0]:    
     tab_open1, tab_open2, tab_open3 = st.tabs(name_list)    
     with tab_open1:
@@ -107,8 +108,10 @@ elif load_option == opt_desc[2]:
     with tab_up3:
             data3.upload(name_list[2])
 
+
 with st.expander("Dataframe Renamer"):
     ren1, ren2, ren3 = st.columns(3)
+
 
     with ren1:
         ren_df = st.radio(
@@ -145,6 +148,7 @@ with st.expander("Dataframe Renamer"):
         elif ren_df == name_list[2]:
             data3.renamecol(ren_col, newcolname)
 
+            
 with st.expander("Dataset Analyzer"):
     anal1, anal2 = st.columns(2)
 
@@ -194,14 +198,29 @@ with st.expander("Dataset Analyzer"):
     
     if anal_col1 == anal_col2:
         st.error('Выбраны одинаковые столбцы, выберите другие значения', icon="🚨")
+    
+    if st.button('Lets analyze it'):
+        if anal_col1 == anal_col2:
+            st.error('А ты настойчивый', icon="🚨")
+        elif anal_col1 != anal_col2:
+            anal3, anal4 = st.columns(2)
+            
+            with anal3:
+                if ren_df == name_list[0]:
+                    data1.renamecol(ren_col, newcolname)
+                elif ren_df == name_list[1]:
+                    data2.renamecol(ren_col, newcolname)
+                elif ren_df == name_list[2]:
+                    data3.renamecol(ren_col, newcolname)
 
-    if X_colunm != Y_colunm:
-        col4, col5 = st.columns(2)
-        with col4:
-            chart_df = filtred_df.loc[:, [X_colunm, Y_colunm]]
-            st.line_chart(chart_df)
-        with col5:
-            st.dataframe(chart_df)
+                chart_df = filtred_df.loc[:, [X_colunm, Y_colunm]]
+                st.line_chart(chart_df)
+            
+            with anal4:
+                st.dataframe(chart_df)
+
+
+
 
 with st.expander("Dataset Joiner"):
     col4, col5, col6, col7 = st.columns(4)
