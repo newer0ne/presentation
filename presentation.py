@@ -122,12 +122,12 @@ with st.expander("Dataframe Renamer"):
                 "Columns selection 👉",
                 (data1.listcols))
             st.write("Choosed column: " + ren_col)
-        if ren_df == data2.name:
+        elif ren_df == data2.name:
             ren_col = st.radio(
                 "Columns selection 👉",
                 (data2.listcols))
             st.write("Choosed column: " + ren_col)
-        if ren_df == data3.name:
+        elif ren_df == data3.name:
             ren_col = st.radio(
                 "Columns selection 👉",
                 (data3.listcols))
@@ -140,38 +140,35 @@ with st.expander("Dataframe Renamer"):
     if st.button('Lets change it'):
         if ren_df == name_list[0]:
             data1.renamecol(ren_col, newcolname)
-            #data1.df[newcolname] = data1.df[ren_col]
-            #del data1.df[ren_col]
-            #data1.df
         elif ren_df == name_list[1]:
-            data2.renamecol(ren_col,newcolname)
-            #data2.df[newcolname] = data2.df[ren_col]
-            #del data2.df[ren_col]
-            #data2.df
+            data2.renamecol(ren_col, newcolname)
         elif ren_df == name_list[2]:
-            data3.df[newcolname] = data3.df[ren_col]
-            del data3.df[ren_col]
-            data3.df             
-        else:
-            st.write('Whatewewr')
-
+            data3.renamecol(ren_col, newcolname)
 
 with st.expander("Dataset Analyzer"):
-    col1, col2, col3 = st.columns(3)
+    anal1, anal2, anal3 = st.columns(3)
 
-    with col1:
-        selected_df = st.radio(
-            "Выбор датасета 👉",
-            ("ads", "leads", "purchases"))
-    if selected_df == "ads":
-        filtred_df = df_ads
-        selected_cols = list_ads
-    elif selected_df == "leads":
-        filtred_df = df_leads
-        selected_cols = list_leads
-    elif selected_df == "purchases":
-        filtred_df = df_purchases
-        selected_cols = list_purchases
+    with anal1:
+        anal_df = st.radio(
+            "Dataframe selection 👉",
+            (data1.name, data2.name, data3.name))
+        st.write("Choosed dataframe: " + anal_df)
+
+        if anal_df == data1.name:
+            anal_col = st.radio(
+                "Columns selection 👉",
+                (data1.listcols))
+            st.write("Choosed column: " + anal_col)
+        elif anal_df == data2.name:
+            anal_col = st.radio(
+                "Columns selection 👉",
+                (data2.listcols))
+            st.write("Choosed column: " + anal_col)
+        elif anal_df == data3.name:
+            anal_col = st.radio(
+                "Columns selection 👉",
+                (data3.listcols))
+            st.write("Choosed column: " + anal_col)
 
 
     with col2:
