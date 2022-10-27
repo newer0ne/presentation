@@ -144,13 +144,13 @@ with ren3:
     newcolname = st.text_input('New column name', ren_col)
     st.write("New name for the selected column: " + newcolname)
 
-    if st.button('Lets change it'):
-        if ren_df == name_list[0]:
-            data1.renamecol(ren_col, newcolname)
-        elif ren_df == name_list[1]:
-            data2.renamecol(ren_col, newcolname)
-        elif ren_df == name_list[2]:
-            data3.renamecol(ren_col, newcolname)
+if st.button('Lets change it'):
+    if ren_df == name_list[0]:
+        data1.renamecol(ren_col, newcolname)
+    elif ren_df == name_list[1]:
+        data2.renamecol(ren_col, newcolname)
+    elif ren_df == name_list[2]:
+        data3.renamecol(ren_col, newcolname)
 
             
 st.write("Dataset Analyzer")
