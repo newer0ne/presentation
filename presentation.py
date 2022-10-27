@@ -132,12 +132,14 @@ with st.expander("Dataframe Renamer"):
         st.write("New name for the selected column: " + newcolname)
         if ren_df == name_list[0]:
             data1.df[ren_col] = data1.df[ren_col]
-            data1.df
+            data1.df[ren_col]
         if ren_df == name_list[1]:
             data2.df[ren_col] = data2.df[ren_col]
+            data2.df[ren_col]
             data2.df
         if ren_df == name_list[2]:
             data3.df[ren_col] = data3.df[ren_col]
+            data3.df[ren_col]
             data3.df
 
         
