@@ -134,7 +134,7 @@ with st.expander("Dataframe Renamer"):
         type(ren_col)
         type(newcolname)
         if ren_df == name_list[0]:
-            data1.df.[ren_col] = data1.df.[ren_col]
+            data1.df[ren_col] = data1.df[ren_col]
 
 
         #ren_df[ren_col] = ren_df[newcolname]
