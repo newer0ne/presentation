@@ -154,7 +154,7 @@ if st.button('Lets change it'):
     
     maxUploadSize = 400
     joined23 = pd.merge(data2.df, data3.df, how = 'left', on = 'client_id')
-    joined123 = pd.merge(data1.df, joined23, how = 'left', on = 'created_at')
+    joined123 = pd.merge(data1.df, joined23, how = 'left', on = {'created_at', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'})
 
     buffer = io.StringIO()
     joined123.info(buf = buffer)
