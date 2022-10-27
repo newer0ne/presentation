@@ -154,13 +154,11 @@ with ren3:
 
 if st.button('Lets change it'):
     if data4.name == name_list[0]:
-        data1.renamecol(ren_col, newcolname)
-        data4.df = data3.df
-        data4.
+        data1.renamecol(ren_col, newcolname, data4.df, data4.listcols)
     elif data4.name == name_list[1]:
-        data2.renamecol(ren_col, newcolname)
+        data2.renamecol(ren_col, newcolname, data4.df, data4.listcols)
     elif data4.name == name_list[2]:
-        data3.renamecol(ren_col, newcolname)
+        data3.renamecol(ren_col, newcolname, data4.df, data4.listcols)
 
             
 st.write("Dataset Analyzer")
