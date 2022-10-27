@@ -130,7 +130,9 @@ with st.expander("Dataframe Renamer"):
     with ren3:
         newcolname = st.text_input('New column name', ren_col)
         st.write("New name for the selected column: " + newcolname)
+        ren_col
         st.text(type(ren_col))
+        newcolname
         st.text(type(newcolname))
 
         if st.button('Lets change it'):
