@@ -151,13 +151,13 @@ with st.expander("Dataset Analyzer"):
     with anal1:
         anal_df1 = st.radio(
             "Dataframe selection to analyzation 👉",
-            (data1.name, data2.name, data3.name), key="anal1")
+            (data1.name, data2.name, data3.name), key="anal11")
         st.write("Choosed dataframe: " + anal_df1)
 
         if anal_df1 == data1.name:
             anal_col1 = st.radio(
                 "Columns x selection 👉",
-                (data1.listcols))
+                (data1.listcols), key = "anal22")
             st.write("Choosed x column: " + anal_col1)
         elif anal_df1 == data2.name:
             anal_col1 = st.radio(
@@ -173,24 +173,24 @@ with st.expander("Dataset Analyzer"):
     with anal2:
         anal_df2 = st.radio(
             "Dataframe selection to analyzation 👉",
-            (data1.name, data2.name, data3.name), key="anal2")
+            (data1.name, data2.name, data3.name), key = "anal21")
         st.write("Choosed dataframe: " + anal_df2)
 
         if anal_df2 == data1.name:
             anal_col2 = st.radio(
-                "Columns x selection 👉",
-                (data1.listcols))
-            st.write("Choosed x column: " + anal_col2)
+                "Columns y selection 👉",
+                (data1.listcols), key = "anal22")
+            st.write("Choosed y column: " + anal_col2)
         elif anal_df2 == data2.name:
             anal_col2 = st.radio(
-                "Columns x selection 👉",
+                "Columns y selection 👉",
                 (data2.listcols))
-            st.write("Choosed x column: " + anal_col2)
+            st.write("Choosed y column: " + anal_col2)
         elif anal_df2 == data3.name:
             anal_col2 = st.radio(
-                "Columns x selection 👉",
+                "Columns y selection 👉",
                 (data3.listcols))
-            st.write("Choosed x column: " + anal_col2)
+            st.write("Choosed y column: " + anal_col2)
 
 
     if X_colunm == Y_colunm:
