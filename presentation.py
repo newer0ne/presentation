@@ -207,21 +207,21 @@ with st.expander("Dataset Analyzer"):
             
             with anal3:
                 if anal_df1 == name_list[0]:
-                    x_col = data1.df.[anal_col1]
+                    x_col = data1.df[anal_col1]
                 elif anal_df1 == name_list[1]:
-                    x_col = data2.df.[anal_col1]
+                    x_col = data2.df[anal_col1]
                 elif anal_df1 == name_list[2]:
-                    x_col = data3.df.[anal_col1]
+                    x_col = data3.df[anal_col1]
                 st.dataframe(x_col)
                 st.line_chart(x_col)
             
             with anal4:
                 if anal_df2 == name_list[0]:
-                    y_col = data1.df.[anal_col1]
+                    y_col = data1.df[anal_col1]
                 elif anal_df2 == name_list[1]:
-                    y_col = data2.df.[anal_col1]
+                    y_col = data2.df[anal_col1]
                 elif anal_df2 == name_list[2]:
-                    y_col = data3.df.[anal_col1]
+                    y_col = data3.df[anal_col1]
                 st.dataframe(y_col)
                 st.line_chart(y_col)
 
