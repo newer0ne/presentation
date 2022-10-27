@@ -132,21 +132,21 @@ with st.expander("Dataframe Renamer"):
         st.write("New name for the selected column: " + newcolname)
         st.text(type(ren_col))
         st.text(type(newcolname))
-        if ren_df == name_list[0]:
-            data1.df[ren_col] = data1.df[newcolname]
-            data1.df[newcolname]
-        if ren_df == name_list[1]:
-            data2.df[ren_col] = data2.df['penis']
-            data2.df[newcolname]
-            data2.df
-        if ren_df == name_list[2]:
-            data3.df[ren_col] = data3.df[newcolname]
-            data3.df[newcolname]
-            data3.df
-
-        
-
-
+        if st.button('Lets change it'):
+            if ren_df == name_list[0]:
+                data1.df[ren_col] = data1.df[newcolname]
+                data1.df[newcolname]
+                data1.df
+            if ren_df == name_list[1]:
+                data2.df[ren_col] = data2.df[newcolname]
+                data2.df[newcolname]
+                data2.df
+            if ren_df == name_list[2]:
+                data3.df[ren_col] = data3.df[newcolname]
+                data3.df[newcolname]
+                data3.df
+            else:
+                st.write('Whatewewr')
 
 
 with st.expander("Dataset Analyzer"):
