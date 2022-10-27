@@ -21,7 +21,6 @@ st.markdown("<h2 style='text-align: center;'>Datalyzer</h2>", unsafe_allow_html=
 header_tasklink = """[<h5 style='text-align: center;'>Test task:</h5>](https://xoservices.notion.site/1872d331265946a0ae2c5c9069189fd7)"""
 st.markdown(header_tasklink, unsafe_allow_html=True)
 
-
 class Dataset:
     def __init__(self) -> None:
         self.name = []  
@@ -131,17 +130,16 @@ with st.expander("Dataframe Renamer"):
     with ren3:
         newcolname = st.text_input('New column name', ren_col)
         st.write("New name for the selected column: " + newcolname)
-        type(ren_col)
-        type(newcolname)
         if ren_df == name_list[0]:
             data1.df[ren_col] = data1.df[ren_col]
+            data1.df
+        if ren_df == name_list[1]:
+            data2.df[ren_col] = data2.df[ren_col]
+            data2.df
+        if ren_df == name_list[2]:
+            data3.df[ren_col] = data3.df[ren_col]
+            data3.df
 
-
-        #ren_df[ren_col] = ren_df[newcolname]
-        ren_df
-        #ren_df.rename(columns = example, inplace = True)
-
-st.dataframe(data1.df)
         
 
 
