@@ -164,7 +164,7 @@ with anal1:
         "Columns x selection 👉",
         (data1.listcols), key = "anal1")
     st.write("Choosed x column: " + anal_col1)
-    st.line_chart(anal_col1)
+    st.line_chart(data1.df.loc[anal_col1])
 
 with anal2:
     st.write("Choosed dataframe: " + data2.name)
@@ -172,7 +172,7 @@ with anal2:
         "Columns x selection 👉",
         (data2.listcols), key = "anal2")
     st.write("Choosed x column: " + anal_col2)
-    st.line_chart(anal_col2)
+    st.line_chart(data2.df.loc[anal_col2])
 
 with anal3:
     st.write("Choosed dataframe: " + data3.name)
@@ -180,7 +180,7 @@ with anal3:
         "Columns x selection 👉",
         (data3.listcols), key = "anal3")
     st.write("Choosed x column: " + anal_col3)
-    st.line_chart(anal_col3)
+    st.line_chart(data3.df.loc[anal_col3])
 
 with anal4:
     st.write("Choosed dataframe: " + data4.name)
@@ -188,7 +188,7 @@ with anal4:
         "Columns x selection 👉",
         (data4.listcols), key = "anal4")
     st.write("Choosed x column: " + anal_col4)
-    st.line_chart(anal_col4)
+    st.line_chart(data4.df.loc[anal_col4])
     
 
 
