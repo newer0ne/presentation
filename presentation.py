@@ -206,18 +206,30 @@ with st.expander("Dataset Analyzer"):
             anal3, anal4 = st.columns(2)
             
             with anal3:
-                if ren_df == name_list[0]:
-                    data1.renamecol(ren_col, newcolname)
-                elif ren_df == name_list[1]:
-                    data2.renamecol(ren_col, newcolname)
-                elif ren_df == name_list[2]:
-                    data3.renamecol(ren_col, newcolname)
-
-                chart_df = filtred_df.loc[:, [X_colunm, Y_colunm]]
-                st.line_chart(chart_df)
+                if anal_df1 == name_list[0]:
+                    x_col = data1.df.[anal_col1]
+                elif anal_df1 == name_list[1]:
+                    x_col = data2.df.[anal_col1]
+                elif anal_df1 == name_list[2]:
+                    x_col = data3.df.[anal_col1]
+                st.dataframe(x_col)
+                st.line_chart(x_col)
             
             with anal4:
-                st.dataframe(chart_df)
+                if anal_df2 == name_list[0]:
+                    y_col = data1.df.[anal_col1]
+                elif anal_df2 == name_list[1]:
+                    y_col = data2.df.[anal_col1]
+                elif anal_df2 == name_list[2]:
+                    y_col = data3.df.[anal_col1]
+                st.dataframe(y_col)
+                st.line_chart(y_col)
+
+                #chart_df = filtred_df.loc[:, [X_colunm, Y_colunm]]
+                #st.line_chart(chart_df)
+            
+            #with anal4:
+                #st.dataframe(chart_df)
 
 
 
