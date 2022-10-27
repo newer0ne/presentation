@@ -152,29 +152,40 @@ if st.button('Lets change it'):
     elif data4.name == name_list[2]:
         data3.renamecol(ren_col, newcolname)
 
+    joined23 = pd.merge(data2.df, data3.df, how = 'left', on = 'client_id')
+    joined123 = pd.merge(data1.df, joined23, how = 'left', on = 'created_at')
+
+
+
+
+
+
 with st.expander("Dataset Joiner"):
     col4, col5, col6, col7 = st.columns(4)
+
     with col4:
-        join_df_1 = st.radio(
+        join1 = st.radio(
             "Выбор первого датафрейма для Join 👉",
-            ("df_ads", "df_leads", "df_purchases"))
-        if join_df_1 == "df_ads":
-            join_df_1_ = df_ads
-        if join_df_1 == "df_leads":
-            join_df_1_ = df_leads
-        if join_df_1 == "df_purchases":
-            join_df_1_ = list_purchases
+            (data1.name, data2.name, data3.name))
+
+        if join1 == data1.name:
+            join1_df = data1.df
+        if join1 == data2.name:
+            join1_df = data2.df
+        if join1 == data3.name:
+            join1_df = data3.df
 
     with col5:
-        join_df_2 = st.radio(
+        join2 = st.radio(
             "Выбор второго датафрейма для Join 👉",
-            ("df_ads", "df_leads", "df_purchases"))
-        if join_df_2 == "df_ads":
-            join_df_2_ = df_ads
-        if join_df_2 == "df_leads":
-            join_df_2_ = df_leads
-        if join_df_2 == "df_purchases":
-            join_df_2_ = df_purchases
+            (data1.name, data2.name, data3.name))
+
+        if join2 == data1.name:
+            join2_df = data1.df
+        if join2 == data2.name:
+            join2_df = data2.df
+        if join2 == data3.name:
+            join2_df = data3.df
 
     with col6:
         join_type = st.radio(
