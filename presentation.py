@@ -191,9 +191,8 @@ with st.expander("Dataset Analyzer"):
                 "Columns y selection 👉",
                 (data3.listcols))
             st.write("Choosed y column: " + anal_col2)
-
-
-    if X_colunm == Y_colunm:
+    
+    if anal_col1 == anal_col2:
         st.error('Выбраны одинаковые столбцы, выберите другие значения', icon="🚨")
 
     if X_colunm != Y_colunm:
