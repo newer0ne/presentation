@@ -119,17 +119,11 @@ elif load_option == opt_desc[2]:
 st.write("Dataframe Renamer")
 ren1, ren2, ren3 = st.columns(3)
 
-
 with ren1:
     data4.name = st.radio(
         "Dataframe selection to rename 👉",
         (data1.name, data2.name, data3.name))
     st.write("Choosed dataframe: " + data4.name)
-    
-
-
-
-
 
 with ren2:
     if data4.name == data1.name:
@@ -162,80 +156,41 @@ if st.button('Lets change it'):
 
             
 st.write("Dataset Analyzer")
-anal1, anal2 = st.columns(2)
+anal1, anal2, anal3, anal4 = st.columns(4)
 
 with anal1:
-    anal_df1 = st.radio(
-        "Dataframe selection to analyzation 👉",
-        (data1.name, data2.name, data3.name), key = "anal11")
-    st.write("Choosed dataframe: " + anal_df1)
-
-    if anal_df1 == data1.name:
-        anal_col1 = st.radio(
-            "Columns x selection 👉",
-            (data1.listcols), key = "anal12")
-        st.write("Choosed x column: " + anal_col1)
-    elif anal_df1 == data2.name:
-        anal_col1 = st.radio(
-            "Columns x selection 👉",
-            (data2.listcols))
-        st.write("Choosed x column: " + anal_col1)
-    elif anal_df1 == data3.name:
-        anal_col1 = st.radio(
-            "Columns x selection 👉",
-            (data3.listcols))
-        st.write("Choosed x column: " + anal_col1)
+    st.write("Choosed dataframe: " + data1.name)
+    anal_col1 = st.radio(
+        "Columns x selection 👉",
+        (data1.listcols), key = "anal1")
+    st.write("Choosed x column: " + anal_col1)
+    st.line_chart(anal_col1)
 
 with anal2:
-    anal_df2 = st.radio(
-        "Dataframe selection to analyzation 👉",
-        (data1.name, data2.name, data3.name), key = "anal21")
-    st.write("Choosed dataframe: " + anal_df2)
+    st.write("Choosed dataframe: " + data2.name)
+    anal_col2 = st.radio(
+        "Columns x selection 👉",
+        (data2.listcols), key = "anal2")
+    st.write("Choosed x column: " + anal_col2)
+    st.line_chart(anal_col2)
 
-    if anal_df2 == data1.name:
-        anal_col2 = st.radio(
-            "Columns y selection 👉",
-            (data1.listcols), key = "anal22")
-        st.write("Choosed y column: " + anal_col2)
-    elif anal_df2 == data2.name:
-        anal_col2 = st.radio(
-            "Columns y selection 👉",
-            (data2.listcols))
-        st.write("Choosed y column: " + anal_col2)
-    elif anal_df2 == data3.name:
-        anal_col2 = st.radio(
-            "Columns y selection 👉",
-            (data3.listcols))
-        st.write("Choosed y column: " + anal_col2)
+with anal3:
+    st.write("Choosed dataframe: " + data3.name)
+    anal_col3 = st.radio(
+        "Columns x selection 👉",
+        (data3.listcols), key = "anal3")
+    st.write("Choosed x column: " + anal_col3)
+    st.line_chart(anal_col3)
+
+with anal4:
+    st.write("Choosed dataframe: " + data4.name)
+    anal_col4 = st.radio(
+        "Columns x selection 👉",
+        (data4.listcols), key = "anal4")
+    st.write("Choosed x column: " + anal_col4)
+    st.line_chart(anal_col4)
     
-if anal_col1 == anal_col2:
-    st.error('Выбраны одинаковые столбцы, выберите другие значения', icon="🚨")
-    
-if st.button('Lets analyze it'):
-    if anal_col1 == anal_col2:
-        st.error('А ты настойчивый', icon="🚨")
-    elif anal_col1 != anal_col2:
-        anal3, anal4 = st.columns(2)
-            
-        with anal3:
-            if anal_df1 == name_list[0]:
-                x_col = data1.df[anal_col1]
-            elif anal_df1 == name_list[1]:
-                x_col = data2.df[anal_col1]
-            elif anal_df1 == name_list[2]:
-                x_col = data3.df[anal_col1]
-            st.dataframe(x_col)
-            st.line_chart(x_col)
-            
-        with anal4:
-            if anal_df2 == name_list[0]:
-                y_col = data1.df[anal_col2]
-            elif anal_df2 == name_list[1]:
-                y_col = data2.df[anal_col2]
-            elif anal_df2 == name_list[2]:
-                y_col = data3.df[anal_col2]
-            st.dataframe(y_col)
-            st.line_chart(y_col)
+
 
 with st.expander("Dataset Joiner"):
     col4, col5, col6, col7 = st.columns(4)
