@@ -152,14 +152,6 @@ if st.button('Lets change it'):
     elif data4.name == name_list[2]:
         data3.renamecol(ren_col, newcolname)
 
-    anal_col4 = st.radio(
-        "Columns x selection 👉",
-        (data4.listcols), key = "anal4")
-    st.write("Choosed x column: " + anal_col4)
-    st.line_chart(data4.df.loc[:, anal_col4])
-    
-
-
 with st.expander("Dataset Joiner"):
     col4, col5, col6, col7 = st.columns(4)
     with col4:
