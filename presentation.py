@@ -61,14 +61,16 @@ class Dataset:
                 self.listcols.append(self.df.columns[i])
             st.text(self.listcols)
 
-    def renamecol(self, oldname, newname):
+    def renamecol(self, oldname, newname, data_df, datalist):
         self.df[newname] = self.df[oldname]
         del self.df[oldname]
+        data_df = self.df
         self.listcols.remove(oldname)
         for i in range(len(self.df.columns)):
             self.listcols.append(self.df.columns[i])
-        st.text(self.listcols)
-        st.dataframe(self.df)
+        datalist = self.listcols
+        st.text(datalist)
+        st.dataframe(data_df)
 
 
 opt_desc = ["Open fixed data from test task", "Link on data from test task", "Upload data whatewer you want"]
@@ -83,6 +85,7 @@ data2 = Dataset()
 data2.link = st.secrets["leads"]
 data3 = Dataset()
 data3.link = st.secrets["purchases"]
+data4 = Dataset()
 
 
 if load_option == opt_desc[0]:    
@@ -118,23 +121,28 @@ ren1, ren2, ren3 = st.columns(3)
 
 
 with ren1:
-    ren_df = st.radio(
+    data4.name = st.radio(
         "Dataframe selection to rename 👉",
         (data1.name, data2.name, data3.name))
-    st.write("Choosed dataframe: " + ren_df)
+    st.write("Choosed dataframe: " + data4.name)
     
+
+
+
+
+
 with ren2:
-    if ren_df == data1.name:
+    if data4.name == data1.name:
         ren_col = st.radio(
             "Columns selection 👉",
             (data1.listcols))
         st.write("Choosed column: " + ren_col)
-    elif ren_df == data2.name:
+    elif data4.name == data2.name:
         ren_col = st.radio(
             "Columns selection 👉",
             (data2.listcols))
         st.write("Choosed column: " + ren_col)
-    elif ren_df == data3.name:
+    elif data4.name == data3.name:
         ren_col = st.radio(
             "Columns selection 👉",
             (data3.listcols))
@@ -145,11 +153,13 @@ with ren3:
     st.write("New name for the selected column: " + newcolname)
 
 if st.button('Lets change it'):
-    if ren_df == name_list[0]:
+    if data4.name == name_list[0]:
         data1.renamecol(ren_col, newcolname)
-    elif ren_df == name_list[1]:
+        data4.df = data3.df
+        data4.
+    elif data4.name == name_list[1]:
         data2.renamecol(ren_col, newcolname)
-    elif ren_df == name_list[2]:
+    elif data4.name == name_list[2]:
         data3.renamecol(ren_col, newcolname)
 
             
