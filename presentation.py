@@ -64,7 +64,7 @@ class Dataset:
     def renamecol(self, oldname, newname):
         self.df[newname] = self.df[oldname]
         del self.df[oldname]
-        self.df    
+        st.dataframe(self.df)
 
 
 opt_desc = ["Open fixed data from test task", "Link on data from test task", "Upload data whatewer you want"]
@@ -139,7 +139,7 @@ with st.expander("Dataframe Renamer"):
 
     if st.button('Lets change it'):
         if ren_df == name_list[0]:
-            data1.renamecol(ren_col,newcolname)
+            data1.renamecol(ren_col, newcolname)
             #data1.df[newcolname] = data1.df[ren_col]
             #del data1.df[ren_col]
             #data1.df
