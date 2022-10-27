@@ -128,6 +128,16 @@ with st.expander("Dataframe Renamer"):
                 (data3.listcols))
             st.write("Choosed dataframe: " + ren_col)
 
+    with ren3:
+        newcolname = st.text_input('New column name', ren_col)
+        ren_df.rename(columns = {ren_col:newcolname}, inplace = True)
+
+st.dataframe(ren_df)
+        
+
+
+
+
 with st.expander("Dataset Analyzer"):
     col1, col2, col3 = st.columns(3)
 
