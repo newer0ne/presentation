@@ -131,6 +131,7 @@ with st.expander("Dataframe Renamer"):
         newcolname = st.text_input('New column name', ren_col)
         st.write("New name for the selected column: " + newcolname)
         st.text(type(ren_col))
+        st.text(type(newcolname))
         if ren_df == name_list[0]:
             data1.df[ren_col] = data1.df[newcolname]
             data1.df[newcolname]
