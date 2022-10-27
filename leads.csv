@@ -1,4 +1,4 @@
-lead_created_at,lead_id,d_lead_utm_source,d_lead_utm_medium,d_lead_utm_campaign,d_lead_utm_content,d_lead_utm_term,client_id
+created_at,lead_id,utm_source,medium,utm_campaign,utm_content,utm_term,client_id
 2022-10-16,d8c4a9e8-4d4a-11ed-907e-848f69e142cf,,,,,,d8c4a9e9-4d4a-11ed-907e-848f69e142cf
 2022-10-16,c48f9767-4d4a-11ed-907e-848f69e142cf,,,,,,c48f9768-4d4a-11ed-907e-848f69e142cf
 2022-10-16,d74ac455-4d49-11ed-907e-848f69e142cf,vkontakte,social,kartasetevaya,,,f64c97d5-31ff-11ea-abeb-c412f533dba1
