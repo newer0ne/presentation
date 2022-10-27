@@ -132,6 +132,9 @@ with st.expander("Dataframe Renamer"):
         st.write("New name for the selected column: " + newcolname)
         st.text(type(ren_col))
         st.text(type(newcolname))
+        for i in (ren_col, newcolname):
+            dict[i] = locals()[i]
+        st.text(dict[i])
         if st.button('Lets change it'):
             if ren_df == name_list[0]:
                 data1.listcols
