@@ -131,10 +131,12 @@ with st.expander("Dataframe Renamer"):
     with ren3:
         newcolname = st.text_input('New column name', ren_col)
         st.write("New name for the selected column: " + newcolname)
-        ren_col
-        newcolname
-        example = {ren_col:newcolname}
-        example 
+        type(ren_col)
+        type(newcolname)
+        if ren_df == name_list[0]:
+            data1.df.[ren_col] = data1.df.[ren_col]
+
+
         #ren_df[ren_col] = ren_df[newcolname]
         ren_df
         ren_df.rename(columns = example, inplace = True)
