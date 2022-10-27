@@ -113,36 +113,36 @@ elif load_option == opt_desc[2]:
             data3.upload(name_list[2])
 
 
-    st.write("Dataframe Renamer")
-    ren1, ren2, ren3 = st.columns(3)
+st.write("Dataframe Renamer")
+ren1, ren2, ren3 = st.columns(3)
 
 
-    with ren1:
-        ren_df = st.radio(
-            "Dataframe selection to rename 👉",
-            (data1.name, data2.name, data3.name))
-        st.write("Choosed dataframe: " + ren_df)
+with ren1:
+    ren_df = st.radio(
+        "Dataframe selection to rename 👉",
+        (data1.name, data2.name, data3.name))
+    st.write("Choosed dataframe: " + ren_df)
     
-    with ren2:
-        if ren_df == data1.name:
-            ren_col = st.radio(
-                "Columns selection 👉",
-                (data1.listcols))
-            st.write("Choosed column: " + ren_col)
-        elif ren_df == data2.name:
-            ren_col = st.radio(
-                "Columns selection 👉",
-                (data2.listcols))
-            st.write("Choosed column: " + ren_col)
-        elif ren_df == data3.name:
-            ren_col = st.radio(
-                "Columns selection 👉",
-                (data3.listcols))
-            st.write("Choosed column: " + ren_col)
+with ren2:
+    if ren_df == data1.name:
+        ren_col = st.radio(
+            "Columns selection 👉",
+            (data1.listcols))
+        st.write("Choosed column: " + ren_col)
+    elif ren_df == data2.name:
+        ren_col = st.radio(
+            "Columns selection 👉",
+            (data2.listcols))
+        st.write("Choosed column: " + ren_col)
+    elif ren_df == data3.name:
+        ren_col = st.radio(
+            "Columns selection 👉",
+            (data3.listcols))
+        st.write("Choosed column: " + ren_col)
 
-    with ren3:
-        newcolname = st.text_input('New column name', ren_col)
-        st.write("New name for the selected column: " + newcolname)
+with ren3:
+    newcolname = st.text_input('New column name', ren_col)
+    st.write("New name for the selected column: " + newcolname)
 
     if st.button('Lets change it'):
         if ren_df == name_list[0]:
@@ -153,90 +153,81 @@ elif load_option == opt_desc[2]:
             data3.renamecol(ren_col, newcolname)
 
             
-    st.write("Dataset Analyzer")
-    anal1, anal2 = st.columns(2)
+st.write("Dataset Analyzer")
+anal1, anal2 = st.columns(2)
 
-    with anal1:
-        anal_df1 = st.radio(
-            "Dataframe selection to analyzation 👉",
-            (data1.name, data2.name, data3.name), key = "anal11")
-        st.write("Choosed dataframe: " + anal_df1)
+with anal1:
+    anal_df1 = st.radio(
+        "Dataframe selection to analyzation 👉",
+        (data1.name, data2.name, data3.name), key = "anal11")
+    st.write("Choosed dataframe: " + anal_df1)
 
-        if anal_df1 == data1.name:
-            anal_col1 = st.radio(
-                "Columns x selection 👉",
-                (data1.listcols), key = "anal12")
-            st.write("Choosed x column: " + anal_col1)
-        elif anal_df1 == data2.name:
-            anal_col1 = st.radio(
-                "Columns x selection 👉",
-                (data2.listcols))
-            st.write("Choosed x column: " + anal_col1)
-        elif anal_df1 == data3.name:
-            anal_col1 = st.radio(
-                "Columns x selection 👉",
-                (data3.listcols))
-            st.write("Choosed x column: " + anal_col1)
+    if anal_df1 == data1.name:
+        anal_col1 = st.radio(
+            "Columns x selection 👉",
+            (data1.listcols), key = "anal12")
+        st.write("Choosed x column: " + anal_col1)
+    elif anal_df1 == data2.name:
+        anal_col1 = st.radio(
+            "Columns x selection 👉",
+            (data2.listcols))
+        st.write("Choosed x column: " + anal_col1)
+    elif anal_df1 == data3.name:
+        anal_col1 = st.radio(
+            "Columns x selection 👉",
+            (data3.listcols))
+        st.write("Choosed x column: " + anal_col1)
 
-    with anal2:
-        anal_df2 = st.radio(
-            "Dataframe selection to analyzation 👉",
-            (data1.name, data2.name, data3.name), key = "anal21")
-        st.write("Choosed dataframe: " + anal_df2)
+with anal2:
+    anal_df2 = st.radio(
+        "Dataframe selection to analyzation 👉",
+        (data1.name, data2.name, data3.name), key = "anal21")
+    st.write("Choosed dataframe: " + anal_df2)
 
-        if anal_df2 == data1.name:
-            anal_col2 = st.radio(
-                "Columns y selection 👉",
-                (data1.listcols), key = "anal22")
-            st.write("Choosed y column: " + anal_col2)
-        elif anal_df2 == data2.name:
-            anal_col2 = st.radio(
-                "Columns y selection 👉",
-                (data2.listcols))
-            st.write("Choosed y column: " + anal_col2)
-        elif anal_df2 == data3.name:
-            anal_col2 = st.radio(
-                "Columns y selection 👉",
-                (data3.listcols))
-            st.write("Choosed y column: " + anal_col2)
+    if anal_df2 == data1.name:
+        anal_col2 = st.radio(
+            "Columns y selection 👉",
+            (data1.listcols), key = "anal22")
+        st.write("Choosed y column: " + anal_col2)
+    elif anal_df2 == data2.name:
+        anal_col2 = st.radio(
+            "Columns y selection 👉",
+            (data2.listcols))
+        st.write("Choosed y column: " + anal_col2)
+    elif anal_df2 == data3.name:
+        anal_col2 = st.radio(
+            "Columns y selection 👉",
+            (data3.listcols))
+        st.write("Choosed y column: " + anal_col2)
     
+if anal_col1 == anal_col2:
+    st.error('Выбраны одинаковые столбцы, выберите другие значения', icon="🚨")
+    
+if st.button('Lets analyze it'):
     if anal_col1 == anal_col2:
-        st.error('Выбраны одинаковые столбцы, выберите другие значения', icon="🚨")
-    
-    if st.button('Lets analyze it'):
-        if anal_col1 == anal_col2:
-            st.error('А ты настойчивый', icon="🚨")
-        elif anal_col1 != anal_col2:
-            anal3, anal4 = st.columns(2)
+        st.error('А ты настойчивый', icon="🚨")
+    elif anal_col1 != anal_col2:
+        anal3, anal4 = st.columns(2)
             
-            with anal3:
-                if anal_df1 == name_list[0]:
-                    x_col = data1.df[anal_col1]
-                elif anal_df1 == name_list[1]:
-                    x_col = data2.df[anal_col1]
-                elif anal_df1 == name_list[2]:
-                    x_col = data3.df[anal_col1]
-                st.dataframe(x_col)
-                st.line_chart(x_col)
+        with anal3:
+            if anal_df1 == name_list[0]:
+                x_col = data1.df[anal_col1]
+            elif anal_df1 == name_list[1]:
+                x_col = data2.df[anal_col1]
+            elif anal_df1 == name_list[2]:
+                x_col = data3.df[anal_col1]
+            st.dataframe(x_col)
+            st.line_chart(x_col)
             
-            with anal4:
-                if anal_df2 == name_list[0]:
-                    y_col = data1.df[anal_col2]
-                elif anal_df2 == name_list[1]:
-                    y_col = data2.df[anal_col2]
-                elif anal_df2 == name_list[2]:
-                    y_col = data3.df[anal_col2]
-                st.dataframe(y_col)
-                st.line_chart(y_col)
-
-                #chart_df = filtred_df.loc[:, [X_colunm, Y_colunm]]
-                #st.line_chart(chart_df)
-            
-            #with anal4:
-                #st.dataframe(chart_df)
-
-
-
+        with anal4:
+            if anal_df2 == name_list[0]:
+                y_col = data1.df[anal_col2]
+            elif anal_df2 == name_list[1]:
+                y_col = data2.df[anal_col2]
+            elif anal_df2 == name_list[2]:
+                y_col = data3.df[anal_col2]
+            st.dataframe(y_col)
+            st.line_chart(y_col)
 
 with st.expander("Dataset Joiner"):
     col4, col5, col6, col7 = st.columns(4)
