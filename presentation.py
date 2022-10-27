@@ -146,40 +146,52 @@ with st.expander("Dataframe Renamer"):
             data3.renamecol(ren_col, newcolname)
 
 with st.expander("Dataset Analyzer"):
-    anal1, anal2, anal3 = st.columns(3)
+    anal1, anal2 = st.columns(2)
 
     with anal1:
-        anal_df = st.radio(
+        anal_df1 = st.radio(
             "Dataframe selection to analyzation 👉",
-            (data1.name, data2.name, data3.name), key="anal")
-        st.write("Choosed dataframe: " + anal_df)
+            (data1.name, data2.name, data3.name), key="anal1")
+        st.write("Choosed dataframe: " + anal_df1)
 
-        if anal_df == data1.name:
-            anal_col = st.radio(
-                "Columns selection 👉",
+        if anal_df1 == data1.name:
+            anal_col1 = st.radio(
+                "Columns x selection 👉",
                 (data1.listcols))
-            st.write("Choosed column: " + anal_col)
-        elif anal_df == data2.name:
-            anal_col = st.radio(
-                "Columns selection 👉",
+            st.write("Choosed x column: " + anal_col1)
+        elif anal_df1 == data2.name:
+            anal_col1 = st.radio(
+                "Columns x selection 👉",
                 (data2.listcols))
-            st.write("Choosed column: " + anal_col)
-        elif anal_df == data3.name:
-            anal_col = st.radio(
-                "Columns selection 👉",
+            st.write("Choosed x column: " + anal_col1)
+        elif anal_df1 == data3.name:
+            anal_col1 = st.radio(
+                "Columns x selection 👉",
                 (data3.listcols))
-            st.write("Choosed column: " + anal_col)
+            st.write("Choosed x column: " + anal_col1)
 
+    with anal2:
+        anal_df2 = st.radio(
+            "Dataframe selection to analyzation 👉",
+            (data1.name, data2.name, data3.name), key="anal2")
+        st.write("Choosed dataframe: " + anal_df2)
 
-    with col2:
-        X_colunm = st.radio(
-            "Выбор столбца по оси X",
-            (selected_cols))
+        if anal_df2 == data1.name:
+            anal_col2 = st.radio(
+                "Columns x selection 👉",
+                (data1.listcols))
+            st.write("Choosed x column: " + anal_col2)
+        elif anal_df2 == data2.name:
+            anal_col2 = st.radio(
+                "Columns x selection 👉",
+                (data2.listcols))
+            st.write("Choosed x column: " + anal_col2)
+        elif anal_df2 == data3.name:
+            anal_col2 = st.radio(
+                "Columns x selection 👉",
+                (data3.listcols))
+            st.write("Choosed x column: " + anal_col2)
 
-    with col3:
-        Y_colunm = st.radio(
-            "Выбор столбца по оси Y",
-            (selected_cols))
 
     if X_colunm == Y_colunm:
         st.error('Выбраны одинаковые столбцы, выберите другие значения', icon="🚨")
