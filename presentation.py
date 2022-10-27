@@ -65,8 +65,6 @@ class Dataset:
         self.df[newname] = self.df[oldname]
         del self.df[oldname]
         self.listcols.remove(oldname)
-        st.dataframe(self.df)
-        st.text(self.listcols)
         for i in range(len(self.df.columns)):
             self.listcols.append(self.df.columns[i])
         st.text(self.listcols)
