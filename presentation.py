@@ -11,7 +11,7 @@ import requests
 from io import StringIO
 
 conn = connect()
-@st.cache(ttl=600)
+@st.cache(ttl=1200)
 def run_query(query):
     rows = conn.execute(query, headers=1)
     return rows
