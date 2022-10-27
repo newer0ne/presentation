@@ -140,6 +140,7 @@ with st.expander("Dataframe Renamer"):
                 data1.df
             if ren_df == name_list[1]:
                 data2.listcols
+                data2.df.columns
                 #data2.df.rename(columns = [])
                 data2.df[ren_col] = data2.df[newcolname]
                 data2.df[newcolname]
