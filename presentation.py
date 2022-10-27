@@ -154,36 +154,7 @@ if st.button('Lets change it'):
     elif data4.name == name_list[2]:
         data3.renamecol(ren_col, newcolname, data4.df, data4.listcols)
 
-            
-st.write("Dataset Analyzer")
-anal1, anal2, anal3, anal4 = st.columns(4)
-
-with anal1:
-    st.write("Choosed dataframe: " + data1.name)
-    anal_col1 = st.radio(
-        "Columns x selection 👉",
-        (data1.listcols), key = "anal1")
-    st.write("Choosed x column: " + anal_col1)
-    st.line_chart(data1.df.loc[:, anal_col1])
-
-with anal2:
-    st.write("Choosed dataframe: " + data2.name)
-    anal_col2 = st.radio(
-        "Columns x selection 👉",
-        (data2.listcols), key = "anal2")
-    st.write("Choosed x column: " + anal_col2)
-    st.line_chart(data2.df.loc[:, anal_col2])
-
-with anal3:
-    st.write("Choosed dataframe: " + data3.name)
-    anal_col3 = st.radio(
-        "Columns x selection 👉",
-        (data3.listcols), key = "anal3")
-    st.write("Choosed x column: " + anal_col3)
-    st.line_chart(data3.df.loc[:, anal_col3])
-
-with anal4:
-    st.write("Choosed dataframe: " + data4.name)
+    st.dataframe(data4.df)
     anal_col4 = st.radio(
         "Columns x selection 👉",
         (data4.listcols), key = "anal4")
