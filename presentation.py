@@ -134,9 +134,8 @@ with st.expander("Dataframe Renamer"):
         ren_col
         newcolname
         example = {ren_col:newcolname}
-        example
-        ren_df[ren_col] = ren_df[newcolname]
-        #ren_df.rename(columns = {ren_col:newcolname}, inplace = True)
+        #ren_df[ren_col] = ren_df[newcolname]
+        ren_df.rename(columns = [example], inplace = True)
 
 st.dataframe(ren_df)
         
