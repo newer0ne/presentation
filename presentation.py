@@ -151,7 +151,8 @@ if st.button('Lets change it'):
         data2.renamecol(ren_col, newcolname)
     elif data4.name == name_list[2]:
         data3.renamecol(ren_col, newcolname)
-
+    
+    maxUploadSize = 400
     joined23 = pd.merge(data2.df, data3.df, how = 'left', on = 'client_id')
     joined123 = pd.merge(data1.df, joined23, how = 'left', on = 'created_at')
 
