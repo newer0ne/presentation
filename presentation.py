@@ -130,7 +130,7 @@ with st.expander("Dataframe Renamer"):
 
     with ren3:
         newcolname = st.text_input('New column name', ren_col)
-        ren_df.rename(columns = {ren_col:newcolname}, inplace = True)
+        ren_df.rename(columns = {[ren_col]:[newcolname]}, inplace = True)
 
 st.dataframe(ren_df)
         
