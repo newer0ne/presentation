@@ -1,6 +1,7 @@
 
 from pickle import APPEND
 from queue import Empty
+from tkinter.tix import COLUMN
 import streamlit as st
 from gsheetsdb import connect
 import pandas as pd
@@ -87,9 +88,11 @@ data4 = Dataset()
 
 
 if load_option == opt_desc[0]:    
-    tab_open1, tab_open2, tab_open3 = st.tabs(name_list)    
+    tab_open1, tab_open2, tab_open3 = st.tabs(name_list)
+
     with tab_open1:
         data1.open(name_list[0])
+        data1.df.iloc[:, 0]
     with tab_open2:
         data2.open(name_list[1])    
     with tab_open3:
