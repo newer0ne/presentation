@@ -94,9 +94,11 @@ if load_option == opt_desc[0]:
         st.write(len(data1.df.axes[0]))
         data1.df.iloc[:, 0]
     with tab_open2:
-        data2.open(name_list[1])    
+        data2.open(name_list[1])   
+        st.write(len(data21.df.axes[0])) 
     with tab_open3:
         data3.open(name_list[2])
+        st.write(len(data3.df.axes[0]))        
 
 elif load_option == opt_desc[1]:
     tab_load1, tab_load2, tab_load3 = st.tabs(name_list)    
