@@ -35,7 +35,7 @@ class Dataset:
         self.name = index
         for i in range(len(self.df.columns)):
             self.listcols.append(self.df.columns[i])
-        st.text(self.listcols)
+        st.text("Названия столбцов в dataframe: ", self.listcols)
 
     def linkup(self, index):
         #link_url = st.secrets[self.link]
@@ -91,8 +91,10 @@ if load_option == opt_desc[0]:
 
     with tab_open1:
         data1.open(name_list[0])
-        st.write(len(data1.df.axes[0]))
+        st.write("Количество строк в таблице: ", len(data1.df.axes[0]))
+        st.write("Уникальные значения в столбце 3: ")
         st.dataframe(data1.df.iloc[:, 2].unique())
+
     with tab_open2:
         data2.open(name_list[1])   
         st.write(len(data2.df.axes[0]))
