@@ -1,7 +1,6 @@
 
 from pickle import APPEND
 from queue import Empty
-from tkinter.tix import COLUMN
 import streamlit as st
 from gsheetsdb import connect
 import pandas as pd
