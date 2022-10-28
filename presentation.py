@@ -91,7 +91,6 @@ if load_option == opt_desc[0]:
 
     with tab_open1:
         data1.open(name_list[0])
-        data1.df
         st.write(len(data1.df.axes[0]))
         data1.df.iloc[:, 0]
     with tab_open2:
