@@ -37,6 +37,9 @@ class Dataset:
             self.listcols.append(self.df.columns[i])
         st.text("Названия столбцов в dataframe:")
         st.text(self.listcols)
+        st.write("Количество строк в таблице: ", len(self.df.axes[0]))
+        st.write("Уникальные значения в столбце 3: ")
+        st.dataframe(self.df.iloc[:, 2].unique())
 
     def linkup(self, index):
         #link_url = st.secrets[self.link]
