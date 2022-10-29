@@ -236,7 +236,10 @@ m123i.info(buf = buffer6)
 m123i = buffer6.getvalue()
 st.text('Посмотрим на параметры таблицы после преобразований')
 st.text(m123i)
+
+del m123['utm_source']
 st.dataframe(m123)
+
 
 
 
