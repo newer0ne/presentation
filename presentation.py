@@ -98,6 +98,7 @@ if load_option == opt_desc[0]:
         data1.open(name_list[0])
         data1.df['m_clicks'] = data1.df['m_clicks'].astype(int)
         data1.df['m_cost'] = data1.df['m_cost'].astype(int)
+        del data1.df['account_id']
         del data1.df['utm_term']
         del data1.df['utm_medium']
         st.dataframe(data1.df)
