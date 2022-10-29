@@ -234,6 +234,7 @@ buffer6 = io.StringIO()
 m123i = m123
 m123i.info(buf = buffer6)
 m123i = buffer6.getvalue()
+st.text('Посмотрим на параметры таблицы после преобразований')
 st.text(m123i)
 st.dataframe(m123)
 
