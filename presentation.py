@@ -201,7 +201,7 @@ m23 = pd.merge(data2.df, data3.df, how = 'left', on = 'client_id')
 st.text("Фильтрованная таблица:")
 m23f = m23[(m23.utm_source == 'yandex') & (m23.m_purchase_amount > 0)]
 st.text("Astype():")
-m23f.astype({'m_purchase_amount': 'int64'})
+m23f['utm_content'] = m23f['utm_content'].astype(int)
 st.dataframe(m23f)
 buffer4 = io.StringIO()
 m23i = m23f
