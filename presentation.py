@@ -38,8 +38,7 @@ class Dataset:
         st.text("Названия столбцов в dataframe:")
         st.text(self.listcols)
         st.write("Количество строк в таблице: ", len(self.df.axes[0]))
-        st.write("Уникальные значения в столбце 3: ")
-        st.dataframe(self.df.iloc[:, 2].unique())
+
 
     def linkup(self, index):
         #link_url = st.secrets[self.link]
@@ -53,6 +52,7 @@ class Dataset:
         for i in range(len(self.df.columns)):
             self.listcols.append(self.df.columns[i])
         st.text(self.listcols)
+
 
     def upload(self, index):
         self.up = st.file_uploader("CSV file upload area, for example " + index)
@@ -95,6 +95,20 @@ if load_option == opt_desc[0]:
 
     with tab_open1:
         data1.open(name_list[0])
+        colop1, colop2, colop3, colop4, colop5, colop6 = st.columns(6)
+        colop1.write("Уникальные значения в столбце 1: ")
+        colop1.dataframe(data1.df.iloc[:, 0].unique())
+        colop2.write("Уникальные значения в столбце 2: ")
+        colop2.dataframe(data1.df.iloc[:, 1].unique())
+        colop3.write("Уникальные значения в столбце 3: ")
+        colop3.dataframe(data1.df.iloc[:, 2].unique())
+        colop4.write("Уникальные значения в столбце 4: ")
+        colop4.dataframe(data1.df.iloc[:, 3].unique())
+        colop5.write("Уникальные значения в столбце 5: ")
+        colop5.dataframe(data1.df.iloc[:, 4].unique())
+        colop6.write("Уникальные значения в столбце 6: ")
+        colop6.dataframe(data1.df.iloc[:, 5].unique())
+
     with tab_open2:
         data2.open(name_list[1])
     with tab_open3:
