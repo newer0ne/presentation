@@ -181,7 +181,7 @@ m23i.info(buf = buffer4)
 m23i = buffer2.getvalue()
 st.text(m23i)  
 
-data1.df.astype({'utm_campaign': 'object'})
+data1.df.astype({'m_clicks': 'int'})
 buffer5 = io.StringIO()
 data1.dfi = data1.df
 data1.dfi.info(buf = buffer5)
