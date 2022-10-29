@@ -202,6 +202,7 @@ st.text("Фильтрованная таблица:")
 m23f = m23[(m23.utm_source == 'yandex') & (m23.m_purchase_amount > 0)]
 st.text("Astype():")
 m23f['utm_content'] = m23f['utm_content'].astype(int)
+m23f['utm_campaign'] = m23f['utm_campaign'].astype(int)
 st.dataframe(m23f)
 buffer4 = io.StringIO()
 m23i = m23f
