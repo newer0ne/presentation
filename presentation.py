@@ -216,7 +216,7 @@ m123['DATE'] = pd.to_datetime(m123['DATE'], format = "%y-%m-%d")
 m123['DATE_P'] = pd.to_datetime(m123['purchase_created_at'], infer_datetime_format=True)  
 m123['DATE_P'] = pd.to_datetime(m123['DATE_P'], format = "%y-%m-%d")
 m123['Difference'] = (m123['DATE_P'] - m123['DATE']).dt.days
-del m123[('DATE', 'DATE_P')]
+m123.drop(columns = ['DATE', 'DATE_P'])
 m123 = m123[(m123.Difference >= 0) & (m123.Difference <= 15)]
 
 buffer7 = io.StringIO()
