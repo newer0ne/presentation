@@ -174,11 +174,13 @@ if load_option == opt_desc[0]:
         colop33.dataframe(data3.df.iloc[:, 2].unique())
         colop34.write("Уникальные значения в столбце 4: ")
         colop34.dataframe(data3.df.iloc[:, 3].unique())
+
         buffer3 = io.StringIO()
         data3.dfi = data3.df
         data3.dfi.info(buf = buffer3)
         data3.dfi = buffer3.getvalue()
-        st.text(data3.dfi)  
+        st.text(data3.dfi)
+        st.dataframe(data3.df)
 
 elif load_option == opt_desc[1]:
     tab_load1, tab_load2, tab_load3 = st.tabs(name_list)    
