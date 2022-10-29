@@ -25,6 +25,7 @@ class Dataset:
     def __init__(self) -> None:
         self.name = []  
         self.df = []
+        self.dfi = []
         self.listcols = []
         self.link = []
         self.up = None
@@ -109,9 +110,10 @@ if load_option == opt_desc[0]:
         colop16.write("Уникальные значения в столбце 6: ")
         colop16.dataframe(data1.df.iloc[:, 5].unique())
         buffer1 = io.StringIO()
-        data1.df.info(buf = buffer1)
-        data1.df = buffer1.getvalue()
-        st.text(data1.df)
+        data1.dfi = data1.df
+        data1.dfi.info(buf = buffer1)
+        data1.dfi = buffer1.getvalue()
+        st.text(data1.dfi)
 
     with tab_open2:
         data2.open(name_list[1])
@@ -129,9 +131,10 @@ if load_option == opt_desc[0]:
         colop26.write("Уникальные значения в столбце 6: ")
         colop26.dataframe(data2.df.iloc[:, 5].unique())
         buffer2 = io.StringIO()
-        data2.df.info(buf = buffer2)
-        data2.df = buffer2.getvalue()
-        st.text(data2.df)
+        data2.dfi = data2.df
+        data2.dfi.info(buf = buffer2)
+        data2.dfi = buffer2.getvalue()
+        st.text(data2.dfi)
 
     with tab_open3:
         data3.open(name_list[2])    
@@ -145,9 +148,10 @@ if load_option == opt_desc[0]:
         colop34.write("Уникальные значения в столбце 4: ")
         colop34.dataframe(data3.df.iloc[:, 3].unique())
         buffer3 = io.StringIO()
-        data3.df.info(buf = buffer3)
-        data3.df = buffer3.getvalue()
-        st.text(data3.df)  
+        data3.dfi = data3.df
+        data3.dfi.info(buf = buffer3)
+        data3.dfi = buffer3.getvalue()
+        st.text(data3.dfi)  
 
 elif load_option == opt_desc[1]:
     tab_load1, tab_load2, tab_load3 = st.tabs(name_list)    
