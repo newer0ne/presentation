@@ -99,6 +99,7 @@ if load_option == opt_desc[0]:
         data1.df['m_clicks'] = data1.df['m_clicks'].astype(int)
         data1.df['m_cost'] = data1.df['m_cost'].astype(int)
         del data1.df['utm_term']
+        del data1.df['utm_medium']
         st.dataframe(data1.df)
 
         buffer1 = io.StringIO()
@@ -124,6 +125,8 @@ if load_option == opt_desc[0]:
 
     with tab_open2:
         data2.open(name_list[1])
+
+
         colop21, colop22, colop23, colop24, colop25, colop26 = st.columns(6)
         colop21.write("Уникальные значения в столбце 1: ")
         colop21.dataframe(data2.df.iloc[:, 0].unique())
@@ -182,7 +185,6 @@ maxUploadSize = 400
 
 m23 = pd.merge(data2.df, data3.df, how = 'left', on = 'client_id')
 st.text("Фильтрованная таблица:")
-m23['m_purchase_amount'].astype(str)#.astype(int)
 m23f = m23[(m23.utm_source == 'yandex') & (m23.m_purchase_amount > 0)]
 st.text("Astype():")
 m23f.astype({'m_purchase_amount': 'int64'})
