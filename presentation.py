@@ -97,9 +97,16 @@ if load_option == opt_desc[0]:
     with tab_open1:
         data1.open(name_list[0])
         data1.df = data1.df['m_cost'].astype(int)
+
+        buffer1 = io.StringIO()
+        data1.dfi = data1.df
+        data1.dfi.info(buf = buffer1)
+        data1.dfi = buffer1.getvalue()
+        st.text(data1.dfi)
+
         colop11, colop12, colop13, colop14, colop15, colop16 = st.columns(6)
         colop11.write("Уникальные значения в столбце 1: ")
-        colop11.dataframe(data1.df.loc[:, 0].unique())
+        colop11.dataframe(data1.df.iloc[:, 0].unique())
         colop12.write("Уникальные значения в столбце 2: ")
         colop12.dataframe(data1.df.iloc[:, 1].unique())
         colop13.write("Уникальные значения в столбце 3: ")
@@ -110,11 +117,7 @@ if load_option == opt_desc[0]:
         colop15.dataframe(data1.df.iloc[:, 4].unique())
         colop16.write("Уникальные значения в столбце 6: ")
         colop16.dataframe(data1.df.iloc[:, 5].unique())
-        buffer1 = io.StringIO()
-        data1.dfi = data1.df
-        data1.dfi.info(buf = buffer1)
-        data1.dfi = buffer1.getvalue()
-        st.text(data1.dfi)
+
 
     with tab_open2:
         data2.open(name_list[1])
