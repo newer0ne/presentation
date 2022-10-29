@@ -23,7 +23,6 @@ with headcol2:
     header_repolink = """[<h5 style='text-align: center;'>Github repo this project:</h5>](https://github.com/newer0ne/presentation/blob/main/presentation.py)"""
     st.markdown(header_repolink, unsafe_allow_html=True)
 
-
 class Dataset:
     def __init__(self) -> None:
         self.name = []  
@@ -43,7 +42,6 @@ class Dataset:
         st.text(self.listcols)
         st.write("Количество строк в таблице: ", len(self.df.axes[0]))
 
-
     def linkup(self, index):
         #link_url = st.secrets[self.link]
         file_id = self.link.split('/')[-2]
@@ -56,7 +54,6 @@ class Dataset:
         for i in range(len(self.df.columns)):
             self.listcols.append(self.df.columns[i])
         st.text(self.listcols)
-
 
     def upload(self, index):
         self.up = st.file_uploader("CSV file upload area, for example " + index)
@@ -77,7 +74,6 @@ class Dataset:
             self.listcols.append(self.df.columns[i])
         st.text(self.listcols)
         st.dataframe(self.df)
-
 
 opt_desc = ["Open fixed data from test task", "Link on data from test task", "Upload data whatewer you want"]
 load_option = st.radio(
