@@ -238,8 +238,8 @@ st.text(m123i)
 del m123['utm_source']
 st.dataframe(m123)
 st.text('time delay:')
-from datetime import datetime
-m123['Дата'] = datetime.strptime(m123['created_at'], '%m-%d-%Y').date()
+
+m123['DATE'] = pd.to_datetime(m123['created_at'], format = "%y-%m-%d")
 m123['Дата_оплаты'] = datetime.strptime(m123['purchase_created_at'], '%m-%d-%Y').date()
 m123['Difference'] = (m123['Дата'] - m123['Дата_оплаты']).dt.days
 st.dataframe(m123)
