@@ -89,7 +89,6 @@ data3 = Dataset()
 data3.link = st.secrets["purchases"]
 data4 = Dataset()
 
-
 if load_option == opt_desc[0]:    
     tab_open1, tab_open2, tab_open3 = st.tabs(name_list)
 
@@ -164,7 +163,6 @@ elif load_option == opt_desc[2]:
             data2.upload(name_list[1])
     with tab_up3:
             data3.upload(name_list[2])
-
 
 m23 = pd.merge(data2.df, data3.df, how = 'left', on = 'client_id')
 
