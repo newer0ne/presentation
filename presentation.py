@@ -1,4 +1,5 @@
 
+from asyncio.windows_events import NULL
 from pickle import APPEND
 from queue import Empty
 import streamlit as st
@@ -132,7 +133,7 @@ if load_option == opt_desc[0]:
         del data2.df['utm_term']
         #data2.df = pd.isnull(data2.df['client_id'].var)
         data2.df = data2.df[(data2.df['utm_source'] == 'yandex') & (data2.df['utm_medium'] == 'cpc')]
-        #data2.df = data2.df[(data2.df['client_id'] is not None)]
+        data2.df = data2.df[(data2.df['client_id'] is not NULL)]
 
         buffer2 = io.StringIO()
         data2.dfi = data2.df
