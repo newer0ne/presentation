@@ -235,12 +235,12 @@ st.text('time delay:')
 
 m123['created_at'] = m123['created_at'].astype(str)
 
-m123['DATE'] = pd.to_datetime(m123['created_at'], infer_datetime_format=False)  
+m123['DATE'] = pd.to_datetime(m123['created_at'], infer_datetime_format=True)  
 m123['DATE'] = pd.to_datetime(m123['DATE'], format = "%y-%m-%d")
 m123['DATE_P'] = pd.to_datetime(m123['purchase_created_at'], infer_datetime_format=True)  
 m123['DATE_P'] = pd.to_datetime(m123['DATE_P'], format = "%y-%m-%d")
 m123['Difference'] = (m123['DATE_P'] - m123['DATE']).dt.days
-m123 = m123[(m123.Difference >= 0)]
+m123 = m123[(m123.Difference >= 0) & (m123.Difference <= 15)]
 
 buffer7 = io.StringIO()
 m123ii = m123
