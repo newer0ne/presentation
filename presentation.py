@@ -129,7 +129,7 @@ if load_option == opt_desc[0]:
     with tab_open2:
         data2.open(name_list[1])
 
-        data2.df = data2.df[data2.df['utm_source'] = 'yandex']
+        data2.df = data2.df[data2.df['utm_source'] == 'yandex']
 
 
         colop21, colop22, colop23, colop24, colop25, colop26 = st.columns(6)
