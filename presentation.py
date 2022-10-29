@@ -118,20 +118,22 @@ if load_option == opt_desc[0]:
 #        st.dataframe(data2.df)
 
 # Пригодится под цикл уникальных значений в столбцах
+# for i in range(len(self.df.columns)):
+#
+#        self.colop1, self.colop2, self.colop3, self.colop4, self.colop5, self.colop6 = st.columns(6)
 
-#        colop21, colop22, colop23, colop24, colop25, colop26 = st.columns(6)
-#        colop21.write("Уникальные значения в столбце 1: ")
-#        colop21.dataframe(data2.df.iloc[:, 0].unique())
-#        colop22.write("Уникальные значения в столбце 2: ")
-#        colop22.dataframe(data2.df.iloc[:, 1].unique())
-#        colop23.write("Уникальные значения в столбце 3: ")
-#        colop23.dataframe(data2.df.iloc[:, 2].unique())
-#        colop24.write("Уникальные значения в столбце 4: ")
-#        colop24.dataframe(data2.df.iloc[:, 3].unique())
-#        colop25.write("Уникальные значения в столбце 5: ")
-#        colop25.dataframe(data2.df.iloc[:, 4].unique())
-#        colop26.write("Уникальные значения в столбце 6: ")
-#        colop26.dataframe(data2.df.iloc[:, 5].unique())
+#        self.colop1.write("Уникальные значения в столбце 1: ")
+#        self.colop1.dataframe(self.df.iloc[:, 0].unique())
+#        self.colop2.write("Уникальные значения в столбце 2: ")
+#        self.colop2.dataframe(self.df.iloc[:, 1].unique())
+#        self.colop3.write("Уникальные значения в столбце 3: ")
+#        self.colop3.dataframe(self.df.iloc[:, 2].unique())
+#        self.colop4.write("Уникальные значения в столбце 4: ")
+#        self.colop4.dataframe(self.df.iloc[:, 3].unique())
+#        self.colop5.write("Уникальные значения в столбце 5: ")
+#        self.colop5.dataframe(self.df.iloc[:, 4].unique())
+#        self.colop6.write("Уникальные значения в столбце 6: ")
+#        self.colop6.dataframe(self.df.iloc[:, 5].unique())
 
     with tab_open3:
         data3.open(name_list[2])    
@@ -163,7 +165,7 @@ st.write('Merging mashine:')
 
 m23 = pd.merge(data2.df, data3.df, how = 'left', on = 'client_id')
 st.text("Фильтрованная таблица:")
-m23f = m23[(m23.utm_source == 'yandex') & (m23.m_purchase_amount > 0)]
+m23f = m23[(m23['utm_source'] == 'yandex') & (m23['m_purchase_amount'] > 0)]
 st.text("Astype():")
 m23f['m_purchase_amount'] = m23f['m_purchase_amount'].astype(int)
 m23f['utm_content'] = m23f['utm_content'].astype(int)
