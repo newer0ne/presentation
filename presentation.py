@@ -230,8 +230,11 @@ m123 = pd.merge(data1.df, m23f, how = 'left', on = ['created_at', 'utm_source', 
 m123 = m123[(m123.m_purchase_amount > 0)]
 m123['m_purchase_amount'] = m123['m_purchase_amount'].astype(int)
 
-
-
+buffer6 = io.StringIO()
+m123i = m123
+m123i.info(buf = buffer6)
+m123i = buffer6.getvalue()
+st.text(m123i)
 st.dataframe(m123)
 
 
