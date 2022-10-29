@@ -161,21 +161,26 @@ elif load_option == opt_desc[2]:
     with tab_up3:
             data3.upload(name_list[2])
 
-st.write('Merging mashine:')
 
 m23 = pd.merge(data2.df, data3.df, how = 'left', on = 'client_id')
-st.text("Фильтрованная таблица:")
+
+st.text("Фильтрованная таблица по типам данных astype(int), 'utm_source' == 'yandex' и 'm_purchase_amount'] > 0:")
+
 m23f = m23[(m23['utm_source'] == 'yandex') & (m23['m_purchase_amount'] > 0)]
-st.text("Astype():")
 m23f['m_purchase_amount'] = m23f['m_purchase_amount'].astype(int)
 m23f['utm_content'] = m23f['utm_content'].astype(int)
 m23f['utm_campaign'] = m23f['utm_campaign'].astype(int)
 st.dataframe(m23f)
+
+st.text("Типы данных merget tables после обработки:")
+
 buffer4 = io.StringIO()
 m23i = m23f
 m23i.info(buf = buffer4)
 m23i = buffer4.getvalue()
 st.text(m23i)
+
+st.text("Подготовка типов данных для merge ads + leads_purchase:")
 
 data1.df.astype({'m_clicks': 'int'})
 buffer5 = io.StringIO()
@@ -188,19 +193,22 @@ m123 = pd.merge(data1.df, m23f, how = 'left', on = ['created_at', 'utm_medium','
 #m123 = m123[(m123.m_purchase_amount > 0)]
 #m123['m_purchase_amount'] = m123['m_purchase_amount'].astype(int)
 
+st.text("Типы данных merget tables ads_leads_purchase:")
+
 buffer6 = io.StringIO()
 m123i = m123
 m123i.info(buf = buffer6)
 m123i = buffer6.getvalue()
-st.text('Посмотрим на параметры таблицы после преобразований')
 st.text(m123i)
+
+st.text("Удаляем стобец 'utm_content':")
 
 del m123['utm_content']
 st.dataframe(m123)
-st.text('time delay:')
+
+st.text('Определим строки с разницей по оплатам в 15 дней:')
 
 m123['created_at'] = m123['created_at'].astype(str)
-
 m123['DATE'] = pd.to_datetime(m123['created_at'], infer_datetime_format=True)  
 m123['DATE'] = pd.to_datetime(m123['DATE'], format = "%y-%m-%d")
 m123['DATE_P'] = pd.to_datetime(m123['purchase_created_at'], infer_datetime_format=True)  
