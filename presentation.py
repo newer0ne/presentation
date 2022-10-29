@@ -108,9 +108,9 @@ if load_option == opt_desc[0]:
         colop15.dataframe(data1.df.iloc[:, 4].unique())
         colop16.write("Уникальные значения в столбце 6: ")
         colop16.dataframe(data1.df.iloc[:, 5].unique())
-        buffer = io.StringIO()
-        data1.df.info(buf = buffer)
-        data1.df = buffer.getvalue()
+        buffer1 = io.StringIO()
+        data1.df.info(buf = buffer1)
+        data1.df = buffer1.getvalue()
         st.text(data1.df)
 
     with tab_open2:
@@ -128,10 +128,10 @@ if load_option == opt_desc[0]:
         colop25.dataframe(data2.df.iloc[:, 4].unique())
         colop26.write("Уникальные значения в столбце 6: ")
         colop26.dataframe(data2.df.iloc[:, 5].unique())
-        buffer = io.StringIO()
-        data2.df.info(buf = buffer)
-        data2.df = buffer.getvalue()
-        st.text(data1.df)
+        buffer2 = io.StringIO()
+        data2.df.info(buf = buffer2)
+        data2.df = buffer2.getvalue()
+        st.text(data2.df)
 
     with tab_open3:
         data3.open(name_list[2])    
@@ -144,10 +144,10 @@ if load_option == opt_desc[0]:
         colop33.dataframe(data3.df.iloc[:, 2].unique())
         colop34.write("Уникальные значения в столбце 4: ")
         colop34.dataframe(data3.df.iloc[:, 3].unique())
-        buffer = io.StringIO()
-        data3.df.info(buf = buffer)
-        data3.df = buffer.getvalue()
-        st.text(data1.df)  
+        buffer3 = io.StringIO()
+        data3.df.info(buf = buffer3)
+        data3.df = buffer3.getvalue()
+        st.text(data3.df)  
 
 elif load_option == opt_desc[1]:
     tab_load1, tab_load2, tab_load3 = st.tabs(name_list)    
