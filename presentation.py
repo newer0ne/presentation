@@ -207,6 +207,7 @@ maxUploadSize = 400
 
 m23 = pd.merge(data2.df, data3.df, how = 'left', on = 'client_id')
 st.text("Фильтрованная таблица:")
+m23f['m_purchase_amount'] = m23f['m_purchase_amount'].astype(int)
 m23f = m23[(m23.utm_source == 'yandex') & (m23.m_purchase_amount > 0)]
 st.text("Astype():")
 m23f['utm_content'] = m23f['utm_content'].astype(int)
@@ -226,7 +227,25 @@ data1.dfi = buffer5.getvalue()
 st.text(data1.dfi)
 
 m123 = pd.merge(data1.df, m23f, how = 'left', on = ['created_at', 'utm_source', 'utm_campaign', 'utm_content'])
+
+
+
 st.dataframe(m123)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 buffer = io.StringIO()
 joined123.info(buf = buffer)
