@@ -180,7 +180,7 @@ st.dataframe(m23f)
 buffer4 = io.StringIO()
 m23i = m23f
 m23i.info(buf = buffer4)
-m23i = buffer2.getvalue()
+m23i = buffer4.getvalue()
 st.text(m23i)
 
 data1.df.astype({'m_clicks': 'int'})
