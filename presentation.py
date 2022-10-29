@@ -233,6 +233,7 @@ del m123['utm_source']
 st.dataframe(m123)
 st.text('time delay:')
 
+m123['created_at'] = m123['created_at'].astype(str)
 m123['DATE'] = pd.to_datetime(m123['created_at'], format = "yyyy-mm-dd")
 
 buffer7 = io.StringIO()
