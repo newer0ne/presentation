@@ -232,10 +232,20 @@ st.text(m123i)
 del m123['utm_source']
 st.dataframe(m123)
 st.text('time delay:')
-m123['DATE'] = pd.to_datetime(m123['created_at'], format = "%y-%m-%d")
-m123['Дата_оплаты'] = datetime.strptime(m123['purchase_created_at'], '%m-%d-%Y').date()
-m123['Difference'] = (m123['Дата'] - m123['Дата_оплаты']).dt.days
-st.dataframe(m123)
+
+m123['DATE'] = pd.to_datetime(m123['created_at'], format = "%y-%m-%dM")
+
+buffer7 = io.StringIO()
+m123ii = m123
+m123ii.info(buf = buffer7)
+m123ii = buffer7.getvalue()
+
+st.text('Посмотрим на параметры таблицы после преобразований даты')
+st.text(m123ii)
+
+#m123['Дата_оплаты'] = datetime.strptime(m123['purchase_created_at'], '%m-%d-%Y').date()
+#m123['Difference'] = (m123['Дата'] - m123['Дата_оплаты']).dt.days
+#st.dataframe(m123)
 
 
 
