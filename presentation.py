@@ -108,6 +108,10 @@ if load_option == opt_desc[0]:
         colop5.dataframe(data1.df.iloc[:, 4].unique())
         colop6.write("Уникальные значения в столбце 6: ")
         colop6.dataframe(data1.df.iloc[:, 5].unique())
+        buffer = io.StringIO()
+        data1.df.info(buf = buffer)
+        data1.df = buffer.getvalue()
+        st.text(data1.df)
 
     with tab_open2:
         data2.open(name_list[1])
@@ -134,6 +138,7 @@ elif load_option == opt_desc[2]:
 
 maxUploadSize = 400
 m23 = pd.merge(data2.df, data3.df, how = 'left', on = 'client_id')
+
 st.dataframe(m23)
 m123 = pd.merge(data1.df, m23, on = ['created_at', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'], how = 'left')
 st.dataframe(m123)
