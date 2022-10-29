@@ -131,6 +131,12 @@ if load_option == opt_desc[0]:
 
         data2.df = data2.df[data2.df['utm_source'] == 'yandex']
 
+        buffer2 = io.StringIO()
+        data2.dfi = data2.df
+        data2.dfi.info(buf = buffer2)
+        data2.dfi = buffer2.getvalue()
+        st.text(data2.dfi)
+        st.dataframe(data2.df)
 
         colop21, colop22, colop23, colop24, colop25, colop26 = st.columns(6)
         colop21.write("Уникальные значения в столбце 1: ")
@@ -145,11 +151,8 @@ if load_option == opt_desc[0]:
         colop25.dataframe(data2.df.iloc[:, 4].unique())
         colop26.write("Уникальные значения в столбце 6: ")
         colop26.dataframe(data2.df.iloc[:, 5].unique())
-        buffer2 = io.StringIO()
-        data2.dfi = data2.df
-        data2.dfi.info(buf = buffer2)
-        data2.dfi = buffer2.getvalue()
-        st.text(data2.dfi)
+
+
 
     with tab_open3:
         data3.open(name_list[2])    
