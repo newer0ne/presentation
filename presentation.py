@@ -182,7 +182,7 @@ m23i.info(buf = buffer4)
 m23i = buffer4.getvalue()
 st.text(m23i)
 
-st.writet("Подготовка типов данных для merge ads + leads_purchase:")
+st.write("Подготовка типов данных для merge ads + leads_purchase:")
 
 data1.df.astype({'m_clicks': 'int'})
 buffer5 = io.StringIO()
