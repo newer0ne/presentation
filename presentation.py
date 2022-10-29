@@ -207,7 +207,7 @@ maxUploadSize = 400
 
 m23 = pd.merge(data2.df, data3.df, how = 'left', on = 'client_id')
 st.text("Фильтрованная таблица:")
-m23['m_purchase_amount'] = m23f['m_purchase_amount'].astype(int)
+m23['m_purchase_amount'] = m23['m_purchase_amount'].astype(int)
 m23f = m23[(m23.utm_source == 'yandex') & (m23.m_purchase_amount > 0)]
 st.text("Astype():")
 m23f['utm_content'] = m23f['utm_content'].astype(int)
