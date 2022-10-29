@@ -237,6 +237,9 @@ st.text(m123i)
 
 del m123['utm_source']
 st.dataframe(m123)
+st.text('time delay:')
+m123['Difference'] = (m123['created_at'] - m123['purchase_created_at']).dt.days
+st.dataframe(m123)
 
 
 
