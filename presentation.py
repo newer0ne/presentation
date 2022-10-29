@@ -129,9 +129,8 @@ if load_option == opt_desc[0]:
         data2.open(name_list[1])
 
         del data2.df['utm_term']
-        #data2.df = pd.isnull(data2.df['client_id'].var)
         data2.df = data2.df[(data2.df['utm_source'] == 'yandex') & (data2.df['utm_medium'] == 'cpc')]
-        #data2.df = data2.df[(data2.df['client_id'] is not NULL)]
+        data2.df['client_id'] = data2.df['client_id'].astype(str)
 
         buffer2 = io.StringIO()
         data2.dfi = data2.df
