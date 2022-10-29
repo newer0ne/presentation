@@ -164,7 +164,7 @@ if load_option == opt_desc[0]:
         colop31, colop32, colop33, colop34, colop35, colop36 = st.columns(6)
         
         data3.df['m_purchase_amount'] = data3.df['m_purchase_amount'].astype(int)
-        data3.df = data3.df[(data3.df['m_purchase_amount'] > 0)
+        data3.df = data3.df[(data3.df['m_purchase_amount'] > 0)]
 
         colop31.write("Уникальные значения в столбце 1: ")
         colop31.dataframe(data3.df.iloc[:, 0].unique())
