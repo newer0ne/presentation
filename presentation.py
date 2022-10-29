@@ -229,7 +229,7 @@ m123i = buffer6.getvalue()
 st.text('Посмотрим на параметры таблицы после преобразований')
 st.text(m123i)
 
-del m123['utm_source']
+del m123['utm_content']
 st.dataframe(m123)
 st.text('time delay:')
 
