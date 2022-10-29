@@ -220,7 +220,7 @@ st.text(data1.dfi)
 
 m123 = pd.merge(data1.df, m23f, how = 'left', on = ['created_at', 'utm_medium','utm_source', 'utm_campaign', 'utm_content'])
 #m123 = m123[(m123.m_purchase_amount > 0)]
-m123['m_purchase_amount'] = m123['m_purchase_amount'].astype(int)
+#m123['m_purchase_amount'] = m123['m_purchase_amount'].astype(int)
 
 buffer6 = io.StringIO()
 m123i = m123
