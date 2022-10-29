@@ -217,7 +217,7 @@ data1.dfi.info(buf = buffer5)
 data1.dfi = buffer5.getvalue()
 st.text(data1.dfi)
 
-m123 = pd.merge(data1.df, m23, on = ['created_at', 'utm_campaign', 'utm_content'], how = 'left') #'utm_source', 'utm_medium', 'utm_term'
+m123 = pd.merge(data1.df, m23f, how = 'left', on = ['created_at', 'utm_campaign', 'utm_content']) #'utm_source', 'utm_medium', 'utm_term'
 st.dataframe(m123)
 
 buffer = io.StringIO()
