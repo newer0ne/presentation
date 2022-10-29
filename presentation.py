@@ -133,7 +133,7 @@ if load_option == opt_desc[0]:
         del data2.df['utm_term']
         data2.df = data2.df[(data2.df['utm_source'] == 'yandex') & (data2.df['utm_medium'] == 'cpc')]
         data2.df['client_id'] = data2.df['client_id'].astype(str)
-        data2.df = data2.df[(data2.df['client_id'] != 'nan')]        
+        data2.df = data2.df[(data2.df['client_id'] != 'nan')]
         data2.df = data2.df[(data2.df['utm_content'].notnull())]
 
         buffer2 = io.StringIO()
@@ -162,7 +162,9 @@ if load_option == opt_desc[0]:
     with tab_open3:
         data3.open(name_list[2])    
         colop31, colop32, colop33, colop34, colop35, colop36 = st.columns(6)
-        
+
+        data3.df['client_id'] = data3.df['client_id'].astype(str)
+        data3.df = data3.df[(data3.df['client_id'] != 'nan')]
         data3.df['m_purchase_amount'] = data3.df['m_purchase_amount'].astype(int)
         data3.df = data3.df[(data3.df['m_purchase_amount'] > 0)]
 
