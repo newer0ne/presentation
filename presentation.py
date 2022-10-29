@@ -208,9 +208,9 @@ m123i.info(buf = buffer6)
 m123i = buffer6.getvalue()
 st.text(m123i)
 
-st.text("Удаляем стобец 'utm_content':")
+st.text("Удаляем стобец 'utm_content', 'purchase_id' и 'client_id':")
 
-del m123['utm_content']
+m123 = m123.drop(columns = ['utm_content', 'purchase_id', 'client_id'])
 st.dataframe(m123)
 
 st.text('Определим строки с разницей по оплатам в 15 дней:')
