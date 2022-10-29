@@ -234,6 +234,8 @@ st.dataframe(m123)
 st.text('time delay:')
 
 m123['created_at'] = m123['created_at'].astype(str)
+
+%timeit pd.to_datetime(m123['created_at'], infer_datetime_format=True)  
 m123['DATE'] = pd.to_datetime(m123['created_at'], format = "yyyy-mm-dd")
 
 buffer7 = io.StringIO()
