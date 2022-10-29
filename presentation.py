@@ -244,6 +244,7 @@ m123ii.info(buf = buffer7)
 m123ii = buffer7.getvalue()
 
 st.text('Посмотрим на параметры таблицы после преобразований даты')
+st.dataframe(m123)
 st.text(m123ii)
 
 #m123['Дата_оплаты'] = datetime.strptime(m123['purchase_created_at'], '%m-%d-%Y').date()
