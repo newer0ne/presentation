@@ -39,8 +39,8 @@ class Dataset:
         self.name = index
         for i in range(len(self.df.columns)):
             self.listcols.append(self.df.columns[i])
-        st.text("Названия столбцов в dataframe:")
-        st.text(self.listcols)
+        st.write("Названия столбцов в dataframe:")
+        st.write(self.listcols)
         st.write("Количество строк в таблице: ", len(self.df.axes[0]))
 
 
