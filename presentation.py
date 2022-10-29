@@ -97,9 +97,8 @@ if load_option == opt_desc[0]:
     with tab_open1:
         data1.open(name_list[0])
         data1.df['m_clicks'] = data1.df['m_clicks'].astype(int)
-        #del data1.df['m_clicks']
         data1.df['m_cost'] = data1.df['m_cost'].astype(int)
-        #del data1.df['m_cost']
+        data1.df.drop['utm__term']
         st.dataframe(data1.df)
 
         buffer1 = io.StringIO()
