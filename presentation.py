@@ -31,7 +31,7 @@ class Dataset:
         self.up = None
     
     def open(self, index):
-        self.df = pd.read_csv(index)
+        self.df = pd.read_csv(index, dtype=object)
         st.dataframe(self.df)
         self.name = index
         for i in range(len(self.df.columns)):
@@ -174,7 +174,9 @@ elif load_option == opt_desc[2]:
 maxUploadSize = 400
 
 m23 = pd.merge(data2.df, data3.df, how = 'left', on = 'client_id')
+st.text("Фильтрованная таблица:")
 m23f = m23[(m23.utm_source == 'yandex') & (m23.m_purchase_amount > 0)]
+st.text("Astype():")
 m23f.astype({'m_purchase_amount': 'int64'})
 st.dataframe(m23f)
 buffer4 = io.StringIO()
