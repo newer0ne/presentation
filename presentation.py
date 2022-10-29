@@ -175,12 +175,18 @@ maxUploadSize = 400
 
 m23 = pd.merge(data2.df, data3.df, how = 'left', on = 'client_id')
 st.dataframe(m23)
-m23.astype({'utm_campaign': 'int64'})
 buffer4 = io.StringIO()
 m23i = m23
 m23i.info(buf = buffer4)
 m23i = buffer2.getvalue()
 st.text(m23i)  
+
+data1.df.astype({'utm_campaign': 'object'})
+buffer5 = io.StringIO()
+data1.dfi = data1.df
+data1.dfi.info(buf = buffer5)
+data1.dfi = buffer5.getvalue()
+st.text(data1.dfi)
 
 m123 = pd.merge(data1.df, m23, on = ['created_at', 'utm_campaign', 'utm_content'], how = 'left') #'utm_source', 'utm_medium', 'utm_term'
 st.dataframe(m123)
