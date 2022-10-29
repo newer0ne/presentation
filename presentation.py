@@ -135,7 +135,7 @@ elif load_option == opt_desc[2]:
 maxUploadSize = 400
 m23 = pd.merge(data2.df, data3.df, how = 'left', on = 'client_id')
 st.dataframe(m23)
-m123 = pd.merge(data1.df, m23, left_on = ['created_at', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'], right_on = ['created_at', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'],  how = 'left')
+m123 = pd.merge(data1.df, m23, on = ['created_at', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'], how = 'left')
 st.dataframe(m123)
 
 buffer = io.StringIO()
