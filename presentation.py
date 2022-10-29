@@ -172,6 +172,7 @@ elif load_option == opt_desc[2]:
             data3.upload(name_list[2])
 
 maxUploadSize = 400
+
 m23 = pd.merge(data2.df, data3.df, how = 'left', on = 'client_id')
 st.dataframe(m23)
 m23.astype({'col4': 'int64'})
