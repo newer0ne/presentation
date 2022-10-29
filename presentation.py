@@ -103,7 +103,6 @@ if load_option == opt_desc[0]:
         data1.df['m_cost'] = data1.df['m_cost'].astype(int)
         del data1.df['account_id']
         del data1.df['utm_term']
-        del data1.df['utm_medium']
         st.dataframe(data1.df)
 
         buffer1 = io.StringIO()
@@ -135,7 +134,6 @@ if load_option == opt_desc[0]:
         data2.df['client_id'] = data2.df['client_id'].astype(str)
         data2.df = data2.df[(data2.df['client_id'] != 'nan')]
         data2.df = data2.df[(data2.df['utm_content'].notnull())]
-        del data2.df['utm_medium']
 
         buffer2 = io.StringIO()
         data2.dfi = data2.df
