@@ -99,27 +99,6 @@ if load_option == opt_desc[0]:
         del data1.df['utm_term']
         st.dataframe(data1.df)
 
-        buffer1 = io.StringIO()
-        data1.dfi = data1.df
-        data1.dfi.info(buf = buffer1)
-        data1.dfi = buffer1.getvalue()
-        st.text(data1.dfi)
-
-        colop11, colop12, colop13, colop14, colop15, colop16 = st.columns(6)
-        colop11.write("Уникальные значения в столбце 1: ")
-        colop11.dataframe(data1.df.iloc[:, 0].unique())
-        colop12.write("Уникальные значения в столбце 2: ")
-        colop12.dataframe(data1.df.iloc[:, 1].unique())
-        colop13.write("Уникальные значения в столбце 3: ")
-        colop13.dataframe(data1.df.iloc[:, 2].unique())
-        colop14.write("Уникальные значения в столбце 4: ")
-        colop14.dataframe(data1.df.iloc[:, 3].unique())
-        colop15.write("Уникальные значения в столбце 5: ")
-        colop15.dataframe(data1.df.iloc[:, 4].unique())
-        colop16.write("Уникальные значения в столбце 6: ")
-        colop16.dataframe(data1.df.iloc[:, 5].unique())
-
-
     with tab_open2:
         data2.open(name_list[1])
 
@@ -129,53 +108,38 @@ if load_option == opt_desc[0]:
         data2.df = data2.df[(data2.df['client_id'] != 'nan')]
         data2.df = data2.df[(data2.df['utm_content'].notnull())]
 
-        buffer2 = io.StringIO()
-        data2.dfi = data2.df
-        data2.dfi.info(buf = buffer2)
-        data2.dfi = buffer2.getvalue()
-        st.text(data2.dfi)
-        st.dataframe(data2.df)
+# Отправить в def dtinfo например
+#
+#        buffer2 = io.StringIO()
+#        data2.dfi = data2.df
+#        data2.dfi.info(buf = buffer2)
+#        data2.dfi = buffer2.getvalue()
+#        st.text(data2.dfi)
+#        st.dataframe(data2.df)
 
-        colop21, colop22, colop23, colop24, colop25, colop26 = st.columns(6)
-        colop21.write("Уникальные значения в столбце 1: ")
-        colop21.dataframe(data2.df.iloc[:, 0].unique())
-        colop22.write("Уникальные значения в столбце 2: ")
-        colop22.dataframe(data2.df.iloc[:, 1].unique())
-        colop23.write("Уникальные значения в столбце 3: ")
-        colop23.dataframe(data2.df.iloc[:, 2].unique())
-        colop24.write("Уникальные значения в столбце 4: ")
-        colop24.dataframe(data2.df.iloc[:, 3].unique())
-        colop25.write("Уникальные значения в столбце 5: ")
-        colop25.dataframe(data2.df.iloc[:, 4].unique())
-        colop26.write("Уникальные значения в столбце 6: ")
-        colop26.dataframe(data2.df.iloc[:, 5].unique())
+# Пригодится под цикл уникальных значений в столбцах
 
-
+#        colop21, colop22, colop23, colop24, colop25, colop26 = st.columns(6)
+#        colop21.write("Уникальные значения в столбце 1: ")
+#        colop21.dataframe(data2.df.iloc[:, 0].unique())
+#        colop22.write("Уникальные значения в столбце 2: ")
+#        colop22.dataframe(data2.df.iloc[:, 1].unique())
+#        colop23.write("Уникальные значения в столбце 3: ")
+#        colop23.dataframe(data2.df.iloc[:, 2].unique())
+#        colop24.write("Уникальные значения в столбце 4: ")
+#        colop24.dataframe(data2.df.iloc[:, 3].unique())
+#        colop25.write("Уникальные значения в столбце 5: ")
+#        colop25.dataframe(data2.df.iloc[:, 4].unique())
+#        colop26.write("Уникальные значения в столбце 6: ")
+#        colop26.dataframe(data2.df.iloc[:, 5].unique())
 
     with tab_open3:
         data3.open(name_list[2])    
-        colop31, colop32, colop33, colop34, colop35, colop36 = st.columns(6)
 
         data3.df['client_id'] = data3.df['client_id'].astype(str)
         data3.df = data3.df[(data3.df['client_id'] != 'nan')]
         data3.df['m_purchase_amount'] = data3.df['m_purchase_amount'].astype(int)
         data3.df = data3.df[(data3.df['m_purchase_amount'] > 0)]
-
-        colop31.write("Уникальные значения в столбце 1: ")
-        colop31.dataframe(data3.df.iloc[:, 0].unique())
-        colop32.write("Уникальные значения в столбце 2: ")
-        colop32.dataframe(data3.df.iloc[:, 1].unique())
-        colop33.write("Уникальные значения в столбце 3: ")
-        colop33.dataframe(data3.df.iloc[:, 2].unique())
-        colop34.write("Уникальные значения в столбце 4: ")
-        colop34.dataframe(data3.df.iloc[:, 3].unique())
-
-        buffer3 = io.StringIO()
-        data3.dfi = data3.df
-        data3.dfi.info(buf = buffer3)
-        data3.dfi = buffer3.getvalue()
-        st.text(data3.dfi)
-        st.dataframe(data3.df)
 
 elif load_option == opt_desc[1]:
     tab_load1, tab_load2, tab_load3 = st.tabs(name_list)    
@@ -194,6 +158,8 @@ elif load_option == opt_desc[2]:
             data2.upload(name_list[1])
     with tab_up3:
             data3.upload(name_list[2])
+
+st.write('Merging mashine:')
 
 m23 = pd.merge(data2.df, data3.df, how = 'left', on = 'client_id')
 st.text("Фильтрованная таблица:")
