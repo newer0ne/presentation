@@ -1,13 +1,7 @@
-from pickle import APPEND
-from queue import Empty
-from tokenize import Number
-from unicodedata import numeric
 import streamlit as st
 from gsheetsdb import connect
 import pandas as pd
-import numpy as np
 import io
-from io import BytesIO
 import requests
 from io import StringIO
 
@@ -238,7 +232,6 @@ st.text(m123i)
 del m123['utm_source']
 st.dataframe(m123)
 st.text('time delay:')
-
 m123['DATE'] = pd.to_datetime(m123['created_at'], format = "%y-%m-%d")
 m123['Дата_оплаты'] = datetime.strptime(m123['purchase_created_at'], '%m-%d-%Y').date()
 m123['Difference'] = (m123['Дата'] - m123['Дата_оплаты']).dt.days
