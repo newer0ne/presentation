@@ -96,7 +96,7 @@ if load_option == opt_desc[0]:
 
     with tab_open1:
         data1.open(name_list[0])
-        pd.options.display.float_format = '{:,.0f}'.format
+        data1.df = data1.df['m_cost'].astype(int)
         colop11, colop12, colop13, colop14, colop15, colop16 = st.columns(6)
         colop11.write("Уникальные значения в столбце 1: ")
         colop11.dataframe(data1.df.iloc[:, 0].unique())
