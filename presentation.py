@@ -1,6 +1,7 @@
 from pickle import APPEND
 from queue import Empty
 from tokenize import Number
+from unicodedata import numeric
 import streamlit as st
 from gsheetsdb import connect
 import pandas as pd
@@ -130,7 +131,7 @@ if load_option == opt_desc[0]:
         data2.open(name_list[1])
 
         del data2.df['utm_term']
-        data2.df = data2.df[(data2.df['utm_source'] == 'yandex') & (data2.df['utm_medium'] == 'cpc') & (data2.df['utm_campaign'] == Number)]
+        data2.df = data2.df[(data2.df['utm_source'] == 'yandex') & (data2.df['utm_medium'] == 'cpc') & (data2.df['utm_campaign'] == numeric)]
         data2.df['client_id'] = data2.df['client_id'].astype(str)
         data2.df = data2.df[(data2.df['client_id'] != 'nan')]
 
