@@ -1,3 +1,4 @@
+from signal import pause
 import streamlit as st
 from gsheetsdb import connect
 import pandas as pd
@@ -163,6 +164,10 @@ elif load_option == opt_desc[2]:
             data2.upload(name_list[1])
     with tab_up3:
             data3.upload(name_list[2])
+
+if (data1.df is None) or (data2.df is None) or (data3.df is None):
+    st.error('This is an error', icon="🚨")
+    pause()
 
 m23 = pd.merge(data2.df, data3.df, how = 'left', on = 'client_id')
 
