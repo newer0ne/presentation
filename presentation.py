@@ -1,6 +1,5 @@
 
 from asyncio.windows_events import NULL
-from curses.ascii import NUL
 from pickle import APPEND
 from queue import Empty
 import streamlit as st
