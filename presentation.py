@@ -31,7 +31,7 @@ class Dataset:
         self.up = None
     
     def open(self, index):
-        self.df = pd.read_csv(index, dtype=object)
+        self.df = pd.read_csv(index)
         st.dataframe(self.df)
         self.name = index
         for i in range(len(self.df.columns)):
