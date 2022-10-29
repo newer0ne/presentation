@@ -227,6 +227,7 @@ data1.dfi = buffer5.getvalue()
 st.text(data1.dfi)
 
 m123 = pd.merge(data1.df, m23f, how = 'left', on = ['created_at', 'utm_source', 'utm_campaign', 'utm_content'])
+m123['m_purchase_amount'] = m123['m_purchase_amount'].astype(int)
 
 
 
