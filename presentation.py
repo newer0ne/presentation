@@ -16,12 +16,12 @@ st.markdown("<h2 style='text-align: center;'>Datalyzer</h2>", unsafe_allow_html=
 headcol1, headcol2 = st.columns(2)
 
 with headcol1:
-header_tasklink = """[<h5 style='text-align: center;'>Test task:</h5>](https://xoservices.notion.site/1872d331265946a0ae2c5c9069189fd7)"""
-st.markdown(header_tasklink, unsafe_allow_html=True)
+    header_tasklink = """[<h5 style='text-align: center;'>Test task:</h5>](https://xoservices.notion.site/1872d331265946a0ae2c5c9069189fd7)"""
+    st.markdown(header_tasklink, unsafe_allow_html=True)
 
 with headcol2:
-header_repolink = """[<h5 style='text-align: center;'>Github repo this project:</h5>](https://github.com/newer0ne/presentation/blob/main/presentation.py)"""
-st.markdown(header_repolink, unsafe_allow_html=True)
+    header_repolink = """[<h5 style='text-align: center;'>Github repo this project:</h5>](https://github.com/newer0ne/presentation/blob/main/presentation.py)"""
+    st.markdown(header_repolink, unsafe_allow_html=True)
 
 
 class Dataset:
@@ -172,7 +172,7 @@ elif load_option == opt_desc[2]:
 
 m23 = pd.merge(data2.df, data3.df, how = 'left', on = 'client_id')
 
-st.text("Фильтрованная таблица по типам данных astype(int), 'utm_source' == 'yandex' и 'm_purchase_amount'] > 0:")
+st.write("Фильтрованная таблица по типам данных astype(int), 'utm_source' == 'yandex' и 'm_purchase_amount'] > 0:")
 
 m23f = m23[(m23['utm_source'] == 'yandex') & (m23['m_purchase_amount'] > 0)]
 m23f['m_purchase_amount'] = m23f['m_purchase_amount'].astype(int)
@@ -180,7 +180,7 @@ m23f['utm_content'] = m23f['utm_content'].astype(int)
 m23f['utm_campaign'] = m23f['utm_campaign'].astype(int)
 st.dataframe(m23f)
 
-st.text("Типы данных merget tables после обработки:")
+st.write("Типы данных merget tables после обработки:")
 
 buffer4 = io.StringIO()
 m23i = m23f
@@ -188,7 +188,7 @@ m23i.info(buf = buffer4)
 m23i = buffer4.getvalue()
 st.text(m23i)
 
-st.text("Подготовка типов данных для merge ads + leads_purchase:")
+st.writet("Подготовка типов данных для merge ads + leads_purchase:")
 
 data1.df.astype({'m_clicks': 'int'})
 buffer5 = io.StringIO()
