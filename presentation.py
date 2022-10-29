@@ -96,7 +96,7 @@ if load_option == opt_desc[0]:
 
     with tab_open1:
         data1.open(name_list[0])
-        data1.df = data1.df['m_cost'].astype(int)
+        data1.df['m_cost_int'] = data1.df['m_cost'].astype(int)
         st.dataframe(data1.df)
 
         buffer1 = io.StringIO()
