@@ -175,9 +175,9 @@ maxUploadSize = 400
 
 m23 = pd.merge(data2.df, data3.df, how = 'left', on = 'client_id')
 m23f = m23[(m23.utm_source == 'yandex')]
-st.dataframe(m23)
+st.dataframe(m23f)
 buffer4 = io.StringIO()
-m23i = m23
+m23i = m23f
 m23i.info(buf = buffer4)
 m23i = buffer2.getvalue()
 st.text(m23i)
