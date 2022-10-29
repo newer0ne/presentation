@@ -173,8 +173,13 @@ elif load_option == opt_desc[2]:
 
 maxUploadSize = 400
 m23 = pd.merge(data2.df, data3.df, how = 'left', on = 'client_id')
-
 st.dataframe(m23)
+buffer4 = io.StringIO()
+m23i = m23
+m23i.info(buf = buffer4)
+m23i = buffer2.getvalue()
+st.text(m23i)  
+
 m123 = pd.merge(data1.df, m23, on = ['created_at', 'utm_campaign', 'utm_content'], how = 'left') #'utm_source', 'utm_medium', 'utm_term'
 st.dataframe(m123)
 
