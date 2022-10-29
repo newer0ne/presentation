@@ -195,8 +195,6 @@ elif load_option == opt_desc[2]:
     with tab_up3:
             data3.upload(name_list[2])
 
-maxUploadSize = 400
-
 m23 = pd.merge(data2.df, data3.df, how = 'left', on = 'client_id')
 st.text("Фильтрованная таблица:")
 m23f = m23[(m23.utm_source == 'yandex') & (m23.m_purchase_amount > 0)]
@@ -256,160 +254,139 @@ st.text(m123ii)
 #st.dataframe(m123)
 
 
+#buffer = io.StringIO()
+#joined123.info(buf = buffer)
+#joined_df_info = buffer.getvalue()
+#st.text(joined_df_info)
+
+#df_to_download = joined123.to_csv()
+#st.download_button(label='📥 Download .CSV', data = df_to_download, file_name = "Joined dataframe" + ".csv")
 
 
 
+#st.write("Dataframe Renamer")
+#ren1, ren2, ren3 = st.columns(3)
+
+#with ren1:
+#    data4.name = st.radio(
+#        "Dataframe selection to rename 👉",
+#        (data1.name, data2.name, data3.name))
+#    st.write("Choosed dataframe: " + data4.name)
+
+#with ren2:
+#    if data4.name == data1.name:
+#        ren_col = st.radio(
+#            "Columns selection 👉",
+#            (data1.listcols))
+#        st.write("Choosed column: " + ren_col)
+#    elif data4.name == data2.name:
+#        ren_col = st.radio(
+#            "Columns selection 👉",
+#            (data2.listcols))
+#        st.write("Choosed column: " + ren_col)
+#    elif data4.name == data3.name:
+#        ren_col = st.radio(
+#            "Columns selection 👉",
+#            (data3.listcols))
+#        st.write("Choosed column: " + ren_col)
+
+#with ren3:
+#    newcolname = st.text_input('New column name', ren_col)
+#    st.write("New name for the selected column: " + newcolname)
+
+#if st.button('Lets change it'):
+#    if data4.name == name_list[0]:
+#        data1.renamecol(ren_col, newcolname)
+#    elif data4.name == name_list[1]:
+#        data2.renamecol(ren_col, newcolname)
+#    elif data4.name == name_list[2]:
+#        data3.renamecol(ren_col, newcolname)
 
 
+#with st.expander("Dataset Joiner"):
+#    col4, col5, col6, col7 = st.columns(4)
+#
+#    with col4:
+#        join1 = st.radio(
+#            "Выбор первого датафрейма для Join 👉",
+#            (data1.name, data2.name, data3.name))
 
+#        if join1 == data1.name:
+#            join1_df = data1.df
+#        if join1 == data2.name:
+#            join1_df = data2.df
+#        if join1 == data3.name:
+#            join1_df = data3.df
 
+#    with col5:
+#        join2 = st.radio(
+#            "Выбор второго датафрейма для Join 👉",
+#            (data1.name, data2.name, data3.name))
 
+#        if join2 == data1.name:
+#            join2_df = data1.df
+#        if join2 == data2.name:
+#            join2_df = data2.df
+#        if join2 == data3.name:
+#            join2_df = data3.df
 
+#    with col6:
+#        join_type = st.radio(
+#            "Выбор типа Join 👉",
+#            ("left", "right", "inner","outer"))
+#        join_mark = ("Попробуем " + join_type + "join:")
 
-
-
-
-
-
-buffer = io.StringIO()
-joined123.info(buf = buffer)
-joined_df_info = buffer.getvalue()
-st.text(joined_df_info)
-
-df_to_download = joined123.to_csv()
-st.download_button(label='📥 Download .CSV', data = df_to_download, file_name = "Joined dataframe" + ".csv")
-
-
-
-st.write("Dataframe Renamer")
-ren1, ren2, ren3 = st.columns(3)
-
-with ren1:
-    data4.name = st.radio(
-        "Dataframe selection to rename 👉",
-        (data1.name, data2.name, data3.name))
-    st.write("Choosed dataframe: " + data4.name)
-
-with ren2:
-    if data4.name == data1.name:
-        ren_col = st.radio(
-            "Columns selection 👉",
-            (data1.listcols))
-        st.write("Choosed column: " + ren_col)
-    elif data4.name == data2.name:
-        ren_col = st.radio(
-            "Columns selection 👉",
-            (data2.listcols))
-        st.write("Choosed column: " + ren_col)
-    elif data4.name == data3.name:
-        ren_col = st.radio(
-            "Columns selection 👉",
-            (data3.listcols))
-        st.write("Choosed column: " + ren_col)
-
-with ren3:
-    newcolname = st.text_input('New column name', ren_col)
-    st.write("New name for the selected column: " + newcolname)
-
-if st.button('Lets change it'):
-    if data4.name == name_list[0]:
-        data1.renamecol(ren_col, newcolname)
-    elif data4.name == name_list[1]:
-        data2.renamecol(ren_col, newcolname)
-    elif data4.name == name_list[2]:
-        data3.renamecol(ren_col, newcolname)
+#    with col7:
+#        if join_df_2 == "df_ads":
+#            join_col_list = list_ads
+#        if join_df_2 == "df_leads":
+#            join_col_list = list_leads
+#        if join_df_2 == "df_purchases":
+#            join_col_list = list_purchases
     
-    
+#        join_col = st.radio(
+#            "Выбор столбца для Join 👉",
+#            (join_col_list))
+
+#    st.text("Join columns must have the same name")
+#    if st.button('Lets JOIN that!'):
+#        st.markdown(join_mark, unsafe_allow_html = True)
+#        joined_df = pd.merge(join_df_1_, join_df_2_, how = join_type, on = join_col)
+#        st.dataframe(joined_df)
+
+#        buffer = io.StringIO()
+#        joined_df.info(buf = buffer)
+#        joined_df_info = buffer.getvalue()
+#        st.text(joined_df_info)
+
+#        df_to_download = joined_df.to_csv()
+#        st.download_button(label='📥 Скачать обработанную ведомость в формате .CSV', data = df_to_download, file_name = "Joined dataframe" + ".csv")
+
+#with st.expander("Dataset Filter"):
+#    if st.button('if Joined_df sucsessful'):
+#        filter = joined_df
 
 
+#    uploaded_filter = st.file_uploader("Area to filter df")
+#    if uploaded_filter is not None:
+#        st.write("Filename: ", uploaded_filter.name)
+#        df_filter = pd.read_csv(uploaded_filter)
+#        st.markdown("""<h5 style='text-align: center;'>Датасет для фильтрации:</h5>""", unsafe_allow_html = True)
+#        st.dataframe(df_filter)
 
+#        cols_filter = df_filter.columns
+#        list_filter = []
+#        for i in range(len(cols_filter)):
+#            list_filter.append(cols_filter[i])
 
+#        st.markdown("""<h5 style='text-align: center;'>Фильтр под задание:</h5>""", unsafe_allow_html = True)
+#        #df_filter[(df_filter.m_purchase_amount > 0) & (df_filter.hp > 80)]
+#        df_filter2 = df_filter[(df_filter.m_purchase_amount > 0)]
 
-
-with st.expander("Dataset Joiner"):
-    col4, col5, col6, col7 = st.columns(4)
-
-    with col4:
-        join1 = st.radio(
-            "Выбор первого датафрейма для Join 👉",
-            (data1.name, data2.name, data3.name))
-
-        if join1 == data1.name:
-            join1_df = data1.df
-        if join1 == data2.name:
-            join1_df = data2.df
-        if join1 == data3.name:
-            join1_df = data3.df
-
-    with col5:
-        join2 = st.radio(
-            "Выбор второго датафрейма для Join 👉",
-            (data1.name, data2.name, data3.name))
-
-        if join2 == data1.name:
-            join2_df = data1.df
-        if join2 == data2.name:
-            join2_df = data2.df
-        if join2 == data3.name:
-            join2_df = data3.df
-
-    with col6:
-        join_type = st.radio(
-            "Выбор типа Join 👉",
-            ("left", "right", "inner","outer"))
-        join_mark = ("Попробуем " + join_type + "join:")
-
-    with col7:
-        if join_df_2 == "df_ads":
-            join_col_list = list_ads
-        if join_df_2 == "df_leads":
-            join_col_list = list_leads
-        if join_df_2 == "df_purchases":
-            join_col_list = list_purchases
-    
-        join_col = st.radio(
-            "Выбор столбца для Join 👉",
-            (join_col_list))
-
-    st.text("Join columns must have the same name")
-    if st.button('Lets JOIN that!'):
-        st.markdown(join_mark, unsafe_allow_html = True)
-        joined_df = pd.merge(join_df_1_, join_df_2_, how = join_type, on = join_col)
-        st.dataframe(joined_df)
-
-        buffer = io.StringIO()
-        joined_df.info(buf = buffer)
-        joined_df_info = buffer.getvalue()
-        st.text(joined_df_info)
-
-        df_to_download = joined_df.to_csv()
-        st.download_button(label='📥 Скачать обработанную ведомость в формате .CSV', data = df_to_download, file_name = "Joined dataframe" + ".csv")
-
-with st.expander("Dataset Filter"):
-    if st.button('if Joined_df sucsessful'):
-        filter = joined_df
-
-
-    uploaded_filter = st.file_uploader("Area to filter df")
-    if uploaded_filter is not None:
-        st.write("Filename: ", uploaded_filter.name)
-        df_filter = pd.read_csv(uploaded_filter)
-        st.markdown("""<h5 style='text-align: center;'>Датасет для фильтрации:</h5>""", unsafe_allow_html = True)
-        st.dataframe(df_filter)
-
-        cols_filter = df_filter.columns
-        list_filter = []
-        for i in range(len(cols_filter)):
-            list_filter.append(cols_filter[i])
-
-        st.markdown("""<h5 style='text-align: center;'>Фильтр под задание:</h5>""", unsafe_allow_html = True)
-        #df_filter[(df_filter.m_purchase_amount > 0) & (df_filter.hp > 80)]
-        df_filter2 = df_filter[(df_filter.m_purchase_amount > 0)]
-
-        df_filter2['datelag'] = 0
-        st.text("added datelag")
-        df_filter2["purchase_created_at"] = pd.to_datetime(df_filter2["purchase_created_at"])
-        df_filter2["lead_created_at"] = pd.to_datetime(df_filter2["lead_created_at"])
-        df_filter2['datelag'] = (df_filter2['purchase_created_at'] - df_filter2['lead_created_at'])
-        df_filter2["datelag"] = df_filter2["datelag"].dt.days
-        st.dataframe(df_filter2)
+#        df_filter2['datelag'] = 0
+#        st.text("added datelag")
+#        df_filter2["purchase_created_at"] = pd.to_datetime(df_filter2["purchase_created_at"])
+#        df_filter2["lead_created_at"] = pd.to_datetime(df_filter2["lead_created_at"])
+#        df_filter2['datelag'] = (df_filter2['purchase_created_at'] - df_filter2['lead_created_at'])
+#        df_filter2["datelag"] = df_filter2["datelag"].dt.days
+#        st.dataframe(df_filter2)
