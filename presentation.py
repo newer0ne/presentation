@@ -1,3 +1,4 @@
+from cmath import nan
 from pickle import APPEND
 from queue import Empty
 import streamlit as st
@@ -131,6 +132,8 @@ if load_option == opt_desc[0]:
         del data2.df['utm_term']
         data2.df = data2.df[(data2.df['utm_source'] == 'yandex') & (data2.df['utm_medium'] == 'cpc')]
         data2.df['client_id'] = data2.df['client_id'].astype(str)
+        data2.df = data2.df[(data2.df['utm_source'] is not nan)
+
 
         buffer2 = io.StringIO()
         data2.dfi = data2.df
