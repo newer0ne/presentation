@@ -67,7 +67,7 @@ class Dataset:
         st.dataframe(self.df)
         st.write('Сведения о датафрейме ', self.name, ':')
         i = self.df
-        x = []
+        x = io.StringIO()
         i.info(buf = x)
         i = x.getvalue()
         st.text(i)
