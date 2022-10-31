@@ -30,7 +30,6 @@ class Dataset:
         self.df = []
         self.listcols = []
         self.link = []
-        self.buffer = io.StringIO()
         self.up = None
     
     def Open(self, index):
