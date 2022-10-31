@@ -117,13 +117,15 @@ if load_option == opt_desc[0]:
         data1.Open(name_list[0])
 
         st.write("""Представленный набор данных, судя по содержимому,
-        представляет статистку по контекстной рекаламе ('utm_medium' = 'cpc') 
-        в яндекс.директ ('utm_source' = 'yandex').""")
+        представляет статистку по контекстной рекаламе ('d_utm_medium' = 'cpc') 
+        в яндекс.директ ('d_utm_source' = 'yandex').""")
         data1.DFinfo()
 
-        st.subheader("Обзор уникальных значений")
+        st.markdown("<h4 style='text-align: center;'>Уникальные значения</h4>", unsafe_allow_html=True)
         data1.Unique()
 
+        st.write("""Столбцы 'd_utm_source' и 'd_utm_medium' потребуются для
+        операции слияния как ключевые столбцы.""")
         st.write("""Столбцы 'd_ad_account_id' и 'd_utm_term' для анализа
         не несут ценности и удаляются, поскольку 'd_ad_account_id' имеет 
         только одно значение 'xo-for-client-ya', а 'd_utm_term' полностью пустой.""")
