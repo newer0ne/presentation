@@ -1,3 +1,4 @@
+from asyncore import write
 import streamlit as st
 from gsheetsdb import connect
 import pandas as pd
@@ -103,29 +104,36 @@ if load_option == opt_desc[0]:
         data1.Open(name_list[0])
         data1.DFinfo()
 
-        st.write("""Преобразуем типы данных в столбцах 
-        'm_clicks' и 'm_cost' в целочисленные,
-        отфильтруем 'm_clicks' больше нуля и удалим столбцы
-        'd_ad_account_id' и 'd_utm_term' поскольку 
-        для анализа они не несут ценности:""")
+        st.write("""Представленный набор данных, судя по содержимому,
+        представляет статистку по контекстной рекаламе ('u'tm_medium' = 'cpc') 
+        в яндекс.директ ('utm_source' = 'yandex').""")
+        st.write("""Столбцы 'd_ad_account_id' и 'd_utm_term' для анализа
+        не несут ценности и удаляются, поскольку 'd_ad_account_id' имеет 
+        только одно значение 'xo-for-client-ya', а 'd_utm_term' полностью пустой.""")
+        st.write("""Преобразуем типы данных в'm_clicks' и 'm_cost' в целочисленные,
+        отфильтруем 'm_clicks' больше нуля""")
 
+        data1.df = data1.df.drop(columns = ['d_ad_account_id', 'd_utm_term'])
+        data1.df['m_cost'] = data1.df['m_cost'].astype(int)
         data1.df['m_clicks'] = data1.df['m_clicks'].astype(int)
-        data1.df['m_cost'] = data1.df['m_cost'].astype(int)
         data1.df = data1.df[data1.df['m_clicks'] > 0]
-        data1.df['m_cost'] = data1.df['m_cost'].astype(int)
-        del data1.df['d_ad_account_id']
-        del data1.df['d_utm_term']
         data1.DFinfo()
 
     with tab_open2:
         data2.Open(name_list[1])
         data2.DFinfo()
 
-        del data2.df['d_lead_utm_term']
+        st.write("""Преобразуем типы данных в столбцах 
+        'm_clicks' и 'm_cost' в целочисленные,
+        отфильтруем 'm_clicks' больше нуля и удалим столбцы
+        'd_ad_account_id' и 'd_utm_term' поскольку 
+        для анализа они не несут ценности""")
+
         data2.df = data2.df[(data2.df['d_lead_utm_source'] == 'yandex') & (data2.df['d_lead_utm_medium'] == 'cpc')]
         data2.df['client_id'] = data2.df['client_id'].astype(str)
         data2.df = data2.df[(data2.df['client_id'] != 'nan')]
         data2.df = data2.df[(data2.df['d_lead_utm_content'].notnull())]
+        data1.df = data1.df.drop(columns = ['d_lead_utm_term'])
         st.dataframe(data2.df)
 
 # Пригодится под цикл уникальных значений в столбцах
