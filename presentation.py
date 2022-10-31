@@ -37,7 +37,7 @@ class Dataset:
         self.name = index
         for i in range(len(self.df.columns)):
             self.listcols.append(self.df.columns[i])
-        self.df['dupl'] = self.df.duplicated()
+        self.df.drop_duplicates()
 
     def linkup(self, index):
         file_id = self.link.split('/')[-2]
@@ -140,7 +140,7 @@ if load_option == opt_desc[0]:
         data1.DFinfo()
 
         st.markdown("<h4 style='text-align: center;'>Поиск дубликатов</h4>", unsafe_allow_html=True)
-        data1.df['Duplicated'] = data1.df.duplicated()
+        data1.df['Duplicated'] = data1.df.duplicated(subset=['created_at','d_utm_campaign'])
         st.dataframe(data1.df)
 
     with tab_open2:
