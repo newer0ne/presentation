@@ -106,7 +106,7 @@ data3 = Dataset()
 data3.link = st.secrets["purchases"]
 data4 = Dataset()
 
-st.markdown("<h4 style='text-align: center;'>Обзор загруженных данных</h4>", unsafe_allow_html=True)
+st.markdown("<h4 style='text-align: center;'>Загруженные данные</h4>", unsafe_allow_html=True)
 
 if load_option == opt_desc[0]:    
     tab_open1, tab_open2, tab_open3 = st.tabs(name_list)
