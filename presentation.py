@@ -73,10 +73,10 @@ class Dataset:
         st.text(self.dfi)
 
     def Unique (self):
+        x = len(self.listcols)
+        st.text(x)
+        unicols = []
         for i in range(len(self.listcols)):
-            x = len(self.listcols)
-            st.text(x)
-            unicols = []
             unicols.append(self.name + '_' + self.listcols[i])
             st.write(unicols)
 
