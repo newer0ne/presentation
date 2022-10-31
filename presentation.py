@@ -124,9 +124,6 @@ if load_option == opt_desc[0]:
         st.subheader("Обзор уникальных значений")
         data1.Unique()
 
-        st.write("""Представленный набор данных, судя по содержимому,
-        представляет статистку по контекстной рекаламе ('utm_medium' = 'cpc') 
-        в яндекс.директ ('utm_source' = 'yandex').""")
         st.write("""Столбцы 'd_ad_account_id' и 'd_utm_term' для анализа
         не несут ценности и удаляются, поскольку 'd_ad_account_id' имеет 
         только одно значение 'xo-for-client-ya', а 'd_utm_term' полностью пустой.""")
