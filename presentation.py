@@ -104,11 +104,11 @@ if load_option == opt_desc[0]:
     with tab_open2:
         data2.open(name_list[1])
 
-        del data2.df['utm_term']
-        data2.df = data2.df[(data2.df['utm_source'] == 'yandex') & (data2.df['utm_medium'] == 'cpc')]
+        del data2.df['d_lead_utm_term']
+        data2.df = data2.df[(data2.df['d_lead_utm_source'] == 'yandex') & (data2.df['d_lead_utm_medium'] == 'cpc')]
         data2.df['client_id'] = data2.df['client_id'].astype(str)
         data2.df = data2.df[(data2.df['client_id'] != 'nan')]
-        data2.df = data2.df[(data2.df['utm_content'].notnull())]
+        data2.df = data2.df[(data2.df['d_lead_utm_content'].notnull())]
 
 # Отправить в def dtinfo например
 #
