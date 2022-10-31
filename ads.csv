@@ -1,4 +1,4 @@
-created_at,account_id,utm_source,utm_medium,utm_campaign,utm_content,utm_term,m_clicks,m_cost
+created_at,d_ad_account_id,d_utm_source,d_utm_medium,d_utm_campaign,d_utm_content,d_utm_term,m_clicks,m_cost
 2022-08-08,xo-for-client-ya,yandex,cpc,48306435,8404700756,,2.0,48.84
 2022-08-08,xo-for-client-ya,yandex,cpc,48306435,8813476161,,3.0,100.77600000000001
 2022-08-08,xo-for-client-ya,yandex,cpc,48306435,8813476162,,1.0,10.139999999999999
