@@ -30,6 +30,7 @@ class Dataset:
         self.dfi = []
         self.listcols = []
         self.link = []
+        self.buffer = io.StringIO()
         self.up = None
     
     def open(self, index):
@@ -66,6 +67,13 @@ class Dataset:
                 self.listcols.append(self.df.columns[i])
             st.text(self.listcols)
 
+    def DFinfo (self)
+        self.dfi = self.df
+        self.dfi.info(buf = self.buffer)
+        self.dfi = self.buffer.getvalue()
+        st.text(self.dfi)
+        st.dataframe(self.df)
+
     def renamecol(self, oldname, newname):
         self.df[newname] = self.df[oldname]
         del self.df[oldname]
@@ -96,6 +104,7 @@ if load_option == opt_desc[0]:
 
     with tab_open1:
         data1.open(name_list[0])
+        data1.DFinfo
 
         data1.df['m_clicks'] = data1.df['m_clicks'].astype(int)
         data1.df = data1.df[data1.df['m_clicks'] > 0]
