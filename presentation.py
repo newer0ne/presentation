@@ -116,27 +116,6 @@ if load_option == opt_desc[0]:
         data1.DFinfo()
         data1.Unique()
 
-            #data2.df.iloc[:, i].unique()
-            #i += 1
-        
-            #data2.listcols = st.columns(len(data2.listcols))
-            #for i in data2.listcols[i]:
-            #   data2.listcols[i].write("Уникальные значения в столбце 1: ")
-            #    data2.listcols[0] = 1
-#
-#        self.colop1.write("Уникальные значения в столбце 1: ")
-#        self.colop1.dataframe(self.df.iloc[:, 0].unique())
-#        self.colop2.write("Уникальные значения в столбце 2: ")
-#        self.colop2.dataframe(self.df.iloc[:, 1].unique())
-#        self.colop3.write("Уникальные значения в столбце 3: ")
-#        self.colop3.dataframe(self.df.iloc[:, 2].unique())
-#        self.colop4.write("Уникальные значения в столбце 4: ")
-#        self.colop4.dataframe(self.df.iloc[:, 3].unique())
-#        self.colop5.write("Уникальные значения в столбце 5: ")
-#        self.colop5.dataframe(self.df.iloc[:, 4].unique())
-#        self.colop6.write("Уникальные значения в столбце 6: ")
-#        self.colop6.dataframe(self.df.iloc[:, 5].unique())
-
         st.write("""Представленный набор данных, судя по содержимому,
         представляет статистку по контекстной рекаламе ('utm_medium' = 'cpc') 
         в яндекс.директ ('utm_source' = 'yandex').""")
@@ -155,6 +134,7 @@ if load_option == opt_desc[0]:
     with tab_open2:
         data2.Open(name_list[1])
         data2.DFinfo()
+        data2.Unique()
 
         st.write("""Представленный набор данных, судя по содержимому,
         представляет статистку по заявкам, созданным на сайте.""")
@@ -171,7 +151,8 @@ if load_option == opt_desc[0]:
 
     with tab_open3:
         data3.Open(name_list[2])
-        data3.DFinfo()    
+        data3.DFinfo()
+        data3.Unique()
 
         data3.df['client_id'] = data3.df['client_id'].astype(str)
         data3.df = data3.df[(data3.df['client_id'] != 'nan')]
