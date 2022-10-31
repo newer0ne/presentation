@@ -115,7 +115,7 @@ if load_option == opt_desc[0]:
     with tab_open1:
 
         data1.Open(name_list[0])
-        data1.df.duplicated()
+        st.text(data1.df.duplicated())
 
         st.write("""Представленный набор данных, судя по содержимому,
         представляет статистку по контекстной рекаламе ('d_utm_medium' = 'cpc') 
