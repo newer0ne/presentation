@@ -74,7 +74,6 @@ class Dataset:
 
     def Unique (self):
         x = len(self.listcols)
-        st.text(x)
         unicols = []
         for i in range(x):
             unicols.append(self.name + '_' + self.listcols[i])
@@ -93,6 +92,7 @@ class Dataset:
         st.dataframe(self.df)
 
 opt_desc = ["Открыть предустановленный набор данных", "Открыть набор данных по ссылке", "Загрузить любой другой набор данных"]
+
 load_option = st.radio(
     "Выбор способа загрузки данных:",
     (opt_desc))
@@ -114,6 +114,8 @@ if load_option == opt_desc[0]:
     with tab_open1:
         data1.Open(name_list[0])
         data1.DFinfo()
+
+        st.subheader("Обзор уникальных значений")
         data1.Unique()
 
         st.write("""Представленный набор данных, судя по содержимому,
@@ -134,6 +136,8 @@ if load_option == opt_desc[0]:
     with tab_open2:
         data2.Open(name_list[1])
         data2.DFinfo()
+
+        st.subheader("Обзор уникальных значений")
         data2.Unique()
 
         st.write("""Представленный набор данных, судя по содержимому,
@@ -152,6 +156,8 @@ if load_option == opt_desc[0]:
     with tab_open3:
         data3.Open(name_list[2])
         data3.DFinfo()
+        
+        st.subheader("Обзор уникальных значений")
         data3.Unique()
 
         data3.df['client_id'] = data3.df['client_id'].astype(str)
