@@ -33,7 +33,7 @@ class Dataset:
         self.buffer = io.StringIO()
         self.up = None
     
-    def open(self, index):
+    def Open(self, index):
         st.write('Обзор  датафрейма', index, ':')
         self.df = pd.read_csv(index)
         st.dataframe(self.df)
@@ -103,7 +103,7 @@ if load_option == opt_desc[0]:
     tab_open1, tab_open2, tab_open3 = st.tabs(name_list)
 
     with tab_open1:
-        data1.open(name_list[0])
+        data1.Open(name_list[0])
         data1.DFinfo()
 
         data1.df['m_clicks'] = data1.df['m_clicks'].astype(int)
@@ -114,7 +114,9 @@ if load_option == opt_desc[0]:
         st.dataframe(data1.df)
 
     with tab_open2:
-        data2.open(name_list[1])
+        data2.Open(name_list[1])
+        data2.DFinfo()
+
 
         del data2.df['d_lead_utm_term']
         data2.df = data2.df[(data2.df['d_lead_utm_source'] == 'yandex') & (data2.df['d_lead_utm_medium'] == 'cpc')]
@@ -122,15 +124,6 @@ if load_option == opt_desc[0]:
         data2.df = data2.df[(data2.df['client_id'] != 'nan')]
         data2.df = data2.df[(data2.df['d_lead_utm_content'].notnull())]
         st.dataframe(data2.df)
-
-# Отправить в def dtinfo например
-#
-#        buffer2 = io.StringIO()
-#        data2.dfi = data2.df
-#        data2.dfi.info(buf = buffer2)
-#        data2.dfi = buffer2.getvalue()
-#        st.text(data2.dfi)
-#        st.dataframe(data2.df)
 
 # Пригодится под цикл уникальных значений в столбцах
         for i in range(len(data2.listcols)):
@@ -156,7 +149,8 @@ if load_option == opt_desc[0]:
 #        self.colop6.dataframe(self.df.iloc[:, 5].unique())
 
     with tab_open3:
-        data3.open(name_list[2])    
+        data3.Open(name_list[2])
+        data3.DFinfo()    
 
         data3.df['client_id'] = data3.df['client_id'].astype(str)
         data3.df = data3.df[(data3.df['client_id'] != 'nan')]
