@@ -110,8 +110,8 @@ if load_option == opt_desc[0]:
         st.write("""Столбцы 'd_ad_account_id' и 'd_utm_term' для анализа
         не несут ценности и удаляются, поскольку 'd_ad_account_id' имеет 
         только одно значение 'xo-for-client-ya', а 'd_utm_term' полностью пустой.""")
-        st.write("""Преобразуем типы данных в'm_clicks' и 'm_cost' в целочисленные,
-        отфильтруем 'm_clicks' больше нуля""")
+        st.write("""Преобразуем типы данных в 'm_clicks' и 'm_cost' в целочисленные,
+        а так-же отфильтруем значения в 'm_clicks' больше нуля""")
 
         data1.df = data1.df.drop(columns = ['d_ad_account_id', 'd_utm_term'])
         data1.df['m_cost'] = data1.df['m_cost'].astype(int)
