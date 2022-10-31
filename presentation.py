@@ -212,6 +212,8 @@ if (data1.df is None) or (data2.df is None) or (data3.df is None):
     st.error('This is an error', icon="🚨")
     pause()
 
+st.markdown("<h4 style='text-align: center;'>Слияние таблиц</h4>", unsafe_allow_html=True)
+
 m23 = pd.merge(data2.df, data3.df, how = 'left', on = 'client_id')
 
 st.write("Фильтрованная таблица по типам данных astype(int), 'utm_source' == 'yandex' и 'm_purchase_amount'] > 0:")
