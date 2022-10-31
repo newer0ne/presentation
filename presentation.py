@@ -211,7 +211,6 @@ elif load_option == opt_desc[2]:
 
 if (data1.df is None) or (data2.df is None) or (data3.df is None):
     st.error('This is an error', icon="🚨")
-    pause()
 
 st.markdown("<h4 style='text-align: center;'>Слияние таблиц</h4>", unsafe_allow_html=True)
 
@@ -219,10 +218,10 @@ m23 = pd.merge(data2.df, data3.df, how = 'left', on = 'client_id')
 
 st.write("Фильтрованная таблица по типам данных astype(int), 'utm_source' == 'yandex' и 'm_purchase_amount'] > 0:")
 
-m23f = m23[(m23['utm_source'] == 'yandex') & (m23['m_purchase_amount'] > 0)]
+m23f = m23[(m23['d_lead_utm_source'] == 'yandex') & (m23['m_purchase_amount'] > 0)]
 m23f['m_purchase_amount'] = m23f['m_purchase_amount'].astype(int)
-m23f['utm_content'] = m23f['utm_content'].astype(int)
-m23f['utm_campaign'] = m23f['utm_campaign'].astype(int)
+m23f['d_lead_utm_content'] = m23f['d_lead_utm_content'].astype(int)
+m23f['d_lead_utm_campaign'] = m23f['d_lead_utm_campaign'].astype(int)
 
 st.write('')
 st.dataframe(m23f)
