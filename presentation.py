@@ -104,7 +104,7 @@ if load_option == opt_desc[0]:
 
     with tab_open1:
         data1.open(name_list[0])
-        data1.DFinfo
+        data1.DFinfo()
 
         data1.df['m_clicks'] = data1.df['m_clicks'].astype(int)
         data1.df = data1.df[data1.df['m_clicks'] > 0]
