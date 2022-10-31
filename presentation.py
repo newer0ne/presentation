@@ -66,7 +66,7 @@ class Dataset:
     def DFinfo (self):
         st.write('Обзор  датафрейма', self.name, ':')
         st.dataframe(self.df)
-        st.write('Обзор  сведений о датафрейме ', self.name, ':')
+        st.write('Сведения о датафрейме ', self.name, ':')
         self.dfi = self.df
         self.dfi.info(buf = self.buffer)
         self.dfi = self.buffer.getvalue()
@@ -112,7 +112,7 @@ if load_option == opt_desc[0]:
     tab_open1, tab_open2, tab_open3 = st.tabs(name_list)
 
     with tab_open1:
-        
+
         data1.Open(name_list[0])
 
         st.write("""Представленный набор данных, судя по содержимому,
