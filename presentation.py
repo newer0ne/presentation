@@ -74,7 +74,7 @@ class Dataset:
 
     def Unique (self):
         st.markdown("<h4 style='text-align: center;'>Уникальные значения</h4>", unsafe_allow_html=True)
-        st.write('Для столбца:')
+        st.write('Для колонок ниже:')
         x = len(self.listcols)
         unicols = []
         for i in range(x):
@@ -123,9 +123,9 @@ if load_option == opt_desc[0]:
         data1.DFinfo()
         data1.Unique()
 
-        st.write("""Столбцы 'd_utm_source' и 'd_utm_medium' потребуются для
-        операции слияния как ключевые столбцы.""")
-        st.write("""Столбцы 'd_ad_account_id' и 'd_utm_term' для анализа
+        st.write("""Колонки 'created_at', 'd_utm_source' и 'd_utm_medium' потребуются для
+        операции слияния c таблицей leads.csv как ключевые столбцы.""")
+        st.write("""Колонки 'd_ad_account_id' и 'd_utm_term' для анализа
         не несут ценности и удаляются, поскольку 'd_ad_account_id' имеет 
         только одно значение 'xo-for-client-ya', а 'd_utm_term' полностью пустой.""")
         st.write("""Преобразуем типы данных в 'm_clicks' и 'm_cost' в целочисленные,
@@ -148,10 +148,17 @@ if load_option == opt_desc[0]:
         data2.DFinfo()
         data2.Unique()
 
+        st.write("""Колонки 'lead_created_at', 'd_lead_utm_source' и 
+        'd_lead_utm_medium' потребуются для операции слияния с таблицей 
+        ads.csv а также колонка 'client_id' для операции слияния с таблицей
+        purchases.csv как ключевые колонки.""")
+        st.write("""49 источников трафика в колонке 'd_lead_utm_source'
+        говорит о достаточно большом количестве источников данных,
+        помимо органического трафика. Источники трафика включают в себя как
+        контекстная реклама, так и социальные сети, инфоботы, баннеры и пр.""")
+        st.write("""Отсортируем значения в колонке 'd_lead_utm_source' по 
+        источнику 'yandex' и 'd_lead_utm_medium' по контексту 'cpc'""")
 
-        st.write("""Столбцы 'd_ad_account_id' и 'd_utm_term' для анализа
-        не несут ценности и удаляются, поскольку 'd_ad_account_id' имеет 
-        только одно значение 'xo-for-client-ya', а 'd_utm_term' полностью пустой.""")
 
         data2.df = data2.df[(data2.df['d_lead_utm_source'] == 'yandex') & (data2.df['d_lead_utm_medium'] == 'cpc')]
         data2.df['client_id'] = data2.df['client_id'].astype(str)
