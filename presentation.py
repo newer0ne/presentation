@@ -1,4 +1,3 @@
-from signal import pause
 import streamlit as st
 from gsheetsdb import connect
 import pandas as pd
@@ -44,7 +43,6 @@ class Dataset:
         st.write("Количество строк в таблице: ", len(self.df.axes[0]))
 
     def linkup(self, index):
-        #link_url = st.secrets[self.link]
         file_id = self.link.split('/')[-2]
         dwn_url = 'https://drive.google.com/uc?export=download&id=' + file_id
         url2 = requests.get(dwn_url).text
