@@ -109,6 +109,7 @@ if load_option == opt_desc[0]:
         data2.df['client_id'] = data2.df['client_id'].astype(str)
         data2.df = data2.df[(data2.df['client_id'] != 'nan')]
         data2.df = data2.df[(data2.df['d_lead_utm_content'].notnull())]
+        st.dataframe(data2.df)
 
 # Отправить в def dtinfo например
 #
@@ -144,6 +145,7 @@ if load_option == opt_desc[0]:
         data3.df = data3.df[(data3.df['client_id'] != 'nan')]
         data3.df['m_purchase_amount'] = data3.df['m_purchase_amount'].astype(int)
         data3.df = data3.df[(data3.df['m_purchase_amount'] > 0)]
+        st.dataframe(data3.df)
 
 elif load_option == opt_desc[1]:
     tab_load1, tab_load2, tab_load3 = st.tabs(name_list)    
