@@ -67,10 +67,10 @@ class Dataset:
         st.write('Обзор  датафрейма', self.name, ':')
         st.dataframe(self.df)
         st.write('Сведения о датафрейме ', self.name, ':')
-        self.dfi = self.df
-        self.dfi.info(buf = self.buffer)
-        self.dfi = self.buffer.getvalue()
-        st.text(self.dfi)
+        i = self.df
+        i.info(buf = self.buffer)
+        i = self.buffer.getvalue()
+        st.text(i)
 
     def Unique (self):
         st.markdown("<h4 style='text-align: center;'>Уникальные значения</h4>", unsafe_allow_html=True)
