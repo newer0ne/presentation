@@ -106,8 +106,8 @@ data3 = Dataset()
 data3.link = st.secrets["purchases"]
 data4 = Dataset()
 
+st.markdown("<h4 style='text-align: center;'>Datalyzer</h4>")
 
-st.write('Ниже можно осмотреть загруженный набор данных:')
 if load_option == opt_desc[0]:    
     tab_open1, tab_open2, tab_open3 = st.tabs(name_list)
 
