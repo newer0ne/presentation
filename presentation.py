@@ -212,7 +212,7 @@ elif load_option == opt_desc[2]:
 if (data1.df is None) or (data2.df is None) or (data3.df is None):
     st.error('This is an error', icon="🚨")
 
-st.markdown("<h4 style='text-align: center;'>Слияние таблиц</h4>", unsafe_allow_html=True)
+st.markdown("<h4 style='text-align: center;'>Слияние таблиц leads и purchase</h4>", unsafe_allow_html=True)
 
 m23 = pd.merge(data2.df, data3.df, how = 'left', on = 'client_id')
 
