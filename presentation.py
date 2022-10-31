@@ -73,6 +73,7 @@ class Dataset:
         st.text(self.dfi)
 
     def Unique (self):
+        st.write('Для столбца:')
         x = len(self.listcols)
         unicols = []
         for i in range(x):
