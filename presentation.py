@@ -189,13 +189,14 @@ if load_option == opt_desc[0]:
         data3.DFinfo()
         data3.Unique()
 
-
-
-
         data3.df['client_id'] = data3.df['client_id'].astype(str)
         data3.df = data3.df[(data3.df['client_id'] != 'nan')]
         data3.df['m_purchase_amount'] = data3.df['m_purchase_amount'].astype(int)
         data3.df = data3.df[(data3.df['m_purchase_amount'] > 0)]
+        data3.DFinfo()
+
+        st.markdown("<h4 style='text-align: center;'>Поиск дубликатов</h4>", unsafe_allow_html=True)
+        data3.df['Duplicated'] = data3.df.duplicated()
         st.dataframe(data3.df)
 
 elif load_option == opt_desc[1]:
