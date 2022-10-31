@@ -40,8 +40,6 @@ class Dataset:
         self.name = index
         for i in range(len(self.df.columns)):
             self.listcols.append(self.df.columns[i])
-        st.write('Названия столбцов в ', index, ':')
-        st.text(self.listcols)
 
     def linkup(self, index):
         file_id = self.link.split('/')[-2]
