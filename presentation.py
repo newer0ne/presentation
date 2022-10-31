@@ -78,7 +78,7 @@ class Dataset:
         unicols = []
         for i in range(len(self.listcols)):
             unicols.append(self.name + '_' + self.listcols[i])
-            st.write(unicols)
+        unicols = st.columns(x)
 
     def renamecol(self, oldname, newname):
         self.df[newname] = self.df[oldname]
