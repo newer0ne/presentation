@@ -73,6 +73,7 @@ class Dataset:
         st.text(self.dfi)
 
     def Unique (self):
+        st.markdown("<h4 style='text-align: center;'>Уникальные значения</h4>", unsafe_allow_html=True)
         st.write('Для столбца:')
         x = len(self.listcols)
         unicols = []
@@ -120,8 +121,6 @@ if load_option == opt_desc[0]:
         представляет статистку по контекстной рекаламе ('d_utm_medium' = 'cpc') 
         в яндекс.директ ('d_utm_source' = 'yandex').""")
         data1.DFinfo()
-
-        st.markdown("<h4 style='text-align: center;'>Уникальные значения</h4>", unsafe_allow_html=True)
         data1.Unique()
 
         st.write("""Столбцы 'd_utm_source' и 'd_utm_medium' потребуются для
@@ -141,14 +140,15 @@ if load_option == opt_desc[0]:
         data1.DFinfo()
 
     with tab_open2:
-        data2.Open(name_list[1])
-        data2.DFinfo()
 
-        st.subheader("Обзор уникальных значений")
-        data2.Unique()
+        data2.Open(name_list[1])
 
         st.write("""Представленный набор данных, судя по содержимому,
-        представляет статистку по заявкам, созданным на сайте.""")
+        представляет статистку по заявкам на сайте.""")
+        data2.DFinfo()
+        data2.Unique()
+
+
         st.write("""Столбцы 'd_ad_account_id' и 'd_utm_term' для анализа
         не несут ценности и удаляются, поскольку 'd_ad_account_id' имеет 
         только одно значение 'xo-for-client-ya', а 'd_utm_term' полностью пустой.""")
@@ -161,10 +161,12 @@ if load_option == opt_desc[0]:
         data2.DFinfo()
 
     with tab_open3:
-        data3.Open(name_list[2])
-        data3.DFinfo()
 
-        st.subheader("Обзор уникальных значений")
+        data3.Open(name_list[2])
+
+        st.write("""Представленный набор данных, судя по содержимому,
+        представляет статистку по оплатам заявок на сайте.""")
+        data3.DFinfo()
         data3.Unique()
 
         data3.df['client_id'] = data3.df['client_id'].astype(str)
