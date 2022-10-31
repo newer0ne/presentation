@@ -68,6 +68,7 @@ class Dataset:
             st.text(self.listcols)
 
     def DFinfo (self):
+        st.write('Обзор  сведений о датафрейме ', index, ':')
         self.dfi = self.df
         self.dfi.info(buf = self.buffer)
         self.dfi = self.buffer.getvalue()
