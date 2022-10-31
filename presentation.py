@@ -104,8 +104,8 @@ if load_option == opt_desc[0]:
         data1.Open(name_list[0])
         data1.DFinfo()
 
-        for i in range(len(data2.listcols)):
-            st.write(print(i))
+        for i in range(len(data1.listcols)):
+            st.write(data1.listcols[i])
             #data2.df.iloc[:, i].unique()
             #i += 1
         
