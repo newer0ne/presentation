@@ -34,9 +34,7 @@ class Dataset:
         self.up = None
     
     def Open(self, index):
-        st.write('Обзор  датафрейма', index, ':')
         self.df = pd.read_csv(index)
-        st.dataframe(self.df)
         self.name = index
         for i in range(len(self.df.columns)):
             self.listcols.append(self.df.columns[i])
@@ -65,12 +63,13 @@ class Dataset:
             st.text(self.listcols)
 
     def DFinfo (self):
+        st.write('Обзор  датафрейма', self.name, ':')
+        st.dataframe(self.df)
         st.write('Обзор  сведений о датафрейме ', self.name, ':')
         self.dfi = self.df
         self.dfi.info(buf = self.buffer)
         self.dfi = self.buffer.getvalue()
         st.text(self.dfi)
-        st.dataframe(self.df)
 
     def renamecol(self, oldname, newname):
         self.df[newname] = self.df[oldname]
