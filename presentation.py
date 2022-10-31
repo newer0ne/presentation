@@ -104,17 +104,23 @@ if load_option == opt_desc[0]:
         data1.Open(name_list[0])
         data1.DFinfo()
 
+        st.write("""Преобразуем типы данных в столбцах 
+        'm_clicks' и 'm_cost' в целочисленные,
+        отфильтруем 'm_clicks' больше нуля и удалим столбцы
+        'd_ad_account_id' и 'd_utm_term' поскольку 
+        для анализа они не несут ценности:""")
+
         data1.df['m_clicks'] = data1.df['m_clicks'].astype(int)
+        data1.df['m_cost'] = data1.df['m_cost'].astype(int)
         data1.df = data1.df[data1.df['m_clicks'] > 0]
         data1.df['m_cost'] = data1.df['m_cost'].astype(int)
         del data1.df['d_ad_account_id']
         del data1.df['d_utm_term']
-        st.dataframe(data1.df)
+        data1.DFinfo()
 
     with tab_open2:
         data2.Open(name_list[1])
         data2.DFinfo()
-
 
         del data2.df['d_lead_utm_term']
         data2.df = data2.df[(data2.df['d_lead_utm_source'] == 'yandex') & (data2.df['d_lead_utm_medium'] == 'cpc')]
