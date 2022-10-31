@@ -81,7 +81,7 @@ class Dataset:
         unicols = st.columns(x)
         for ii in range(x):
             unicols[ii].text('Уникальные значения:')
-            unicols[ii].text(self.df.iloc[:, ii].unique())
+            unicols[ii].write(self.df.iloc[:, ii].unique())
 
     def renamecol(self, oldname, newname):
         self.df[newname] = self.df[oldname]
