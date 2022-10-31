@@ -105,9 +105,10 @@ if load_option == opt_desc[0]:
         data1.DFinfo()
 
         # Пригодится под цикл уникальных значений в столбцах
-        for i in range(len(data2.df.columns)):
-            data2.df.iloc[:, i].unique()
-            i += 1
+        for i in range(len(data2.listcols)):
+            print(i)
+            #data2.df.iloc[:, i].unique()
+            #i += 1
         
             #data2.listcols = st.columns(len(data2.listcols))
             #for i in data2.listcols[i]:
