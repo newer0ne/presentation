@@ -97,7 +97,7 @@ if load_option == opt_desc[0]:
         data1.df['m_clicks'] = data1.df['m_clicks'].astype(int)
         data1.df = data1.df[data1.df['m_clicks'] > 0]
         data1.df['m_cost'] = data1.df['m_cost'].astype(int)
-        del data1.df['d_account_id']
+        del data1.df['d_ad_account_id']
         del data1.df['d_utm_term']
         st.dataframe(data1.df)
 
