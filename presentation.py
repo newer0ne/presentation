@@ -138,6 +138,10 @@ if load_option == opt_desc[0]:
         st.markdown("<h4 style='text-align: center;'>Результат преобразований</h4>", unsafe_allow_html=True)
         data1.DFinfo()
 
+        st.markdown("<h4 style='text-align: center;'>Поиск дубликатов</h4>", unsafe_allow_html=True)
+        data1.df['Duplicated'] = data1.df.duplicated()
+        st.dataframe(data1.df)
+
     with tab_open2:
 
         data2.Open(name_list[1])
