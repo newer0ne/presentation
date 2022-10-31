@@ -111,7 +111,7 @@ if load_option == opt_desc[0]:
         не несут ценности и удаляются, поскольку 'd_ad_account_id' имеет 
         только одно значение 'xo-for-client-ya', а 'd_utm_term' полностью пустой.""")
         st.write("""Преобразуем типы данных в 'm_clicks' и 'm_cost' в целочисленные,
-        а так-же отфильтруем значения в 'm_clicks' больше нуля""")
+        а так-же отфильтруем значения в 'm_clicks' больше нуля.""")
 
         data1.df = data1.df.drop(columns = ['d_ad_account_id', 'd_utm_term'])
         data1.df['m_cost'] = data1.df['m_cost'].astype(int)
@@ -123,6 +123,16 @@ if load_option == opt_desc[0]:
         data2.Open(name_list[1])
         data2.DFinfo()
 
+        st.write("""Представленный набор данных, судя по содержимому,
+        представляет статистку по заявкам, созданным на сайте.  ('utm_medium' = 'cpc') 
+        в яндекс.директ ('utm_source' = 'yandex').""")
+        st.write("""Столбцы 'd_ad_account_id' и 'd_utm_term' для анализа
+        не несут ценности и удаляются, поскольку 'd_ad_account_id' имеет 
+        только одно значение 'xo-for-client-ya', а 'd_utm_term' полностью пустой.""")
+        st.write("""Преобразуем типы данных в 'm_clicks' и 'm_cost' в целочисленные,
+        а так-же отфильтруем значения в 'm_clicks' больше нуля.""")
+
+
         st.write("""Преобразуем типы данных в столбцах 
         'm_clicks' и 'm_cost' в целочисленные,
         отфильтруем 'm_clicks' больше нуля и удалим столбцы
@@ -133,8 +143,8 @@ if load_option == opt_desc[0]:
         data2.df['client_id'] = data2.df['client_id'].astype(str)
         data2.df = data2.df[(data2.df['client_id'] != 'nan')]
         data2.df = data2.df[(data2.df['d_lead_utm_content'].notnull())]
-        data1.df = data1.df.drop(columns = ['d_lead_utm_term'])
-        st.dataframe(data2.df)
+        data2.df = data1.df.drop(columns = ['d_lead_utm_term'])
+        data2.DFinfo()
 
 # Пригодится под цикл уникальных значений в столбцах
         for i in range(len(data2.listcols)):
