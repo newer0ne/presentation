@@ -143,7 +143,7 @@ if load_option == opt_desc[0]:
         data2.df['client_id'] = data2.df['client_id'].astype(str)
         data2.df = data2.df[(data2.df['client_id'] != 'nan')]
         data2.df = data2.df[(data2.df['d_lead_utm_content'].notnull())]
-        data2.df = data1.df.drop(columns = ['d_lead_utm_term'])
+        data2.df = data2.df.drop(columns = ['d_lead_utm_term'])
         data2.DFinfo()
 
 # Пригодится под цикл уникальных значений в столбцах
