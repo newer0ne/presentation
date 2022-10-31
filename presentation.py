@@ -67,7 +67,7 @@ class Dataset:
                 self.listcols.append(self.df.columns[i])
             st.text(self.listcols)
 
-    def DFinfo (self)
+    def DFinfo (self):
         self.dfi = self.df
         self.dfi.info(buf = self.buffer)
         self.dfi = self.buffer.getvalue()
