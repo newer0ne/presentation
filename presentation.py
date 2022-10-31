@@ -136,6 +136,8 @@ if load_option == opt_desc[0]:
         data1.df['m_cost'] = data1.df['m_cost'].astype(int)
         data1.df['m_clicks'] = data1.df['m_clicks'].astype(int)
         data1.df = data1.df[data1.df['m_clicks'] > 0]
+
+        st.markdown("<h4 style='text-align: center;'>Результат преобразований</h4>", unsafe_allow_html=True)
         data1.DFinfo()
 
     with tab_open2:
