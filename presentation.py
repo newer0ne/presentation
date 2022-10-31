@@ -122,7 +122,8 @@ if load_option == opt_desc[0]:
 
 # Пригодится под цикл уникальных значений в столбцах
  for i in range(len(data2.listcols)):
-        data2.listcols = st.columns(len(data2.listcols))
+    data2.listcols = st.columns(len(data2.listcols))
+    
 #        for i in data2.listcols
 #        data2.listcols[0] = 1
 #
