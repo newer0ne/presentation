@@ -112,7 +112,12 @@ if load_option == opt_desc[0]:
     tab_open1, tab_open2, tab_open3 = st.tabs(name_list)
 
     with tab_open1:
+        
         data1.Open(name_list[0])
+
+        st.write("""Представленный набор данных, судя по содержимому,
+        представляет статистку по контекстной рекаламе ('utm_medium' = 'cpc') 
+        в яндекс.директ ('utm_source' = 'yandex').""")
         data1.DFinfo()
 
         st.subheader("Обзор уникальных значений")
@@ -156,7 +161,7 @@ if load_option == opt_desc[0]:
     with tab_open3:
         data3.Open(name_list[2])
         data3.DFinfo()
-        
+
         st.subheader("Обзор уникальных значений")
         data3.Unique()
 
