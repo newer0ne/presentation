@@ -80,7 +80,7 @@ class Dataset:
             unicols.append(self.name + '_' + self.listcols[i])
         unicols = st.columns(x)
         for ii in range(x):
-            unicols[ii].text('Уникальные значения в столбце', unicols[ii],':')
+            unicols[ii].text('Уникальные значения:')
 
     def renamecol(self, oldname, newname):
         self.df[newname] = self.df[oldname]
