@@ -33,15 +33,15 @@ class Dataset:
         self.up = None
     
     def open(self, index):
-        st.write('Обзор  датафрейма', index, ' :')
+        st.write('Обзор  датафрейма', index, ':')
         self.df = pd.read_csv(index)
         st.dataframe(self.df)
         self.name = index
         for i in range(len(self.df.columns)):
             self.listcols.append(self.df.columns[i])
-        st.write("Названия столбцов в dataframe:")
+        st.write('Названия столбцов в ', index, ':')
         st.text(self.listcols)
-        st.write("Количество строк в таблице: ", len(self.df.axes[0]))
+        st.write('Названия строк в ', index, ':', len(self.df.axes[0]))
 
     def linkup(self, index):
         file_id = self.link.split('/')[-2]
@@ -77,7 +77,7 @@ class Dataset:
 
 opt_desc = ["Открыть предустановленный набор данных", "Открыть набор данных по ссылке", "Загрузить любой другой набор данных"]
 load_option = st.radio(
-    "Выбор способа загрузки данных",
+    "Выбор способа загрузки данных:",
     (opt_desc))
 
 name_list = ["ads.csv", "leads.csv", "purchases.csv"]
