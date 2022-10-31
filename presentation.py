@@ -72,6 +72,10 @@ class Dataset:
         self.dfi = self.buffer.getvalue()
         st.text(self.dfi)
 
+    def Unique (self):
+        for i in range(len(self.listcols)):
+            st.write(self.listcols[i])
+
     def renamecol(self, oldname, newname):
         self.df[newname] = self.df[oldname]
         del self.df[oldname]
@@ -103,9 +107,8 @@ if load_option == opt_desc[0]:
     with tab_open1:
         data1.Open(name_list[0])
         data1.DFinfo()
+        data1.Unique()
 
-        for i in range(len(data1.listcols)):
-            st.write(data1.listcols[i])
             #data2.df.iloc[:, i].unique()
             #i += 1
         
