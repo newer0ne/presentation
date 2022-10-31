@@ -74,7 +74,9 @@ class Dataset:
 
     def Unique (self):
         for i in range(len(self.listcols)):
-            st.write(self.listcols[i])
+            unicols = []
+            unicols.append(self.name + self.listcols[i])
+            st.write(unicols)
 
     def renamecol(self, oldname, newname):
         self.df[newname] = self.df[oldname]
