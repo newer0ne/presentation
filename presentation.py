@@ -123,7 +123,7 @@ if load_option == opt_desc[0]:
 # Пригодится под цикл уникальных значений в столбцах
 # for i in range(len(self.df.columns)):
 #
-#        self.colop1, self.colop2, self.colop3, self.colop4, self.colop5, self.colop6 = st.columns(6)
+#        self.listcols = st.columns(6)
 
 #        self.colop1.write("Уникальные значения в столбце 1: ")
 #        self.colop1.dataframe(self.df.iloc[:, 0].unique())
@@ -177,6 +177,8 @@ m23f = m23[(m23['utm_source'] == 'yandex') & (m23['m_purchase_amount'] > 0)]
 m23f['m_purchase_amount'] = m23f['m_purchase_amount'].astype(int)
 m23f['utm_content'] = m23f['utm_content'].astype(int)
 m23f['utm_campaign'] = m23f['utm_campaign'].astype(int)
+
+st.write('')
 st.dataframe(m23f)
 
 st.write("Типы данных merget tables после обработки:")
