@@ -124,8 +124,11 @@ if load_option == opt_desc[0]:
 #        st.dataframe(data2.df)
 
 # Пригодится под цикл уникальных значений в столбцах
-        for i in range(len(data2.df.columns)):
-            data2.listcols = st.columns(len(data2.listcols))
+        for i in range(len(data2.listcols)):
+            data2.df.iloc[:, {i}].unique()
+            i += 1
+        
+            #data2.listcols = st.columns(len(data2.listcols))
             #for i in data2.listcols[i]:
             #   data2.listcols[i].write("Уникальные значения в столбце 1: ")
             #    data2.listcols[0] = 1
