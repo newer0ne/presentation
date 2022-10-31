@@ -28,7 +28,6 @@ class Dataset:
     def __init__(self) -> None:
         self.name = []  
         self.df = []
-        self.dfi = []
         self.listcols = []
         self.link = []
         self.buffer = io.StringIO()
@@ -68,8 +67,9 @@ class Dataset:
         st.dataframe(self.df)
         st.write('Сведения о датафрейме ', self.name, ':')
         i = self.df
-        i.info(buf = self.buffer)
-        i = self.buffer.getvalue()
+        x = []
+        i.info(buf = x)
+        i = x.getvalue()
         st.text(i)
 
     def Unique (self):
