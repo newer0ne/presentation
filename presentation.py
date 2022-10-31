@@ -140,7 +140,6 @@ if load_option == opt_desc[0]:
         data1.DFinfo()
 
         st.markdown("<h4 style='text-align: center;'>Поиск дубликатов</h4>", unsafe_allow_html=True)
-        data1.df['Duplicated'] = data1.df.duplicated(subset=['created_at','d_utm_campaign'])
         st.dataframe(data1.df)
 
     with tab_open2:
@@ -177,10 +176,6 @@ if load_option == opt_desc[0]:
         st.markdown("<h4 style='text-align: center;'>Результат преобразований</h4>", unsafe_allow_html=True)
         data2.DFinfo()
 
-        st.markdown("<h4 style='text-align: center;'>Поиск дубликатов</h4>", unsafe_allow_html=True)
-        data2.df['Duplicated'] = data2.df.duplicated()
-        st.dataframe(data2.df)
-
     with tab_open3:
 
         data3.Open(name_list[2])
@@ -196,16 +191,12 @@ if load_option == opt_desc[0]:
         data3.df = data3.df[(data3.df['m_purchase_amount'] > 0)]
         data3.DFinfo()
 
-        st.markdown("<h4 style='text-align: center;'>Поиск дубликатов</h4>", unsafe_allow_html=True)
-        data3.df['Duplicated'] = data3.df.duplicated()
-        st.dataframe(data3.df)
-
 elif load_option == opt_desc[1]:
-    tab_load1, tab_load2, tab_load3 = st.tabs(name_list)    
+    tab_load1, tab_load2, tab_load3 = st.tabs(name_list)
     with tab_load1:
         data1.linkup(name_list[0])    
     with tab_load2:
-        data2.linkup(name_list[1])        
+        data2.linkup(name_list[1])
     with tab_load3:
         data3.linkup(name_list[2])
 
