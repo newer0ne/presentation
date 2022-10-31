@@ -163,9 +163,9 @@ if load_option == opt_desc[0]:
         data2.df['client_id'] = data2.df['client_id'].astype(str)
         data2.df = data2.df[(data2.df['client_id'] != 'nan')]
         data2.df = data2.df[(data2.df['d_lead_utm_content'].notnull())]
-        data2.df = data2.df.drop(columns = ['d_lead_utm_term']
+        data2.df = data2.df.drop(columns = ['d_lead_utm_term'])
         
-        st.markdown("<h4 style='text-align: center;'>Результат преобразований</h4>", unsafe_allow_html=True))
+        st.markdown("<h4 style='text-align: center;'>Результат преобразований</h4>", unsafe_allow_html=True)
         data2.DFinfo()
 
     with tab_open3:
