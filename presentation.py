@@ -33,6 +33,7 @@ class Dataset:
         self.up = None
     
     def open(self, index):
+        st.write('Обзор  датафрейма', index, ' :')
         self.df = pd.read_csv(index)
         st.dataframe(self.df)
         self.name = index
@@ -74,9 +75,9 @@ class Dataset:
         st.text(self.listcols)
         st.dataframe(self.df)
 
-opt_desc = ["Open fixed data from test task", "Link on data from test task", "Upload data whatewer you want"]
+opt_desc = ["Открыть предустановленный набор данных", "Открыть набор данных по ссылке", "Загрузить любой другой набор данных"]
 load_option = st.radio(
-    "Choosing a dataset loading method",
+    "Выбор способа загрузки данных",
     (opt_desc))
 
 name_list = ["ads.csv", "leads.csv", "purchases.csv"]
@@ -88,6 +89,8 @@ data3 = Dataset()
 data3.link = st.secrets["purchases"]
 data4 = Dataset()
 
+
+st.write('Ниже можно осмотреть загруженный набор данных:')
 if load_option == opt_desc[0]:    
     tab_open1, tab_open2, tab_open3 = st.tabs(name_list)
 
@@ -123,9 +126,9 @@ if load_option == opt_desc[0]:
 # Пригодится под цикл уникальных значений в столбцах
         for i in range(len(data2.df.columns)):
             data2.listcols = st.columns(len(data2.listcols))
-
-#        for i in data2.listcols
-#        data2.listcols[0] = 1
+            for i in data2.listcols[i]:
+                data2.listcols[i].write("Уникальные значения в столбце 1: ")
+                 data2.listcols[0] = 1
 #
 #        self.colop1.write("Уникальные значения в столбце 1: ")
 #        self.colop1.dataframe(self.df.iloc[:, 0].unique())
