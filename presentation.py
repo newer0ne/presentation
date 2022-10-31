@@ -155,16 +155,20 @@ if load_option == opt_desc[0]:
         говорит о активно рекламируемом сервисе, который не ограничивается
         органическим трафиком. Источники трафика включают в себя как
         контекстную рекламу, так и социальные сети, инфоботы, баннеры и пр.""")
+        
         st.write("""Отсортируем значения в колонке 'd_lead_utm_source' по 
         источнику 'yandex' и 'd_lead_utm_medium' по контексту 'cpc'""")
-
-
         data2.df = data2.df[(data2.df['d_lead_utm_source'] == 'yandex') & (data2.df['d_lead_utm_medium'] == 'cpc')]
+
+        st.write("""Приведем колонку 'client_id' к формату данных str
+        и уберем строки с пустымии ячейками в колонках 'client_id' и 
+        'd_lead_utm_content', после чего удалим 'd_lead_utm_content',
+        т.к. на итоговую статику колонка не повлияет.""")
         data2.df['client_id'] = data2.df['client_id'].astype(str)
         data2.df = data2.df[(data2.df['client_id'] != 'nan')]
         data2.df = data2.df[(data2.df['d_lead_utm_content'].notnull())]
         data2.df = data2.df.drop(columns = ['d_lead_utm_term'])
-        
+
         st.markdown("<h4 style='text-align: center;'>Результат преобразований</h4>", unsafe_allow_html=True)
         data2.DFinfo()
 
