@@ -17,11 +17,11 @@ st.markdown("<h2 style='text-align: center;'>Datalyzer</h2>", unsafe_allow_html=
 headcol1, headcol2 = st.columns(2)
 
 with headcol1:
-    header_tasklink = """[<h5 style='text-align: center;'>Test task:</h5>](https://xoservices.notion.site/1872d331265946a0ae2c5c9069189fd7)"""
+    header_tasklink = """[<h5 style='text-align: center;'>Test task</h5>](https://xoservices.notion.site/1872d331265946a0ae2c5c9069189fd7)"""
     st.markdown(header_tasklink, unsafe_allow_html=True)
 
 with headcol2:
-    header_repolink = """[<h5 style='text-align: center;'>Github repo this project:</h5>](https://github.com/newer0ne/presentation/blob/main/presentation.py)"""
+    header_repolink = """[<h5 style='text-align: center;'>Github repo this project</h5>](https://github.com/newer0ne/presentation/blob/main/presentation.py)"""
     st.markdown(header_repolink, unsafe_allow_html=True)
 
 class Dataset:
@@ -174,6 +174,9 @@ if load_option == opt_desc[0]:
         представляет статистку по оплатам заявок на сайте.""")
         data3.DFinfo()
         data3.Unique()
+
+
+
 
         data3.df['client_id'] = data3.df['client_id'].astype(str)
         data3.df = data3.df[(data3.df['client_id'] != 'nan')]
