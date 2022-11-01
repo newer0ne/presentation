@@ -243,6 +243,7 @@ st.write("""Количество заявок (1388) больше, чем кол
 поэтому требуется определить для каких клиентов было заведено несколько заявок.""")
 data23.df['dupl'] = data23.df.duplicated(subset=['client_id'])
 data23.dfd = data23.df[data23.df['dupl'] == True]
+st.write(len(data23.df['dupl']))
 st.dataframe(data23.dfd)
 
 st.markdown("<h4 style='text-align: center;'>Подготовка к слиянию таблиц ads + leads_purchase</h4>", unsafe_allow_html=True)
