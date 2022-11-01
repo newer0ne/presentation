@@ -63,7 +63,7 @@ class Dataset:
             st.text(self.listcols)
 
     def Lcols(self):
-                for i in range(len(self.df.columns)):
+        for i in range(len(self.df.columns)):
             self.listcols.append(self.df.columns[i])
 
     def DFinfo (self):
