@@ -239,8 +239,8 @@ data23.df['d_lead_utm_campaign'] = data23.df['d_lead_utm_campaign'].astype(int)
 
 data23.DFinfo()
 data23.Unique()
-st.write("Количество заявок", len(data23.df['lead_id']), 
-"больше, чем количество клиентов (1346),",
+st.write("Количество уникальных заявок", len(data23.df['lead_id'].unique()), 
+"больше, чем количество уникальных клиентов (1346),",
 "поэтому требуется определить для каких клиентов было заведено несколько заявок.")
 data23.df['dupl'] = data23.df.duplicated(subset=['client_id'])
 data23.dfd = data23.df[data23.df['dupl'] == True]
