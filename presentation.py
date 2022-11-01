@@ -242,8 +242,9 @@ data23.df['d_lead_utm_campaign'] = data23.df['d_lead_utm_campaign'].astype(int)
 
 data23.DFinfo()
 data23.Unique()
-st.write("""Количество заявок больше чем количество уникальных клиентов,
-поэтому определим, для каких клиентов было заведено несколько заявок.""")
+st.write("""Количество заявок (522) больше, чем количество клиентов (497),
+поэтому требуется определить для каких клиентов было заведено несколько заявок.""")
+st.dataframe(data23.df.duplicated())
 
 st.markdown("<h4 style='text-align: center;'>Подготовка к слиянию таблиц ads + leads_purchase</h4>", unsafe_allow_html=True)
 
