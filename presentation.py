@@ -244,7 +244,7 @@ data23.DFinfo()
 data23.Unique()
 st.write("""Количество заявок (522) больше, чем количество клиентов (497),
 поэтому требуется определить для каких клиентов было заведено несколько заявок.""")
-st.dataframe(data23.df.duplicated())
+st.dataframe(data23.df.duplicated(subset=['client_id']))
 
 st.markdown("<h4 style='text-align: center;'>Подготовка к слиянию таблиц ads + leads_purchase</h4>", unsafe_allow_html=True)
 
