@@ -62,6 +62,10 @@ class Dataset:
                 self.listcols.append(self.df.columns[i])
             st.text(self.listcols)
 
+    def Lcols(self):
+                for i in range(len(self.df.columns)):
+            self.listcols.append(self.df.columns[i])
+
     def DFinfo (self):
         st.write('Обзор  датафрейма', self.name, ':')
         st.dataframe(self.df)
@@ -221,6 +225,7 @@ if (data1.df is None) or (data2.df is None) or (data3.df is None):
 st.markdown("<h4 style='text-align: center;'>Слияние таблиц leads и purchase</h4>", unsafe_allow_html=True)
 
 data23.df = pd.merge(data2.df, data3.df, how = 'left', on = 'client_id')
+data23.Lcols()
 data23.name = name_list[1] + ' & ' + name_list[2]
 data23.DFinfo()
 
