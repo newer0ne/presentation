@@ -244,7 +244,7 @@ st.write("""Количество заявок (1388) больше, чем кол
 data23.df['dupl'] = data23.df.duplicated(subset=['client_id'])
 data23.dfd = data23.df[data23.df['dupl'] == True]
 duples = [len(data23.dfd['dupl'] == True)]
-st.write("Дубликатов в колонке 'client_id' = ", [len(data23.dfd['dupl'] == True)], ".")
+st.write("Дубликатов в колонке 'client_id' = ", len(data23.dfd['dupl'] == True), ".")
 st.dataframe(data23.dfd)
 
 st.markdown("<h4 style='text-align: center;'>Подготовка к слиянию таблиц ads + leads_purchase</h4>", unsafe_allow_html=True)
