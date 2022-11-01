@@ -221,6 +221,7 @@ if (data1.df is None) or (data2.df is None) or (data3.df is None):
 st.markdown("<h4 style='text-align: center;'>Слияние таблиц leads и purchase</h4>", unsafe_allow_html=True)
 
 data23.df = pd.merge(data2.df, data3.df, how = 'left', on = 'client_id')
+st.dataframe(data23.df)
 data23.DFinfo()
 
 st.write("""Проведем сортировку данных в колонке 'd_lead_utm_source'
