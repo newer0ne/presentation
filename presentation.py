@@ -106,7 +106,8 @@ data2 = Dataset()
 data2.link = st.secrets["leads"]
 data3 = Dataset()
 data3.link = st.secrets["purchases"]
-data4 = Dataset()
+data23 = Dataset()
+data123 = Dataset()
 
 st.markdown("<h4 style='text-align: center;'>Загруженные данные</h4>", unsafe_allow_html=True)
 
@@ -117,8 +118,8 @@ if load_option == opt_desc[0]:
 
         data1.Open(name_list[0])
 
-        st.write("""Представленный набор данных, судя по содержимому,
-        представляет статистку по контекстной рекаламе ('d_utm_medium' = 'cpc') 
+        st.write("""Представленный набор данных представляет 
+        статистку по контекстной рекаламе ('d_utm_medium' = 'cpc') 
         в яндекс.директ ('d_utm_source' = 'yandex').""")
         data1.DFinfo()
         data1.Unique()
@@ -146,8 +147,8 @@ if load_option == opt_desc[0]:
 
         data2.Open(name_list[1])
 
-        st.write("""Представленный набор данных, судя по содержимому,
-        представляет статистку по заявкам на сайте.""")
+        st.write("""Представленный набор данных представляет
+        статистку по заявкам на сайте.""")
         data2.DFinfo()
         data2.Unique()
 
@@ -180,13 +181,18 @@ if load_option == opt_desc[0]:
 
         data3.Open(name_list[2])
 
-        st.write("""Представленный набор данных, судя по содержимому,
-        представляет статистку по оплатам заявок на сайте.""")
+        st.write("""Представленный набор данных представляет
+        статистку по оплатам заявок на сайте.""")
         data3.DFinfo()
         data3.Unique()
 
+        st.write("""Приведем колонку 'client_id' к формату данных str
+        и уберем строки с пустымии ячейками в колонке 'client_id'.""")
         data3.df['client_id'] = data3.df['client_id'].astype(str)
         data3.df = data3.df[(data3.df['client_id'] != 'nan')]
+
+        st.write("""Приведем колонку 'm_purchase_amount' к формату данных int
+        и отобразм в ней строки с со значениями больше нуля.""")
         data3.df['m_purchase_amount'] = data3.df['m_purchase_amount'].astype(int)
         data3.df = data3.df[(data3.df['m_purchase_amount'] > 0)]
         data3.DFinfo()
@@ -214,72 +220,47 @@ if (data1.df is None) or (data2.df is None) or (data3.df is None):
 
 st.markdown("<h4 style='text-align: center;'>Слияние таблиц leads и purchase</h4>", unsafe_allow_html=True)
 
-m23 = pd.merge(data2.df, data3.df, how = 'left', on = 'client_id')
+data23.df = pd.merge(data2.df, data3.df, how = 'left', on = 'client_id')
+data23.DFinfo()
 
-st.write("Фильтрованная таблица по типам данных astype(int), 'utm_source' == 'yandex' и 'm_purchase_amount'] > 0:")
+st.write("""Проведем сортировку данных в колонке 'd_lead_utm_source'
+на наличие источника трафика с 'yandex', а также колонку с размером оплаты
+'m_purchase_amount' больше нуля.""")
+st.write("""Приведем колонки 'm_purchase_amount', 'd_lead_utm_content',
+'d_lead_utm_campaign' к фомату данных int.""")
+data23.df = data23.df[(data23.df['d_lead_utm_source'] == 'yandex') & (data23.df['m_purchase_amount'] > 0)]
+data23.df['m_purchase_amount'] = data23.df['m_purchase_amount'].astype(int)
+data23.df['d_lead_utm_content'] = data23.df['d_lead_utm_content'].astype(int)
+data23.df['d_lead_utm_campaign'] = data23.df['d_lead_utm_campaign'].astype(int)
 
-m23f = m23[(m23['d_lead_utm_source'] == 'yandex') & (m23['m_purchase_amount'] > 0)]
-m23f['m_purchase_amount'] = m23f['m_purchase_amount'].astype(int)
-m23f['d_lead_utm_content'] = m23f['d_lead_utm_content'].astype(int)
-m23f['d_lead_utm_campaign'] = m23f['d_lead_utm_campaign'].astype(int)
+data23.DFinfo()
+data23.Unique()
 
-st.write('')
-st.dataframe(m23f)
+st.markdown("<h4 style='text-align: center;'>Подготовка к слиянию таблиц ads + leads_purchase</h4>", unsafe_allow_html=True)
 
-st.write("Типы данных merget tables после обработки:")
-
-buffer4 = io.StringIO()
-m23i = m23f
-m23i.info(buf = buffer4)
-m23i = buffer4.getvalue()
-st.text(m23i)
-
-st.write("Подготовка типов данных для merge ads + leads_purchase:")
-
+data1.DFinfo()
 data1.df.astype({'m_clicks': 'int'})
-buffer5 = io.StringIO()
-data1.dfi = data1.df
-data1.dfi.info(buf = buffer5)
-data1.dfi = buffer5.getvalue()
-st.text(data1.dfi)
 
-m123 = pd.merge(data1.df, m23f, how = 'left', on = ['created_at', 'utm_medium','utm_source', 'utm_campaign', 'utm_content'])
-#m123 = m123[(m123.m_purchase_amount > 0)]
-#m123['m_purchase_amount'] = m123['m_purchase_amount'].astype(int)
+data123.df = pd.merge(data1.df, data23.df, how = 'left', on = ['created_at', 'utm_medium','utm_source', 'utm_campaign', 'utm_content'])
+data123.DFinfo()
 
-st.text("Типы данных merget tables ads_leads_purchase:")
-
-buffer6 = io.StringIO()
-m123i = m123
-m123i.info(buf = buffer6)
-m123i = buffer6.getvalue()
-st.text(m123i)
-
-st.text("Удаляем стобец 'utm_content', 'purchase_id' и 'client_id':")
-
-m123 = m123.drop(columns = ['utm_content', 'purchase_id', 'client_id'])
-st.dataframe(m123)
+st.text("Удаляем стобец 'utm_content', 'purchase_id'.")
+data123.df = data123.df.drop(columns = ['utm_content', 'purchase_id'])
+data123.DFinfo()
 
 st.text('Определим строки с разницей по оплатам в 15 дней:')
 
-m123['created_at'] = m123['created_at'].astype(str)
-m123['DATE'] = pd.to_datetime(m123['created_at'], infer_datetime_format=True)  
-m123['DATE'] = pd.to_datetime(m123['DATE'], format = "%y-%m-%d")
-m123['DATE_P'] = pd.to_datetime(m123['purchase_created_at'], infer_datetime_format=True)  
-m123['DATE_P'] = pd.to_datetime(m123['DATE_P'], format = "%y-%m-%d")
-m123['Difference'] = (m123['DATE_P'] - m123['DATE']).dt.days
-m123 = m123.drop(columns = ['DATE', 'DATE_P'])
-m123 = m123[(m123.Difference >= 0)]
+data123.df['created_at'] = data123.df['created_at'].astype(str)
+data123.df['DATE'] = pd.to_datetime(data123.df['created_at'], infer_datetime_format=True)  
+data123.df['DATE'] = pd.to_datetime(data123.df['DATE'], format = "%y-%m-%d")
+data123.df['DATE_P'] = pd.to_datetime(data123.df['purchase_created_at'], infer_datetime_format=True)  
+data123.df['DATE_P'] = pd.to_datetime(data123.df['DATE_P'], format = "%y-%m-%d")
+data123.df['Difference'] = (data123.df['DATE_P'] - data123.df['DATE']).dt.days
+data123.df = data123.df.drop(columns = ['DATE', 'DATE_P'])
+data123.df = data123.df[(data123.df['Difference'] >= 0)]
+data123.DFinfo()
 
-buffer7 = io.StringIO()
-m123ii = m123
-m123ii.info(buf = buffer7)
-m123ii = buffer7.getvalue()
-
-st.text('Посмотрим на параметры таблицы после преобразований даты')
-st.dataframe(m123)
-st.text(m123ii)
-
+#st.text('Посмотрим на параметры таблицы после преобразований даты')
 #m123['Дата_оплаты'] = datetime.strptime(m123['purchase_created_at'], '%m-%d-%Y').date()
 #m123['Difference'] = (m123['Дата'] - m123['Дата_оплаты']).dt.days
 #st.dataframe(m123)
