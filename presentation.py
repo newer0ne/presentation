@@ -229,10 +229,9 @@ data23.name = name_list[1] + ' & ' + name_list[2]
 data23.DFinfo()
 
 st.write("""Проведем сортировку данных в колонке 'd_lead_utm_source'
-на наличие источника трафика с 'yandex', а также колонку с размером оплаты
-'m_purchase_amount' больше нуля.""")
-st.write("""Приведем колонки 'm_purchase_amount', 'd_lead_utm_content',
-'d_lead_utm_campaign' к фомату данных int.""")
+на наличие источника трафика с 'yandex'.""") #, а также колонку с размером оплаты'm_purchase_amount' больше нуля
+st.write("""Приведем колонки 'd_lead_utm_content', 
+'d_lead_utm_campaign' к фомату данных int.""")# 'm_purchase_amount', 
 data23.df = data23.df[(data23.df['d_lead_utm_source'] == 'yandex')] #& (data23.df['m_purchase_amount'] > 0)
 #data23.df['m_purchase_amount'] = data23.df['m_purchase_amount'].astype(int)
 data23.df['d_lead_utm_content'] = data23.df['d_lead_utm_content'].astype(int)
