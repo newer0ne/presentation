@@ -222,7 +222,7 @@ st.markdown("<h4 style='text-align: center;'>Слияние таблиц leads �
 
 data23.df = pd.merge(data2.df, data3.df, how = 'left', on = 'client_id')
 st.dataframe(data23.df)
-data23.name = name_list[1] + '_' + name_list[2]
+data23.name = name_list[1] + ' & ' + name_list[2]
 data23.DFinfo()
 
 st.write("""Проведем сортировку данных в колонке 'd_lead_utm_source'
