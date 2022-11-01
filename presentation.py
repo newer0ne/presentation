@@ -233,8 +233,8 @@ st.write("""Проведем сортировку данных в колонке
 'm_purchase_amount' больше нуля.""")
 st.write("""Приведем колонки 'm_purchase_amount', 'd_lead_utm_content',
 'd_lead_utm_campaign' к фомату данных int.""")
-data23.df = data23.df[(data23.df['d_lead_utm_source'] == 'yandex') & (data23.df['m_purchase_amount'] > 0)]
-data23.df['m_purchase_amount'] = data23.df['m_purchase_amount'].astype(int)
+data23.df = data23.df[(data23.df['d_lead_utm_source'] == 'yandex')] #& (data23.df['m_purchase_amount'] > 0)
+#data23.df['m_purchase_amount'] = data23.df['m_purchase_amount'].astype(int)
 data23.df['d_lead_utm_content'] = data23.df['d_lead_utm_content'].astype(int)
 data23.df['d_lead_utm_campaign'] = data23.df['d_lead_utm_campaign'].astype(int)
 
