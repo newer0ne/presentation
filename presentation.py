@@ -28,6 +28,7 @@ class Dataset:
     def __init__(self) -> None:
         self.name = []  
         self.df = []
+        self.dfd = []
         self.listcols = []
         self.link = []
         self.up = None
@@ -244,7 +245,9 @@ data23.DFinfo()
 data23.Unique()
 st.write("""Количество заявок (522) больше, чем количество клиентов (497),
 поэтому требуется определить для каких клиентов было заведено несколько заявок.""")
-st.dataframe(data23.df.duplicated(subset=['client_id']))
+data23.df['dupl'] = data23.df.duplicated(subset=['client_id'])
+data23.dfd = data23.df[data23.df['dupl'] == True]
+st.dataframe(data23.dfd)
 
 st.markdown("<h4 style='text-align: center;'>Подготовка к слиянию таблиц ads + leads_purchase</h4>", unsafe_allow_html=True)
 
