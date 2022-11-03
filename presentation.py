@@ -267,8 +267,8 @@ st.markdown("<h4 style='text-align: center;'>Слияние таблиц ads + l
 
 with st.expander('Слияние таблиц ads + leads_purchase'):
     data1.df['campaign'] = data1.df['campaign'].astype(str)
-    data1.df['content'] = data1.df['content'].astype(str)
-    data1.df = data1.df.astype({'clicks': 'str'})
+    #data1.df['content'] = data1.df['content'].astype(str)
+    data1.df = data1.df.astype({'content': 'str', 'clicks': 'str'})
     data1.DFinfo()
     
 
