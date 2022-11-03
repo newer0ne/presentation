@@ -251,6 +251,7 @@ with st.expander('Слияние таблиц ads + leads_purchase'):
     data1.DFinfo()
     data1.df.astype({'m_clicks': 'int'})
 
+    st.dataframe(data1.df)
     data1.df = data1.df.rename(columns={'d_lead_utm_content':'content'}, inplace=True)
     st.dataframe(data1.df)
 
