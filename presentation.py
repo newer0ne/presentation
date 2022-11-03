@@ -113,7 +113,9 @@ data123 = Dataset()
 
 with st.expander('Выбор способа загрузки данных'):
     
-    load_option = st.radio((opt_desc))
+    load_option = st.radio(
+        "Выбор способа загрузки данных:",
+        (opt_desc))
 
 st.markdown("<h4 style='text-align: center;'>Загруженные данные</h4>", unsafe_allow_html=True)
 
