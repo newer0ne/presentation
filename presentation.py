@@ -252,7 +252,6 @@ with st.expander("Слияние таблиц ads + leads_purchase"):
     st.markdown("<h4 style='text-align: center;'>Слияние таблиц ads + leads_purchase</h4>", unsafe_allow_html=True)
     data1.df = data1.df.astype({'campaign': 'str', 'content': 'str', 'term': 'str', 'clicks': 'str'})
     data1.DFinfo()
-    
 
     data123.df = pd.merge(data1.df, data23.df, on = ['created_at', 'medium','source', 'campaign', 'content', 'term'], how = 'outer')
     data123.Lcols()
@@ -262,6 +261,8 @@ with st.expander("Слияние таблиц ads + leads_purchase"):
 with st.expander('Атрибуция Лид-Продажа'):
 
     st.markdown("<h4 style='text-align: center;'>Атрибуция Лид-Продажа</h4>", unsafe_allow_html=True)
+
+    st.text("Сгруппируем колонки 'client_id', 'purchase_id'")
 
     grouped = data123.df.groupby(['client_id', 'purchase_id'])
     grouped = grouped['client_id', 'purchase_id', 'created_at', 'purchase_created_at']
