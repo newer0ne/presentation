@@ -182,7 +182,7 @@ with st.expander('Загруженные данные'):
             #data2.df = data2.df[(data2.df['client_id'] != 'nan')]
             #data2.df = data2.df[(data2.df['d_lead_utm_content'].notnull())]
             #data2.df = data2.df.drop(columns = ['d_lead_utm_term'])
-            data1.df.rename(columns = {
+            data2.df.rename(columns = {
                 'lead_created_at': 'created_at',
                 'd_lead_utm_source':'source',
                 'd_lead_utm_medium':'medium',
