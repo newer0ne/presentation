@@ -139,10 +139,9 @@ with st.expander('Загруженные данные'):
             операции слияния c таблицей leads.csv как ключевые столбцы.""")
             
             st.write("""Преобразуем типы данных в 'm_clicks' и 'm_cost' в целочисленные.""")
-
-            #data1.df = data1.df.drop(columns = ['d_ad_account_id', 'd_utm_term'])
             data1.df['m_cost'] = data1.df['m_cost'].astype(int)
             data1.df['m_clicks'] = data1.df['m_clicks'].astype(int)
+
             data1.df.rename(columns = {
                 'd_ad_account_id':'account_id',
                 'd_utm_source':'source',
@@ -172,18 +171,12 @@ with st.expander('Загруженные данные'):
             ads.csv а также колонка 'client_id' для операции слияния с таблицей
             purchases.csv как ключевые колонки.""")
 
-            #st.write("""Отсортируем значения в колонке 'd_lead_utm_source' по
-            #источнику 'yandex' и 'd_lead_utm_medium' по контексту 'cpc'""")
-            #data2.df = data2.df[(data2.df['d_lead_utm_source'] == 'yandex') & (data2.df['d_lead_utm_medium'] == 'cpc')]
-
             st.write("""Приведем колонку 'client_id' к формату данных str
             и уберем строки с пустымии ячейками в колонках 'client_id' и 
             'd_lead_utm_content', после чего удалим 'd_lead_utm_content',
             т.к. на итоговую статику колонка не повлияет.""")
             data2.df['client_id'] = data2.df['client_id'].astype(str)
-            #data2.df = data2.df[(data2.df['client_id'] != 'nan')]
-            #data2.df = data2.df[(data2.df['d_lead_utm_content'].notnull())]
-            #data2.df = data2.df.drop(columns = ['d_lead_utm_term'])
+
             data2.df.rename(columns = {
                 'lead_created_at': 'created_at',
                 'd_lead_utm_source':'source',
@@ -208,12 +201,10 @@ with st.expander('Загруженные данные'):
             st.write("""Приведем колонку 'client_id' к формату данных str
             и уберем строки с пустымии ячейками в колонке 'client_id'.""")
             data3.df['client_id'] = data3.df['client_id'].astype(str)
-            #data3.df = data3.df[(data3.df['client_id'] != 'nan')]
 
             st.write("""Приведем колонку 'm_purchase_amount' к формату данных int
             и отобразм в ней строки с со значениями больше нуля.""")
             data3.df['m_purchase_amount'] = data3.df['m_purchase_amount'].astype(int)
-            #data3.df = data3.df[(data3.df['m_purchase_amount'] > 0)]
             data3.DFinfo()
 
     elif load_option == opt_desc[1]:
@@ -246,23 +237,15 @@ with st.expander('Слияние таблиц leads + purchase'):
     data23.DFinfo()
 
     st.write("""Проведем сортировку данных в колонке 'd_lead_utm_source'
-    на наличие источника трафика с 'yandex'.""") #, а также колонку с размером оплаты'm_purchase_amount' больше нуля
+    на наличие источника трафика с 'yandex'.""")
     st.write("""Приведем колонки 'd_lead_utm_content', 
-    'd_lead_utm_campaign' к фомату данных int.""")# 'm_purchase_amount', 
-    #data23.df = data23.df[(data23.df['d_lead_utm_source'] == 'yandex') & (data23.df['m_purchase_amount'] > 0)]
-    #data23.df['m_purchase_amount'] = data23.df['m_purchase_amount'].astype(int)
-    #data23.df['d_lead_utm_content'] = data23.df['d_lead_utm_content'].astype(int)
-    #data23.df['d_lead_utm_campaign'] = data23.df['d_lead_utm_campaign'].astype(int)
+    'd_lead_utm_campaign' к фомату данных int.""")
 
     data23.DFinfo()
     data23.Unique()
     st.write("Количество уникальных заявок", len(data23.df['lead_id'].unique()), 
     "больше, чем количество уникальных клиентов ", len(data23.df['client_id'].unique()), ",",
     "поэтому требуется определить для каких клиентов было заведено несколько заявок.")
-    #data23.df['dupl'] = data23.df.duplicated(subset=['client_id'])
-    #data23.dfd = data23.df[data23.df['dupl'] == True]
-    #st.write("Дубликатов в колонке 'client_id' = ", len(data23.dfd['dupl'] == True), ".")
-    #st.dataframe(data23.dfd)
 
 with st.expander("Слияние таблиц ads + leads_purchase"):
 
@@ -276,8 +259,18 @@ with st.expander("Слияние таблиц ads + leads_purchase"):
     data123.name = data1.name + ' & ' + data23.name
     data123.DFinfo()
 
+with st.expander('Атрибуция Лид-Продажа')
+
+    st.markdown("<h4 style='text-align: center;'>Атрибуция Лид-Продажа</h4>", unsafe_allow_html=True)
+
+    grouped = data123.df.groupby(['client_id', 'purchase_id'])
+    st.dataframe(grouped.get_group('client_id'))
 
 
+    #data23.df['dupl'] = data23.df.duplicated(subset=['client_id'])
+    #data23.dfd = data23.df[data23.df['dupl'] == True]
+    #st.write("Дубликатов в колонке 'client_id' = ", len(data23.dfd['dupl'] == True), ".")
+    #st.dataframe(data23.dfd)
 
 
 #    st.text('Определим строки с разницей по оплатам в 15 дней:')
