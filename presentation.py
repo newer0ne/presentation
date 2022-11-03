@@ -241,7 +241,7 @@ with st.expander('Слияние таблиц leads + purchase'):
     
     data23.df = pd.merge(data2.df, data3.df, how = 'left', on = 'client_id')
     data23.Lcols()
-    data23.name = name_list[1] + ' & ' + name_list[2]
+    data23.name = data2.name + ' & ' + data3.name
     data23.DFinfo()
 
     st.write("""Проведем сортировку данных в колонке 'd_lead_utm_source'
@@ -272,6 +272,8 @@ with st.expander('Слияние таблиц ads + leads_purchase'):
     
 
     data123.df = pd.merge(data1.df, data23.df, on = ['created_at', 'medium','source', 'campaign', 'content', 'term'], how = 'outer')
+    data123.Lcols()
+    data123.name = data1.name + ' & ' + data23.name
     data123.DFinfo()
 
     #st.text("Удаляем стобец 'utm_content', 'purchase_id'.")
