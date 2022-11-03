@@ -272,8 +272,7 @@ with st.expander('Слияние таблиц ads + leads_purchase'):
     
 
     data123.df = pd.merge(data1.df, data23.df, on = ['created_at', 'medium','source', 'campaign', 'content', 'term'], how = 'outer')
-    #data123.df = pd.merge(data1.df, data23.df, how = 'outer', on = ['created_at', 'utm_medium','utm_source', 'utm_campaign', 'utm_content'])
-    #data123.DFinfo()
+    data123.DFinfo()
 
     #st.text("Удаляем стобец 'utm_content', 'purchase_id'.")
     #data123.df = data123.df.drop(columns = ['utm_content', 'purchase_id'])
