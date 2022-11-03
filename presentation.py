@@ -220,6 +220,7 @@ with st.expander('Загруженные данные'):
 st.markdown("<h4 style='text-align: center;'>Слияние таблиц leads и purchase</h4>", unsafe_allow_html=True)
 
 with st.expander('Слияние таблиц leads + purchase'):
+    
     data23.df = pd.merge(data2.df, data3.df, how = 'left', on = 'client_id')
     data23.Lcols()
     data23.name = name_list[1] + ' & ' + name_list[2]
@@ -231,8 +232,8 @@ with st.expander('Слияние таблиц leads + purchase'):
     'd_lead_utm_campaign' к фомату данных int.""")# 'm_purchase_amount', 
     data23.df = data23.df[(data23.df['d_lead_utm_source'] == 'yandex')] #& (data23.df['m_purchase_amount'] > 0)
     #data23.df['m_purchase_amount'] = data23.df['m_purchase_amount'].astype(int)
-    data23.df['d_lead_utm_content'] = data23.df['d_lead_utm_content'].astype(int)
-    data23.df['d_lead_utm_campaign'] = data23.df['d_lead_utm_campaign'].astype(int)
+    #data23.df['d_lead_utm_content'] = data23.df['d_lead_utm_content'].astype(int)
+    #data23.df['d_lead_utm_campaign'] = data23.df['d_lead_utm_campaign'].astype(int)
 
     data23.DFinfo()
     data23.Unique()
