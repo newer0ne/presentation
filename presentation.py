@@ -251,7 +251,7 @@ with st.expander('Слияние таблиц ads + leads_purchase'):
     data1.DFinfo()
     data1.df.astype({'m_clicks': 'int'})
     
-    data123.df = pd.merge(data1.df, data23.df, left_on = ['created_at', 'd_utm_medium','d_utm_source', 'd_utm_campaign', 'd_utm_content', 'd_utm_term'], right_on = ['lead_created_at', 'd_lead_utm_medium','d_lead_utm_source', 'd_lead_utm_campaign', 'd_utm_lead_content', 'd_utm_term'] how = 'outer')
+    data123.df = pd.merge(data1.df, data23.df, left_on = ['created_at', 'd_utm_medium','d_utm_source', 'd_utm_campaign', 'd_utm_content', 'd_utm_term'], right_on = ['lead_created_at', 'd_lead_utm_medium','d_lead_utm_source', 'd_lead_utm_campaign', 'd_utm_lead_content', 'd_utm_term'], how = 'outer')
     #data123.df = pd.merge(data1.df, data23.df, how = 'outer', on = ['created_at', 'utm_medium','utm_source', 'utm_campaign', 'utm_content'])
     #data123.DFinfo()
 
