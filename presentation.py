@@ -230,7 +230,7 @@ with st.expander('Слияние таблиц leads + purchase'):
     на наличие источника трафика с 'yandex'.""") #, а также колонку с размером оплаты'm_purchase_amount' больше нуля
     st.write("""Приведем колонки 'd_lead_utm_content', 
     'd_lead_utm_campaign' к фомату данных int.""")# 'm_purchase_amount', 
-    data23.df = data23.df[(data23.df['d_lead_utm_source'] == 'yandex')] #& (data23.df['m_purchase_amount'] > 0)
+    #data23.df = data23.df[(data23.df['d_lead_utm_source'] == 'yandex') & (data23.df['m_purchase_amount'] > 0)]
     #data23.df['m_purchase_amount'] = data23.df['m_purchase_amount'].astype(int)
     #data23.df['d_lead_utm_content'] = data23.df['d_lead_utm_content'].astype(int)
     #data23.df['d_lead_utm_campaign'] = data23.df['d_lead_utm_campaign'].astype(int)
