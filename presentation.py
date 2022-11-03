@@ -240,17 +240,20 @@ with st.expander('Слияние таблиц leads + purchase'):
     st.write("Количество уникальных заявок", len(data23.df['lead_id'].unique()), 
     "больше, чем количество уникальных клиентов ", len(data23.df['client_id'].unique()), ",",
     "поэтому требуется определить для каких клиентов было заведено несколько заявок.")
-    data23.df['dupl'] = data23.df.duplicated(subset=['client_id'])
-    data23.dfd = data23.df[data23.df['dupl'] == True]
-    st.write("Дубликатов в колонке 'client_id' = ", len(data23.dfd['dupl'] == True), ".")
-    st.dataframe(data23.dfd)
+    #data23.df['dupl'] = data23.df.duplicated(subset=['client_id'])
+    #data23.dfd = data23.df[data23.df['dupl'] == True]
+    #st.write("Дубликатов в колонке 'client_id' = ", len(data23.dfd['dupl'] == True), ".")
+    #st.dataframe(data23.dfd)
 
 st.markdown("<h4 style='text-align: center;'>Слияние таблиц ads + leads_purchase</h4>", unsafe_allow_html=True)
 
 with st.expander('Слияние таблиц ads + leads_purchase'):
     data1.DFinfo()
     data1.df.astype({'m_clicks': 'int'})
-    
+
+    data1.df = data1.df.rename(columns={'d_lead_utm_content':'content'}, inplace=True)
+    st.table(data1.df)
+
     data123.df = pd.merge(data1.df, data23.df, left_on = ['created_at', 'd_utm_medium','d_utm_source', 'd_utm_campaign', 'd_utm_content', 'd_utm_term'], right_on = ['lead_created_at', 'd_lead_utm_medium','d_lead_utm_source', 'd_lead_utm_campaign', 'd_utm_lead_content', 'd_utm_term'], how = 'outer')
     #data123.df = pd.merge(data1.df, data23.df, how = 'outer', on = ['created_at', 'utm_medium','utm_source', 'utm_campaign', 'utm_content'])
     #data123.DFinfo()
