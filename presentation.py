@@ -257,12 +257,12 @@ with st.expander('Слияние таблиц ads + leads_purchase'):
     data1.DFinfo()
     data1.df.astype({'m_clicks': 'int'})
     
-    data123.df = pd.merge(data1.df, data23.df, how = 'left', on = ['created_at', 'utm_medium','utm_source', 'utm_campaign', 'utm_content'])
-    data123.DFinfo()
+    #data123.df = pd.merge(data1.df, data23.df, how = 'left', on = ['created_at', 'utm_medium','utm_source', 'utm_campaign', 'utm_content'])
+    #data123.DFinfo()
 
-    st.text("Удаляем стобец 'utm_content', 'purchase_id'.")
-    data123.df = data123.df.drop(columns = ['utm_content', 'purchase_id'])
-    data123.DFinfo()
+    #st.text("Удаляем стобец 'utm_content', 'purchase_id'.")
+    #data123.df = data123.df.drop(columns = ['utm_content', 'purchase_id'])
+    #data123.DFinfo()
 
 #    st.text('Определим строки с разницей по оплатам в 15 дней:')
 
