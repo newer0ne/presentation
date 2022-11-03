@@ -12,18 +12,6 @@ def run_query(query):
     rows = conn.execute(query, headers=1)
     return rows
 
-st.markdown("<h2 style='text-align: center;'>Datalyzer</h2>", unsafe_allow_html=True)
-
-headcol1, headcol2 = st.columns(2)
-
-with headcol1:
-    header_tasklink = """[<h5 style='text-align: center;'>Test task</h5>](https://xoservices.notion.site/1872d331265946a0ae2c5c9069189fd7)"""
-    st.markdown(header_tasklink, unsafe_allow_html=True)
-
-with headcol2:
-    header_repolink = """[<h5 style='text-align: center;'>Github repo this project</h5>](https://github.com/newer0ne/presentation/blob/main/presentation.py)"""
-    st.markdown(header_repolink, unsafe_allow_html=True)
-
 class Dataset:
     def __init__(self) -> None:
         self.name = []  
@@ -99,6 +87,18 @@ class Dataset:
         st.text(self.listcols)
         st.dataframe(self.df)
 
+st.markdown("<h2 style='text-align: center;'>Datalyzer</h2>", unsafe_allow_html=True)
+
+headcol1, headcol2 = st.columns(2)
+
+with headcol1:
+    header_tasklink = """[<h5 style='text-align: center;'>Test task</h5>](https://xoservices.notion.site/1872d331265946a0ae2c5c9069189fd7)"""
+    st.markdown(header_tasklink, unsafe_allow_html=True)
+
+with headcol2:
+    header_repolink = """[<h5 style='text-align: center;'>Github repo this project</h5>](https://github.com/newer0ne/presentation/blob/main/presentation.py)"""
+    st.markdown(header_repolink, unsafe_allow_html=True)
+
 name_list = ["ads.csv", "leads.csv", "purchases.csv"]
 opt_desc = ["Открыть предустановленный набор данных", "Открыть набор данных по ссылке", "Загрузить любой другой набор данных"]
 
@@ -119,109 +119,110 @@ with st.expander('Выбор способа загрузки данных'):
 
 st.markdown("<h4 style='text-align: center;'>Загруженные данные</h4>", unsafe_allow_html=True)
 
-if load_option == opt_desc[0]:    
-    tab_open1, tab_open2, tab_open3 = st.tabs(name_list)
+with st.expander('Загруженные данные'):
+    if load_option == opt_desc[0]:    
+        tab_open1, tab_open2, tab_open3 = st.tabs(name_list)
 
-    with tab_open1:
+        with tab_open1:
 
-        data1.Open(name_list[0])
+            data1.Open(name_list[0])
 
-        st.write("""Представленный набор данных представляет 
-        статистку по контекстной рекаламе ('d_utm_medium' = 'cpc') 
-        в яндекс.директ ('d_utm_source' = 'yandex').""")
-        data1.DFinfo()
-        data1.Unique()
+            st.write("""Представленный набор данных представляет 
+            статистку по контекстной рекаламе ('d_utm_medium' = 'cpc') 
+            в яндекс.директ ('d_utm_source' = 'yandex').""")
+            data1.DFinfo()
+            data1.Unique()
 
-        st.write("""Колонки 'created_at', 'd_utm_source' и 'd_utm_medium' потребуются для
-        операции слияния c таблицей leads.csv как ключевые столбцы.""")
-        st.write("""Колонки 'd_ad_account_id' и 'd_utm_term' для анализа
-        не несут ценности и удаляются, поскольку 'd_ad_account_id' имеет 
-        только одно значение 'xo-for-client-ya', а 'd_utm_term' полностью пустой.""")
-        st.write("""Преобразуем типы данных в 'm_clicks' и 'm_cost' в целочисленные,
-        а так-же отфильтруем значения в 'm_clicks' больше нуля.""")
+            st.write("""Колонки 'created_at', 'd_utm_source' и 'd_utm_medium' потребуются для
+            операции слияния c таблицей leads.csv как ключевые столбцы.""")
+            st.write("""Колонки 'd_ad_account_id' и 'd_utm_term' для анализа
+            не несут ценности и удаляются, поскольку 'd_ad_account_id' имеет 
+            только одно значение 'xo-for-client-ya', а 'd_utm_term' полностью пустой.""")
+            st.write("""Преобразуем типы данных в 'm_clicks' и 'm_cost' в целочисленные,
+            а так-же отфильтруем значения в 'm_clicks' больше нуля.""")
 
-        data1.df = data1.df.drop(columns = ['d_ad_account_id', 'd_utm_term'])
-        data1.df['m_cost'] = data1.df['m_cost'].astype(int)
-        data1.df['m_clicks'] = data1.df['m_clicks'].astype(int)
-        data1.df = data1.df[data1.df['m_clicks'] > 0]
+            data1.df = data1.df.drop(columns = ['d_ad_account_id', 'd_utm_term'])
+            data1.df['m_cost'] = data1.df['m_cost'].astype(int)
+            data1.df['m_clicks'] = data1.df['m_clicks'].astype(int)
+            data1.df = data1.df[data1.df['m_clicks'] > 0]
 
-        st.markdown("<h4 style='text-align: center;'>Результат преобразований</h4>", unsafe_allow_html=True)
-        data1.DFinfo()
+            st.markdown("<h4 style='text-align: center;'>Результат преобразований</h4>", unsafe_allow_html=True)
+            data1.DFinfo()
 
-    with tab_open2:
+        with tab_open2:
 
-        data2.Open(name_list[1])
+            data2.Open(name_list[1])
 
-        st.write("""Представленный набор данных представляет
-        статистку по заявкам на сайте.""")
-        data2.DFinfo()
-        data2.Unique()
+            st.write("""Представленный набор данных представляет
+            статистку по заявкам на сайте.""")
+            data2.DFinfo()
+            data2.Unique()
 
-        st.write("""Колонки 'lead_created_at', 'd_lead_utm_source' и 
-        'd_lead_utm_medium' потребуются для операции слияния с таблицей 
-        ads.csv а также колонка 'client_id' для операции слияния с таблицей
-        purchases.csv как ключевые колонки.""")
-        st.write("""49 источников трафика в колонке 'd_lead_utm_source'
-        говорит о активно рекламируемом сервисе, который не ограничивается
-        органическим трафиком. Источники трафика включают в себя как
-        контекстную рекламу, так и социальные сети, инфоботы, баннеры и пр.""")
+            st.write("""Колонки 'lead_created_at', 'd_lead_utm_source' и 
+            'd_lead_utm_medium' потребуются для операции слияния с таблицей 
+            ads.csv а также колонка 'client_id' для операции слияния с таблицей
+            purchases.csv как ключевые колонки.""")
+            st.write("""49 источников трафика в колонке 'd_lead_utm_source'
+            говорит о активно рекламируемом сервисе, который не ограничивается
+            органическим трафиком. Источники трафика включают в себя как
+            контекстную рекламу, так и социальные сети, инфоботы, баннеры и пр.""")
 
-        st.write("""Отсортируем значения в колонке 'd_lead_utm_source' по
-        источнику 'yandex' и 'd_lead_utm_medium' по контексту 'cpc'""")
-        data2.df = data2.df[(data2.df['d_lead_utm_source'] == 'yandex') & (data2.df['d_lead_utm_medium'] == 'cpc')]
+            st.write("""Отсортируем значения в колонке 'd_lead_utm_source' по
+            источнику 'yandex' и 'd_lead_utm_medium' по контексту 'cpc'""")
+            data2.df = data2.df[(data2.df['d_lead_utm_source'] == 'yandex') & (data2.df['d_lead_utm_medium'] == 'cpc')]
 
-        st.write("""Приведем колонку 'client_id' к формату данных str
-        и уберем строки с пустымии ячейками в колонках 'client_id' и 
-        'd_lead_utm_content', после чего удалим 'd_lead_utm_content',
-        т.к. на итоговую статику колонка не повлияет.""")
-        data2.df['client_id'] = data2.df['client_id'].astype(str)
-        data2.df = data2.df[(data2.df['client_id'] != 'nan')]
-        data2.df = data2.df[(data2.df['d_lead_utm_content'].notnull())]
-        data2.df = data2.df.drop(columns = ['d_lead_utm_term'])
+            st.write("""Приведем колонку 'client_id' к формату данных str
+            и уберем строки с пустымии ячейками в колонках 'client_id' и 
+            'd_lead_utm_content', после чего удалим 'd_lead_utm_content',
+            т.к. на итоговую статику колонка не повлияет.""")
+            data2.df['client_id'] = data2.df['client_id'].astype(str)
+            data2.df = data2.df[(data2.df['client_id'] != 'nan')]
+            data2.df = data2.df[(data2.df['d_lead_utm_content'].notnull())]
+            data2.df = data2.df.drop(columns = ['d_lead_utm_term'])
 
-        st.markdown("<h4 style='text-align: center;'>Результат преобразований</h4>", unsafe_allow_html=True)
-        data2.DFinfo()
+            st.markdown("<h4 style='text-align: center;'>Результат преобразований</h4>", unsafe_allow_html=True)
+            data2.DFinfo()
 
-    with tab_open3:
+        with tab_open3:
 
-        data3.Open(name_list[2])
+            data3.Open(name_list[2])
 
-        st.write("""Представленный набор данных представляет
-        статистку по оплатам заявок на сайте.""")
-        data3.DFinfo()
-        data3.Unique()
+            st.write("""Представленный набор данных представляет
+            статистку по оплатам заявок на сайте.""")
+            data3.DFinfo()
+            data3.Unique()
 
-        st.write("""Приведем колонку 'client_id' к формату данных str
-        и уберем строки с пустымии ячейками в колонке 'client_id'.""")
-        data3.df['client_id'] = data3.df['client_id'].astype(str)
-        data3.df = data3.df[(data3.df['client_id'] != 'nan')]
+            st.write("""Приведем колонку 'client_id' к формату данных str
+            и уберем строки с пустымии ячейками в колонке 'client_id'.""")
+            data3.df['client_id'] = data3.df['client_id'].astype(str)
+            data3.df = data3.df[(data3.df['client_id'] != 'nan')]
 
-        st.write("""Приведем колонку 'm_purchase_amount' к формату данных int
-        и отобразм в ней строки с со значениями больше нуля.""")
-        data3.df['m_purchase_amount'] = data3.df['m_purchase_amount'].astype(int)
-        data3.df = data3.df[(data3.df['m_purchase_amount'] > 0)]
-        data3.DFinfo()
+            st.write("""Приведем колонку 'm_purchase_amount' к формату данных int
+            и отобразм в ней строки с со значениями больше нуля.""")
+            data3.df['m_purchase_amount'] = data3.df['m_purchase_amount'].astype(int)
+            data3.df = data3.df[(data3.df['m_purchase_amount'] > 0)]
+            data3.DFinfo()
 
-elif load_option == opt_desc[1]:
-    tab_load1, tab_load2, tab_load3 = st.tabs(name_list)
-    with tab_load1:
-        data1.linkup(name_list[0])    
-    with tab_load2:
-        data2.linkup(name_list[1])
-    with tab_load3:
-        data3.linkup(name_list[2])
+    elif load_option == opt_desc[1]:
+        tab_load1, tab_load2, tab_load3 = st.tabs(name_list)
+        with tab_load1:
+            data1.linkup(name_list[0])    
+        with tab_load2:
+            data2.linkup(name_list[1])
+        with tab_load3:
+            data3.linkup(name_list[2])
 
-elif load_option == opt_desc[2]:
-    tab_up1, tab_up2, tab_up3 = st.tabs(name_list)
-    with tab_up1:
-            data1.upload(name_list[0])
-    with tab_up2:
-            data2.upload(name_list[1])
-    with tab_up3:
-            data3.upload(name_list[2])
+    elif load_option == opt_desc[2]:
+        tab_up1, tab_up2, tab_up3 = st.tabs(name_list)
+        with tab_up1:
+                data1.upload(name_list[0])
+        with tab_up2:
+                data2.upload(name_list[1])
+        with tab_up3:
+                data3.upload(name_list[2])
 
-if (data1.df is None) or (data2.df is None) or (data3.df is None):
-    st.error('This is an error', icon="🚨")
+    if (data1.df is None) or (data2.df is None) or (data3.df is None):
+        st.error('This is an error', icon="🚨")
 
 st.markdown("<h4 style='text-align: center;'>Слияние таблиц leads и purchase</h4>", unsafe_allow_html=True)
 
@@ -250,7 +251,7 @@ with st.expander('Слияние таблиц leads + purchase'):
     st.write("Дубликатов в колонке 'client_id' = ", len(data23.dfd['dupl'] == True), ".")
     st.dataframe(data23.dfd)
 
-st.markdown("<h4 style='text-align: center;'>Подготовка к слиянию таблиц ads + leads_purchase</h4>", unsafe_allow_html=True)
+st.markdown("<h4 style='text-align: center;'>Слияние таблиц ads + leads_purchase</h4>", unsafe_allow_html=True)
 
 with st.expander('Слияние таблиц ads + leads_purchase'):
     data1.DFinfo()
