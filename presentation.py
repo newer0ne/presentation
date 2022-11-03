@@ -263,7 +263,7 @@ with st.expander('Атрибуция Лид-Продажа'):
 
     st.markdown("<h4 style='text-align: center;'>Атрибуция Лид-Продажа</h4>", unsafe_allow_html=True)
 
-    grouped = data123.df.groupby('client_id', 'purchase_id')
+    grouped = data123.df.groupby(['client_id', 'purchase_id'])
     grouped = grouped['client_id', 'purchase_id', 'created_at', 'purchase_created_at']
     st.dataframe(grouped)
 
