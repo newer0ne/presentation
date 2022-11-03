@@ -259,7 +259,7 @@ with st.expander("Слияние таблиц ads + leads_purchase"):
     data123.name = data1.name + ' & ' + data23.name
     data123.DFinfo()
 
-with st.expander('Атрибуция Лид-Продажа')
+with st.expander('Атрибуция Лид-Продажа'):
 
     st.markdown("<h4 style='text-align: center;'>Атрибуция Лид-Продажа</h4>", unsafe_allow_html=True)
 
