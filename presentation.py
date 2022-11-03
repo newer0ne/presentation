@@ -263,10 +263,11 @@ with st.expander('Слияние таблиц leads + purchase'):
     #st.write("Дубликатов в колонке 'client_id' = ", len(data23.dfd['dupl'] == True), ".")
     #st.dataframe(data23.dfd)
 
-st.markdown("<h4 style='text-align: center;'>Слияние таблиц ads + leads_purchase</h4>", unsafe_allow_html=True)
 
-with st.expander("<h4 style='text-align: center;'>Слияние таблиц ads + leads_purchase</h4>"):
 
+with st.expander("Слияние таблиц ads + leads_purchase"):
+
+    st.markdown("<h4 style='text-align: center;'>Слияние таблиц ads + leads_purchase</h4>", unsafe_allow_html=True)
     data1.df = data1.df.astype({'campaign': 'str', 'content': 'str', 'term': 'str', 'clicks': 'str'})
     data1.DFinfo()
     
