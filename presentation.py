@@ -266,8 +266,9 @@ with st.expander('Слияние таблиц leads + purchase'):
 st.markdown("<h4 style='text-align: center;'>Слияние таблиц ads + leads_purchase</h4>", unsafe_allow_html=True)
 
 with st.expander('Слияние таблиц ads + leads_purchase'):
-    data1.DFinfo()
     data1.df.astype({'clicks': 'int', 'campaign': 'str', 'content': 'str'})
+    data1.DFinfo()
+    
 
     data123.df = pd.merge(data1.df, data23.df, on = ['created_at', 'medium','source', 'campaign', 'content', 'term'], how = 'outer')
     #data123.df = pd.merge(data1.df, data23.df, how = 'outer', on = ['created_at', 'utm_medium','utm_source', 'utm_campaign', 'utm_content'])
