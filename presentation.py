@@ -225,7 +225,7 @@ if (data1.df is None) or (data2.df is None) or (data3.df is None):
 
 st.markdown("<h4 style='text-align: center;'>Слияние таблиц leads и purchase</h4>", unsafe_allow_html=True)
 
-with st.expander('Слияние таблиц leads и purchase'):
+with st.expander('Слияние таблиц leads + purchase'):
     data23.df = pd.merge(data2.df, data3.df, how = 'left', on = 'client_id')
     data23.Lcols()
     data23.name = name_list[1] + ' & ' + name_list[2]
@@ -252,7 +252,7 @@ with st.expander('Слияние таблиц leads и purchase'):
 
 st.markdown("<h4 style='text-align: center;'>Подготовка к слиянию таблиц ads + leads_purchase</h4>", unsafe_allow_html=True)
 
-with st.expander('ads + leads_purchase'):
+with st.expander('Слияние таблиц ads + leads_purchase'):
     data1.DFinfo()
     data1.df.astype({'m_clicks': 'int'})
     
