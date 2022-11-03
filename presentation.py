@@ -117,10 +117,12 @@ with st.expander('Выбор способа загрузки данных'):
         "Выбор способа загрузки данных:",
         (opt_desc))
 
-st.markdown("<h4 style='text-align: center;'>Загруженные данные</h4>", unsafe_allow_html=True)
-
 with st.expander('Загруженные данные'):
-    if load_option == opt_desc[0]:    
+
+    if load_option == opt_desc[0]:
+
+        st.markdown("<h4 style='text-align: center;'>Загруженные данные</h4>", unsafe_allow_html=True)
+
         tab_open1, tab_open2, tab_open3 = st.tabs(name_list)
 
         with tab_open1:
