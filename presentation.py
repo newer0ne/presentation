@@ -263,8 +263,8 @@ with st.expander('Атрибуция Лид-Продажа'):
 
     st.markdown("<h4 style='text-align: center;'>Атрибуция Лид-Продажа</h4>", unsafe_allow_html=True)
 
-    grouped = data123.df.groupby(['client_id', 'purchase_id'])
-    st.dataframe(grouped.get_group('client_id', 'purchase_id'))
+    grouped = data123.df.groupby('client_id')
+    st.dataframe(grouped.get_group('client_id'))
 
 
     #data23.df['dupl'] = data23.df.duplicated(subset=['client_id'])
