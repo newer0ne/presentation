@@ -235,10 +235,9 @@ with st.expander('Загруженные данные'):
     if (data1.df is None) or (data2.df is None) or (data3.df is None):
         st.error('This is an error', icon="🚨")
 
-st.markdown("<h4 style='text-align: center;'>Слияние таблиц leads и purchase</h4>", unsafe_allow_html=True)
-
 with st.expander('Слияние таблиц leads + purchase'):
     
+    st.markdown("<h4 style='text-align: center;'>Слияние таблиц leads и purchase</h4>", unsafe_allow_html=True)
     data23.df = pd.merge(data2.df, data3.df, how = 'left', on = 'client_id')
     data23.Lcols()
     data23.name = data2.name + ' & ' + data3.name
@@ -262,8 +261,6 @@ with st.expander('Слияние таблиц leads + purchase'):
     #data23.dfd = data23.df[data23.df['dupl'] == True]
     #st.write("Дубликатов в колонке 'client_id' = ", len(data23.dfd['dupl'] == True), ".")
     #st.dataframe(data23.dfd)
-
-
 
 with st.expander("Слияние таблиц ads + leads_purchase"):
 
