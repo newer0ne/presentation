@@ -135,16 +135,12 @@ with st.expander('Загруженные данные'):
 
             st.write("""Колонки 'created_at', 'd_utm_source' и 'd_utm_medium' потребуются для
             операции слияния c таблицей leads.csv как ключевые столбцы.""")
-            st.write("""Колонки 'd_ad_account_id' и 'd_utm_term' для анализа
-            не несут ценности и удаляются, поскольку 'd_ad_account_id' имеет 
-            только одно значение 'xo-for-client-ya', а 'd_utm_term' полностью пустой.""")
-            st.write("""Преобразуем типы данных в 'm_clicks' и 'm_cost' в целочисленные,
-            а так-же отфильтруем значения в 'm_clicks' больше нуля.""")
+            
+            st.write("""Преобразуем типы данных в 'm_clicks' и 'm_cost' в целочисленные.""")
 
             data1.df = data1.df.drop(columns = ['d_ad_account_id', 'd_utm_term'])
             data1.df['m_cost'] = data1.df['m_cost'].astype(int)
             data1.df['m_clicks'] = data1.df['m_clicks'].astype(int)
-            data1.df = data1.df[data1.df['m_clicks'] > 0]
 
             st.markdown("<h4 style='text-align: center;'>Результат преобразований</h4>", unsafe_allow_html=True)
             data1.DFinfo()
@@ -154,7 +150,8 @@ with st.expander('Загруженные данные'):
             data2.Open(name_list[1])
 
             st.write("""Представленный набор данных представляет
-            статистку по заявкам на сайте.""")
+            статистку по заявкам на сайте. По сути это основная таблица для
+            с которой будут осуществляться операции сляиния.""")
             data2.DFinfo()
             data2.Unique()
 
@@ -162,23 +159,19 @@ with st.expander('Загруженные данные'):
             'd_lead_utm_medium' потребуются для операции слияния с таблицей 
             ads.csv а также колонка 'client_id' для операции слияния с таблицей
             purchases.csv как ключевые колонки.""")
-            st.write("""49 источников трафика в колонке 'd_lead_utm_source'
-            говорит о активно рекламируемом сервисе, который не ограничивается
-            органическим трафиком. Источники трафика включают в себя как
-            контекстную рекламу, так и социальные сети, инфоботы, баннеры и пр.""")
 
-            st.write("""Отсортируем значения в колонке 'd_lead_utm_source' по
-            источнику 'yandex' и 'd_lead_utm_medium' по контексту 'cpc'""")
-            data2.df = data2.df[(data2.df['d_lead_utm_source'] == 'yandex') & (data2.df['d_lead_utm_medium'] == 'cpc')]
+            #st.write("""Отсортируем значения в колонке 'd_lead_utm_source' по
+            #источнику 'yandex' и 'd_lead_utm_medium' по контексту 'cpc'""")
+            #data2.df = data2.df[(data2.df['d_lead_utm_source'] == 'yandex') & (data2.df['d_lead_utm_medium'] == 'cpc')]
 
             st.write("""Приведем колонку 'client_id' к формату данных str
             и уберем строки с пустымии ячейками в колонках 'client_id' и 
             'd_lead_utm_content', после чего удалим 'd_lead_utm_content',
             т.к. на итоговую статику колонка не повлияет.""")
             data2.df['client_id'] = data2.df['client_id'].astype(str)
-            data2.df = data2.df[(data2.df['client_id'] != 'nan')]
-            data2.df = data2.df[(data2.df['d_lead_utm_content'].notnull())]
-            data2.df = data2.df.drop(columns = ['d_lead_utm_term'])
+            #data2.df = data2.df[(data2.df['client_id'] != 'nan')]
+            #data2.df = data2.df[(data2.df['d_lead_utm_content'].notnull())]
+            #data2.df = data2.df.drop(columns = ['d_lead_utm_term'])
 
             st.markdown("<h4 style='text-align: center;'>Результат преобразований</h4>", unsafe_allow_html=True)
             data2.DFinfo()
@@ -188,19 +181,19 @@ with st.expander('Загруженные данные'):
             data3.Open(name_list[2])
 
             st.write("""Представленный набор данных представляет
-            статистку по оплатам заявок на сайте.""")
+            статистку по оплатам.""")
             data3.DFinfo()
             data3.Unique()
 
             st.write("""Приведем колонку 'client_id' к формату данных str
             и уберем строки с пустымии ячейками в колонке 'client_id'.""")
             data3.df['client_id'] = data3.df['client_id'].astype(str)
-            data3.df = data3.df[(data3.df['client_id'] != 'nan')]
+            #data3.df = data3.df[(data3.df['client_id'] != 'nan')]
 
             st.write("""Приведем колонку 'm_purchase_amount' к формату данных int
             и отобразм в ней строки с со значениями больше нуля.""")
             data3.df['m_purchase_amount'] = data3.df['m_purchase_amount'].astype(int)
-            data3.df = data3.df[(data3.df['m_purchase_amount'] > 0)]
+            #data3.df = data3.df[(data3.df['m_purchase_amount'] > 0)]
             data3.DFinfo()
 
     elif load_option == opt_desc[1]:
