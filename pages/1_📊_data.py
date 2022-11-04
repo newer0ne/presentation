@@ -6,6 +6,8 @@ import io
 import requests
 from io import StringIO
 
+st.set_page_config(page_title="Datalyzer workspase", page_icon="📈")
+
 conn = connect()
 @st.cache(ttl=1200)
 def run_query(query):
@@ -264,9 +266,9 @@ with st.expander('Атрибуция Лид-Продажа'):
 
     st.text("Сгруппируем колонки 'client_id', 'purchase_id'")
 
-    grouped = data123.df.groupby(['client_id', 'purchase_id'])
-    grouped = grouped['client_id', 'purchase_id', 'created_at', 'purchase_created_at']
-    st.dataframe(grouped)
+    #grouped = data123.df.groupby(['client_id', 'purchase_id'])
+    #grouped = grouped['client_id', 'purchase_id', 'created_at', 'purchase_created_at']
+    #st.dataframe(grouped)
 
 
     #data23.df['dupl'] = data23.df.duplicated(subset=['client_id'])
