@@ -19,13 +19,14 @@ st.markdown(
     obtained intermediate and final results.
 
     ### Want to know more about the author?
-    - Сheck my social media 
-        [telegramm.org](https://t.me/newer0ne)
-        & [vk.com](https://vk.com/id1237712)
-    - Or pages on recruiting platforms 
-        [headhunter.ru](https://hh.ru/resume/7e8af31aff09d92df80039ed1f674457646c75) 
-        & [career.habr.com](https://career.habr.com/sergeyzaharov123)
-    - Ask any other question by email: work.sergeyzaharov@gmail.com
+    - Сheck my social media:
+        - [telegramm.org](https://t.me/newer0ne)
+        - [linkedin.com](https://www.linkedin.com/in/sergey-zakharov-162331223/)
+        - [vk.com](https://vk.com/id1237712)
+    - Or pages on recruiting platforms:
+        - [headhunter.ru](https://hh.ru/resume/7e8af31aff09d92df80039ed1f674457646c75)
+        - [career.habr.com](https://career.habr.com/sergeyzaharov123)
+    - Ask any other question by email work.sergeyzaharov@gmail.com
 
 """
 )
