@@ -1,4 +1,5 @@
 import streamlit as st
+from PIL import Image
 
 st.header('Тестовое задание')
 
@@ -27,6 +28,5 @@ st.markdown(
 """
 )
 
-Link = ['https://drawsql.app/teams/xo/diagrams/1/?ref=embed']
-
-st.write(Link)
+image = Image.open('relationships.png')
+st.image(image, caption='Relationships og the tables')
