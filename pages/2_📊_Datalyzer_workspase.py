@@ -91,16 +91,6 @@ class Dataset:
 
 st.markdown("<h2 style='text-align: center;'>Workspase</h2>", unsafe_allow_html=True)
 
-headcol1, headcol2 = st.columns(2)
-
-with headcol1:
-    header_tasklink = """[<h5 style='text-align: center;'>Test task</h5>](https://xoservices.notion.site/1872d331265946a0ae2c5c9069189fd7)"""
-    st.markdown(header_tasklink, unsafe_allow_html=True)
-
-with headcol2:
-    header_repolink = """[<h5 style='text-align: center;'>Github repo this project</h5>](https://github.com/newer0ne/presentation/blob/main/presentation.py)"""
-    st.markdown(header_repolink, unsafe_allow_html=True)
-
 name_list = ["ads.csv", "leads.csv", "purchases.csv"]
 opt_desc = ["Открыть предустановленный набор данных", "Открыть набор данных по ссылке", "Загрузить любой другой набор данных"]
 
