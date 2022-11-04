@@ -3,8 +3,6 @@ from PIL import Image
 
 st.header('Тестовое задание')
 
-st.subheader('1. Основное задание')
-
 st.markdown(
     """
     ### 1. Основное задание
