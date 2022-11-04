@@ -13,9 +13,9 @@ st.markdown(
     Необходимо подготовить данные для отчета по сквозной аналитике. Для решения можно использовать на выбор: SQL или Python (Pandas).
     Данные поступают на вход в виде 3 csv файлов:
 
-        - [ads.csv](https://drive.google.com/file/d/1PB2h2484kvv-_7skmE0hrzoaGOKXYtt9/view?usp=share_link)
-        - [leads.csv](https://drive.google.com/file/d/1abKQREXlfSpM8FIUu6gHC2cYCaF1DBgQ/view?usp=share_link)
-        - [purchases.csv](https://drive.google.com/file/d/1S1NQwiwq02iFYLb2riuP4H5jCq38PkYu/view?usp=share_link)
+    - [ads.csv](https://drive.google.com/file/d/1PB2h2484kvv-_7skmE0hrzoaGOKXYtt9/view?usp=share_link)
+    - [leads.csv](https://drive.google.com/file/d/1abKQREXlfSpM8FIUu6gHC2cYCaF1DBgQ/view?usp=share_link)
+    - [purchases.csv](https://drive.google.com/file/d/1S1NQwiwq02iFYLb2riuP4H5jCq38PkYu/view?usp=share_link)
 
     ### Связи
 
