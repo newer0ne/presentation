@@ -108,8 +108,10 @@ st.markdown(
 """
 )
 
-example = Image.open('images/example.png')
-st.image(example, caption='Пример отчета на Looker Studio')
+with st.expander('Пример отчета на Looker Studio'):
+    
+    example = Image.open('images/example.png')
+    st.image(example, caption='Пример отчета на Looker Studio')
 
 st.markdown(
     """
