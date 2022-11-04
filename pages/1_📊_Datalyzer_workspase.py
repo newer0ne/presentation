@@ -113,8 +113,9 @@ data3.link = st.secrets["purchases"]
 data23 = Dataset()
 data123 = Dataset()
 
-with st.expander('Выбор способа загрузки данных'):
+with st.sidebar:
     
+    st.header("Выбор способа загрузки данных")
     load_option = st.radio(
         "Выбор способа загрузки данных:",
         (opt_desc))
