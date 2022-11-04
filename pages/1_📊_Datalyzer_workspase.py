@@ -6,7 +6,7 @@ import io
 import requests
 from io import StringIO
 
-st.set_page_config(page_title="Datalyzer workspase", page_icon="📈")
+st.set_page_config(page_title="Datalyzer workspase", page_icon="📊")
 
 conn = connect()
 @st.cache(ttl=1200)
