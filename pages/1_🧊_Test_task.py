@@ -34,7 +34,7 @@ st.markdown(
 )
 
 image = Image.open('images/relationships.png')
-st.image(image, caption='Relationships og the tables')
+st.image(image, caption='Relationships of the tables')
 
 st.markdown(
     """
@@ -109,7 +109,7 @@ st.markdown(
 )
 
 with st.expander('Пример отчета на Looker Studio'):
-    
+
     example = Image.open('images/example.png')
     st.image(example, caption='Пример отчета на Looker Studio')
 
@@ -117,5 +117,35 @@ st.markdown(
     """
     - [ ]  Покрыть пайплайн тестами и проверками на Data quality.
     - [ ]  Поднять БД PostgreSQL, залить сырые данные и построить пайплайн так, чтобы читать и записывать данные из/в БД.
+
+    ### Итоговый результат
+
+    1. Готовый отчет необходимо выгрузить в Google Spreadsheet и предоставить ссылку на него. 
+    
+    **Набор полей в отчете**:
+    
+    **Dimensions**
+    
+    - Дата
+    - UTM source
+    - UTM medium
+    - UTM campaign
+        
+        **Metrics**
+        
+    - Количество кликов
+    - Расходы на рекламу
+    - Количество лидов
+    - Количество покупок
+    - Выручка от продаж
+    - CPL  - Расходы/Количество лидов
+    - ROAS - Выручка/Расходы
+
+    1. Код построения пайплайна необходимо выгрузить в Git репозиторий в виде .py файла и предоставить ссылку на репозиторий. Вы можете приложить решение в notebook, но это опционально. 
+
+    1. Результат по дополнительным заданиям (опционально): 
+    - Приложите ссылку на отчет в Data Looker
+    - Опишите, какие проверки интегрировали в скрипт
+    - Приложите скрины из БД PostgreSQL с select запросами к сырым данным и отчету (4 скрина)
     """
 )
