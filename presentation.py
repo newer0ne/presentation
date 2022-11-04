@@ -19,7 +19,9 @@ st.markdown(
     obtained intermediate and final results.
 
     ### Want to know more about the author?
-    - Сheck my social media:
+    - Check out another one of my projects for ROSATOM:
+        - [Классификатор](https://classificator.streamlit.app/)
+    - And check my social media:
         - [telegramm.org](https://t.me/newer0ne)
         - [linkedin.com](https://www.linkedin.com/in/sergey-zakharov-162331223/)
         - [vk.com](https://vk.com/id1237712)
