@@ -25,7 +25,7 @@ st.markdown(
     - Or pages on recruiting platforms 
         [headhunter.ru](https://hh.ru/resume/7e8af31aff09d92df80039ed1f674457646c75) 
         & [career.habr.com](https://career.habr.com/sergeyzaharov123)
-    - Ask any other question by email [email](work.sergeyzaharov@gmail.com)
+    - Ask any other question by email: work.sergeyzaharov@gmail.com
 
 """
 )
