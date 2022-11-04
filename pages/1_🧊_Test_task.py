@@ -6,7 +6,7 @@ st.set_page_config(
     page_icon="🧊",
 )
 
-header_tasklink = """[<h5 style='text-align: center;'>Test task</h5>](https://xoservices.notion.site/1872d331265946a0ae2c5c9069189fd7)"""
+header_tasklink = """[<h2 style='text-align: center;'>Test task</h2>](https://xoservices.notion.site/1872d331265946a0ae2c5c9069189fd7)"""
 st.markdown(header_tasklink, unsafe_allow_html=True)
 
 st.markdown(
