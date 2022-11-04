@@ -13,7 +13,10 @@ st.markdown(
     data analytics and subsequent visualization.
     
     ### Where is what?
-    
+    On the left is a panel with a choice of workspaces. Dataframes
+    are processed on the "Dataizer Workspace" tab, and the 
+    "Plotting Demo" tab is selected for visualization of the
+    obtained intermediate and final results.
 
     ### Want to know more about the author?
     - Сheck my social media 
