@@ -6,7 +6,8 @@ st.set_page_config(
     page_icon="🧊",
 )
 
-st.markdown("<h2 style='text-align: center;'>Test task</h2>", unsafe_allow_html=True)
+header_tasklink = """[<h5 style='text-align: center;'>Test task</h5>](https://xoservices.notion.site/1872d331265946a0ae2c5c9069189fd7)"""
+st.markdown(header_tasklink, unsafe_allow_html=True)
 
 st.markdown(
     """
@@ -116,7 +117,7 @@ with st.expander('Пример отчета на Looker Studio'):
 st.markdown(
     """
     - [ ]  Покрыть пайплайн тестами и проверками на Data quality.
-    
+
     - [ ]  Поднять БД PostgreSQL, залить сырые данные и построить пайплайн так, чтобы читать и записывать данные из/в БД.
 
     ### Итоговый результат
