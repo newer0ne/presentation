@@ -1,7 +1,7 @@
 import streamlit as st
 from PIL import Image
 
-st.header('Тестовое задание')
+st.markdown("<h2 style='text-align: center;'>Test task</h2>", unsafe_allow_html=True)
 
 st.markdown(
     """
