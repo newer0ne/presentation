@@ -33,7 +33,7 @@ st.markdown(
 """
 )
 
-image = Image.open('relationships.png')
+image = Image.open('images/relationships.png')
 st.image(image, caption='Relationships og the tables')
 
 st.markdown(
@@ -56,7 +56,7 @@ with st.expander('Чтобы однозначно атрибутировать �
         """
         )
 
-    mindmap = Image.open('mindmap/Mind_Map.jpg')
+    mindmap = Image.open('images/Mind_Map.jpg')
     st.image(mindmap, caption='1. Продажа засчитывается последнему лиду')
 
     st.write(
@@ -67,7 +67,7 @@ with st.expander('Чтобы однозначно атрибутировать �
         """
         )
 
-    mindmap1 = Image.open('mindmap/Mind_Map(1).jpg')
+    mindmap1 = Image.open('images/Mind_Map_(1).jpg')
     st.image(mindmap1, caption='2. Продажа не засчитывается за окном в 15 дней')
 
     st.write(
@@ -78,7 +78,7 @@ with st.expander('Чтобы однозначно атрибутировать �
         """
         )
 
-    mindmap2 = Image.open('mindmap/Mind_Map(2).jpg')
+    mindmap2 = Image.open('images/Mind_Map_(2).jpg')
     st.image(mindmap2, caption='3. Продажа засчитывается лиду не позже, чем 15 дней до')
 
     st.write(
@@ -88,7 +88,7 @@ with st.expander('Чтобы однозначно атрибутировать �
         """
         )
 
-    mindmap3 = Image.open('mindmap/Mind_Map(3).jpg')
+    mindmap3 = Image.open('images/Mind_Map_(3).jpg')
     st.image(mindmap3, caption='4. Продажа засчитывается ближайшему по времени лиду')
 
 st.markdown(
