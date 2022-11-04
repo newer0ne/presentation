@@ -122,16 +122,16 @@ st.markdown(
 
 1. Готовый отчет необходимо выгрузить в Google Spreadsheet и предоставить ссылку на него. 
     
-**Набор полей в отчете**:
+    **Набор полей в отчете**:
     
-        **Dimensions**
+      **Dimensions**
 
     - Дата
     - UTM source
     - UTM medium
     - UTM campaign
         
-        **Metrics**
+      **Metrics**
         
     - Количество кликов
     - Расходы на рекламу
