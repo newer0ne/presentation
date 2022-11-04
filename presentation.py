@@ -10,7 +10,8 @@ st.write("# Welcome to Datalyzer! 👋")
 st.markdown(
     """
     Datalyzer is a project for preparing dataframes for end-to-end 
-    data analytics and subsequent visualization.
+    data analytics and subsequent visualization. The project was 
+    completed according to the test task of XO ANALYTICS.
     
     ### Where is what?
     On the left is a panel with a choice of workspaces. Dataframes
