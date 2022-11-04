@@ -124,7 +124,7 @@ st.markdown(
     
     **Набор полей в отчете**:
     
-    **Dimensions**
+        **Dimensions**
     
     - Дата
     - UTM source
