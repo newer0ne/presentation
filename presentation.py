@@ -23,7 +23,7 @@ st.markdown(
     - Check out another one project for ROSATOM:
         - [Классификатор](https://classificator.streamlit.app/)
     - And check my social media:
-        - [telegramm.org](https://t.me/newer0ne)
+        - [telegram.org](https://t.me/newer0ne)
         - [linkedin.com](https://www.linkedin.com/in/sergey-zakharov-162331223/)
         - [vk.com](https://vk.com/id1237712)
         - [github.com](https://github.com/newer0ne)
