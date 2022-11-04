@@ -89,7 +89,7 @@ class Dataset:
         st.text(self.listcols)
         st.dataframe(self.df)
 
-st.markdown("<h2 style='text-align: center;'>Datalyzer</h2>", unsafe_allow_html=True)
+st.markdown("<h2 style='text-align: center;'>Workspase</h2>", unsafe_allow_html=True)
 
 headcol1, headcol2 = st.columns(2)
 
