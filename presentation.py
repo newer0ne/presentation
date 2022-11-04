@@ -7,8 +7,6 @@ st.set_page_config(
 
 st.write("# Welcome to Datalyzer! 👋")
 
-st.sidebar.success("Select a demo above.")
-
 st.markdown(
     """
     Datalyzer is a project for preparing dataframes for end-to-end 
@@ -22,7 +20,6 @@ st.markdown(
     - Or pages on recruiting platforms 
         [headHunter.ru](https://hh.ru/resume/7e8af31aff09d92df80039ed1f674457646c75) 
         & [career.habr.com](https://career.habr.com/sergeyzaharov123)
-
     - Ask any other question by email [email](work.sergeyzaharov@gmail.com)
 
 """
