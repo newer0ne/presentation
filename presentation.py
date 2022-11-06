@@ -5,7 +5,7 @@ st.set_page_config(
     page_icon="📖",
 )
 
-header_tasklink = "[<h2 style='text-align: center;'>Привет и добро пожаловать в Datalyzer! 👋</h2>]"""
+header_tasklink = "<h1 style='text-align: center;'>Привет и добро пожаловать в Datalyzer! 👋</h1>"""
 st.markdown(header_tasklink, unsafe_allow_html=True)
 
 st.markdown(
