@@ -9,15 +9,13 @@ st.write("# Привет и добро пожаловать в Datalyzer! 👋")
 
 st.markdown(
     """
-    Datalyzer is a project for preparing dataframes for end-to-end 
-    data analytics and subsequent visualization. The project was 
-    completed according to the test task of XO ANALYTICS.
+    Datalyzer — это проект по подготовке датафреймов для сквозной
+    аналитики данных и последующей их визуализации. Проект разрабатывался
+    по тестовому заданию XO ANALYTICS.
     
-    ### Where is what?
-    On the left is a panel with a choice of workspaces. Dataframes
-    are processed on the "Dataizer Workspace" tab, and the 
-    "Plotting Demo" tab is selected for visualization of the
-    obtained intermediate and final results.
+    ### Как это работает?
+    Слева расположен сайдбар с выбором рабочих мест. 
+    Датафреймы обрабатываются на вкладке «Рабочее пространство Dataizer», а для визуализации полученных промежуточных и конечных результатов выбирается вкладка «Plotting Demo».
 
     ### Want to know more about the author?
     - Check out another one project for ROSATOM:
