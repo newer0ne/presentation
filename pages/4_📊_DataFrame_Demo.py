@@ -5,11 +5,9 @@ from urllib.error import URLError
 
 st.set_page_config(page_title="DataFrame Demo", page_icon="📊")
 
-st.markdown("# DataFrame Demo")
-st.sidebar.header("DataFrame Demo")
+st.markdown("# DataFrame visulaisation")
 st.write(
-    """This demo shows how to use `st.write` to visualize Pandas DataFrames.
-(Data courtesy of the [UN Data Explorer](http://data.un.org/Explorer.aspx).)"""
+    """В качестве источника данных используется [UN Data Explorer](http://data.un.org/Explorer.aspx).)"""
 )
 
 
@@ -26,11 +24,11 @@ try:
         "Choose countries", list(df.index), ["China", "United States of America"]
     )
     if not countries:
-        st.error("Please select at least one country.")
+        st.error("Выберите еще одну страну для сравнения.")
     else:
         data = df.loc[countries]
         data /= 1000000.0
-        st.write("### Gross Agricultural Production ($B)", data.sort_index())
+        st.write("### Валовое сельскохозяйственное производство (млрд долл. США)", data.sort_index())
 
         data = data.T.reset_index()
         data = pd.melt(data, id_vars=["index"]).rename(
@@ -49,7 +47,7 @@ try:
 except URLError as e:
     st.error(
         """
-        **This demo requires internet access.**
+        **This app requires internet access.**
         Connection error: %s
     """
         % e.reason
