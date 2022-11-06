@@ -3,9 +3,9 @@ import pandas as pd
 import altair as alt
 from urllib.error import URLError
 
-st.set_page_config(page_title="DataFrame Demo", page_icon="📊")
+st.set_page_config(page_title="DataFrame visualizer", page_icon="📊")
 
-st.markdown("# DataFrame visulaisation")
+st.markdown("# DataFrame visualizer")
 st.write(
     """В качестве источника данных используется [UN Data Explorer](http://data.un.org/Explorer.aspx).)"""
 )
