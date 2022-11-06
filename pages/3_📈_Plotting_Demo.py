@@ -13,6 +13,11 @@ st.write(
     как будет нажата кнопка. Заставь его рисовать графики!"""
 )
 
+timelag = [5, 10, 15]
+Sleeptime = st.radio(
+        "Время отрисовки графика:",
+        (timelag))
+
 progress_bar = st.sidebar.progress(0)
 status_text = st.sidebar.empty()
 last_rows = np.random.randn(1, 1)
@@ -24,7 +29,7 @@ for i in range(1, 101):
     chart.add_rows(new_rows)
     progress_bar.progress(i)
     last_rows = new_rows
-    time.sleep(0.05)
+    time.sleep(Sleeptime/100)
 
 progress_bar.empty()
 
