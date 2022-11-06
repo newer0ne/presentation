@@ -7,9 +7,10 @@ st.set_page_config(page_title="Plotting Demo", page_icon="📈")
 st.markdown("# Plotting Demo")
 st.sidebar.header("Plotting Demo")
 st.write(
-    """This demo illustrates a combination of plotting and animation with
-Streamlit. We're generating a bunch of random numbers in a loop for around
-5 seconds. Enjoy!"""
+    """Эта развлекательная демонстрация иллюстрирует комбинацию
+    построения графиков и анимации. Генератор случайных чисел
+    в течении 5 секунд будет регенерировать график каждый раз,
+    как будет нажата кнопка. Заставь его рисовать графики!"""
 )
 
 progress_bar = st.sidebar.progress(0)
@@ -30,4 +31,4 @@ progress_bar.empty()
 # Streamlit widgets automatically run the script from top to bottom. Since
 # this button is not connected to any other logic, it just causes a plain
 # rerun.
-st.button("Re-run")
+st.button("Сначала!")
