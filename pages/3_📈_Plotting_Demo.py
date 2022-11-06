@@ -13,9 +13,9 @@ st.write(
     как будет нажата кнопка. Заставь его рисовать графики!"""
 )
 
-timelag = [5, 10, 15]
+timelag = [2, 5, 10]
 Sleeptime = st.radio(
-        "Время отрисовки графика:",
+        "Сколько секунд отрисовывать график?",
         (timelag))
 
 progress_bar = st.sidebar.progress(0)
