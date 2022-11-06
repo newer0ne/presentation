@@ -7,7 +7,7 @@ st.set_page_config(page_title="DataFrame visualizer", page_icon="📊")
 
 st.markdown("# DataFrame visualizer")
 st.write(
-    """В качестве источника данных используется [UN Data Explorer](http://data.un.org/Explorer.aspx).)"""
+    """В качестве источника данных используется [UN Data Explorer](http://data.un.org/Explorer.aspx)."""
 )
 
 
@@ -21,7 +21,7 @@ def get_UN_data():
 try:
     df = get_UN_data()
     countries = st.multiselect(
-        "Choose countries", list(df.index), ["China", "United States of America"]
+        "Выберите страну для сравнения", list(df.index), ["China", "United States of America"]
     )
     if not countries:
         st.error("Выберите еще одну страну для сравнения.")
