@@ -13,6 +13,7 @@ conn = connect()
 def run_query(query):
     rows = conn.execute(query, headers=1)
     return rows
+    Astana2021#
 
 class Dataset:
     def __init__(self) -> None:
