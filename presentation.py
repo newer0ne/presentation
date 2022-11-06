@@ -5,7 +5,7 @@ st.set_page_config(
     page_icon="📖",
 )
 
-st.write("# Welcome to Datalyzer! 👋")
+st.write("# Привет и добро пожаловать в Datalyzer! 👋")
 
 st.markdown(
     """
