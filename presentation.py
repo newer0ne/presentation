@@ -29,8 +29,8 @@ st.markdown(
 
 
     ### Хотите знать немного больше об авторе?
-    - Мой проект для РОСАТОМА:
-        - [Классификатор](https://classificator.streamlit.app/)
+    - Мои работы:
+        - [Классификатор для РОСАТОМА](https://classificator.streamlit.app/)
         - [Атесстация в ИТМО](https://itmofinishwork.streamlitapp.com/)
     - Здесь мои социальные сети:
         - [telegram.org](https://t.me/newer0ne)
