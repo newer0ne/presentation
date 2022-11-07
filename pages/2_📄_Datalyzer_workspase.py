@@ -252,10 +252,10 @@ with st.expander("Слияние таблиц ads + leads_purchase"):
     data123.name = data1.name + ' & ' + data23.name
     data123.DFinfo()
 
-    buffer = io.StringIO()
-    data123.df(buf = buffer)
-    joined_df_info = buffer.getvalue()
-    st.text(joined_df_info)
+    #buffer = io.StringIO()
+    #joined123.info(buf = buffer)
+    #joined_df_info = buffer.getvalue()
+    #st.text(joined_df_info)
 
     df_to_download = data123.df.to_csv()
     st.download_button(label='📥 Download .CSV', data = df_to_download, file_name = "Joined dataframe" + ".csv")
