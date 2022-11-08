@@ -6,7 +6,7 @@ from scipy.stats import norm
 import altair as alt
 
 st.set_page_config(
-    page_title="A/B Testing App", page_icon="📊", initial_sidebar_state="expanded"
+    page_title="A/B Testing", page_icon="📊", initial_sidebar_state="expanded"
 )
 
 
@@ -264,15 +264,15 @@ def calculate_significance(
 
 st.write(
     """
-# 📊 A/B Testing App
-Upload your experiment results to see the significance of your A/B test.
+# 📊 A/B Тестер
+Загрузите результаты эксперимента, чтобы увидеть значимость вашего A/B-теста.
 """
 )
 
-uploaded_file = st.file_uploader("Upload CSV", type=".csv")
+uploaded_file = st.file_uploader("Загрузка .CSV фалов", type=".csv")
 
 use_example_file = st.checkbox(
-    "Use example file", False, help="Use in-built example file to demo the app"
+    "Использовать файл с примером", False, help="Используйте встроенный файл с примером для демонстрации работы приложения"
 )
 
 ab_default = None
