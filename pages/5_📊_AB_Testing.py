@@ -304,19 +304,19 @@ if uploaded_file:
             control = df[ab[0]].unique()[0]
             treatment = df[ab[0]].unique()[1]
             decide = st.radio(
-                f"Is *{treatment}* Group B?",
-                options=["Yes", "No"],
-                help="Select yes if this is group B (or the treatment group) from your test.",
+                f"Колонка датафрейма *{treatment}* относится к группе Б?",
+                options=["Да", "Нет"],
+                help="Выберите «Да», если это группа B из вашего теста.",
             )
-            if decide == "No":
+            if decide == "Нет":
                 control, treatment = treatment, control
             visitors_a = df[ab[0]].value_counts()[control]
             visitors_b = df[ab[0]].value_counts()[treatment]
 
         result = st.multiselect(
-            "Result column",
+            "Колонка с результатом",
             options=df.columns,
-            help="Select which column shows the result of the test.",
+            help="Выберите, в каком столбце отображается результат теста.",
             default=result_default,
         )
 
@@ -328,29 +328,29 @@ if uploaded_file:
                 df[[ab[0], result[0]]].groupby(ab[0]).agg("sum")[result[0]][treatment]
             )
 
-        with st.expander("Adjust test parameters"):
-            st.markdown("### Parameters")
+        with st.expander("Отрегулируйте параметры теста"):
+            st.markdown("### Параметры")
             st.radio(
-                "Hypothesis type",
-                options=["One-sided", "Two-sided"],
+                "Тип гипотезы",
+                options=["Односторонняя", "Двусторонняя"],
                 index=0,
                 key="hypothesis",
                 help="TBD",
             )
             st.slider(
-                "Significance level (α)",
+                "Уровень значимости (α)",
                 min_value=0.01,
                 max_value=0.10,
                 value=0.05,
                 step=0.01,
                 key="alpha",
-                help=" The probability of mistakenly rejecting the null hypothesis, if the null hypothesis is true. This is also called false positive and type I error. ",
+                help=" Вероятность ошибочного отклонения нулевой гипотезы, если нулевая гипотеза верна. Это также называется ложным срабатыванием и ошибкой первого рода. ",
             )
 
         submit_button = st.form_submit_button(label="Submit")
 
     if not ab or not result:
-        st.warning("Please select both an **A/B column** and a **Result column**.")
+        st.warning("Выберите **Колонки A/B тестирования** и **Колонка с результатом**.")
         st.stop()
 
     # type(uploaded_file) == str, means the example file was used
@@ -358,7 +358,7 @@ if uploaded_file:
         "Website_Results.csv" if isinstance(uploaded_file, str) else uploaded_file.name
     )
     st.write("")
-    st.write("## Results for A/B test from ", name)
+    st.write("## Результаты A/B-тестирования от ", name)
     st.write("")
 
     # Obtain the metrics to display
