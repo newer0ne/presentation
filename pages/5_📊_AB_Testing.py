@@ -289,15 +289,15 @@ if use_example_file:
 if uploaded_file:
     df = pd.read_csv(uploaded_file)
 
-    st.markdown("### Data preview")
+    st.markdown("### Обзор данных")
     st.dataframe(df.head())
 
-    st.markdown("### Select columns for analysis")
+    st.markdown("### Выберите столбцы для анализа")
     with st.form(key="my_form"):
         ab = st.multiselect(
-            "A/B column",
+            "Колонки A/B тестирования",
             options=df.columns,
-            help="Select which column refers to your A/B testing labels.",
+            help="Выберите, какой столбец относится к вашим ярлыкам A/B-тестирования.",
             default=ab_default,
         )
         if ab:
