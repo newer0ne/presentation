@@ -6,7 +6,7 @@ from scipy.stats import norm
 import altair as alt
 
 st.set_page_config(
-    page_title="A/B Testing", page_icon="📊", initial_sidebar_state="expanded"
+    page_title="A/B Tester", page_icon="📊", initial_sidebar_state="expanded"
 )
 
 
@@ -264,7 +264,7 @@ def calculate_significance(
 
 st.write(
     """
-# 📊 A/B Тестер
+# 📊 A/B Tester
 Загрузите результаты эксперимента, чтобы увидеть значимость вашего A/B-теста.
 """
 )
