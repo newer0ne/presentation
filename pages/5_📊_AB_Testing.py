@@ -358,7 +358,7 @@ if uploaded_file:
         "Website_Results.csv" if isinstance(uploaded_file, str) else uploaded_file.name
     )
     st.write("")
-    st.write("## Результаты A/B-тестирования от ", name)
+    st.write("## Результаты A/B-тестирования файла ", name)
     st.write("")
 
     # Obtain the metrics to display
