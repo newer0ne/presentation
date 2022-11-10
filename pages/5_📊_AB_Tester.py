@@ -11,112 +11,118 @@ st.set_page_config(
 
 
 def conversion_rate(conversions, visitors):
-    """Returns the conversion rate for a given number of conversions and number of visitors.
-    Parameters
+    """Возвращает коэффициент конверсии для заданного количества конверсий и количества посетителей.
+    Параметры:
     ----------
     conversions: int
-        Total number of conversions
+        Общее количество конверсий
     visitors: int
-        Total number of unique visitors
+        Общее количество уникальных посетителей
     Returns
     -------
     float
-        The conversion rate
+        Коэффициент конверсии
     """
     return (conversions / visitors) * 100
 
 
 def lift(cra, crb):
-    """Returns the relative uplift in conversion rate.
-    Parameters
+    """Возвращает относительный рост коэффициента конверсии.
+     Параметры
     ----------
     cra: float
-        Conversion rate of Group A
+        Коэффициент конверсии группы А
     crb: float
-        Conversion rate of Group B
+        Коэффициент конверсии группы B
     Returns
     -------
     float
-        Relative uplift in conversion rate
+        Относительный рост коэффициента конверсии
     """
     return ((crb - cra) / cra) * 100
 
 
 def std_err(cr, visitors):
     """
-    Returns the standard error of the conversion rate.
-    The standard error is used to calculate the deviation in conversion rates for a specific
-    Group if the experiment is repeated multiple times.
-    For a given conversion rate (cr) and a number of trials (visitors),
-    the standard error is calculated as:
-    Standard Error (std_err) = Square root of (cr * (1-cr) / visitors)
-    Parameters
+    Возвращает стандартную ошибку коэффициента конверсии.
+    Стандартная ошибка используется для расчета отклонения 
+    показателей конверсии для конкретной группы, 
+    если эксперимент повторяется несколько раз.
+    Для данного коэффициента конверсии (cr) и 
+    количества попыток (посетителей) 
+    стандартная ошибка рассчитывается как:
+    Стандартная ошибка (std_err) = квадратный корень из (cr * (1-cr) / посетители)
+    Параметры
     ----------
     cr: float
-        Conversion rate of a group (either A or B)
+        Коэффициент конверсии группы (A или B)
     visitors: float
-        Total number of unique visitors
+        Общее количество уникальных посетителей
     Returns
     -------
     float
-        Returns the standard error of the conversion rate
+        Возвращает стандартную ошибку коэффициента конверсии.
     """
     return np.sqrt((cr / 100 * (1 - cr / 100)) / visitors)
 
 
 def std_err_diff(sea, seb):
-    """Returns the z-score test statistic.
-    Parameters
+    """Возвращает статистику теста z-оценки.
+    Параметры
     ----------
     sea: float
-        Standard error of conversion rate of Group A
+        Стандартная ошибка коэффициента конверсии группы А
     seb: float
-        Standard error of conversion rate of Group B
+        Стандартная ошибка коэффициента конверсии группы B
     Returns
     -------
     float
-        Standard error of the sampling distribution difference between
-        Group A and Group B
+        Стандартная ошибка разности выборочного распределения между
+        Группой А и Группой B
     """
     return np.sqrt(sea ** 2 + seb ** 2)
 
 
 def z_score(cra, crb, error):
-    """Returns the z-score test statistic measuring exactly how many
-    standard deviations above or below the mean a data point is.
-    Parameters
+    """Возвращает статистику теста z-оценки, точно определяющую,
+    на сколько стандартных отклонений выше или ниже
+    среднего значение точки данных.
+    Параметры
     ----------
     cra: float
-        Conversion rate of Group A
+        Коэффициент конверсии группы А
     crb: float
-        Conversion rate of Group B
+        Коэффициент конверсии группы B
     error: float
-        Standard error of the sampling distribution difference between
-        Group A and Group B
+        Стандартная ошибка разности выборочного распределения между
+        Группой А и Группой B
     Returns
     -------
     float
-        z-score test statistic
+        статистика z-оценки (стандартная оценка)
     """
     return ((crb - cra) / error) / 100
 
 
 def p_value(z, hypothesis):
-    """Returns the p-value, which is the probability of obtaining test
-    results at least as extreme as the results actually observed, under
-    the assumption that the null hypothesis is correct.
-    Parameters
+    """Возвращает p-значение, которое представляет собой вероятность
+    получения предельно вероятных результатов теста,
+    при условии, что нулевая гипотеза верна. Это просто способ 
+    использовать неожиданность в качестве основы для принятия разумного решения.
+    Параметры
     ----------
     z: float
-        z-score test statistic
+        статистика z-оценки (стандартная оценка)
     hypothesis: str
-        Type of hypothesis test: "One-sided" or "Two-sided"
-        "One-sided" is a statistical hypothesis test set up to
-        show that the sample mean would be higher or lower than the
-        population mean, but not both.
-        "Two-sided" is a statistical hypothesis test in which the
-        critical area of a distribution is two-sided and tests whether
-        a sample is greater or less than a range of values.
+        Тип проверки гипотез: «Односторонний» или «Двусторонний».
+        «Односторонний» - это проверка статистической гипотезы, 
+        предназначенная для демонстрации того, что среднее значение
+        выборки будет выше или ниже среднего значения генеральной 
+        cовокупности, но не того и другого одновременно.
+        «Двусторонний» - это проверка статистической гипотезы,
+        в которой критическая область распределения является 
+        двусторонней и проверяет, больше или меньше выборка 
+        диапазона значений.
     Returns
     -------
     float
@@ -131,35 +137,35 @@ def p_value(z, hypothesis):
 
 
 def significance(alpha, p):
-    """Returns whether the p-value is statistically significant or not.
-    A p-value (p) less than the significance level (alpha) is statistically
-    significant.
-    Parameters
+    """Возвращает, является ли p-value статистически значимым или нет.
+    Значение p-value (p) меньше уровня значимости (alpha) является статистически значимым.
+    Параметры
     ----------
     alpha: float
-        The sigificance level (α) is the probability of a type I error --
-        the probability of rejecting the null hypothesis when it is true
+        Уровень значимости (α) — это вероятность ошибки первого рода —
+        вероятность отклонения нулевой гипотезы, когда она верна.
     p: float
         p-value
     Returns
     -------
     str
-        "YES" if significant result; else "NO"
+        "YES" если значимый результат, "NO" если нет
     """
     return "YES" if p < alpha else "NO"
 
 
 def plot_chart(df):
-    """Diplays a bar chart of conversion rates of A/B test groups,
-    with the y-axis denoting the conversion rates.
-    Parameters
+    """Отображает гистограмму коэффициентов конверсии групп тестов A/B,
+    где ось Y обозначает коэффициенты конверсии.
+    Параметры
     ----------
     df: pd.DataFrame
-        The source DataFrame containing the data to be plotted
+        Исходный DataFrame, содержащий данные для построения графика
     Returns
     -------
     streamlit.altair_chart
-        Bar chart with text above each bar denoting the conversion rate
+        Гистограмма с текстом над каждым столбцом,
+        обозначающим коэффициент конверсии.
     """
     chart = (
         alt.Chart(df)
@@ -181,18 +187,22 @@ def plot_chart(df):
 
 
 def style_negative(v, props=""):
-    """Helper function to color text in a DataFrame if it is negative.
-    Parameters
+    """Вспомогательная функция для окрашивания текста в DataFrame, 
+    если он отрицательный.
+    Параметры
     ----------
     v: float
-        The text (value) in a DataFrame to color
+        Текст (v) в DataFrame для окрашивания
     props: str
-        A string with a CSS attribute-value pair. E.g "color:red;"
-        See: https://pandas.pydata.org/pandas-docs/stable/user_guide/style.html
+        Строка с парой атрибут-значение CSS. 
+        Например, «цвет: красный;»
+        Подглядеть можно здесь:
+        https://pandas.pydata.org/pandas-docs/stable/user_guide/style.html
     Returns
     -------
-    A styled DataFrame with negative values colored in red.
-    Example
+    Стилизованный DataFrame с отрицательными значениями, 
+    окрашенными в красный цвет.
+    Пример
     -------
     >>> df.style.applymap(style_negative, props="color:red;")
     """
@@ -200,19 +210,23 @@ def style_negative(v, props=""):
 
 
 def style_p_value(v, props=""):
-    """Helper function to color p-value in DataFrame. If p-value is
-    statististically significant, text is colored green; else red.
-    Parameters
+    """Вспомогательная функция для окрашивания p-value в DataFrame. 
+    Если p-value статистически значимо, 
+    текст окрашивается в зеленый цвет; иначе красный.
+    Параметры
     ----------
     v: float
-        The text (value) in a DataFrame to color
+        Текст (v) в DataFrame для окрашивания в цвет
     props: str
-        A string with a CSS attribute-value pair. E.g "color:green;"
-        See: https://pandas.pydata.org/pandas-docs/stable/user_guide/style.html
+        Строка с парой атрибут-значение CSS. 
+        Например, "цвет:зеленый;"
+        Подглядеть можно здесь:
+        https://pandas.pydata.org/pandas-docs/stable/user_guide/style.html
     Returns
     -------
-    A styled DataFrame with negative values colored in red.
-    Example
+    Стилизованный DataFrame с отрицательными значениями,
+    окрашенными в красный цвет.
+    Пример
     -------
     >>> df.style.apply(style_p_value, props="color:red;", axis=1, subset=["p-value"])
     """
@@ -222,30 +236,35 @@ def style_p_value(v, props=""):
 def calculate_significance(
     conversions_a, conversions_b, visitors_a, visitors_b, hypothesis, alpha
 ):
-    """Calculates all metrics to be displayed including conversion rates,
-    uplift, standard errors, z-score, p-value, significance, and stores them
-    as session state variables.
-    Parameters
+    """Вычисляет все отображаемые показатели, включая коэффициенты конверсии,
+    прирост, стандартные ошибки, z-оценку, p-значение, значимость,
+    и сохраняет их как сессионные переменные.
+    Параметры
     ----------
     conversions_a: int
-        Number of users who converted when shown variant/Group A
+        Количество пользователей, которые совершили покупку
+        при показе варианта / группа A
     conversions_b: int
-        Number of users who converted when shown variant/Group B
+        Количество пользователей, которые совершили покупку
+        при показе варианта / группа B
     visitors_a: int
-        Total number of users shown variant/Group A
+        Общее количество пользователей, 
+        которым показан вариант / группа A
     visitors_b: int
-       Total number of users shown variant/Group B
+        Общее количество пользователей,
+        которым показан вариант / группа B
     hypothesis: str
-        Type of hypothesis test: "One-sided" or "Two-sided"
-        "One-sided" is a statistical hypothesis test set up to
-        show that the sample mean would be higher or lower than the
-        population mean, but not both.
-        "Two-sided" is a statistical hypothesis test in which the
-        critical area of a distribution is two-sided and tests whether
-        a sample is greater or less than a range of values.
+        Тип проверки гипотез: «Односторонний» или «Двусторонний».
+    «Односторонний» - это проверка статистической гипотезы, 
+    предназначенная для демонстрации того, что среднее значение выборки
+    будет выше или ниже среднего значения генеральной совокупности,
+    но не того и другого одновременно.
+    «Двусторонний» - это проверка статистической гипотезы,
+    в которой критическая область распределения является двусторонней
+    и проверяет, больше или меньше выборка диапазона значений.
     alpha: float
-        The sigificance level (α) is the probability of a type I error --
-        the probability of rejecting the null hypothesis when it is true
+        Уровень значимости (α) — это вероятность ошибки первого рода
+        — вероятность отклонения нулевой гипотезы, когда она верна.
     """
     st.session_state.cra = conversion_rate(int(conversions_a), int(visitors_a))
     st.session_state.crb = conversion_rate(int(conversions_b), int(visitors_b))
