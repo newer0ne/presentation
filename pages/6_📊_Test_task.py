@@ -85,7 +85,7 @@ if uploaded_ads is not None and uploaded_leads is not None and uploaded_purchase
     st.dataframe(compose)
 
     delta = timedelta(days=15)
-    compose = compose.query("'purchase_created_at' - 'created_at' <= @delta and 'created_at' <= 'purchase_created_at'")
+    compose = compose.query('compose.purchase_created_at - compose.created_at <= @delta and compose.created_at <= compose.purchase_created_at')
 
     compose = compose.sort_values('created_at', ascending=False)\
         .drop_duplicates('purchase_id', keep='first')
