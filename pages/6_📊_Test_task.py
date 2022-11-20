@@ -83,6 +83,7 @@ if uploaded_ads is not None and uploaded_leads is not None and uploaded_purchase
     compose.dtypes
 
     delta = timedelta(days=15)
+    delta.days
     delta
 
     example_delta = compose[['purchase_created_at', 'created_at']]
@@ -90,7 +91,7 @@ if uploaded_ads is not None and uploaded_leads is not None and uploaded_purchase
 
     example_delta['purchase_created_at'] = pd.to_datetime(example_delta['purchase_created_at'], format = "%y-%m-%d", infer_datetime_format=True)
     example_delta['created_at'] = pd.to_datetime(example_delta['created_at'], format = "%y-%m-%d", infer_datetime_format=True)
-    example_delta['Difference'] = ((example_delta['purchase_created_at'] - example_delta['created_at']).dt.days <= 15)
+    example_delta['Difference'] = ((example_delta['purchase_created_at'] - example_delta['created_at']) <= delta)
     example_delta
     
 
