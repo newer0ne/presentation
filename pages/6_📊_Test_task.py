@@ -1,4 +1,5 @@
 import streamlit as st
+import pandas as pd
 
 st.set_page_config(
     page_title="Test task solution", page_icon="📊", layout="wide", initial_sidebar_state="expanded"
@@ -13,7 +14,7 @@ st.set_page_config(
 st.write(
     """
 # 📊 ADS analyzer
-Загрузите данные, чтобы увидеть эффективность рекламной компании.
+Оценка эффективности рекламной компании.
 """
 )
 
@@ -37,4 +38,12 @@ if use_example:
     uploaded_leads = "leads.csv"
     uploaded_purchases = "purchases.csv"
 
-    
+if uploaded_ads:
+    ads = pd.read_csv(uploaded_ads)
+if uploaded_leads:
+    leads = pd.read_csv(uploaded_leads)
+if uploaded_purchases:
+    leads = pd.read_csv(uploaded_purchases)
+
+if uploaded_ads is not None and uploaded_leads is not None and uploaded_purchases is not None:
+    st.balloons
