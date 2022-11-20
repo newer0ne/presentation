@@ -20,7 +20,7 @@ st.write(
 upcol1, upcol2, upcol3 = st.columns(3)
 
 with upcol1:
-    uploaded_ads = st.file_uploader("Загрузка .CSV фалов", type=".csv")
+    uploaded_ads = st.file_uploader("Загрузка фалов рекламной компании в формате .CSV", type=".csv")
 
 with upcol2:
     uploaded_leads = st.file_uploader("Загрузка .CSV фалов", type=".csv")
