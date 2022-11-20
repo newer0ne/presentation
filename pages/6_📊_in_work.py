@@ -103,3 +103,24 @@ if uploaded_ads is not None and uploaded_leads is not None and uploaded_purchase
 
     leads_full = leads.merge(compose, 'left', 'lead_id')
     st.dataframe(leads_full)
+
+    compose.lead_id.nunique(), leads_full.lead_id.nunique() 
+
+    columns_to_groupby = ['created_at',
+                      'd_utm_source',
+                      'd_utm_medium',
+                      'd_utm_campaign',
+                      'd_utm_content',
+                      'd_utm_term'] 
+    agg_func = {'m_clicks': ('m_clicks', 'sum'),
+           'm_cost': ('m_cost', 'sum')}
+
+    ads = ads.groupby(columns_to_groupby).agg(**agg_func).reset_index()
+    ads.d_utm_campaign = ads.d_utm_campaign.astype('str')
+    ads.d_utm_content = ads.d_utm_content.astype('str')
+
+    agg_func = {'m_leads_count': ('lead_id', 'nunique'),
+            'm_purchase_count': ('m_purchase_count', 'sum'),
+           'm_purchase_amount': ('m_purchase_amount', 'sum')}
+
+    leads_full = leads_full.groupby(columns_to_groupby).agg(**agg_func).reset_index()
