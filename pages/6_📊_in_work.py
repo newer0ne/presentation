@@ -88,26 +88,10 @@ if uploaded_ads is not None and uploaded_leads is not None and uploaded_purchase
 
     compose = leads[['client_id', 'created_at', 'lead_id']].merge(purchases, 'left', 'client_id')
     st.dataframe(compose)
-    compose.dtypes
 
     delta = timedelta(days=15)
-    delta.days
-    delta
-
-    example_delta = compose[['purchase_created_at', 'created_at']]
-    example_delta
-
-    example_delta.dropna(axis=0, subset=['purchase_created_at'], inplace=True)
-
-    #example_delta = example_delta.query(example_delta['purchase_created_at'] - example_delta['created_at'] <= delta) and (example_delta['created_at'] <= example_delta['purchase_created_at'])
-    example_delta = example_delta.query('purchase_created_at - created_at <= @delta and created_at <= purchase_created_at')
-    example_delta
-
-
-
 
     compose = compose.query('purchase_created_at - created_at <= @delta and created_at <= purchase_created_at')
-    #compose = compose((compose['purchase_created_at'] - compose['created_at']).dt.days <= delta) and (compose['created_at'] <= compose['purchase_created_at'])
 
     compose = compose.sort_values('created_at', ascending=False)\
         .drop_duplicates('purchase_id', keep='first')
