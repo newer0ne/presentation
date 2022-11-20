@@ -53,7 +53,7 @@ if uploaded_ads is not None and uploaded_leads is not None and uploaded_purchase
     with ads_tab:
 
         ads['d_utm_term'] = ads['d_utm_term'].fillna('-')
-        ads['created_at'] = pd.to_datetime(ads['created_at'])
+        ads['created_at'] = pd.to_datetime(ads['created_at'], format='%Y%M%D')
         
         st.dataframe(ads)
     
@@ -76,7 +76,7 @@ if uploaded_ads is not None and uploaded_leads is not None and uploaded_purchase
     
     with purchases_tab:
 
-        purchases['purchase_created_at'] = pd.to_datetime(purchases['purchase_created_at'])
+        purchases['purchase_created_at'] = pd.to_datetime(purchases['purchase_created_at'], format='%Y%M%D')
         purchases.dropna(axis=0, subset=['m_purchase_amount'], inplace=True)
         
         st.dataframe(purchases)
