@@ -15,7 +15,7 @@ st.markdown(
 )
 
 with st.spinner('Как это работает?'):
-    time.sleep(2)
+    time.sleep(5)
     st.success('Вот как!')
 
 st.markdown(
