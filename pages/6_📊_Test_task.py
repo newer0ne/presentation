@@ -43,7 +43,7 @@ if uploaded_ads:
 if uploaded_leads:
     leads = pd.read_csv(uploaded_leads)
 if uploaded_purchases:
-    leads = pd.read_csv(uploaded_purchases)
+    purchases = pd.read_csv(uploaded_purchases)
 
 if uploaded_ads is not None and uploaded_leads is not None and uploaded_purchases is not None:
     
@@ -55,6 +55,8 @@ if uploaded_ads is not None and uploaded_leads is not None and uploaded_purchase
         st.dataframe(ads)
     
     with leads_tab:
+        st.dataframe(leads)
+        
         leads.fillna({'d_lead_utm_source': '-',
             'd_lead_utm_medium': '-',
             'd_lead_utm_campaign': '-',
