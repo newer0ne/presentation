@@ -127,4 +127,6 @@ if uploaded_ads is not None and uploaded_leads is not None and uploaded_purchase
 
     leads_full = leads_full.groupby(columns_to_groupby).agg(**agg_func).reset_index()
 
+    st.dataframe(leads_full)
+
     st.markdown('#### Джойн рекламы и лидов, считаем доп метрики')
