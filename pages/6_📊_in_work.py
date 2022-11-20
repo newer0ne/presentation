@@ -52,7 +52,7 @@ if uploaded_ads is not None and uploaded_leads is not None and uploaded_purchase
         ads.dtypes
 
         ads['d_utm_term'] = ads['d_utm_term'].fillna('-')
-        ads['created_at_1'] = pd.to_datetime(ads['created_at'], format='%Y%m%d')
+        ads['created_at_1'] = pd.to_datetime(ads['created_at'], format='%Y-%m-%d')
 
         #datetime.strptime
         
