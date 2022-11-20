@@ -134,7 +134,9 @@ if uploaded_ads is not None and uploaded_leads is not None and uploaded_purchase
     result = ads.merge(leads_full, 'outer', columns_to_groupby)
     result.fillna(0, inplace=True)
 
-    result['cpl'] = np.where(result['m_leads_count'] != 0, result['m_cost'] / result['m_leads_count'], 0)
+    result['cpl'] = np.where(result['m_leads_count'] != 0,
+        result['m_cost'] / result['m_leads_count'],
+        0)
 
     result['roas'] = np.where(result.m_cost != 0, result.m_purchase_amount / result.m_cost, 0)
 
