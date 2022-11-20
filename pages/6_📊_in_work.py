@@ -46,7 +46,8 @@ if uploaded_ads is not None and uploaded_leads is not None and uploaded_purchase
     ads_tab, leads_tab, purchases_tab = st.tabs(['ads', 'leads', 'purchases'])
 
     with ads_tab:
-
+        
+        st.markdown('### Исходный датафрейм')
         st.dataframe(ads)
 
         ads['d_utm_term'] = ads['d_utm_term'].fillna('-')
@@ -54,6 +55,7 @@ if uploaded_ads is not None and uploaded_leads is not None and uploaded_purchase
 
         #datetime.strptime
         
+        st.markdown('### Датафрейм подготовленный к последующим операциям')
         st.dataframe(ads)
     
     with leads_tab:
