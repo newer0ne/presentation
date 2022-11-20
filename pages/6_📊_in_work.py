@@ -104,7 +104,9 @@ if uploaded_ads is not None and uploaded_leads is not None and uploaded_purchase
     leads_full = leads.merge(compose, 'left', 'lead_id')
     st.dataframe(leads_full)
 
-    compose.lead_id.nunique(), leads_full.lead_id.nunique() 
+    compose.lead_id.nunique(), leads_full.lead_id.nunique()
+
+    st.markdown('#### Агрегируем рекламу и лидов по тем полям, которые используются для джойна')
 
     columns_to_groupby = ['created_at',
                       'd_utm_source',
@@ -124,3 +126,5 @@ if uploaded_ads is not None and uploaded_leads is not None and uploaded_purchase
            'm_purchase_amount': ('m_purchase_amount', 'sum')}
 
     leads_full = leads_full.groupby(columns_to_groupby).agg(**agg_func).reset_index()
+
+    st.markdown('#### Джойн рекламы и лидов, считаем доп метрики')
