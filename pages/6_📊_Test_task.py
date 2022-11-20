@@ -75,7 +75,7 @@ if uploaded_ads is not None and uploaded_leads is not None and uploaded_purchase
     
     with purchases_tab:
 
-        purchases.purchase_created_at = pd.to_datetime(purchases.purchase_created_at)
+        purchases['purchase_created_at'] = pd.to_datetime(purchases['purchase_created_at'])
         purchases.dropna(axis=0, subset=['m_purchase_amount'], inplace=True)
         
         st.dataframe(purchases)
