@@ -1,5 +1,4 @@
 import streamlit as st
-from 2_📄_Datalyzer_workspase import open
 
 st.set_page_config(
     page_title="Test task solution", page_icon="📊", initial_sidebar_state="expanded"
