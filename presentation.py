@@ -1,4 +1,5 @@
 import streamlit as st
+import time
 
 st.set_page_config(
     page_title="Hello",
@@ -13,9 +14,11 @@ st.markdown(
     """
 )
 
-with st.spinner('Wait for it...'):
+@st.cache(suppress_st_warning=True)
+
+with st.spinner('Как это работает?'):
     time.sleep(2)
-st.success('Done!')
+st.success('Вот как!')
 
 st.markdown(
     """
