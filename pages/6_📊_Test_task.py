@@ -7,14 +7,6 @@ st.set_page_config(
     page_title="Test task solution", page_icon="📊", layout="wide", initial_sidebar_state="expanded"
 )
 
-def dfinfo(self):
-        i = self
-        x = io.StringIO()
-        i.info(buf = x)
-        i = x.getvalue()
-        st.text(i)
-
-
 st.write(
     """
 # 📊 ADS analyzer
@@ -88,6 +80,7 @@ if uploaded_ads is not None and uploaded_leads is not None and uploaded_purchase
 
     compose = leads[['client_id', 'created_at', 'lead_id']].merge(purchases, 'left', 'client_id')
     st.dataframe(compose)
+    compose.dtypes
 
     delta = timedelta(days=15)
     delta
@@ -95,8 +88,7 @@ if uploaded_ads is not None and uploaded_leads is not None and uploaded_purchase
     example_delta = compose[['purchase_created_at', 'created_at']]
     example_delta.dropna(axis=0, subset=['purchase_created_at'], inplace=True)
     #example_delta['del'] = example_delta['purchase_created_at'] - example_delta['created_at']
-    delt = example_delta.dfinfo()
-    delt
+
 
 
 
