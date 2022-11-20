@@ -139,6 +139,8 @@ if uploaded_ads is not None and uploaded_leads is not None and uploaded_purchase
         result['m_cost'] / result['m_leads_count'],
         0)
 
-    result['roas'] = np.where(result.m_cost != 0, result.m_purchase_amount / result.m_cost, 0)
+    result['roas'] = np.where(result['m_cost'] != 0,
+        result['m_purchase_amount'] / result['m_cost'],
+        0)
 
-    result[result.cpl > 0]
+    result[result['cpl'] > 0]
