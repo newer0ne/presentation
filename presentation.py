@@ -36,7 +36,11 @@ st.markdown(
         регрессионный анализ.
     - «DataFrame visualizer»:
         Добавление выбора стандартных баз данных для отображения.
+"""
+)
 
+st.markdown(
+    """
     ## Хотите знать немного больше об авторе?
     - Мои работы:
         - [Классификатор для РОСАТОМА](https://classificator.streamlit.app/)
@@ -50,5 +54,6 @@ st.markdown(
         - [headhunter.ru](https://hh.ru/resume/7e8af31aff09d92df80039ed1f674457646c75)
         - [career.habr.com](https://career.habr.com/sergeyzaharov123)
     - Если возникли какие-то вопросы моя электрнная почта work.sergeyzaharov@gmail.com
-"""
+    
+    """
 )
