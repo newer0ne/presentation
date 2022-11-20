@@ -48,7 +48,7 @@ if uploaded_ads is not None and uploaded_leads is not None and uploaded_purchase
     with ads_tab:
         
         st.markdown('### Исходный датафрейм')
-        st.table(ads)
+        st.dataframe(ads)
         ads.dtypes
 
         ads['d_utm_term'] = ads['d_utm_term'].fillna('-')
