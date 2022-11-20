@@ -4,6 +4,7 @@ from PIL import Image
 st.set_page_config(
     page_title="Test task",
     page_icon="🧊",
+    layout="wide"
 )
 
 header_tasklink = """[<h2 style='text-align: center;'>Test task</h2>](https://xoservices.notion.site/1872d331265946a0ae2c5c9069189fd7)"""
