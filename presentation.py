@@ -14,8 +14,6 @@ st.markdown(
     """
 )
 
-@st.cache(suppress_st_warning=True)
-
 with st.spinner('Как это работает?'):
     time.sleep(2)
     st.success('Вот как!')
