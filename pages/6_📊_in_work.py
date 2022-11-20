@@ -52,8 +52,6 @@ if uploaded_ads is not None and uploaded_leads is not None and uploaded_purchase
 
         ads['d_utm_term'] = ads['d_utm_term'].fillna('-')
         ads['created_at'] = pd.to_datetime(ads['created_at'], format = '%Y-%m-%d', errors = 'ignore')
-
-        #datetime.strptime
         
         st.markdown('### Датафрейм подготовленный к последующим операциям')
         st.dataframe(ads)
@@ -75,7 +73,7 @@ if uploaded_ads is not None and uploaded_leads is not None and uploaded_purchase
             'd_lead_utm_term': 'd_utm_term',
             'lead_created_at': 'created_at'}, inplace=True)
         
-        leads['created_at'] = pd.to_datetime(leads['created_at'], format='%Y%m%d')
+        leads['created_at'] = pd.to_datetime(leads['created_at'], format = '%Y-%m-%d', errors = 'ignore')
 
         st.dataframe(leads)
     
@@ -83,7 +81,7 @@ if uploaded_ads is not None and uploaded_leads is not None and uploaded_purchase
 
         st.dataframe(purchases)
 
-        purchases['purchase_created_at'] = pd.to_datetime(purchases['purchase_created_at'], format='%Y%m%d')
+        purchases['purchase_created_at'] = pd.to_datetime(purchases['purchase_created_at'], format = '%Y-%m-%d', errors = 'ignore')
         purchases.dropna(axis=0, subset=['m_purchase_amount'], inplace=True)
         
         st.dataframe(purchases)
