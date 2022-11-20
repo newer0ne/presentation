@@ -55,9 +55,22 @@ if uploaded_ads is not None and uploaded_leads is not None and uploaded_purchase
         st.dataframe(ads)
     
     with leads_tab:
-        ads['d_utm_term'] = ads['d_utm_term'].fillna('-')
-        ads['created_at'] = pd.to_datetime(ads['created_at'])
-        st.dataframe(ads)
+        leads.fillna({'d_lead_utm_source': '-',
+            'd_lead_utm_medium': '-',
+            'd_lead_utm_campaign': '-',
+            'd_lead_utm_content': '-',
+            'd_lead_utm_term': '-'}, inplace=True)
+        
+        leads.rename(columns = {'d_lead_utm_source': 'd_utm_source',
+            'd_lead_utm_medium': 'd_utm_medium',
+            'd_lead_utm_campaign': 'd_utm_campaign',
+            'd_lead_utm_content': 'd_utm_content',
+            'd_lead_utm_term': 'd_utm_term',
+            'lead_created_at': 'created_at'}, inplace=True)
+
+        leads.created_at = pd.to_datetime(leads.created_at)
+
+        st.dataframe(leads)
     
     with purchases_tab:
         ads['d_utm_term'] = ads['d_utm_term'].fillna('-')
