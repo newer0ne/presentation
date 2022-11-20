@@ -68,8 +68,6 @@ if uploaded_ads is not None and uploaded_leads is not None and uploaded_purchase
             'd_lead_utm_term': 'd_utm_term',
             'lead_created_at': 'created_at'}, inplace=True)
 
-        leads.created_at = pd.to_datetime(leads.created_at)
-
         st.dataframe(leads)
     
     with purchases_tab:
