@@ -93,7 +93,7 @@ if uploaded_ads is not None and uploaded_leads is not None and uploaded_purchase
 
     st.markdown(
         """
-        Объединяем лиды и продажи:
+        #### Объединяем лиды и продажи:
 
         - Лиду засчитывается продажа не позднее 15 дней
         - purchase_id не может повторяться
