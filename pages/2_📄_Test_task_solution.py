@@ -1,435 +1,146 @@
-from asyncore import write
 import streamlit as st
-from gsheetsdb import connect
 import pandas as pd
-import io
-import requests
+import numpy as np
+from datetime import datetime, timedelta
 from io import StringIO
 
-st.set_page_config(page_title="Datalyzer workspase", page_icon="📄")
+st.set_page_config(
+    page_title="Test task in work", page_icon="📊", layout="wide", initial_sidebar_state="expanded"
+)
 
-conn = connect()
-@st.cache(ttl=1200)
-def run_query(query):
-    rows = conn.execute(query, headers=1)
-    return rows
-    Astana2021#
+st.write(
+    """
+# 📊 ADS analyzer
+Оценка эффективности рекламной компании.
+"""
+)
 
-class Dataset:
-    def __init__(self) -> None:
-        self.name = []  
-        self.df = []
-        self.dfd = []
-        self.listcols = []
-        self.link = []
-        self.up = None
+upcol1, upcol2, upcol3 = st.columns(3)
+
+with upcol1:
+    uploaded_ads = st.file_uploader("Загрузка рекламной компании .CSV", type=".csv")
+
+with upcol2:
+    uploaded_leads = st.file_uploader("Загрузка лидов .CSV", type=".csv")
+
+with upcol3:
+    uploaded_purchases = st.file_uploader("Загрузка продаж .CSV", type=".csv")
+
+use_example = st.checkbox(
+    "Использовать файл с примером", False, help="Используйте встроенный файл с примером рекламы для демонстрации работы приложения"
+)
+
+if use_example:
+    uploaded_ads = "ads.csv"
+    uploaded_leads = "leads.csv"
+    uploaded_purchases = "purchases.csv"
+
+if uploaded_ads:
+    ads = pd.read_csv(uploaded_ads)
+if uploaded_leads:
+    leads = pd.read_csv(uploaded_leads)
+if uploaded_purchases:
+    purchases = pd.read_csv(uploaded_purchases)
+
+if uploaded_ads is not None and uploaded_leads is not None and uploaded_purchases is not None:
     
-    def Open(self, index):
-        self.df = pd.read_csv(index)
-        self.name = index
-        for i in range(len(self.df.columns)):
-            self.listcols.append(self.df.columns[i])
-        self.df.drop_duplicates()
+    ads_tab, leads_tab, purchases_tab = st.tabs(['ads', 'leads', 'purchases'])
 
-    def linkup(self, index):
-        file_id = self.link.split('/')[-2]
-        dwn_url = 'https://drive.google.com/uc?export=download&id=' + file_id
-        url2 = requests.get(dwn_url).text
-        csv_raw = StringIO(url2)
-        self.df = pd.read_csv(csv_raw)
-        self.name = index
-        st.dataframe(self.df)
-        for i in range(len(self.df.columns)):
-            self.listcols.append(self.df.columns[i])
-        st.text(self.listcols)
+    with ads_tab:
+        
+        st.markdown('### Исходный датафрейм')
+        st.dataframe(ads)
 
-    def upload(self, index):
-        self.up = st.file_uploader("CSV file upload area, for example " + index)
-        if self.up is not None:
-            st.write("File name: ", self.up.name)
-            self.df = pd.read_csv(self.up)
-            st.dataframe(self.df)
-            self.name = self.up.name
-            for i in range(len(self.df.columns)):
-                self.listcols.append(self.df.columns[i])
-            st.text(self.listcols)
-
-    def Lcols(self):
-        for i in range(len(self.df.columns)):
-            self.listcols.append(self.df.columns[i])
-
-    def DFinfo (self):
-        st.write('Обзор  датафрейма', self.name, ':')
-        st.dataframe(self.df)
-        st.write('Сведения о датафрейме ', self.name, ':')
-        i = self.df
-        x = io.StringIO()
-        i.info(buf = x)
-        i = x.getvalue()
-        st.text(i)
-
-    def Unique (self):
-        st.markdown("<h4 style='text-align: center;'>Уникальные значения</h4>", unsafe_allow_html=True)
-        st.write('Для колонок ниже:')
-        x = len(self.listcols)
-        unicols = []
-        for i in range(x):
-            unicols.append(self.name + '_' + self.listcols[i])
-        unicols = st.columns(x)
-        for ii in range(x):
-            unicols[ii].text(self.listcols[ii])
-            unicols[ii].text(len(self.df.iloc[:, ii].unique()))
-            unicols[ii].write(self.df.iloc[:, ii].unique())
-
-    def renamecol(self, oldname, newname):
-        self.df[newname] = self.df[oldname]
-        del self.df[oldname]
-        self.listcols.remove(oldname)
-        for i in range(len(self.df.columns)):
-            self.listcols.append(self.df.columns[i])
-        st.text(self.listcols)
-        st.dataframe(self.df)
-
-st.markdown("<h2 style='text-align: center;'>Workspase</h2>", unsafe_allow_html=True)
-st.markdown("""Для работы алгоритмов нужен хороший интернет,
-    и если его нет - придётся немного подождать 🥲""")
-
-name_list = ["ads.csv", "leads.csv", "purchases.csv"]
-opt_desc = ["Открыть предустановленный набор данных", "Открыть набор данных по ссылке", "Загрузить любой другой набор данных"]
-
-data1 = Dataset()
-data1.link = st.secrets["ads"]
-data2 = Dataset()
-data2.link = st.secrets["leads"]
-data3 = Dataset()
-data3.link = st.secrets["purchases"]
-data23 = Dataset()
-data123 = Dataset()
-
-with st.sidebar:
+        ads['d_utm_term'] = ads['d_utm_term'].fillna('-')
+        ads['created_at'] = pd.to_datetime(ads['created_at'], format = '%Y-%m-%d', errors = 'ignore')
+        
+        st.markdown('### Датафрейм подготовленный к последующим операциям')
+        st.dataframe(ads)
     
-    st.header("Выбор способа загрузки данных")
-    load_option = st.radio(
-        "Выбор способа загрузки данных:",
-        (opt_desc))
+    with leads_tab:
 
-with st.expander('Загруженные данные'):
+        st.dataframe(leads)
+        
+        leads.fillna({'d_lead_utm_source': '-',
+            'd_lead_utm_medium': '-',
+            'd_lead_utm_campaign': '-',
+            'd_lead_utm_content': '-',
+            'd_lead_utm_term': '-'}, inplace=True)
+        
+        leads.rename(columns = {'d_lead_utm_source': 'd_utm_source',
+            'd_lead_utm_medium': 'd_utm_medium',
+            'd_lead_utm_campaign': 'd_utm_campaign',
+            'd_lead_utm_content': 'd_utm_content',
+            'd_lead_utm_term': 'd_utm_term',
+            'lead_created_at': 'created_at'}, inplace=True)
+        
+        leads['created_at'] = pd.to_datetime(leads['created_at'], format = '%Y-%m-%d', errors = 'ignore')
 
-    if load_option == opt_desc[0]:
-
-        st.markdown("<h4 style='text-align: center;'>Загруженные данные</h4>", unsafe_allow_html=True)
-
-        tab_open1, tab_open2, tab_open3 = st.tabs(name_list)
-
-        with tab_open1:
-
-            data1.Open(name_list[0])
-
-            st.write("""Представленный набор данных представляет 
-            статистку по контекстной рекаламе ('d_utm_medium' = 'cpc') 
-            в яндекс.директ ('d_utm_source' = 'yandex').""")
-            data1.DFinfo()
-            data1.Unique()
-
-            st.write("""Колонки 'created_at', 'd_utm_source' и 'd_utm_medium' потребуются для
-            операции слияния c таблицей leads.csv как ключевые столбцы.""")
-            
-            st.write("""Преобразуем типы данных в 'm_clicks' и 'm_cost' в целочисленные.""")
-            data1.df['m_cost'] = data1.df['m_cost'].astype(int)
-            data1.df['m_clicks'] = data1.df['m_clicks'].astype(int)
-
-            data1.df.rename(columns = {
-                'd_ad_account_id':'account_id',
-                'd_utm_source':'source',
-                'd_utm_medium':'medium',
-                'd_utm_campaign':'campaign',
-                'd_utm_content':'content',
-                'd_utm_term':'term',
-                'm_clicks':'clicks',
-                'm_cost':'cost'
-                }, inplace = True)
-
-            st.markdown("<h4 style='text-align: center;'>Результат преобразований</h4>", unsafe_allow_html=True)
-            data1.DFinfo()
-
-        with tab_open2:
-
-            data2.Open(name_list[1])
-
-            st.write("""Представленный набор данных представляет
-            статистку по заявкам на сайте. По сути это основная таблица для
-            с которой будут осуществляться операции сляиния.""")
-            data2.DFinfo()
-            data2.Unique()
-
-            st.write("""Колонки 'lead_created_at', 'd_lead_utm_source' и 
-            'd_lead_utm_medium' потребуются для операции слияния с таблицей 
-            ads.csv а также колонка 'client_id' для операции слияния с таблицей
-            purchases.csv как ключевые колонки.""")
-
-            st.write("""Приведем колонку 'client_id' к формату данных str
-            и уберем строки с пустымии ячейками в колонках 'client_id' и 
-            'd_lead_utm_content', после чего удалим 'd_lead_utm_content',
-            т.к. на итоговую статику колонка не повлияет.""")
-            data2.df['client_id'] = data2.df['client_id'].astype(str)
-
-            data2.df.rename(columns = {
-                'lead_created_at': 'created_at',
-                'd_lead_utm_source':'source',
-                'd_lead_utm_medium':'medium',
-                'd_lead_utm_campaign':'campaign',
-                'd_lead_utm_content':'content',
-                'd_lead_utm_term':'term',
-                }, inplace = True)
-
-            st.markdown("<h4 style='text-align: center;'>Результат преобразований</h4>", unsafe_allow_html=True)
-            data2.DFinfo()
-
-        with tab_open3:
-
-            data3.Open(name_list[2])
-
-            st.write("""Представленный набор данных представляет
-            статистку по оплатам.""")
-            data3.DFinfo()
-            data3.Unique()
-
-            st.write("""Приведем колонку 'client_id' к формату данных str
-            и уберем строки с пустымии ячейками в колонке 'client_id'.""")
-            data3.df['client_id'] = data3.df['client_id'].astype(str)
-
-            st.write("""Приведем колонку 'm_purchase_amount' к формату данных int
-            и отобразм в ней строки с со значениями больше нуля.""")
-            data3.df['m_purchase_amount'] = data3.df['m_purchase_amount'].astype(int)
-            data3.DFinfo()
-
-    elif load_option == opt_desc[1]:
-        tab_load1, tab_load2, tab_load3 = st.tabs(name_list)
-        with tab_load1:
-            data1.linkup(name_list[0])    
-        with tab_load2:
-            data2.linkup(name_list[1])
-        with tab_load3:
-            data3.linkup(name_list[2])
-
-    elif load_option == opt_desc[2]:
-        tab_up1, tab_up2, tab_up3 = st.tabs(name_list)
-        with tab_up1:
-                data1.upload(name_list[0])
-        with tab_up2:
-                data2.upload(name_list[1])
-        with tab_up3:
-                data3.upload(name_list[2])
-
-    if (data1.df is None) or (data2.df is None) or (data3.df is None):
-        st.error('This is an error', icon="🚨")
-
-with st.expander('Слияние таблиц leads + purchase'):
+        st.dataframe(leads)
     
-    st.markdown("<h4 style='text-align: center;'>Слияние таблиц leads и purchase</h4>", unsafe_allow_html=True)
-    data23.df = pd.merge(data2.df, data3.df, how = 'left', on = 'client_id')
-    data23.Lcols()
-    data23.name = data2.name + ' & ' + data3.name
-    data23.DFinfo()
+    with purchases_tab:
 
-    st.write("""Проведем сортировку данных в колонке 'd_lead_utm_source'
-    на наличие источника трафика с 'yandex'.""")
-    st.write("""Приведем колонки 'd_lead_utm_content', 
-    'd_lead_utm_campaign' к фомату данных int.""")
+        st.dataframe(purchases)
 
-    data23.DFinfo()
-    data23.Unique()
-    st.write("Количество уникальных заявок", len(data23.df['lead_id'].unique()), 
-    "больше, чем количество уникальных клиентов ", len(data23.df['client_id'].unique()), ",",
-    "поэтому требуется определить для каких клиентов было заведено несколько заявок.")
+        purchases['purchase_created_at'] = pd.to_datetime(purchases['purchase_created_at'], format = '%Y-%m-%d', errors = 'ignore')
+        purchases.dropna(axis=0, subset=['m_purchase_amount'], inplace=True)
+        
+        st.dataframe(purchases)
 
-with st.expander("Слияние таблиц ads + leads_purchase"):
+    compose = leads[['client_id', 'created_at', 'lead_id']].merge(purchases, 'left', 'client_id')
+    st.dataframe(compose)
 
-    st.markdown("<h4 style='text-align: center;'>Слияние таблиц ads + leads_purchase</h4>", unsafe_allow_html=True)
-    data1.df = data1.df.astype({'campaign': 'str', 'content': 'str', 'term': 'str', 'clicks': 'str'})
-    data1.DFinfo()
+    delta = timedelta(days=15)
 
-    data123.df = pd.merge(data1.df, data23.df, on = ['created_at', 'medium','source', 'campaign', 'content', 'term'], how = 'outer')
-    data123.Lcols()
-    data123.name = data1.name + ' & ' + data23.name
-    data123.DFinfo()
+    compose = compose.query('purchase_created_at - created_at <= @delta and created_at <= purchase_created_at')
 
-    #buffer = io.StringIO()
-    #joined123.info(buf = buffer)
-    #joined_df_info = buffer.getvalue()
-    #st.text(joined_df_info)
+    compose = compose.sort_values('created_at', ascending=False)\
+        .drop_duplicates('purchase_id', keep='first')
 
-    df_to_download = data123.df.to_csv()
-    st.download_button(label='📥 Download .CSV', data = df_to_download, file_name = "Joined dataframe" + ".csv")
+    agg_func = {'m_purchase_count': ('purchase_id', 'count'),
+        'm_purchase_amount': ('m_purchase_amount', 'sum')}
 
-with st.expander('Атрибуция Лид-Продажа'):
+    compose = compose.groupby('lead_id').agg(**agg_func).reset_index()
 
-    st.markdown("<h4 style='text-align: center;'>Атрибуция Лид-Продажа</h4>", unsafe_allow_html=True)
+    leads_full = leads.merge(compose, 'left', 'lead_id')
+    st.dataframe(leads_full)
 
-    st.text("Сгруппируем колонки 'client_id', 'purchase_id'")
+    compose.lead_id.nunique(), leads_full.lead_id.nunique()
 
-    #grouped = data123.df.groupby(['client_id', 'purchase_id'])
-    #grouped = grouped['client_id', 'purchase_id', 'created_at', 'purchase_created_at']
-    #st.dataframe(grouped)
+    st.markdown('#### Агрегируем рекламу и лидов по тем полям, которые используются для джойна')
 
+    columns_to_groupby = ['created_at',
+                      'd_utm_source',
+                      'd_utm_medium',
+                      'd_utm_campaign',
+                      'd_utm_content',
+                      'd_utm_term'] 
+    agg_func = {'m_clicks': ('m_clicks', 'sum'),
+           'm_cost': ('m_cost', 'sum')}
 
-    #data23.df['dupl'] = data23.df.duplicated(subset=['client_id'])
-    #data23.dfd = data23.df[data23.df['dupl'] == True]
-    #st.write("Дубликатов в колонке 'client_id' = ", len(data23.dfd['dupl'] == True), ".")
-    #st.dataframe(data23.dfd)
+    ads = ads.groupby(columns_to_groupby).agg(**agg_func).reset_index()
+    ads.d_utm_campaign = ads.d_utm_campaign.astype('str')
+    ads.d_utm_content = ads.d_utm_content.astype('str')
 
+    agg_func = {'m_leads_count': ('lead_id', 'nunique'),
+            'm_purchase_count': ('m_purchase_count', 'sum'),
+           'm_purchase_amount': ('m_purchase_amount', 'sum')}
 
-#    st.text('Определим строки с разницей по оплатам в 15 дней:')
+    leads_full = leads_full.groupby(columns_to_groupby).agg(**agg_func).reset_index()
 
-#data123.df['created_at'] = data123.df['created_at'].astype(str)
-#data123.df['DATE'] = pd.to_datetime(data123.df['created_at'], infer_datetime_format=True)  
-#data123.df['DATE'] = pd.to_datetime(data123.df['DATE'], format = "%y-%m-%d")
-#data123.df['DATE_P'] = pd.to_datetime(data123.df['purchase_created_at'], infer_datetime_format=True)  
-#data123.df['DATE_P'] = pd.to_datetime(data123.df['DATE_P'], format = "%y-%m-%d")
-#data123.df['Difference'] = (data123.df['DATE_P'] - data123.df['DATE']).dt.days
-#data123.df = data123.df.drop(columns = ['DATE', 'DATE_P'])
-#data123.df = data123.df[(data123.df['Difference'] >= 0)]
-#data123.DFinfo()
+    st.dataframe(leads_full)
 
-#st.text('Посмотрим на параметры таблицы после преобразований даты')
-#m123['Дата_оплаты'] = datetime.strptime(m123['purchase_created_at'], '%m-%d-%Y').date()
-#m123['Difference'] = (m123['Дата'] - m123['Дата_оплаты']).dt.days
-#st.dataframe(m123)
+    st.markdown('#### Джойн рекламы и лидов, считаем доп метрики')
 
+    result = ads.merge(leads_full, 'outer', columns_to_groupby)
+    result.fillna(0, inplace=True)
 
-#buffer = io.StringIO()
-#joined123.info(buf = buffer)
-#joined_df_info = buffer.getvalue()
-#st.text(joined_df_info)
+    result['cpl'] = np.where(result['m_leads_count'] != 0,
+        result['m_cost'] / result['m_leads_count'],
+        0)
 
-#df_to_download = joined123.to_csv()
-#st.download_button(label='📥 Download .CSV', data = df_to_download, file_name = "Joined dataframe" + ".csv")
+    result['roas'] = np.where(result['m_cost'] != 0,
+        result['m_purchase_amount'] / result['m_cost'],
+        0)
 
-
-
-#st.write("Dataframe Renamer")
-#ren1, ren2, ren3 = st.columns(3)
-
-#with ren1:
-#    data4.name = st.radio(
-#        "Dataframe selection to rename 👉",
-#        (data1.name, data2.name, data3.name))
-#    st.write("Choosed dataframe: " + data4.name)
-
-#with ren2:
-#    if data4.name == data1.name:
-#        ren_col = st.radio(
-#            "Columns selection 👉",
-#            (data1.listcols))
-#        st.write("Choosed column: " + ren_col)
-#    elif data4.name == data2.name:
-#        ren_col = st.radio(
-#            "Columns selection 👉",
-#            (data2.listcols))
-#        st.write("Choosed column: " + ren_col)
-#    elif data4.name == data3.name:
-#        ren_col = st.radio(
-#            "Columns selection 👉",
-#            (data3.listcols))
-#        st.write("Choosed column: " + ren_col)
-
-#with ren3:
-#    newcolname = st.text_input('New column name', ren_col)
-#    st.write("New name for the selected column: " + newcolname)
-
-#if st.button('Lets change it'):
-#    if data4.name == name_list[0]:
-#        data1.renamecol(ren_col, newcolname)
-#    elif data4.name == name_list[1]:
-#        data2.renamecol(ren_col, newcolname)
-#    elif data4.name == name_list[2]:
-#        data3.renamecol(ren_col, newcolname)
-
-
-#with st.expander("Dataset Joiner"):
-#    col4, col5, col6, col7 = st.columns(4)
-#
-#    with col4:
-#        join1 = st.radio(
-#            "Выбор первого датафрейма для Join 👉",
-#            (data1.name, data2.name, data3.name))
-
-#        if join1 == data1.name:
-#            join1_df = data1.df
-#        if join1 == data2.name:
-#            join1_df = data2.df
-#        if join1 == data3.name:
-#            join1_df = data3.df
-
-#    with col5:
-#        join2 = st.radio(
-#            "Выбор второго датафрейма для Join 👉",
-#            (data1.name, data2.name, data3.name))
-
-#        if join2 == data1.name:
-#            join2_df = data1.df
-#        if join2 == data2.name:
-#            join2_df = data2.df
-#        if join2 == data3.name:
-#            join2_df = data3.df
-
-#    with col6:
-#        join_type = st.radio(
-#            "Выбор типа Join 👉",
-#            ("left", "right", "inner","outer"))
-#        join_mark = ("Попробуем " + join_type + "join:")
-
-#    with col7:
-#        if join_df_2 == "df_ads":
-#            join_col_list = list_ads
-#        if join_df_2 == "df_leads":
-#            join_col_list = list_leads
-#        if join_df_2 == "df_purchases":
-#            join_col_list = list_purchases
-    
-#        join_col = st.radio(
-#            "Выбор столбца для Join 👉",
-#            (join_col_list))
-
-#    st.text("Join columns must have the same name")
-#    if st.button('Lets JOIN that!'):
-#        st.markdown(join_mark, unsafe_allow_html = True)
-#        joined_df = pd.merge(join_df_1_, join_df_2_, how = join_type, on = join_col)
-#        st.dataframe(joined_df)
-
-#        buffer = io.StringIO()
-#        joined_df.info(buf = buffer)
-#        joined_df_info = buffer.getvalue()
-#        st.text(joined_df_info)
-
-#        df_to_download = joined_df.to_csv()
-#        st.download_button(label='📥 Скачать обработанную ведомость в формате .CSV', data = df_to_download, file_name = "Joined dataframe" + ".csv")
-
-#with st.expander("Dataset Filter"):
-#    if st.button('if Joined_df sucsessful'):
-#        filter = joined_df
-
-
-#    uploaded_filter = st.file_uploader("Area to filter df")
-#    if uploaded_filter is not None:
-#        st.write("Filename: ", uploaded_filter.name)
-#        df_filter = pd.read_csv(uploaded_filter)
-#        st.markdown("""<h5 style='text-align: center;'>Датасет для фильтрации:</h5>""", unsafe_allow_html = True)
-#        st.dataframe(df_filter)
-
-#        cols_filter = df_filter.columns
-#        list_filter = []
-#        for i in range(len(cols_filter)):
-#            list_filter.append(cols_filter[i])
-
-#        st.markdown("""<h5 style='text-align: center;'>Фильтр под задание:</h5>""", unsafe_allow_html = True)
-#        #df_filter[(df_filter.m_purchase_amount > 0) & (df_filter.hp > 80)]
-#        df_filter2 = df_filter[(df_filter.m_purchase_amount > 0)]
-
-#        df_filter2['datelag'] = 0
-#        st.text("added datelag")
-#        df_filter2["purchase_created_at"] = pd.to_datetime(df_filter2["purchase_created_at"])
-#        df_filter2["lead_created_at"] = pd.to_datetime(df_filter2["lead_created_at"])
-#        df_filter2['datelag'] = (df_filter2['purchase_created_at'] - df_filter2['lead_created_at'])
-#        df_filter2["datelag"] = df_filter2["datelag"].dt.days
-#        st.dataframe(df_filter2)
+    result[result['cpl'] > 0]
