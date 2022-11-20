@@ -48,7 +48,7 @@ if uploaded_ads is not None and uploaded_leads is not None and uploaded_purchase
     with ads_tab:
 
         ads['d_utm_term'] = ads['d_utm_term'].fillna('-')
-        ads['created_at'] = pd.to_datetime(ads['created_at'], format='%Y%m%d', errors='ignore')
+        ads['created_at'] = pd.to_datetime(ads['created_at'])
         
         st.dataframe(ads)
     
@@ -67,13 +67,13 @@ if uploaded_ads is not None and uploaded_leads is not None and uploaded_purchase
             'd_lead_utm_term': 'd_utm_term',
             'lead_created_at': 'created_at'}, inplace=True)
         
-        leads['created_at'] = pd.to_datetime(leads['created_at'], format='%Y%m%d', errors='ignore')
+        leads['created_at'] = pd.to_datetime(leads['created_at'])
 
         st.dataframe(leads)
     
     with purchases_tab:
 
-        purchases['purchase_created_at'] = pd.to_datetime(purchases['purchase_created_at'], format='%Y%m%d', errors='ignore')
+        purchases['purchase_created_at'] = pd.to_datetime(purchases['purchase_created_at'])
         purchases.dropna(axis=0, subset=['m_purchase_amount'], inplace=True)
         
         st.dataframe(purchases)
@@ -87,6 +87,8 @@ if uploaded_ads is not None and uploaded_leads is not None and uploaded_purchase
     delta
 
     example_delta = compose[['purchase_created_at', 'created_at']]
+    example_delta
+
     example_delta.dropna(axis=0, subset=['purchase_created_at'], inplace=True)
 
     example_delta['purchase_created_at'] = pd.to_datetime(example_delta['purchase_created_at'])
@@ -94,7 +96,7 @@ if uploaded_ads is not None and uploaded_leads is not None and uploaded_purchase
     example_delta['created_at'] = pd.to_datetime(example_delta['created_at'])
     example_delta['Difference'] = ((example_delta['purchase_created_at'] - example_delta['created_at']) <= delta)
     example_delta
-    example_delta['purchase_created_at'].days
+
 
 
 
