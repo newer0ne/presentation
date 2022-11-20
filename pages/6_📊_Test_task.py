@@ -1,15 +1,18 @@
 import streamlit as st
 import pandas as pd
 from datetime import datetime, timedelta
+from io import StringIO
 
 st.set_page_config(
     page_title="Test task solution", page_icon="📊", layout="wide", initial_sidebar_state="expanded"
 )
 
-
-
-
-
+def dfinfo(self):
+        i = self
+        x = io.StringIO()
+        i.info(buf = x)
+        i = x.getvalue()
+        st.text(i)
 
 
 st.write(
@@ -92,7 +95,12 @@ if uploaded_ads is not None and uploaded_leads is not None and uploaded_purchase
     example_delta = compose[['purchase_created_at', 'created_at']]
     example_delta.dropna(axis=0, subset=['purchase_created_at'], inplace=True)
     #example_delta['del'] = example_delta['purchase_created_at'] - example_delta['created_at']
-    st.write(example_delta.info())
+    delt = example_delta.dfinfo()
+    delt
+
+
+
+
 
     #compose = compose.query('purchase_created_at - created_at <= @delta and created_at <= purchase_created_at')
     compose = compose((compose['purchase_created_at'] - compose['created_at'] <= delta) and (compose['created_at'] <= compose['purchase_created_at']))
