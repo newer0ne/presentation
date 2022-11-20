@@ -90,6 +90,7 @@ if uploaded_ads is not None and uploaded_leads is not None and uploaded_purchase
     delta
 
     example_delta = compose[['purchase_created_at', 'created_at']]
+    example_delta.dropna(axis=0, subset=['purchase_created_at'], inplace=True)
     example_delta
 
     #compose = compose.query('purchase_created_at - created_at <= @delta and created_at <= purchase_created_at')
