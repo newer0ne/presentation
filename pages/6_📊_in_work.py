@@ -102,3 +102,4 @@ if uploaded_ads is not None and uploaded_leads is not None and uploaded_purchase
     compose = compose.groupby('lead_id').agg(**agg_func).reset_index()
 
     leads_full = leads.merge(compose, 'left', 'lead_id')
+    st.dataframe(leads_full)
