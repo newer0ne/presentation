@@ -48,17 +48,18 @@ if uploaded_ads is not None and uploaded_leads is not None and uploaded_purchase
 
     with ads_tab:
         
-        st.markdown('### Исходный датафрейм')
+        st.markdown('#### Исходный датафрейм ads')
         st.dataframe(ads)
 
         ads['d_utm_term'] = ads['d_utm_term'].fillna('-')
         ads['created_at'] = pd.to_datetime(ads['created_at'], format = '%Y-%m-%d', errors = 'ignore')
         
-        st.markdown('### Датафрейм подготовленный к последующим операциям')
+        st.markdown('#### Реклам: Заменяем пропуски, приводим даты')
         st.dataframe(ads)
     
     with leads_tab:
 
+        st.markdown('#### Исходный датафрейм leads')
         st.dataframe(leads)
         
         leads.fillna({'d_lead_utm_source': '-',
@@ -76,16 +77,26 @@ if uploaded_ads is not None and uploaded_leads is not None and uploaded_purchase
         
         leads['created_at'] = pd.to_datetime(leads['created_at'], format = '%Y-%m-%d', errors = 'ignore')
 
+        st.markdown('#### Лиды: Заменяем пропуски, переименовываем, приводим даты')
         st.dataframe(leads)
     
     with purchases_tab:
-
+        
+        st.markdown('### Исходный датафрейм purchases')
         st.dataframe(purchases)
 
         purchases['purchase_created_at'] = pd.to_datetime(purchases['purchase_created_at'], format = '%Y-%m-%d', errors = 'ignore')
         purchases.dropna(axis=0, subset=['m_purchase_amount'], inplace=True)
         
+        st.markdown('#### Продажи: убираем пустые продажи, приводим даты')
         st.dataframe(purchases)
+
+    st.markdown("""
+        Объединяем лиды и продажи:
+            - Лиду засчитывается продажа не позднее 15 дней
+            - purchase_id не может повторяться
+            - Часть лидов может потеряться, когда мы делаем drop_duplicates
+            """)
 
     compose = leads[['client_id', 'created_at', 'lead_id']].merge(purchases, 'left', 'client_id')
     st.dataframe(compose)
