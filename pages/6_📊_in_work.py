@@ -91,11 +91,13 @@ if uploaded_ads is not None and uploaded_leads is not None and uploaded_purchase
         st.markdown('#### Продажи: убираем пустые продажи, приводим даты')
         st.dataframe(purchases)
 
-    st.markdown("""Объединяем лиды и продажи:
-        - Лиду засчитывается продажа не позднее 15 дней
-        - purchase_id не может повторяться
-        - Часть лидов может потеряться, когда мы делаем drop_duplicates""")
-        
+    st.markdown("""
+        Объединяем лиды и продажи:
+            - Лиду засчитывается продажа не позднее 15 дней
+            - purchase_id не может повторяться
+            - Часть лидов может потеряться, когда мы делаем drop_duplicates
+            """)
+
     compose = leads[['client_id', 'created_at', 'lead_id']].merge(purchases, 'left', 'client_id')
     st.dataframe(compose)
 
