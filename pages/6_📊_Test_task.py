@@ -87,7 +87,10 @@ if uploaded_ads is not None and uploaded_leads is not None and uploaded_purchase
 
     example_delta = compose[['purchase_created_at', 'created_at']]
     example_delta.dropna(axis=0, subset=['purchase_created_at'], inplace=True)
-    example_delta['delta1'] = (example_delta['purchase_created_at'] - example_delta['created_at']).dt.days
+
+    example_delta['purchase_created_at'] = pd.to_datetime(example_delta['purchase_created_at'], format = "%y-%m-%d", infer_datetime_format=True)
+    example_delta['created_at'] = pd.to_datetime(example_delta['created_at'], format = "%y-%m-%d", infer_datetime_format=True)
+    example_delta['Difference'] = (example_delta['purchase_created_at'] - example_delta['created_at']).dt.days
     example_delta
     
 
