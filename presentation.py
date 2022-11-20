@@ -13,8 +13,9 @@ st.markdown(
     """
 )
 
-@st.cache(suppress_st_warning=True)
-time.sleep(2)
+with st.spinner('Wait for it...'):
+    time.sleep(2)
+st.success('Done!')
 
 st.markdown(
     """
