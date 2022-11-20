@@ -89,8 +89,8 @@ if uploaded_ads is not None and uploaded_leads is not None and uploaded_purchase
     delta = timedelta(days=15)
     delta
 
-    example = compose['purchase_created_at'] - compose['created_at']
-    example
+    example_delta = compose['purchase_created_at'] - compose['created_at']
+    example_delta
 
     #compose = compose.query('purchase_created_at - created_at <= @delta and created_at <= purchase_created_at')
     compose = compose((compose['purchase_created_at'] - compose['created_at'] <= delta) and (compose['created_at'] <= compose['purchase_created_at']))
