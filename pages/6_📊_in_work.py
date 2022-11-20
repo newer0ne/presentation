@@ -49,7 +49,6 @@ if uploaded_ads is not None and uploaded_leads is not None and uploaded_purchase
         
         st.markdown('### Исходный датафрейм')
         st.dataframe(ads)
-        ads.dtypes
 
         ads['d_utm_term'] = ads['d_utm_term'].fillna('-')
         ads['created_at'] = pd.to_datetime(ads['created_at'], format='%Y-%m-%d')
