@@ -82,9 +82,10 @@ if uploaded_ads is not None and uploaded_leads is not None and uploaded_purchase
         st.dataframe(purchases)
 
     compose = leads[['client_id', 'created_at', 'lead_id']].merge(purchases, 'left', 'client_id')
+    st.dataframe(compose)
 
     delta = timedelta(days=15)
-    compose = compose.query('purchase_created_at - created_at <= @delta and created_at <= purchase_created_at ')
+    compose = compose.query('purchase_created_at - created_at <= @delta and created_at <= purchase_created_at')
 
     compose = compose.sort_values('created_at', ascending=False)\
         .drop_duplicates('purchase_id', keep='first')
