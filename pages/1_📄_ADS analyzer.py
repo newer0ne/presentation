@@ -15,8 +15,8 @@ st.write(
 """
 )
 
-tasklink = """[Тестовое задание.](https://xoservices.notion.site/1872d331265946a0ae2c5c9069189fd7)"""
-st.markdown(tasklink, unsafe_allow_html=True)
+#tasklink = """[Тестовое задание.](https://xoservices.notion.site/1872d331265946a0ae2c5c9069189fd7)"""
+#st.markdown(tasklink, unsafe_allow_html=True)
 
 upcol1, upcol2, upcol3 = st.columns(3)
 
