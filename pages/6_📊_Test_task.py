@@ -46,4 +46,4 @@ if uploaded_purchases:
     leads = pd.read_csv(uploaded_purchases)
 
 if uploaded_ads is not None and uploaded_leads is not None and uploaded_purchases is not None:
-    st.balloons
+    st.balloons()
