@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 from io import StringIO
 
 st.set_page_config(
-    page_title="Test task solution", page_icon="📊", layout="wide", initial_sidebar_state="expanded"
+    page_title="Test task in work", page_icon="📊", layout="wide", initial_sidebar_state="expanded"
 )
 
 st.write(
