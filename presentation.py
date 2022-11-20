@@ -13,6 +13,7 @@ st.markdown(
     """
 )
 
+@st.cache(suppress_st_warning=True)
 time.sleep(2)
 
 st.markdown(
