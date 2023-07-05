@@ -30,6 +30,6 @@ with col3:
     amphours = st.number_input('Ампер*часы обработки:')
     st.write(amphours, ' ампер*часов')
 
-calc_mat = materials.loc[materials.loc[1] == mat_option]
+calc_mat = materials.loc[materials.loc["Mарка"] == mat_option]
 
 st.dataframe(calc_mat)
