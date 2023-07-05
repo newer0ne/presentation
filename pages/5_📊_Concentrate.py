@@ -56,5 +56,6 @@ for column in calc_mat.columns[2:]:
     
 calc_mat.iloc[:, 2:] = calc_mat.iloc[:, 2:].apply(lambda x: x / 1000) # Получаем милиграммы
 calc_mat.iloc[:, 2:] = calc_mat.iloc[:, 2:].apply(lambda x: x / volume) # Получаем милиграммы на литр
+calc_mat = calc_mat.round(3)
 
 st.dataframe(calc_mat)
