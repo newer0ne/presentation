@@ -9,7 +9,7 @@ st.write(
 )
 
 eche = pd.read_excel("eche.xlsx")
-pdk = pd.read_excel("pdk.xlsx")
+#pdk = pd.read_excel("pdk.xlsx")
 materials = pd.read_excel("Materials.xlsx")
 matlist = materials.iloc[:, 1].tolist()
 
@@ -59,3 +59,32 @@ calc_mat.iloc[:, 2:] = calc_mat.iloc[:, 2:].apply(lambda x: x / volume) # Пол
 calc_mat = calc_mat.round(3)
 
 st.dataframe(calc_mat)
+
+pdk = {
+    'Fe': 2.0,
+    'Cr': 0.05,
+    'Ni': 0.02,
+    'Mn': 0.2,
+    'Cu': 0.2,
+    'C': 0.09,
+    'S': 3.0,
+    'P': 1.0,
+    'Si': 0.15,
+    'Ti': 0.5,
+    'Mo': 0.05
+}
+
+for column in calc_mat.columns[2:]:
+    element_symbol = column
+    element_mass = calc_mat[column].values[0]
+    element_pdk = pdk[element_symbol]
+    exceed_limit = element_mass > element_pdk
+
+    compare_df = compare_df.append({
+        'Элемент': element_symbol,
+        'Масса': element_mass,
+        'ПДК': element_pdk,
+        'Превышение': exceed_limit
+    }, ignore_index=True)
+    
+    st.dataframe(compare_df)
