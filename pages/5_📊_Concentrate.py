@@ -31,7 +31,7 @@ with col3:
     amphours = float(st.number_input('Ампер*часы обработки:'))
     st.write(amphours, ' ампер*часов')
     
-Q = amphours / F
+Q = float(amphours / F)
 
 calc_mat = materials.loc[materials['Mарка'] == mat_option].multiply(Q, axis=1)
 
