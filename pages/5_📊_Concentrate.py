@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import chardet
 
 st.set_page_config(page_title="Concentrate", page_icon="🧪")
 
@@ -10,4 +11,10 @@ st.write(
 
 pdk = pd.read_csv("pdk.csv")
 
-st.dataframe(pdk)
+with open('your_file.csv', 'rb') as f:
+    result = chardet.detect(f.read())
+    
+# Чтение файла с определенной кодировкой
+df = pd.read_csv(pdk, encoding=result['encoding'])
+
+st.dataframe(df)
