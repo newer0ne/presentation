@@ -9,12 +9,6 @@ st.write(
     """Расчет соответствия отработавших растворов Гигиеническим нормативам ГН 2.1.5.1315-03 в части ПДК"""
 )
 
-pdk = "pdk.xlsx"
-
-with open(f'{pdk}', 'rb') as f:
-    result = chardet.detect(f.read())
-    
-# Чтение файла с определенной кодировкой
-df = pd.read_excel(pdk)#, encoding=result['encoding'])
+df = pd.read_excel("pdk.xlsx")
 
 st.dataframe(df)
