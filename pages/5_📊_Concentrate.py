@@ -85,7 +85,7 @@ for column in calc_mat.columns[2:]:
 compare_df = pd.concat([compare_df, pd.DataFrame({
     'Элемент': [element_symbol],
     'Масса': [element_mass],
-    'ПДК': [element_p],
+    'ПДК': [element_pdk],
     'Превышение': [exceed_limit]
     })], ignore_index=True)
     
