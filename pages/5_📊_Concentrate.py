@@ -15,6 +15,8 @@ matlist = materials.iloc[:, 1].tolist()
 
 col1, col2, col3 = st.columns(3)
 
+F = 96485 # Кл/моль - Постоянная Фарадея
+
 with col1:
     mat_option = st.selectbox(
         'Какой обрабатывался материал?',
@@ -28,7 +30,9 @@ with col2:
 with col3:
     amphours = st.number_input('Ампер*часы обработки:')
     st.write(amphours, ' ампер*часов')
+    
+Q = amphours / F
 
-calc_mat = materials.loc[materials['Mарка'] == mat_option]
+calc_mat = materials.loc[materials['Mарка'] == mat_option].multiply(volume, axis=1)
 
 st.dataframe(calc_mat)
