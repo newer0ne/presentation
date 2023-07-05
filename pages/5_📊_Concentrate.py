@@ -17,6 +17,20 @@ col1, col2, col3 = st.columns(3)
 
 F = 96485 # Кл/моль - Постоянная Фарадея
 
+molar_mass = {
+    'Fe': 55.85,
+    'Cr': 51.9961,
+    'Ni': 58.6934,
+    'Mn': 54.938045,
+    'Cu': 63.546,
+    'C': 12.0107,
+    'S': 32.06,
+    'P': 30.973761,
+    'Si': 28.0855,
+    'Ti': 47.867,
+    'Mo': 95.96
+}
+
 with col1:
     mat_option = st.selectbox(
         'Какой обрабатывался материал?',
@@ -35,5 +49,6 @@ Q = amphours / F
 
 calc_mat = materials.loc[materials['Mарка'] == mat_option].copy()
 calc_mat.iloc[:, 2:] = calc_mat.iloc[:, 2:].apply(lambda x: x * Q)
+calc_mat.iloc[:, 2:] = calc_mat.iloc[:, 2:].apply(lambda x: x * x.name).multiply(molar_mass, axis=1)
 
 st.dataframe(calc_mat)
