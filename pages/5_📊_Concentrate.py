@@ -85,7 +85,7 @@ exceed_limit = []
 for column in calc_mat.columns[2:]:
     element_symbol.append(column)
     element_mass.append(calc_mat[column].values[0])
-    element_pdk.append(pdk[element_symbol])
+    element_pdk.append(pdk[column])
     exceed_limit = element_mass > element_pdk
     
 print(element_symbol)
