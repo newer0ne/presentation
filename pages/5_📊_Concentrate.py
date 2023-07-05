@@ -33,6 +33,6 @@ with col3:
     
 Q = amphours / F
 
-calc_mat = materials.loc[materials['Mарка'] == mat_option].multiply(volume, axis=1)
+calc_mat = materials.loc[materials['Mарка'] == mat_option].multiply(Q, axis=1)
 
 st.dataframe(calc_mat)
