@@ -24,11 +24,11 @@ with col1:
     st.write('Обрабатывался:', mat_option)
 
 with col2:
-    volume = st.number_input('Объём ванны в литрах:')
+    volume = float(st.number_input('Объём ванны в литрах:'))
     st.write('Объём ванны:', volume, ' литров')
 
 with col3:
-    amphours = st.number_input('Ампер*часы обработки:')
+    amphours = float(st.number_input('Ампер*часы обработки:'))
     st.write(amphours, ' ампер*часов')
     
 Q = amphours / F
