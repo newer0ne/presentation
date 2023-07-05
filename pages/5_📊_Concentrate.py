@@ -89,4 +89,4 @@ compare_df = compare_df.append({
     'Превышение': exceed_limit
     }, ignore_index=True)
     
-    st.dataframe(compare_df)
+st.dataframe(compare_df)
