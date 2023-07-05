@@ -24,15 +24,15 @@ with col1:
     st.write('Обрабатывался:', mat_option)
 
 with col2:
-    volume = float(st.number_input('Объём ванны в литрах:'))
+    volume = st.number_input('Объём ванны в литрах:')
     st.write('Объём ванны:', volume, ' литров')
 
 with col3:
-    amphours = float(st.number_input('Ампер*часы обработки:'))
+    amphours = st.number_input('Ампер*часы обработки:')
     st.write(amphours, ' ампер*часов')
     
-Q = float(amphours / F)
+Q = amphours / F
 
-calc_mat = materials.loc[materials['Mарка'] == mat_option].multiply(Q, axis=1)
+calc_mat = materials.loc[materials['Mарка'] == mat_option]
 
 st.dataframe(calc_mat)
