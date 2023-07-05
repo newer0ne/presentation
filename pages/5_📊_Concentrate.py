@@ -10,7 +10,7 @@ st.write(
 )
 
 pdk = pd.read_excel("pdk.xlsx")
-materials = pd.read_excel("pdk.xlsx")
+materials = pd.read_excel("Materials.xlsx")
 matlist = materials.iloc[:, 0].tolist()
 
 option = st.selectbox(
