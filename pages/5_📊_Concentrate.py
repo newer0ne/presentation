@@ -13,15 +13,20 @@ pdk = pd.read_excel("pdk.xlsx")
 materials = pd.read_excel("Materials.xlsx")
 matlist = materials.iloc[:, 1].tolist()
 
-option = st.selectbox(
-    'Какой обрабатывался материал?',
-    (matlist))
+col1, col2, col3 = st.columns(3)
 
-st.write('обрабатывался материал:', option)
+with col1:
+    mat_option = st.selectbox(
+        'Какой обрабатывался материал?',
+        (matlist))
+    st.write('Обрабатывался:', mat_option)
 
-import streamlit as st
+with col2:
+   volume = st.number_input('Объём ванны в литрах:')
+    st.write('Объём ванны:', volume, ' литров')
 
-number = st.number_input('Введите объём ванны в литрах:')
-st.write('Объём ванны:', number, ' литров')
+with col3:
+   amphours = st.number_input('Ампер*часы обработки:')
+    st.write(amphours, ' ампер*часов')
 
 st.dataframe(pdk)
