@@ -11,10 +11,11 @@ st.write(
 
 pdk = pd.read_excel("pdk.xlsx")
 materials = pd.read_excel("pdk.xlsx")
+matlist = materials.iloc[:, 0].tolist()
 
 option = st.selectbox(
     'Какой обрабатывался материал?',
-    (materials['Материал']))
+    (matlist))
 
 st.write('You selected:', option)
 
