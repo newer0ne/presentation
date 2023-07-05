@@ -9,7 +9,8 @@ st.write(
     """Расчет соответствия отработавших растворов Гигиеническим нормативам ГН 2.1.5.1315-03 в части ПДК"""
 )
 
-pdk = pd.read_csv("pdk.csv")
+#pdk = pd.read_csv("pdk.csv")
+pdk = pd.read_excel("pdk.xlsx")
 
 with open('your_file.csv', 'rb') as f:
     result = chardet.detect(f.read())
