@@ -9,6 +9,7 @@ st.write(
     """Расчет соответствия отработавших растворов Гигиеническим нормативам ГН 2.1.5.1315-03 в части ПДК"""
 )
 
+eche = pd.read_excel("eche.xlsx")
 pdk = pd.read_excel("pdk.xlsx")
 materials = pd.read_excel("Materials.xlsx")
 matlist = materials.iloc[:, 1].tolist()
@@ -29,4 +30,6 @@ with col3:
     amphours = st.number_input('Ампер*часы обработки:')
     st.write(amphours, ' ампер*часов')
 
-st.dataframe(pdk)
+calc_mat = materials.loc[materials.loc[1] == mat_option]
+
+st.dataframe(calc_mat)
