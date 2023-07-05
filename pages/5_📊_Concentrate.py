@@ -9,6 +9,13 @@ st.write(
     """Расчет соответствия отработавших растворов Гигиеническим нормативам ГН 2.1.5.1315-03 в части ПДК"""
 )
 
-df = pd.read_excel("pdk.xlsx")
+pdk = pd.read_excel("pdk.xlsx")
+materials = pd.read_excel("pdk.xlsx")
 
-st.dataframe(df)
+option = st.selectbox(
+    'Какой обрабатывался материал?',
+    (materials['Материал']))
+
+st.write('You selected:', option)
+
+st.dataframe(pdk)
