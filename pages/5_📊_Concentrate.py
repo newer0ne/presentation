@@ -79,7 +79,7 @@ compare_df = pd.DataFrame(columns=['Элемент', 'Масса', 'ПДК', 'П
 
 for column in calc_mat.columns[2:]:
     element_symbol = column
-    print(element_symbol)
+    st.write(element_symbol)
     element_mass = calc_mat[column].values[0]
     element_pdk = pdk[element_symbol]
     exceed_limit = element_mass > element_pdk
