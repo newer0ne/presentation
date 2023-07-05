@@ -54,8 +54,8 @@ for column in calc_mat.columns[2:]:
     element_symbol = column
     calc_mat[column] = calc_mat[column] * molar_mass[element_symbol]
     
-calc_mat.iloc[:, 2:] = calc_mat.iloc[:, 2:].apply(lambda x: x / 1000) # Получаем милиграммы
-calc_mat.iloc[:, 2:] = calc_mat.iloc[:, 2:].apply(lambda x: x / volume) # Получаем милиграммы на литр
+#calc_mat.iloc[:, 2:] = calc_mat.iloc[:, 2:].apply(lambda x: x / 1000) # Получаем милиграммы
+#calc_mat.iloc[:, 2:] = calc_mat.iloc[:, 2:].apply(lambda x: x / volume) # Получаем милиграммы на литр
 calc_mat = calc_mat.round(3)
 
 st.dataframe(calc_mat)
@@ -81,6 +81,8 @@ for column in calc_mat.columns[2:]:
     element_mass = calc_mat[column].values[0]
     element_pdk = pdk[element_symbol]
     exceed_limit = element_mass > element_pdk
+    
+print(element_symbol)
     
 compare_df = pd.concat([compare_df, pd.DataFrame({
     'Элемент': [element_symbol],
