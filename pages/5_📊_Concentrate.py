@@ -26,7 +26,7 @@ with col2:
     st.write('Объём ванны:', volume, ' литров')
 
 with col3:
-   amphours = st.number_input('Ампер*часы обработки:')
+    amphours = st.number_input('Ампер*часы обработки:')
     st.write(amphours, ' ампер*часов')
 
 st.dataframe(pdk)
