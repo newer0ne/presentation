@@ -15,6 +15,6 @@ with open(f'{pdk}', 'rb') as f:
     result = chardet.detect(f.read())
     
 # Чтение файла с определенной кодировкой
-df = pd.read_excel(pdk, encoding=result['encoding'])
+df = pd.read_excel(pdk)#, encoding=result['encoding'])
 
 st.dataframe(df)
