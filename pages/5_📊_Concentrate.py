@@ -74,15 +74,16 @@ pdk = {
     'Mo': 0.05
 }
 
+import pandas as pd
+import streamlit as st
+
 compare_df = pd.DataFrame(columns=['Элемент', 'Масса', 'ПДК', 'Превышение'])
 
 for column in calc_mat.columns[2:]:
     element_symbol = column
     element_mass = calc_mat[column].values[0]
     element_pdk = pdk[element_symbol]
-    exceed_limit = element_mass > element_pdk
-    
-    compare_df = compare_df.append({
+    exceed_limit = element_mass > element_pdk compare_df = compare_df.append({
         'Элемент': element_symbol,
         'Масса': element_mass,
         'ПДК': element_pdk,
