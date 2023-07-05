@@ -22,7 +22,7 @@ with col1:
     st.write('Обрабатывался:', mat_option)
 
 with col2:
-   volume = st.number_input('Объём ванны в литрах:')
+    volume = st.number_input('Объём ванны в литрах:')
     st.write('Объём ванны:', volume, ' литров')
 
 with col3:
