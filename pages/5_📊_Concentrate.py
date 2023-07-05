@@ -82,10 +82,11 @@ for column in calc_mat.columns[2:]:
     element_pdk = pdk[element_symbol]
     exceed_limit = element_mass > element_pdk
     
-    compare_df pd.concat([compare_df.DataFrame 'Элемент': [element_symbol],
-        'Масса': [element],
-        'ПДК': [element_pdk],
-        'Превышение': [exceed_limit]
+compare_df = pd.concat([compare_df, pd.DataFrame({
+    'Элемент': [element_symbol],
+    'Масса': [element_mass],
+    'ПДК': [element_p],
+    'Превышение': [exceed_limit]
     })], ignore_index=True)
     
 st.dataframe(compare_df)
