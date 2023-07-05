@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import numpy as np
 
 st.set_page_config(page_title="Concentrate", page_icon="🧪")
 
@@ -86,7 +87,7 @@ for column in calc_mat.columns[2:]:
     element_symbol.append(column)
     element_mass.append(calc_mat[column].values[0])
     element_pdk.append(pdk[column])
-    exceed_limit = element_mass > element_pdk
+    exceed_limit.append(bool(element_mass[-1] > element_pdk[-1]))
     
 compare_df = pd.DataFrame(list(zip(element_symbol, element_mass, element_pdk, exceed_limit)), columns=['Элемент', 'Масса', 'ПДК', 'Превышение'])
     
