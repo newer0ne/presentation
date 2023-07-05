@@ -17,6 +17,11 @@ option = st.selectbox(
     'Какой обрабатывался материал?',
     (matlist))
 
-st.write('You selected:', option)
+st.write('обрабатывался материал:', option)
+
+import streamlit as st
+
+number = st.number_input('Введите объём ванны в литрах:')
+st.write('Объём ванны:', number, ' литров')
 
 st.dataframe(pdk)
