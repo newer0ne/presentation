@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-import chardet
 
 st.set_page_config(page_title="Concentrate", page_icon="🧪")
 
@@ -32,6 +31,6 @@ with col3:
     
 st.dataframe(materials)
 
-calc_mat = materials.loc[materials.loc['Mарка'] == mat_option]
+calc_mat = materials.loc[materials['Mарка'] == mat_option]
 
 st.dataframe(calc_mat)
