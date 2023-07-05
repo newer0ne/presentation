@@ -49,7 +49,11 @@ Q = amphours / F
 
 calc_mat = materials.loc[materials['Mарка'] == mat_option].copy()
 calc_mat.iloc[:, 2:] = calc_mat.iloc[:, 2:].apply(lambda x: x * Q) # Получаем моли
-calc_mat.iloc[:, 2:] = calc_mat.iloc[:, 2:].apply(lambda x: x * x.name).multiply(molar_mass, axis=1) # получаем граммы
+
+for column in calc_mat.columns[2:]:
+    element_symbol = column
+    calc_mat[column] = calc_mat[column] * molar_mass[element_symbol]
+    
 calc_mat.iloc[:, 2:] = calc_mat.iloc[:, 2:].apply(lambda x: x / 1000) # Получаем милиграммы
 calc_mat.iloc[:, 2:] = calc_mat.iloc[:, 2:].apply(lambda x: x / volume) # Получаем милиграммы на литр
 
