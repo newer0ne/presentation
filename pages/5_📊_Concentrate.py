@@ -58,6 +58,7 @@ calc_mat.iloc[:, 2:] = calc_mat.iloc[:, 2:].apply(lambda x: x * 1000) # Полу
 calc_mat.iloc[:, 2:] = calc_mat.iloc[:, 2:].apply(lambda x: x / volume) # Получаем милиграммы на литр
 calc_mat = calc_mat.round(3)
 
+st.write('Растворено веществ мг/л:')
 st.dataframe(calc_mat)
 
 pdk = {
@@ -78,6 +79,7 @@ compare_df = pd.DataFrame(columns=['Элемент', 'Масса', 'ПДК', 'П
 
 for column in calc_mat.columns[2:]:
     element_symbol = column
+    print(element_symbol)
     element_mass = calc_mat[column].values[0]
     element_pdk = pdk[element_symbol]
     exceed_limit = element_mass > element_pdk
