@@ -17,6 +17,7 @@ st.write(token)
 
 token_n = ":".join([token1, token2])
 st.write(token_n)
+st.write('6328980463:AAFleAoJqyk9MBX3zU-TNQG4656DWWOIluI')
 
 
 st.markdown("<h1 style='text-align: center;'>Привет и добро пожаловать в Datalyzer! 👋</h1>", unsafe_allow_html=True)
