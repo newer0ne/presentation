@@ -14,7 +14,7 @@ token2 = st.secrets["token2"]
 chat_id = st.secrets["chat_id"]
 token = token1 + ":" + token2
 
-st.write(token, chat_id)
+st.write(token1, token2, token, chat_id)
 
 st.markdown("<h1 style='text-align: center;'>Привет и добро пожаловать в Datalyzer! 👋</h1>", unsafe_allow_html=True)
 
