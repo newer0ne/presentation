@@ -9,8 +9,10 @@ st.set_page_config(
 )
 
 # Загрузка секретов из файла secrets.toml
-token = st.secrets["token"]
+token1 = st.secrets["token1"]
+token2 = st.secrets["token2"]
 chat_id = st.secrets["chat_id"]
+token = token1 + ":" + token2
 
 st.write(token, chat_id)
 
