@@ -1,7 +1,6 @@
 import streamlit as st
 import telegram
-from telegram import Bot
-
+import asyncio
 import time
 
 st.set_page_config(
@@ -46,13 +45,13 @@ st.markdown(
 token = st.secrets["token"]
 chat_id = st.secrets["chat_id"]
 
-def send_telegram_message(token, chat_id, text):
+async def send_telegram_message(token, chat_id, text):
     bot = telegram.Bot(token=token)
-    bot.send_message(chat_id=chat_id, text=text)
+    await bot.send_message(chat_id=chat_id, text=text)
 
 if st.button('Предложить идею!'):
     txt = st.text_area('Напишите здесь')
-    send_telegram_message(token, chat_id, txt)
+    asyncio.run(send_telegram_message('your_token', 'your_chat_id', txt))
     
 st.markdown(
     """    
