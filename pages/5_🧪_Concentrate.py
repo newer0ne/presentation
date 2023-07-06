@@ -101,9 +101,9 @@ multiplier = 0
 
 fig, ax = plt.subplots()
 
-for attribute, measurement in compare_df[['Масса, мг/л', 'ПДК, мг/л']].iteritems():
+for attribute in compare_df[['Масса, мг/л', 'ПДК, мг/л']]:
     offset = width * multiplier
-    rects = ax.bar(x + offset, measurement, width, label=attribute)
+    rects = ax.bar(x + offset, compare_df[attribute], width, label=attribute)
     ax.bar_label(rects, padding=3)
     multiplier += 1
 
