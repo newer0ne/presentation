@@ -1,6 +1,7 @@
-import streamlit as st
-import telegram
 import asyncio
+import threading
+import telegram
+import streamlit as st
 import time
 
 st.set_page_config(
@@ -47,21 +48,27 @@ st.markdown(
     """
 )        
 
+
 async def send_telegram_message(token, chat_id, text):
     bot = telegram.Bot(token=token)
     await bot.send_message(chat_id=chat_id, text=text)
 
-@st.experimental_asyncio
-async def main():
+def send_message_async(token, chat_id, text):
+    asyncio.run(send_telegram_message(token, chat_id, text))
+
+def main():
     if st.button('Предложить идею!'):
         txt = st.text_area('Напишите здесь')
         if txt:
-            await send_telegram_message("6328980463:AAFleAoJqyk9MBX3zU-TNQG4656DWWOIluI", chat_id, txt)
+            t = threading.Thread(target=send_message_async, args=("6328980463:AAFleAoJqyk9MBX3zU-TNQG4656DWWOIluI", chat_id, txt))
+            t.start()
             st.write('Ваша идея отправлена!')
         else:
             st.error('Пожалуйста, введите текст сообщения')
 
-asyncio.run(main())
+if __name__ == "__main__":
+    main()
+
 
 st.markdown(
     """    
