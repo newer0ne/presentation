@@ -91,5 +91,5 @@ compare_df = pd.DataFrame(list(zip(element_symbol, element_mass, element_pdk, ex
 
 st.dataframe(compare_df, use_container_width=True)
 
-chart_data = compare_df[['Масса, мг/л', 'ПДК, мг/л']]
-st.bar_chart(chart_data, y='Элемент')
+chart_data = compare_df[['Элемент','Масса, мг/л', 'ПДК, мг/л']]
+st.bar_chart(chart_data, x='Элемент')
