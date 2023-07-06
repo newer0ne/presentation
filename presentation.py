@@ -9,16 +9,10 @@ st.set_page_config(
 )
 
 # Загрузка секретов из файла secrets.toml
-token1 = str(st.secrets["token1"])
-token2 = str(st.secrets["token2"])
+#token1 = str(st.secrets["token1"])
+#token2 = str(st.secrets["token2"])
 chat_id = st.secrets["chat_id"]
-token = token1 + ":" + token2
-st.write(token)
-
-token_n = ":".join([token1, token2])
-st.write(token_n)
-st.write('6328980463:AAFleAoJqyk9MBX3zU-TNQG4656DWWOIluI')
-
+#token = token1 + ":" + token2
 
 st.markdown("<h1 style='text-align: center;'>Привет и добро пожаловать в Datalyzer! 👋</h1>", unsafe_allow_html=True)
 
@@ -60,7 +54,7 @@ async def send_telegram_message(token, chat_id, text):
 if st.button('Предложить идею!'):
     txt = st.text_area('Напишите здесь')
     if txt:
-        asyncio.run(send_telegram_message(token, chat_id, txt))
+        asyncio.run(send_telegram_message("6328980463:AAFleAoJqyk9MBX3zU-TNQG4656DWWOIluI", chat_id, txt))
         st.write('Ваша идея отправлена!')
     else:
         st.error('Пожалуйста, введите текст сообщения')
