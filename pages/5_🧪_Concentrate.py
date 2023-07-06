@@ -46,6 +46,8 @@ with col3:
     amphours = st.number_input('Ампер*часы обработки:')
     st.write(amphours, ' ампер*часов')
     
+st.dataframe(calc_mat)
+    
 Q = amphours / F
 
 calc_mat = materials.loc[materials['Mарка'] == mat_option].copy()
@@ -60,7 +62,6 @@ calc_mat.iloc[:, 2:] = calc_mat.iloc[:, 2:].apply(lambda x: x / volume) # Пол
 calc_mat = calc_mat.round(3)
 
 st.write('Растворено веществ мг/л:')
-st.dataframe(calc_mat)
 
 pdk = {
     'Fe': 2.0,
