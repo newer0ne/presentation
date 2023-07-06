@@ -14,8 +14,6 @@ eche = pd.read_excel("eche.xlsx")
 materials = pd.read_excel("Materials.xlsx")
 matlist = materials.iloc[:, 1].tolist()
 
-col1, col2, col3 = st.columns(3)
-
 F = 96485 # Кл/моль - Постоянная Фарадея
 
 molar_mass = {
@@ -32,16 +30,15 @@ molar_mass = {
     'Mo': 95.96
 }
 
+col1, col2, col3 = st.columns(3)
 with col1:
     mat_option = st.selectbox(
         'Какой обрабатывался материал?',
         (matlist))
     st.write('Обрабатывался:', mat_option)
-
 with col2:
     volume = st.number_input('Объём ванны в литрах:')
     st.write('Объём ванны:', volume, ' литров')
-
 with col3:
     amphours = st.number_input('Ампер*часы обработки:')
     st.write(amphours, ' ампер*часов')
