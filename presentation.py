@@ -1,4 +1,5 @@
 import streamlit as st
+import telegram
 import time
 
 st.set_page_config(
@@ -36,8 +37,25 @@ st.markdown(
         регрессионный анализ.
     - «DataFrame visualizer»:
         Добавление выбора стандартных баз данных для отображения.
+    """
+)        
+    if st.button('Предложить идею!'):
+        txt = st.text_area('Напишите здесь')
 
-    ## Хотите знать немного больше об авторе?
+token = st.secrets["token"]
+chat_id = st.secrets["chat_id"]
+
+def send_telegram_message(token, chat_id, text):
+    bot = telegram.Bot(token=token)
+    bot.send_message(chat_id=chat_id, text=text)
+
+if st.button('Предложить идею!'):
+    txt = st.text_area('Напишите здесь')
+    send_telegram_message('your_token', 'your_chat_id', txt)
+    
+st.markdown(
+    """    
+        ## Хотите знать немного больше об авторе?
     - Мои работы:
         - [Классификатор для РОСАТОМА](https://classificator.streamlit.app/)        
     - Здесь мои социальные сети:
