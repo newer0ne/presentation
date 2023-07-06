@@ -13,8 +13,11 @@ token1 = str(st.secrets["token1"])
 token2 = str(st.secrets["token2"])
 chat_id = st.secrets["chat_id"]
 token = token1 + ":" + token2
-
 st.write(token)
+
+token_n = ":".join([token1, token2])
+st.write(token_n)
+
 
 st.markdown("<h1 style='text-align: center;'>Привет и добро пожаловать в Datalyzer! 👋</h1>", unsafe_allow_html=True)
 
