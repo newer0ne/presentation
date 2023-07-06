@@ -39,10 +39,8 @@ st.markdown(
         Добавление выбора стандартных баз данных для отображения.
     """
 )        
-    
-if st.button('Предложить идею!'):
-    txt = st.text_area('Напишите здесь')
 
+   
 token = st.secrets["token"]
 chat_id = st.secrets["chat_id"]
 
@@ -52,7 +50,7 @@ def send_telegram_message(token, chat_id, text):
 
 if st.button('Предложить идею!'):
     txt = st.text_area('Напишите здесь')
-    send_telegram_message('your_token', 'your_chat_id', txt)
+    send_telegram_message(token, chat_id, txt)
     
 st.markdown(
     """    
