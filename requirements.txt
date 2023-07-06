@@ -6,6 +6,7 @@ gsheetsdb
 XlsxWriter
 PyDrive
 chardet
+matplotlib
 
 altair==4.1.0
 scipy==1.6.2
