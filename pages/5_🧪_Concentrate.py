@@ -89,4 +89,4 @@ for column in calc_mat.columns[2:]:
     
 compare_df = pd.DataFrame(list(zip(element_symbol, element_mass, element_pdk, exceed_limit)), columns=['Элемент', 'Масса', 'ПДК', 'Превышение'])
     
-st.dataframe(compare_df)
+st.dataframe(compare_df, use_container_width=True)
