@@ -94,6 +94,7 @@ for column in calc_mat.columns[2:]:
 compare_df = pd.DataFrame(list(zip(element_symbol, element_mass, element_pdk, exceed_limit)), columns=['Элемент', 'Масса, мг/л', 'ПДК, мг/л', 'Превышение'])
 compare_df = compare_df.sort_values(by=['Превышение'], ascending=False)
 
+compare_df['Превышение раз'] = compare_df['Масса, мг/л'] / compare_df['ПДК, мг/л']
 st.dataframe(compare_df, use_container_width=True)
 
 chart_data = compare_df[['Элемент','Масса, мг/л', 'ПДК, мг/л']]
