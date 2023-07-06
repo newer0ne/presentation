@@ -104,24 +104,25 @@ st.dataframe(compare_df, use_container_width=True)
 
 st.write('Ниже приведено сравнение элементов по массе и ПДК для компонентов:')
 
-chart_data = compare_df[['Элемент','Масса, мг/л', 'ПДК, мг/л']]
+chart_data = compare_df.drop['Превышение']
+chart_data = chart_data.loc[chart_data['Превышение раз'] > 0.1]
 
-x = np.arange(len(compare_df['Элемент']))  # the label locations
+x = np.arange(len(chart_data['Элемент']))  # the label locations
 width = 0.25  # the width of the bars
 multiplier = 0
 
 fig, ax = plt.subplots()
 
-for attribute in compare_df[['Масса, мг/л', 'ПДК, мг/л']]:
+for attribute in chart_data[['Масса, мг/л', 'ПДК, мг/л']]:
     offset = width * multiplier
-    rects = ax.bar(x + offset, compare_df[attribute], width, label=attribute)
+    rects = ax.bar(x + offset, chart_data[attribute], width, label=attribute)
     ax.bar_label(rects, padding=3)
     multiplier += 1
 
 # Add some text for labels, title and custom x-axis tick labels, etc.
 ax.set_ylabel('Масса, мг/л')
 ax.set_title('Сравнение элементов по массе и ПДК')
-ax.set_xticks(x, compare_df['Элемент'])
+ax.set_xticks(x, chart_data['Элемент'])
 ax.legend()
 
 
