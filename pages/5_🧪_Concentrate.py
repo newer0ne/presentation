@@ -46,11 +46,10 @@ with col3:
     amphours = st.number_input('Ампер*часы обработки:')
     st.write(amphours, ' ампер*часов')
     
-st.dataframe(calc_mat)
-    
 Q = amphours / F
 
 calc_mat = materials.loc[materials['Mарка'] == mat_option].copy()
+st.dataframe(calc_mat)
 calc_mat.iloc[:, 2:] = calc_mat.iloc[:, 2:].apply(lambda x: x * Q) # Получаем моли
 
 for column in calc_mat.columns[2:]:
