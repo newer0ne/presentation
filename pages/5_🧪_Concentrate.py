@@ -92,9 +92,9 @@ for column in calc_mat.columns[2:]:
     exceed_limit.append(bool(element_mass[-1] > element_pdk[-1]))
     
 compare_df = pd.DataFrame(list(zip(element_symbol, element_mass, element_pdk, exceed_limit)), columns=['Элемент', 'Масса, мг/л', 'ПДК, мг/л', 'Превышение'])
-compare_df = compare_df.sort_values(by=['Превышение'], ascending=False)
 
 compare_df['Превышение раз'] = compare_df['Масса, мг/л'] / compare_df['ПДК, мг/л']
+compare_df = compare_df.sort_values(by=['Превышение раз'], ascending=False)
 st.dataframe(compare_df, use_container_width=True)
 
 chart_data = compare_df[['Элемент','Масса, мг/л', 'ПДК, мг/л']]
