@@ -8,6 +8,7 @@ PyDrive
 chardet
 matplotlib
 python-telegram-bot
+telegram
 
 altair==4.1.0
 scipy==1.6.2

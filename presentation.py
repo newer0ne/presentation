@@ -1,5 +1,7 @@
 import streamlit as st
 import telegram
+from telegram import Bot
+
 import time
 
 st.set_page_config(
