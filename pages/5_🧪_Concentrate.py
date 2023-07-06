@@ -48,7 +48,10 @@ Q = amphours / F
 
 calc_mat = materials.loc[materials['Mарка'] == mat_option].copy()
 st.write('Химический состав по элементам:')
-st.dataframe(calc_mat)
+#calc_mat_stat = calc_mat.dropna(axis='columns')
+st.dataframe(calc_mat.dropna(axis='columns'))
+
+
 calc_mat.iloc[:, 2:] = calc_mat.iloc[:, 2:].apply(lambda x: x * Q) # Получаем моли
 
 for column in calc_mat.columns[2:]:
