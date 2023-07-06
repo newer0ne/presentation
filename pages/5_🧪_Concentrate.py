@@ -65,17 +65,21 @@ calc_mat = calc_mat.round(3)
 st.write('Растворено веществ мг/л:')
 
 pdk = {
-    'Fe': 2.0,
-    'Cr': 0.05,
-    'Ni': 0.02,
+    'Al': 0.04,
+    'Fe': 1.0,
+    'Cr': 0.1,
+    'Ni': 0.1,
+    'Zn': 0,1
     'Mn': 0.2,
-    'Cu': 0.2,
+    'Cu': 0.02,
     'C': 0.09,
     'S': 3.0,
     'P': 1.0,
     'Si': 0.15,
     'Ti': 0.5,
-    'Mo': 0.05
+    'Mo': 0.05,
+    'Cd': 0.005,
+    'Pb': 0.06
 }
 
 compare_df = pd.DataFrame(columns=['Элемент', 'Масса, мг/л', 'ПДК, мг/л', 'Превышение'])
@@ -97,6 +101,9 @@ compare_df['Превышение раз'] = compare_df['Масса, мг/л'] / 
 compare_df = compare_df.sort_values(by=['Превышение раз'], ascending=False)
 st.dataframe(compare_df, use_container_width=True)
 
+
+st.write('Ниже приведено сравнение элементов по массе и ПДК для компонентов:')
+
 chart_data = compare_df[['Элемент','Масса, мг/л', 'ПДК, мг/л']]
 
 x = np.arange(len(compare_df['Элемент']))  # the label locations
@@ -116,5 +123,6 @@ ax.set_ylabel('Масса, мг/л')
 ax.set_title('Сравнение элементов по массе и ПДК')
 ax.set_xticks(x, compare_df['Элемент'])
 ax.legend()
+
 
 st.pyplot(fig)
