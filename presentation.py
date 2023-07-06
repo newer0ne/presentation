@@ -12,9 +12,9 @@ st.set_page_config(
 token1 = str(st.secrets["token1"])
 token2 = str(st.secrets["token2"])
 chat_id = st.secrets["chat_id"]
-token = token1+token2
+token = token1 + ":" + token2
 
-st.write(token1, token2, token, chat_id)
+st.write(token)
 
 st.markdown("<h1 style='text-align: center;'>Привет и добро пожаловать в Datalyzer! 👋</h1>", unsafe_allow_html=True)
 
