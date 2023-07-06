@@ -3,16 +3,16 @@ import telegram
 import asyncio
 import time
 
+st.set_page_config(
+    page_title="Hello",
+    page_icon="📖",
+)
+
 # Загрузка секретов из файла secrets.toml
 token = st.secrets["token"]
 chat_id = st.secrets["chat_id"]
 
 st.write(token, chat_id)
-
-st.set_page_config(
-    page_title="Hello",
-    page_icon="📖",
-)
 
 st.markdown("<h1 style='text-align: center;'>Привет и добро пожаловать в Datalyzer! 👋</h1>", unsafe_allow_html=True)
 
