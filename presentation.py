@@ -44,6 +44,7 @@ st.markdown(
    
 token = st.secrets["token"]
 chat_id = st.secrets["chat_id"]
+st.write(token, chat_id)       
 
 async def send_telegram_message(token, chat_id, text):
     bot = telegram.Bot(token=token)
@@ -56,8 +57,6 @@ if st.button('Предложить идею!'):
         st.write('Ваша идея отправлена!')
     else:
         st.error('Пожалуйста, введите текст сообщения')
-
-st.write(token, chat_id, txt)        
 
 st.markdown(
     """    
