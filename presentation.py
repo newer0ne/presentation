@@ -51,12 +51,11 @@ async def send_telegram_message(token, chat_id, text):
 
 if st.button('Предложить идею!'):
     txt = st.text_area('Напишите здесь')
-    if st.button('Отправить идею'):
-        if txt:
-            asyncio.run(send_telegram_message(token, chat_id, txt))
-            print(txt)
-        else:
-            st.error('Пожалуйста, введите текст сообщения')
+    if txt:
+        asyncio.run(send_telegram_message(token, chat_id, txt))
+        st.write('Ваша идея отправлена!')
+    else:
+        st.error('Пожалуйста, введите текст сообщения')
     
 st.markdown(
     """    
