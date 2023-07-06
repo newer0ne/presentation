@@ -39,8 +39,9 @@ st.markdown(
         Добавление выбора стандартных баз данных для отображения.
     """
 )        
-    if st.button('Предложить идею!'):
-        txt = st.text_area('Напишите здесь')
+    
+if st.button('Предложить идею!'):
+    txt = st.text_area('Напишите здесь')
 
 token = st.secrets["token"]
 chat_id = st.secrets["chat_id"]
