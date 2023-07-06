@@ -88,7 +88,8 @@ for column in calc_mat.columns[2:]:
     exceed_limit.append(bool(element_mass[-1] > element_pdk[-1]))
     
 compare_df = pd.DataFrame(list(zip(element_symbol, element_mass, element_pdk, exceed_limit)), columns=['Элемент', 'Масса, мг/л', 'ПДК, мг/л', 'Превышение'])
-    
+
 st.dataframe(compare_df, use_container_width=True)
 
-st.bar_chart(compare_df['Масса, мг/л', 'ПДК, мг/л'])
+chart_data = compare_df['Масса, мг/л', 'ПДК, мг/л']
+st.bar_chart(chart_data)
