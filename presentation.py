@@ -3,6 +3,12 @@ import telegram
 import asyncio
 import time
 
+# Загрузка секретов из файла secrets.toml
+token = st.secrets["token"]
+chat_id = st.secrets["chat_id"]
+
+st.write(token, chat_id)
+
 st.set_page_config(
     page_title="Hello",
     page_icon="📖",
@@ -40,11 +46,6 @@ st.markdown(
         Добавление выбора стандартных баз данных для отображения.
     """
 )        
-
-   
-token = st.secrets["token"]
-chat_id = st.secrets["chat_id"]
-st.write(token, chat_id)       
 
 async def send_telegram_message(token, chat_id, text):
     bot = telegram.Bot(token=token)
