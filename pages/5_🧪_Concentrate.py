@@ -104,7 +104,7 @@ st.dataframe(compare_df, use_container_width=True)
 
 st.write('Ниже приведено сравнение элементов по массе и ПДК для компонентов:')
 
-chart_data = compare_df.drop['Превышение']
+chart_data = compare_df.drop(columns=['Превышение'])
 chart_data = chart_data.loc[chart_data['Превышение раз'] > 0.1]
 
 x = np.arange(len(chart_data['Элемент']))  # the label locations
