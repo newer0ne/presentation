@@ -24,6 +24,7 @@ st.markdown(
     - «Plotting graf» - рандомизированный график.
     - «DataFrame visualizer» - визуализатор датафреймов.
         Для примера взято валовое сельскохозяйственное производство по годам.
+    - «Concentrate» - Калькулятор ПДК отработавших растворов электролита.
 
     ### Что дальше?
     - «ADS analyzer»: 
@@ -38,11 +39,10 @@ st.markdown(
 
     ## Хотите знать немного больше об авторе?
     - Мои работы:
-        - [Классификатор для РОСАТОМА](https://classificator.streamlit.app/)
-        - [Атесстация в ИТМО](https://itmofinishwork.streamlitapp.com/)
+        - [Классификатор для РОСАТОМА](https://classificator.streamlit.app/)        
     - Здесь мои социальные сети:
         - [telegram.org](https://t.me/newer0ne)
-        - [linkedin.com](https://www.linkedin.com/in/sergey-zakharov-162331223/)
+        - [linkedin.com](https://www.linkedin.com/in/zakharovsv/)
         - [vk.com](https://vk.com/id1237712)
         - [github.com](https://github.com/newer0ne)
     - Контакты на рекрутинговых платформах:
