@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
 
 st.set_page_config(page_title="Concentrate", page_icon="🧪")
 
@@ -93,3 +94,23 @@ st.dataframe(compare_df, use_container_width=True)
 
 chart_data = compare_df[['Элемент','Масса, мг/л', 'ПДК, мг/л']]
 st.bar_chart(chart_data, x='Элемент')
+
+x = np.arange(len(compare_df['Элемент']))  # the label locations
+width = 0.25  # the width of the bars
+multiplier = 0
+
+fig, ax = plt.subplots()
+
+for attribute, measurement in compare_df[['Масса, мг/л', 'ПДК, мг/л']].iteritems():
+    offset = width * multiplier
+    rects = ax.bar(x + offset, measurement, width, label=attribute)
+    ax.bar_label(rects, padding=3)
+    multiplier += 1
+
+# Add some text for labels, title and custom x-axis tick labels, etc.
+ax.set_ylabel('Масса, мг/л')
+ax.set_title('Сравнение элементов по массе и ПДК')
+ax.set_xticks(x, compare_df['Элемент'])
+ax.legend()
+
+st.pyplot(fig)
