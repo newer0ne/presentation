@@ -102,7 +102,7 @@ compare_df = compare_df.sort_values(by=['Превышение раз'], ascendin
 st.dataframe(compare_df, use_container_width=True)
 
 
-st.write('Ниже приведено сравнение элементов по массе и ПДК для компонентов:')
+st.write('Ниже приведено сравнение растворенных элементов по массе и ПДК в отношении от 0,1:')
 
 chart_data = compare_df.drop(columns=['Превышение'])
 chart_data = chart_data.loc[chart_data['Превышение раз'] > 0.1]
