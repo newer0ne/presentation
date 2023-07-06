@@ -54,6 +54,7 @@ if st.button('Предложить идею!'):
     if st.button('Отправить идею'):
         if txt:
             asyncio.run(send_telegram_message('your_token', 'your_chat_id', txt))
+            print(txt)
         else:
             st.error('Пожалуйста, введите текст сообщения')
     
