@@ -48,7 +48,7 @@ Q = amphours / F
 
 calc_mat = materials.loc[materials['Mарка'] == mat_option].copy()
 st.write('Химический состав по элементам:')
-#calc_mat_stat = calc_mat.dropna(axis='columns')
+calc_mat = calc_mat.dropna(axis='columns')
 st.dataframe(calc_mat.dropna(axis='columns'))
 
 
@@ -97,7 +97,6 @@ compare_df = compare_df.sort_values(by=['Превышение'], ascending=False
 st.dataframe(compare_df, use_container_width=True)
 
 chart_data = compare_df[['Элемент','Масса, мг/л', 'ПДК, мг/л']]
-#st.bar_chart(chart_data, x='Элемент')
 
 x = np.arange(len(compare_df['Элемент']))  # the label locations
 width = 0.25  # the width of the bars
