@@ -10,10 +10,10 @@ st.set_page_config(
 )
 
 # Загрузка секретов из файла secrets.toml
-#token1 = str(st.secrets["token1"])
-#token2 = str(st.secrets["token2"])
+token1 = str(st.secrets["token1"])
+token2 = str(st.secrets["token2"])
 chat_id = st.secrets["chat_id"]
-#token = token1 + ":" + token2
+token = token1 + ":" + token2
 
 st.markdown("<h1 style='text-align: center;'>Привет и добро пожаловать в Datalyzer! 👋</h1>", unsafe_allow_html=True)
 
@@ -60,7 +60,7 @@ def main():
     if st.button('Предложить идею!'):
         txt = st.text_area('Напишите здесь')
         if txt:
-            t = threading.Thread(target=send_message_async, args=("6328980463:AAFleAoJqyk9MBX3zU-TNQG4656DWWOIluI", chat_id, txt))
+            t = threading.Thread(target=send_message_async, args=(token, chat_id, txt))
             t.start()
             st.write('Ваша идея отправлена!')
         else:
