@@ -1,7 +1,6 @@
 import asyncio
 import threading
 import streamlit as st
-import time
 
 st.set_page_config(
     page_title="Hello",
