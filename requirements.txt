@@ -1,14 +1,9 @@
-xlrd==2.0.1
-openpyxl==3.0.7
-pyxlsb==1.0.9
 pandas
 gsheetsdb
 XlsxWriter
 PyDrive
 chardet
 matplotlib
-python-telegram-bot
-telegram
 
 altair==4.1.0
 scipy==1.6.2
