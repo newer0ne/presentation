@@ -1,6 +1,5 @@
 import asyncio
 import threading
-import telegram
 import streamlit as st
 import time
 
