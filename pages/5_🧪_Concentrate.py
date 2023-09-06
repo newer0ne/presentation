@@ -11,8 +11,7 @@ st.write(
 )
 
 eche = pd.read_excel("eche.xlsx")
-#pdk = pd.read_excel("pdk.xlsx")
-materials = pd.read_excel("Materials.xlsx")
+materials = pd.read_excel("materials.xlsx")
 matlist = materials.iloc[:, 1].tolist()
 
 F = 96485 # Кл/моль - Постоянная Фарадея
