@@ -73,7 +73,7 @@ st.markdown(
     """    
         ## Хотите знать немного больше об авторе?
     - Мои работы:
-        - [Классификатор для РОСАТОМА](https://classificator.streamlit.app/)        
+        - [Классификатор для РОСАТОМА](http://titan2it.ru/)        
     - Здесь мои социальные сети:
         - [telegram.org](https://t.me/newer0ne)
         - [linkedin.com](https://www.linkedin.com/in/zakharovsv/)
