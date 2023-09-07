@@ -10,6 +10,10 @@ st.write(
     """Расчет соответствия отработавших растворов Гигиеническим нормативам ГН 2.1.5.1315-03 в части ПДК"""
 )
 
+st.write(
+    """Разработано для ООО "Центр Актуальных Технологий" и ООО "АЦИА""""
+)
+
 eche = pd.read_excel("eche.xlsx")
 materials = pd.read_excel("materials.xlsx")
 matlist = materials.iloc[:, 1].tolist()
