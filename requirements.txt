@@ -3,3 +3,4 @@ gsheetsdb
 openpyxl
 matplotlib
 scipy
+streamlit
