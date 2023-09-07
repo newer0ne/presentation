@@ -300,7 +300,7 @@ result_default = None
 # If CSV is not uploaded and checkbox is filled, use values from the example file
 # and pass them down to the next if block
 if use_example_file:
-    uploaded_file = "Website_Results.csv"
+    uploaded_file = "abresults.csv"
     ab_default = ["variant"]
     result_default = ["converted"]
 
