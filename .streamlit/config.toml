@@ -1,0 +1,23 @@
+[server]
+
+# Max size, in megabytes, for files uploaded with the file_uploader.
+# Default: 10
+maxUploadSize = 10
+
+[browser]
+
+# Internet address where users should point their browsers in order to
+# connect to the app. Can be IP address or DNS name and path.
+# This is used to:
+# - Set the correct URL for CORS and XSRF protection purposes.
+# - Show the URL on the terminal
+# - Open the browser
+# Default: "localhost"
+serverAddress = "sergeyzaharov.ru"
+
+[deprecation]
+
+# Set to false to disable the deprecation warning for using the global pyplot
+# instance.
+# Default: true
+showPyplotGlobalUse = false

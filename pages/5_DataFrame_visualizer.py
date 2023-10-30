@@ -3,7 +3,9 @@ import pandas as pd
 import altair as alt
 from urllib.error import URLError
 
-st.set_page_config(page_title="DataFrame visualizer", page_icon="📊")
+st.set_page_config(
+    page_title="DataFrame visualizer", page_icon="📊", layout="wide"
+    )
 
 st.markdown("# 📊 DataFrame visualizer")
 st.write(

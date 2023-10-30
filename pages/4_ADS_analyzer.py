@@ -5,7 +5,7 @@ from datetime import datetime, timedelta
 from io import StringIO
 
 st.set_page_config(
-    page_title="ADS analyzer", page_icon="📊", layout="wide", initial_sidebar_state="expanded"
+    page_title="ADS analyzer", page_icon="📊", layout="wide"
 )
 
 st.write(

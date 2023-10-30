@@ -5,12 +5,10 @@ import matplotlib.pyplot as plt
 
 st.set_page_config(page_title="Concentrate", page_icon="🧪")
 
-st.markdown("# 🧪 Concentrate calculation")
+st.markdown("# 🧪 ПДК отработавших растворов")
 st.write(
     """Расчет соответствия отработавших растворов Гигиеническим нормативам ГН 2.1.5.1315-03 в части ПДК"""
 )
-
-st.write('Разработано для ООО "Центр Актуальных Технологий" и ООО "АЦИА"')
 
 eche = pd.read_excel("eche.xlsx")
 materials = pd.read_excel("materials.xlsx")
@@ -39,10 +37,10 @@ with col1:
         (matlist))
     st.write('Обрабатывался:', mat_option)
 with col2:
-    volume = st.number_input('Объём ванны в литрах:')
+    volume = st.number_input('Объём ванны в литрах:', step=1)
     st.write('Объём ванны:', volume, ' литров')
 with col3:
-    amphours = st.number_input('Ампер*часы обработки:')
+    amphours = st.number_input('Ампер*часы обработки:', step=1)
     st.write(amphours, ' ампер*часов')
     
 Q = amphours / F
