@@ -4,5 +4,4 @@ openpyxl
 matplotlib
 scipy
 streamlit
-matplotlib.pyplot
-sklearn.preprocessing
+scikit-learn
