@@ -6,7 +6,7 @@ maxUploadSize = 10
 
 # The port where the server will listen for browser connections.
 # Default: 8502
-port = 8502
+# port = 8502
 
 [browser]
 
