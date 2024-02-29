@@ -1,3 +1,6 @@
-test.ipynb
-test.py
-presentation.tar
+model_generators
+models
+data
+.venv
+old_pages
+docker_comands.txt

@@ -1,30 +1,25 @@
 # Версия python 
-FROM python:3.11.5
+FROM python:3.10
 
 # Расположение приложения в Docker контейнере
 WORKDIR /app
 
 # Копирование файлов в Docker контейнер с приложением
-COPY Presentation.py /app/Presentation.py
+COPY main_page.py /app/main_page.py
 COPY requirements.txt /app/requirements.txt
-COPY abresults.csv /app/abresults.csv
-COPY ads.csv /app/ads.csv
-COPY eche.xlsx /app/eche.xlsx
-COPY file.xlsx /app/file.xlsx
-COPY leads.csv /app/leads.csv
+COPY .streamlit/config.toml /app/.streamlit/config.toml
+COPY pages/1_epp_calculation.py /app/pages/1_epp_calculation.py
+COPY pages/2_concentrate.py /app/pages/2_concentrate.py
 COPY materials.xlsx /app/materials.xlsx
-COPY experement.xlsx /app/experement.xlsx
-COPY purchases.csv /app/purchases.csv
-COPY readme.md /app/readme.md
-COPY pages/1_EPP_calculation.py /app/pages/1_EPP_calculation.py
-COPY pages/2_Concentrate.py /app/pages/2_Concentrate.py
-COPY pages/3_AB_Tester.py /app/pages/3_AB_Tester.py
-COPY pages/4_ADS_analyzer.py /app/pages/4_ADS_analyzer.py
-COPY pages/5_DataFrame_visualizer.py /app/pages/5_DataFrame_visualizer.py
-COPY .streamlit/config.toml /app/streamlit/config.toml
+COPY config.json /app/config.json
+COPY poly_EPP.pkl /app/poly_EPP.pkl
+COPY pictures/ /app/pictures/
+
+# Открытие порта 8502
+EXPOSE 8502
 
 # Зависимости приложения
 RUN pip install -r requirements.txt
 
 # Команда, запуска приложения внутри контейнера
-CMD ["streamlit", "run", "./Presentation.py", "--server.port", "8502"]
+CMD ["streamlit", "run", "./main_page.py", "--server.port", "8502", "--server.maxUploadSize=5"]

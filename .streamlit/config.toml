@@ -2,7 +2,8 @@
 
 # Max size, in megabytes, for files uploaded with the file_uploader.
 # Default: 10
-maxUploadSize = 10
+# maxUploadSize = 10 ## Почему-то не сработало для многостраничного
+# Использовал команду для докер контейнера 
 
 # The port where the server will listen for browser connections.
 # Default: 8502

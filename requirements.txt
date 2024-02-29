@@ -1,7 +1,8 @@
 pandas
-gsheetsdb
+numpy
 openpyxl
 matplotlib
 scipy
 streamlit
-scikit-learn
+st_pages
+scikit-learn==1.3.0
